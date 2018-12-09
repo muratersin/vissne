@@ -1,5 +1,37 @@
 extends _layout/layout
 
 block content
-    div#app
+    .columns.is-mobile.is-centered
+        .column.is-3
+            .logo
+                image(src="images/logo.png" alt="Vissne")
+       
+            form(action="/login" method="post")
+                .field
+                    label.label Email
+                    .control.has-icons-left.has-icons-right
+                        input(type="email" name="email" class="input" value=user.email)
+                        span.icon.is-small.is-left
+                            i.fas.fa-envelope
 
+                .field
+                    label.label Password
+                    .control.has-icons-left.has-icons-right
+                        input(type="password" name="password" class="input" value=user.password)
+                        span.icon.is-small.is-left
+                            i.fas.fa-envelope
+                
+                .field
+                    .control
+                        label.checkbox
+                            input(type="checkbox" name="remember")
+                            span Remember Me
+                
+                button(type="submit" class="button is-primary is-fullwidth") Login
+
+            span You hava no account?
+                a(href="/register") Register Here
+    if failed
+        .notification.is-danger.failed-login
+            button.delete
+            p Wrong Email or password.

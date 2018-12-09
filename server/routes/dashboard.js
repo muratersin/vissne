@@ -1,8 +1,11 @@
 const express = require('express');
 
+const verifyTokenMiddleware = require('../middlewares/verify-token-middleware');
+const { bundles } = require('../config/app.config');
+
 const router = express.Router();
 
-const { bundles } = require('../config/app.config');
+router.all('*', verifyTokenMiddleware);
 
 router.get('/*', (req, res) => {
   res.render('dashboard', {

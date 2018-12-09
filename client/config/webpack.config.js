@@ -8,14 +8,31 @@ const BUILD_DIR = path.resolve(__dirname, '../../server/public/dist');
 
 const config = {
   mode: 'production',
+  sourceMap: false,
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: [
+      '.js',
+      '.jsx',
+      '.json',
+    ],
   },
   entry: {
-    site: `${SCR_DIR}/site/index.js`,
-    login: `${SCR_DIR}/login/index.js`,
-    register: `${SCR_DIR}/register/index.js`,
-    dashboard: `${SCR_DIR}/dashboard/index.js`,
+    site: [
+      '@babel/polyfill',
+      `${SCR_DIR}/site/index.js`,
+    ],
+    login: [
+      '@babel/polyfill',
+      `${SCR_DIR}/login/index.js`,
+    ],
+    register: [
+      '@babel/polyfill',
+      `${SCR_DIR}/register/index.js`,
+    ],
+    dashboard: [
+      '@babel/polyfill',
+      `${SCR_DIR}/dashboard/index.js`,
+    ],
   },
   output: {
     path: BUILD_DIR,

@@ -1,6 +1,8 @@
 const createError = require('http-errors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
+const helmet = require('helmet');
 
 const config = require('./config/app.config');
 const logger = require('./lib/logger');
@@ -20,6 +22,9 @@ app.set('view engine', config.viewEngine);
 
 if (config.env !== 'production') {
   app.use(accessLogger);
+} else {
+  app.use(helmet());
+  app.use(compression());
 }
 
 app.use(express.json());
@@ -35,10 +40,11 @@ app.use('/api', (req, res) => res.json({}));
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  const { user, path } = req;
+  const { user, path, method } = req;
   const errorCode = 404;
   logger.error({
     path,
+    method,
     errorCode,
     user: user || null,
   }, 'Page not found.');

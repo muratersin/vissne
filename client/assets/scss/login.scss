@@ -1,1 +1,18 @@
 @import 'common';
+
+.logo {
+    margin-top: 30%;
+    text-align: center;
+    padding: 1rem;
+    img {
+        height: 100px;
+    }
+}
+
+.failed-login {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 1;
+}

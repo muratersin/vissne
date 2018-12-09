@@ -1,13 +1,8 @@
 
 const path = require('path');
-const dotenv = require('dotenv');
 const { version } = require('../../package.json');
 
 const env = (process.env.NODE_ENV || 'development').trim();
-
-if (env !== 'production') {
-  dotenv.config();
-}
 
 const suffix = env === 'production'
   ? `?v=${version}`

@@ -12,7 +12,11 @@ const config = {
     ignored: /node_modules/,
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: [
+      '.js',
+      '.jsx',
+      '.json',
+    ],
   },
   entry: {
     site: `${SCR_DIR}/site/index.js`,

@@ -5,8 +5,18 @@
  */
 
 const http = require('http');
+const dotenv = require('dotenv');
 const app = require('../app');
 const logger = require('../lib/logger');
+const bootstrap = require('../lib/bootstrap');
+
+const env = (process.env.NODE_ENV || 'development').trim();
+
+if (env !== 'production') {
+  dotenv.config();
+}
+
+bootstrap();
 
 /**
  * Normalize a port into a number, string, or false and

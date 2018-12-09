@@ -1,15 +1,13 @@
 const express = require('express');
 
 const router = express.Router();
+const login = require('../controllers/login');
 
-const { bundles } = require('../config/app.config');
+router.get('/*', login.pageController);
 
-router.get('/*', (req, res) => {
-  res.render('login', {
-    title: 'Login',
-    jsBundle: bundles.login.js,
-    cssBundle: bundles.login.css,
-  });
-});
+router.post('/*', [
+  login.signinController,
+  login.pageController,
+]);
 
 module.exports = router;

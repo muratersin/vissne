@@ -1,15 +1,12 @@
 const express = require('express');
 
 const router = express.Router();
+const register = require('../controllers/register');
 
-const { bundles } = require('../config/app.config');
-
-router.get('/*', (req, res) => {
-  res.render('register', {
-    title: 'Register',
-    jsBundle: bundles.register.js,
-    cssBundle: bundles.register.css,
-  });
-});
+router.get('/*', register.registerPageController);
+router.post('/*', [
+  register.registerController,
+  register.registerPageController,
+]);
 
 module.exports = router;

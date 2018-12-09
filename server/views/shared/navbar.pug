@@ -1,0 +1,19 @@
+nav(class="navbar" role="navigation" aria-label="Navigation")
+    .navbar-brand
+        a.navbar-item(href="/")
+            img(src="images/logo.png", alt="vissne")
+
+        a(role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu")
+            span(aria-hidden="true")
+            span(aria-hidden="true")
+            span(aria-hidden="true")
+
+    .navbar-menu#navbarMenu
+        .navbar-start
+            a(href="/" class="navbar-item") Home
+            a(href="/" class="navbar-item") Pricing
+            a(href="/" class="navbar-item") About Us
+        
+        .navbar-end
+            a(href="/register" class="navbar-item") Register
+            a(href="/login" class="navbar-item") Login

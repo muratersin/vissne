@@ -1,6 +1,54 @@
 extends _layout/layout
 
 block content
-    div#app
-        app
+    include shared/navbar
+
+    section.hero.is-primary
+        .hero-body
+            h1.title Vissne
+            h2.subtitle You help to our little friends, and we help to you.
+
+    .container
+        form(action="/register" method="post")
+            .columns.is-centered
+                .column.is-4 
+                    .field
+                        label.label Firs Name
+                        .control
+                            input(name="firstName" placeholder="First Name" class="input")
+                .column.is-4
+                    .field
+                        label.label Last Name
+                        .control
+                            input(name="lastName" placeholder="Last Name" class="input")
+
+            .columns.is-centered
+                .column.is-4
+                    .field
+                        label.label Clinick Name
+                        .control
+                            input(name="clinickName" placeholder="Clinick Name" class="input")
+                .column.is-4
+                    .field
+                        label.label Email
+                        .control
+                            input(name="email" placeholder="Email" type="email" class="input")
+
+            .columns.is-centered
+                .column.is-4
+                    .field
+                        label.label Password
+                        .control
+                            input(name="password" placeholder="Password" type="password" class="input")
+                .column.is-4
+                    .field
+                        label.label Confirm Password
+                        .control
+                            input(name="confirmPassword" placeholder="Confirm Password" type="password" class="input")
+
+            .columns.is-centered
+                .column.is-8
+                    button(type="submit" class="button is-primary is-fullwidth") Register
+
+    include shared/footer
 

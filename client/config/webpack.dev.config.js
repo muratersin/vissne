@@ -20,8 +20,6 @@ const config = {
   },
   entry: {
     site: `${SCR_DIR}/site/index.js`,
-    login: `${SCR_DIR}/login/index.js`,
-    register: `${SCR_DIR}/register/index.js`,
     dashboard: `${SCR_DIR}/dashboard/index.js`,
   },
   output: {

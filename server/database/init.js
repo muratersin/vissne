@@ -3,12 +3,9 @@ const logger = require('../lib/logger');
 
 const pool = new Pool();
 
-const tableNames = [
-  'clinick',
-];
-
 async function createTables() {
-  await pool.query(`
+  //TODO: Create from navicat model
+  const query = `
     CREATE TABLE IS NOT EXISTS clinick (
       id INTEGER UNIQUE NOT NULL,
       created_at TIMESTAMP DEFAULT NOW(),
@@ -20,7 +17,9 @@ async function createTables() {
       password VARCHAR(255) NOT NULL,
       PRIMARY KEY(id)
     );
-  `);
+  `;
+
+  await pool.query(query);
 
   pool.end();
 }

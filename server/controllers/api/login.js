@@ -1,19 +1,28 @@
-const { createToken } = require('../../lib/auth');
+const { createJWToken } = require('../../lib/auth');
 const Clinick = require('../../models/clinick.model');
 
-async function signinController(req, res, next) {
+async function signinController(req, res) {
   const { email, password } = req.body;
   req.failedLogin = !!req.dataError;
 
   const clinick = await Clinick.findOne({ where: { email } });
 
   clinick.comparePassword(password, (auth) => {
-    if (auth) {
-      return res.redirect('/dashboard');
+    if (!auth) {
+      return res.status(400).json({
+        message: 'Invalid email or password.',
+      });
     }
 
-    req.failedLogin = true;
-    return next();
+    const safeData = clinick.publicParse();
+
+    return res.send({
+      clinick: safeData,
+      token: createJWToken({
+        sessionData: safeData,
+        maxAge: 3600,
+      }),
+    });
   });
 }
 

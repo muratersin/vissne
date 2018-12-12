@@ -3,8 +3,8 @@ const { bundles } = require('../../config/app.config');
 function registerPageController(req, res) {
   res.render('register', {
     title: 'Register',
-    jsBundle: bundles.register.js,
-    cssBundle: bundles.register.css,
+    jsBundle: bundles.site.js,
+    cssBundle: bundles.site.css,
     formError: req.formError || {},
   });
 }

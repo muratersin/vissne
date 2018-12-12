@@ -8,7 +8,7 @@ const BUILD_DIR = path.resolve(__dirname, '../../server/public/dist');
 
 const config = {
   mode: 'production',
-  sourceMap: false,
+  devtool: false,
   resolve: {
     extensions: [
       '.js',
@@ -20,14 +20,6 @@ const config = {
     site: [
       '@babel/polyfill',
       `${SCR_DIR}/site/index.js`,
-    ],
-    login: [
-      '@babel/polyfill',
-      `${SCR_DIR}/login/index.js`,
-    ],
-    register: [
-      '@babel/polyfill',
-      `${SCR_DIR}/register/index.js`,
     ],
     dashboard: [
       '@babel/polyfill',

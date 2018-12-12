@@ -9,8 +9,8 @@ const { bundles } = require('../../config/app.config');
 function loginPageController(req, res) {
   res.render('login', {
     title: 'Login',
-    jsBundle: bundles.login.js,
-    cssBundle: bundles.login.css,
+    jsBundle: bundles.site.js,
+    cssBundle: bundles.site.css,
     failed: req.failedLogin,
     user: {},
   });

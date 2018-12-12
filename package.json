@@ -24,6 +24,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
     "babel-preset-react": "^6.24.1",
+    "bcrypt": "^3.0.2",
     "bulma": "^0.7.2",
     "bunyan": "^1.8.12",
     "compression": "^1.7.3",
@@ -35,10 +36,12 @@
     "jsonwebtoken": "^8.4.0",
     "lodash": "^4.17.11",
     "pg": "^7.7.1",
+    "pg-hstore": "^2.3.2",
     "pug": "^2.0.3",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "sequelize": "^4.41.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -52,6 +55,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-security": "^1.4.0",
     "file-loader": "^2.0.0",
     "mini-css-extract-plugin": "^0.4.5",
     "node-sass": "^4.10.0",

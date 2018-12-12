@@ -6,7 +6,7 @@ function verifyToken(token, callback) {
   jwt.verify(token, config.jwtSecret, callback);
 }
 
-function createToken(ops = {}) {
+function createJWToken(ops = {}) {
   const options = ops;
   options.sessionData = options.sessionData || {};
   if (!options.maxAge || typeof options.maxAge !== 'number') {
@@ -32,4 +32,4 @@ function createToken(ops = {}) {
 }
 
 module.exports.verifyToken = verifyToken;
-module.exports.createToken = createToken;
+module.exports.createJWToken = createJWToken;

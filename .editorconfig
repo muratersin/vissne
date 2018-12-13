@@ -27,6 +27,11 @@ indent_style = tab
 indent_style = space
 indent_size = 2
 
+# Indentation override for all JS under lib directory
+[*.{pug,html}]
+indent_style = space
+indent_size = 4
+
 # Matches the exact files either package.json or .travis.yml
 [{package.json,.travis.yml}]
 indent_style = space

@@ -1,37 +1,35 @@
 extends _layout/layout
 
 block content
-    .columns.is-mobile.is-centered
-        .column.is-3
-            .logo
-                image(src="images/logo.png" alt="Vissne")
-       
-            form
-                .field
-                    label.label Email
-                    .control.has-icons-left.has-icons-right
-                        input(type="email" name="email" class="input" id="emailInput")
-                        span.icon.is-small.is-left
-                            i.fas.fa-envelope
+    .container-fluid
+        .row.justify-content-md-center
+            .col-12.col-sm-12.col-md-5.col-lg-4.col-xl-3
+                .logo
+                    image(src="images/logo.png" alt="Vissne")
+        
+                form
+                    .form-group
+                        label(for="emailInput") Email
+                        input(type="email" name="email" class="form-control" id="emailInput")
 
-                .field
-                    label.label Password
-                    .control.has-icons-left.has-icons-right
-                        input(type="password" name="password" class="input" id="passwordInput")
-                        span.icon.is-small.is-left
-                            i.fas.fa-envelope
-                
-                .field
-                    .control
-                        label.checkbox
-                            input(type="checkbox" name="remember")
-                            span Remember Me
-                
-                button(type="button" id="loginButton" class="button is-primary is-fullwidth") Login
+                    .form-group
+                        label(for="passwordInput") Password
+                        input(type="password" name="password" class="form-control" id="passwordInput")
+                    
+                    .form-group
+                        .form-check
+                            input(type="checkbox" name="remember" class="form-check-input" id="rememberMeCheck")
+                            label(class="form-check-label" form="rememberMeCheck") Remember Me
 
-            span You hava no account?
-                a(href="/register") Register Here
+                    button(type="button" id="loginButton" class="btn btn-primary btn-block") Login
+                    
+                .row.justify-content-between.mt-2
+                    .col-6
+                        a(href="/register") Register
+                    .col-6.text-right
+                        a(href="/forgot-password") Forgot Password?
     
-    .notification.is-danger.error-notficication
-        button.delete
-        p Wrong Email or password.
+    .alert.alert-danger.alert-dismissible.fade.top-alert(role="alert")
+        strong Wrong Email or password.
+        button(type="button" class="close" aria-label="Close" id="closeButton")
+            span(aria-hidden="true") &times;

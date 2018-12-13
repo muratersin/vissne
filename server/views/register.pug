@@ -3,56 +3,103 @@ extends _layout/layout
 block content
     include shared/navbar
 
-    section.hero.is-primary
-        .hero-body
-            h1.title Vissne
-            h2.subtitle You help to our little friends, and we help to you.
+    .container-fluid
+        .row.justify-content-center
+            .col-6
+                form
+                    .card
+                        .card-body
+                            h5.card-title User Information
+                            .row
+                                .col
+                                    .form-group
+                                        label(for="firstNameInput") First Name
+                                        input(name="firstName" placeholder="First Name" class="form-control" id="firstNameInput")
+                                
+                                .col
+                                    .form-group
+                                        label(for="lastNameInput") Last Name
+                                        input(name="lastName" placeholder="Last Name" class="form-control" id="lastNameInput")
 
-    .container
-        form
-            .columns.is-centered
-                .column.is-4
-                    .field
-                        label.label First Name
-                        .control
-                            input(name="firstName" placeholder="First Name" class="input" id="firstNameInput")
-            .columns.is-centered
-                .column.is-4
-                    .field
-                        label.label Last Name
-                        .control
-                            input(name="lastName" placeholder="Clinick Name" class="input" id="lastNameInput")
-            .columns.is-centered
-                .column.is-4
-                    .field
-                        label.label Clinick Name
-                        .control
-                            input(name="clinickName" placeholder="Clinick Name" class="input" id="clinickNameInput")
-                .column.is-4
-                    .field
-                        label.label Email
-                        .control
-                            input(name="email" placeholder="Email" type="email" class="input" id="emailInput")
+                            .row
+                                .col
+                                    .form-group
+                                        label(for="emailInput") Email
+                                        input(name="email" placeholder="Email" type="email" class="form-control" id="emailInput")
 
-            .columns.is-centered
-                .column.is-4
-                    .field
-                        label.label Password
-                        .control
-                            input(name="password" placeholder="Password" type="password" class="input" id="passwordInput")
-                .column.is-4
-                    .field
-                        label.label Confirm Password
-                        .control
-                            input(name="confirmPassword" placeholder="Confirm Password" type="password" class="input" id="passwordConfirmInput")
+                            .row
+                                .col
+                                    .form-group
+                                        label(for="passwordInput") Password
+                                        input(name="password" placeholder="Password" type="password" class="form-control" id="passwordInput")
 
-            .columns.is-centered
-                .column.is-8
-                    button(type="button" id="registerButton" class="button is-primary is-fullwidth") Register
+                                .col
+                                    .form-group
+                                        label(for="passwordConfirmInput") Confirm Password
+                                        input(name="confirmPassword" placeholder="Confirm Password" type="password" class="form-control" id="passwordConfirmInput")
 
-    .notification.is-danger.error-notficication
-        button.delete
-        p Wrong Email or password.
+                    .card
+                        .card-body
+                            h5.card-title Address
+                            .row
+                                .col
+                                    .form-group
+                                        label(for="countryInput") Country
+                                        input(name="firstName" placeholder="First Name" class="form-control" id="countryInput")
+                        
+                                .col
+                                    .form-group
+                                        label(for="cityInput") City
+                                        input(name="firstName" placeholder="First Name" class="form-control" id="cityInput")
+
+                            .row
+                                .col
+                                    .form-group
+                                        label(for="countryInput") Phone
+                                        input(name="firstName" placeholder="First Name" class="form-control" id="countryInput")
+                        
+                                .col
+                                    .form-group
+                                        label(for="cityInput") Mobile
+                                        input(name="firstName" placeholder="First Name" class="form-control" id="cityInput")
+
+                            .row
+                                .col
+                                    .form-group
+                                        label(for="countryInput") PostCode
+                                        input(name="firstName" placeholder="First Name" class="form-control" id="countryInput")
+                        
+                                .col
+                                    .form-group
+                                        label(for="cityInput") Fax
+                                        input(name="firstName" placeholder="First Name" class="form-control" id="cityInput")
+
+                            .row                        
+                                .col
+                                    .form-group
+                                        label(for="addressInput") Address
+                                        textarea(name="address" placeholder="address" row="3" class="form-control" id="addressInput")
+
+                        
+                    .card
+                        .card-body
+                            h5.card-title Facility Information
+                            
+                            .row
+                                .col
+                                    .form-group
+                                        label(for="bussinessNameInput") Bussines Name
+                                        input(name="firstName" placeholder="First Name" class="form-control" id="bussinessNameInput")
+                        
+                                .col
+                                    .form-group
+                                        label(for="vatNumberInput") VAT Number
+                                        input(name="firstName" placeholder="First Name" class="form-control" id="vatNumberInput")
+
+
+                button(type="button" id="registerButton" class="btn btn-primary btn-block") Register
+
+
 
     include shared/footer
 

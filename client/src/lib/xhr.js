@@ -23,7 +23,25 @@ function xhr(ops, callBack) {
 
   http.onreadystatechange = () => {
     if (http.readyState === XMLHttpRequest.DONE) {
-      callBack(null, JSON.parse(http.responseText));
+      const response = JSON.parse(http.responseText);
+      const { status } = http;
+
+      response.status = http.status;
+
+      switch (status) {
+        case 403:
+          window.location.href = '/login';
+          break;
+
+        case 400:
+        case 500:
+          callBack(response);
+          break;
+
+        default:
+          callBack(null, response);
+          break;
+      }
     }
   };
 

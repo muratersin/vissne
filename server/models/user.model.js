@@ -1,6 +1,5 @@
-const Sequelize = require('sequelize');
 const bcrypt = require('bcrypt');
-const sequelize = require('../lib/sequelize');
+const { Sequelize, sequelize } = require('../lib/sequelize');
 
 const User = sequelize.define('user', {
   firstName: {

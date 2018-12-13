@@ -3,13 +3,13 @@ import xhr from '../lib/xhr';
 (() => {
   const doc = window.document;
 
-  const [alertDialog] = doc.getElementsByClassName('error-notification');
+  const [alertDialog] = doc.getElementsByClassName('alert');
 
   if (alertDialog) {
-    const closeButton = alertDialog.firstChild;
+    const closeButton = document.getElementById('closeButton');
 
     closeButton.addEventListener('click', () => {
-      alertDialog.style.opacity = 0;
+      alertDialog.className = alertDialog.className.replace(' show', '');
     });
   }
 
@@ -30,18 +30,18 @@ import xhr from '../lib/xhr';
         return null;
       }
 
-      xhr({
+      return xhr({
         method: 'POST',
         url: 'login',
         data: formData,
       }, (err, result) => {
-        if (err && alertDialog) {
-          alertDialog.style.opacity = 1;
-        }
-
-        if (result.success) {
+        if ((err && alertDialog) || !result.success) {
+          alertDialog.className += ' show';
+        } else {
           window.location.href = '/dashboard';
         }
+
+        return null;
       });
     });
   }

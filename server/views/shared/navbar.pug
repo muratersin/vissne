@@ -1,19 +1,16 @@
-nav(class="navbar" role="navigation" aria-label="Navigation")
-    .navbar-brand
-        a.navbar-item(href="/")
-            img(src="images/logo.png", alt="vissne")
+nav.navbar.navbar-light.bg-light.navbar-expand-md
+    a.navbar-brand(href="/")
+        img(src="images/logo.png", alt="V" height="30" class="d-inline-block align-top")
+        span issne
+    button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
 
-        a(role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu")
-            span(aria-hidden="true")
-            span(aria-hidden="true")
-            span(aria-hidden="true")
+    div(class="collapse navbar-collapse" id="navbarSupportedContent")
+        ul.navbar-nav.mr-auto
+            li.nav-item
+                a.nav-link(href="/") Home
+            li.nav-item
+                a.nav-link(href="/register") Register
+            li.nav-item
+                a.nav-link(href="/login") Login
 
-    .navbar-menu#navbarMenu
-        .navbar-start
-            a(href="/" class="navbar-item") Home
-            a(href="/" class="navbar-item") Pricing
-            a(href="/" class="navbar-item") About Us
-        
-        .navbar-end
-            a(href="/register" class="navbar-item") Register
-            a(href="/login" class="navbar-item") Login

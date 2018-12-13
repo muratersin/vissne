@@ -2,7 +2,15 @@ const Sequelize = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../lib/sequelize');
 
-const Clinick = sequelize.define('clinick', {
+const User = sequelize.define('user', {
+  firstName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  lastName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
   clinickName: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -18,18 +26,19 @@ const Clinick = sequelize.define('clinick', {
   },
 });
 
-Clinick.prototype.comparePassword = function comparePassword(password, callBack) {
+User.prototype.comparePassword = function comparePassword(password, callBack) {
   bcrypt.compare(password, this.password).then(callBack);
 };
 
-Clinick.prototype.publicParse = function publicParse() {
+User.prototype.publicParse = function publicParse() {
   return {
+    firstName: this.firstName,
+    lastName: this.lastName,
     clinickName: this.clinickName,
     email: this.email,
   };
 };
 
+User.sync();
 
-// Clinick.sync({ force: true });
-
-module.exports = Clinick;
+module.exports = User;

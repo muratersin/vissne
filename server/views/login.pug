@@ -10,14 +10,14 @@ block content
                 .field
                     label.label Email
                     .control.has-icons-left.has-icons-right
-                        input(type="email" name="email" class="input" id="emailInput" value=user.email)
+                        input(type="email" name="email" class="input" id="emailInput")
                         span.icon.is-small.is-left
                             i.fas.fa-envelope
 
                 .field
                     label.label Password
                     .control.has-icons-left.has-icons-right
-                        input(type="password" name="password" class="input" id="passwordInput" value=user.password)
+                        input(type="password" name="password" class="input" id="passwordInput")
                         span.icon.is-small.is-left
                             i.fas.fa-envelope
                 
@@ -31,7 +31,7 @@ block content
 
             span You hava no account?
                 a(href="/register") Register Here
-    if failed
-        .notification.is-danger.failed-login
-            button.delete
-            p Wrong Email or password.
+    
+    .notification.is-danger.error-notficication
+        button.delete
+        p Wrong Email or password.

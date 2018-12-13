@@ -9,34 +9,50 @@ block content
             h2.subtitle You help to our little friends, and we help to you.
 
     .container
-        form(action="/register" method="post")
+        form
+            .columns.is-centered
+                .column.is-4
+                    .field
+                        label.label First Name
+                        .control
+                            input(name="firstName" placeholder="First Name" class="input" id="firstNameInput")
+            .columns.is-centered
+                .column.is-4
+                    .field
+                        label.label Last Name
+                        .control
+                            input(name="lastName" placeholder="Clinick Name" class="input" id="lastNameInput")
             .columns.is-centered
                 .column.is-4
                     .field
                         label.label Clinick Name
                         .control
-                            input(name="clinickName" placeholder="Clinick Name" class="input")
+                            input(name="clinickName" placeholder="Clinick Name" class="input" id="clinickNameInput")
                 .column.is-4
                     .field
                         label.label Email
                         .control
-                            input(name="email" placeholder="Email" type="email" class="input")
+                            input(name="email" placeholder="Email" type="email" class="input" id="emailInput")
 
             .columns.is-centered
                 .column.is-4
                     .field
                         label.label Password
                         .control
-                            input(name="password" placeholder="Password" type="password" class="input")
+                            input(name="password" placeholder="Password" type="password" class="input" id="passwordInput")
                 .column.is-4
                     .field
                         label.label Confirm Password
                         .control
-                            input(name="confirmPassword" placeholder="Confirm Password" type="password" class="input")
+                            input(name="confirmPassword" placeholder="Confirm Password" type="password" class="input" id="passwordConfirmInput")
 
             .columns.is-centered
                 .column.is-8
-                    button(type="submit" class="button is-primary is-fullwidth") Register
+                    button(type="button" id="registerButton" class="button is-primary is-fullwidth") Register
+
+    .notification.is-danger.error-notficication
+        button.delete
+        p Wrong Email or password.
 
     include shared/footer
 

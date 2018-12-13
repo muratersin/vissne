@@ -1,15 +1,9 @@
 const { verifyToken } = require('../lib/auth');
 
 function verifyTokenMiddleware(req, res, next) {
-  const token = req.method === 'POST'
-    ? req.body.token
-    : req.query.token;
-
-  verifyToken(token, (err, decodedToken) => {
+  verifyToken(req.cookies.jwt, (err, decodedToken) => {
     if (err || !decodedToken) {
-      return res.status(403).json({
-        message: 'Invalid token',
-      });
+      return res.redirect('./login');
     }
 
     req.user = decodedToken.data;

@@ -10,10 +10,6 @@ const User = sequelize.define('user', {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  clinickName: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
   email: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -38,6 +34,6 @@ User.prototype.publicParse = function publicParse() {
   };
 };
 
-User.sync();
+User.sync({ force: true });
 
 module.exports = User;

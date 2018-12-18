@@ -19,13 +19,9 @@ const appConfig = {
   saltRounds: 10,
   jwtSecret,
   bundles: {
-    site: {
-      js: `dist/site.bundle.js${suffix}`,
-      css: `dist/site.css${suffix}`,
-    },
-    dashboard: {
-      js: `dist/dashboard.bundle.js${suffix}`,
-      css: `dist/dashboard.css${suffix}`,
+    app: {
+      js: `dist/app.bundle.js${suffix}`,
+      css: `dist/app.css${suffix}`,
     },
   },
 };

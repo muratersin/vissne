@@ -19,8 +19,7 @@ const config = {
     ],
   },
   entry: {
-    site: `${SCR_DIR}/site/index.js`,
-    dashboard: `${SCR_DIR}/dashboard/index.js`,
+    app: `${SCR_DIR}/app/index.jsx`,
   },
   output: {
     path: BUILD_DIR,

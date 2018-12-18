@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -17,13 +18,9 @@ const config = {
     ],
   },
   entry: {
-    site: [
+    app: [
       '@babel/polyfill',
-      `${SCR_DIR}/site/index.js`,
-    ],
-    dashboard: [
-      '@babel/polyfill',
-      `${SCR_DIR}/dashboard/index.js`,
+      `${SCR_DIR}/app/index.jsx`,
     ],
   },
   output: {
@@ -78,6 +75,9 @@ const config = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),

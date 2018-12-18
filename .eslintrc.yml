@@ -1,8 +1,0 @@
-plugins:
-  - security
-env:
-  browser: true
-  node: true
-extends:
-  - airbnb
-  - plugin:security/recommended

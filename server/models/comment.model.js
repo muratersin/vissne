@@ -1,20 +1,20 @@
 const { Sequelize, sequelize } = require('../lib/sequelize');
 
-const City = sequelize.define('city', {
-  cityName: {
+const Comments = sequelize.define('comments', {
+  title: {
     type: Sequelize.STRING(30),
     allowNull: false,
   },
-  plateNumber: {
+  date: {
     type: Sequelize.STRING(2),
     allowNull: false,
   },
-  phoneCode: {
+  body: {
     type: Sequelize.STRING(3),
     allowNull: false,
   },
 });
 
-City.sync();
+Comments.sync();
 
-module.exports = City;
+module.exports = Comments;

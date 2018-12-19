@@ -3,23 +3,30 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-// Components
+// Pages
 import App from './App';
-import Login from './Login/Login';
+import Login from '../containers/Login';
+
+// Shared Components
+import Alert from '../containers/Alert';
+// TODO: Add loading component
 
 const Root = ({ store }) => (
   <Provider store={store}>
-    <Router>
-      <Switch>
-        <Route path="/" exact component={App} />
-        <Route path="/login/" component={Login} />
-      </Switch>
-    </Router>
+    <React.Fragment>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={App} />
+          <Route path="/login/" component={Login} />
+        </Switch>
+      </Router>
+      <Alert />
+    </React.Fragment>
   </Provider>
 );
 
 Root.propTypes = {
-  store: PropTypes.object.isRequired,
+  store: PropTypes.instanceOf(Object).isRequired,
 };
 
-export default Root
+export default Root;

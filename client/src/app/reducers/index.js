@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux';
-// import movies from './movies';
-// import filter from './filter';
+
+import alert from './alert';
 
 export default combineReducers({
-  // movies,
-  // filter,
+  alert,
 });

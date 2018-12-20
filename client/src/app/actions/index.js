@@ -1,8 +1,17 @@
 export const TOGGLE_ALERT = 'TOGGLE_ALERT';
+export const PAGE_LOADING = 'PAGE_LOADING';
 
-export function toggleAlert(alert) {
+export function toggleAlert({ message, kind }) {
   return {
     type: TOGGLE_ALERT,
-    alert,
+    message,
+    kind,
+  };
+}
+
+export function loading(show) {
+  return {
+    TYPE: PAGE_LOADING,
+    show,
   };
 }

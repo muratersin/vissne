@@ -3,7 +3,7 @@ import { toggleAlert } from '../actions';
 import Login from '../components/login/Login';
 
 const mapStateToProps = state => ({
-  showAlert: state.alert.show,
+  showAlert: state.common.showAlert,
 });
 
 const mapDispatchToProps = dispatch => ({

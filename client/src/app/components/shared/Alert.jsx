@@ -24,11 +24,12 @@ const Alert = (props) => {
 Alert.defaultProps = {
   show: false,
   kind: 'info',
+  message: null,
 };
 
 Alert.propTypes = {
   show: PropTypes.bool,
-  message: PropTypes.string.isRequired,
+  message: PropTypes.string,
   toggleAlert: PropTypes.func.isRequired,
   kind: PropTypes.oneOf([
     'primary',

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -9,11 +9,11 @@ import Login from '../containers/Login';
 
 // Shared Components
 import Alert from '../containers/Alert';
-// TODO: Add loading component
+import Loading from '../containers/Loading';
 
 const Root = ({ store }) => (
   <Provider store={store}>
-    <React.Fragment>
+    <Fragment>
       <Router>
         <Switch>
           <Route path="/" exact component={App} />
@@ -21,7 +21,8 @@ const Root = ({ store }) => (
         </Switch>
       </Router>
       <Alert />
-    </React.Fragment>
+      {/* <Loading /> */}
+    </Fragment>
   </Provider>
 );
 

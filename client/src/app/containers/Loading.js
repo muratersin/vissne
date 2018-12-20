@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { loading } from '../actions';
-import Loading from '../components/shared/Loading';
+import Loading from '../components/common/Loading';
 
 const mapStateToProps = ({ common }) => ({
   show: common.loading,

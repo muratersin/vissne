@@ -1,6 +1,5 @@
 import { AUTH_SUCCESS } from './action-types';
 import { toggleAlert } from './common';
-import cookie from '../../lib/cookie';
 import xhr from '../../lib/xhr';
 
 export function authSuccess(user) {
@@ -18,8 +17,7 @@ export function register(data) {
   };
 
   return dispatch => xhr(ops)
-    .then(({ user }) => {
-      dispatch(authSuccess(user));
+    .then(() => {
       window.location.reload();
     })
     .catch(({ message }) => dispatch(
@@ -38,10 +36,8 @@ export function login(data) {
   };
 
   return dispatch => xhr(ops)
-    .then(({ user }) => {
-      dispatch(authSuccess(user));
+    .then(() => {
       window.location.reload();
-
     })
     .catch(({ message }) => dispatch(
       toggleAlert({

@@ -21,6 +21,8 @@ router.post('/register', [
   api.register,
 ]);
 
+router.get('/logout', api.logout);
+
 router.get('/movie/:movieId', api.movie.getById);
 
 module.exports = router;

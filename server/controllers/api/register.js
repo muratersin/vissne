@@ -3,9 +3,21 @@ const User = require('../../models/user.model');
 const { saltRounds } = require('../../config/app.config');
 const { createJWToken } = require('../../lib/auth');
 
-async function registerController(req, res, next) {
+async function registerController(req, res) {
   try {
     const { body } = req;
+
+    const existsUser = await User.findOne({
+      where: {
+        email: body.email,
+      },
+    });
+
+    if (existsUser) {
+      return res.status(400).json({
+        message: 'That email is already taken.',
+      });
+    }
 
     const salt = await bcrypt.genSalt(saltRounds);
     const hash = await bcrypt.hash(body.password, salt);
@@ -32,12 +44,13 @@ async function registerController(req, res, next) {
       maxAge: 900000,
     });
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
     });
-  } catch (err) {
-    req.registerError = err;
-    next(err);
+  } catch ({ message }) {
+    res.status(400).json({
+      message,
+    });
   }
 }
 

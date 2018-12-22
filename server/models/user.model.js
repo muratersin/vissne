@@ -14,6 +14,7 @@ const User = sequelize.define('user', {
     type: Sequelize.STRING(50),
     allowNull: false,
     unique: true,
+    isEmail: true,
   },
   password: {
     type: Sequelize.STRING,
@@ -38,6 +39,6 @@ User.prototype.publicParse = function publicParse() {
   };
 };
 
-User.sync({ force: true });
+User.sync({});
 
 module.exports = User;

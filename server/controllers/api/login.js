@@ -24,17 +24,20 @@ async function signinController(req, res) {
       maxAge: 3600,
     });
 
-    res.cookie('user', safeData, {
-      maxAge: 900000,
-    });
-
     res.cookie('jwt', token, {
       maxAge: 900000,
       httpOnly: true,
     });
 
+    res.cookie('user_email', safeData.email, {
+      maxAge: 900000,
+    });
+
+    res.cookie('user_full_name', safeData.fullName, {
+      maxAge: 900000,
+    });
+
     return res.send({
-      user: safeData,
       success: true,
     });
   });

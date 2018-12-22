@@ -1,5 +1,5 @@
-export const TOGGLE_ALERT = 'TOGGLE_ALERT';
-export const PAGE_LOADING = 'PAGE_LOADING';
+
+import { TOGGLE_ALERT, LOADING } from './action-types';
 
 export function toggleAlert({ message, kind }) {
   return {
@@ -11,7 +11,7 @@ export function toggleAlert({ message, kind }) {
 
 export function loading(show) {
   return {
-    TYPE: PAGE_LOADING,
+    type: LOADING,
     show,
   };
 }

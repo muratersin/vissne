@@ -1,4 +1,5 @@
 
+const { assign } = Object;
 const initialState = {
   showAlert: false,
   alertMessage: null,
@@ -9,7 +10,7 @@ const initialState = {
 export default function common(state = initialState, action) {
   switch (action.type) {
     case 'TOGGLE_ALERT': {
-      return Object.assign({}, state, {
+      return assign({}, state, {
         showAlert: !state.showAlert,
         alertMessage: action.message,
         alertKind: action.kind,
@@ -17,7 +18,7 @@ export default function common(state = initialState, action) {
     }
 
     case 'PAGE_LOADING': {
-      return Object.assign({}, state, {
+      return assign({}, state, {
         loading: state.loading,
       });
     }

@@ -19,13 +19,17 @@ async function registerController(req, res, next) {
       maxAge: 3600,
     });
 
-    res.cookie('user', user, {
-      maxAge: 900000,
-    });
-
     res.cookie('jwt', token, {
       maxAge: 900000,
       httpOnly: true,
+    });
+
+    res.cookie('user_email', user.email, {
+      maxAge: 900000,
+    });
+
+    res.cookie('user_full_name', user.fullName, {
+      maxAge: 900000,
     });
 
     res.status(200).json({

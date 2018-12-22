@@ -5,11 +5,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Pages
 import App from './App';
-import Login from '../containers/Login';
+import Auth from '../containers/Auth';
 
 // Shared Components
 import Alert from '../containers/Alert';
-import Loading from '../containers/Loading';
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -17,11 +16,10 @@ const Root = ({ store }) => (
       <Router>
         <Switch>
           <Route path="/" exact component={App} />
-          <Route path="/login/" component={Login} />
+          <Route path="/login/" component={Auth} />
         </Switch>
       </Router>
       <Alert />
-      {/* <Loading /> */}
     </Fragment>
   </Provider>
 );

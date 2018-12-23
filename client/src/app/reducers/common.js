@@ -4,7 +4,6 @@ const initialState = {
   showAlert: false,
   alertMessage: null,
   alertKind: 'info',
-  loading: false,
 };
 
 export default function common(state = initialState, action) {
@@ -14,12 +13,6 @@ export default function common(state = initialState, action) {
         showAlert: !state.showAlert,
         alertMessage: action.message,
         alertKind: action.kind,
-      });
-    }
-
-    case 'PAGE_LOADING': {
-      return assign({}, state, {
-        loading: state.loading,
       });
     }
 

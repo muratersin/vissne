@@ -19,6 +19,13 @@ const bootstrap = require('../lib/bootstrap');
 
 bootstrap();
 
+const { MOVIE_DB_API_KEY, JWTSECRET, PORT } = process.env;
+
+if (!MOVIE_DB_API_KEY || !JWTSECRET) {
+  logger.fatal('Api key and jtw secret are required.');
+  setTimeout(() => process.exit(1), 2000);
+}
+
 /**
  * Normalize a port into a number, string, or false and
  * get port from environment and store in Express.
@@ -38,7 +45,7 @@ const port = ((val) => {
   }
 
   return false;
-})(process.env.PORT || '3000');
+})(PORT || '3000');
 
 app.set('port', port);
 
@@ -70,16 +77,17 @@ server.on('error', (error) => {
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      logger.error(`${bind} requires elevated privileges`);
-      process.exit(1);
+      logger.fatal(`${bind} requires elevated privileges`);
       break;
     case 'EADDRINUSE':
-      logger.error(`${bind} is already in use`);
-      process.exit(1);
+      logger.fatal(`${bind} is already in use`);
       break;
     default:
-      throw error;
+      logger.fatal(error);
+      break;
   }
+
+  setTimeout(() => process.exit(1), 2000);
 });
 
 /**

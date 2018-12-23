@@ -21,7 +21,7 @@ const logger = bunyan.createLogger({
       level: 'fatal',
       type: 'rotating-file',
       path: path.join(__dirname, '../var/tmp/fatal.log'),
-      period: '1m',
+      period: '1y',
       count: 3,
     },
   ],

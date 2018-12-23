@@ -2,8 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const { bundles, publ } = require('../config/app.config');
-const verifyTokenMiddleware = require('../middlewares/verify-token-middleware');
+const { bundles } = require('../config/app.config');
 
 router.get('/logout', (req, res) => {
   res.clearCookie('jwt');
@@ -19,16 +18,5 @@ router.get('/*', (req, res) => {
     cssBundle: bundles.app.css,
   });
 });
-
-// router.get('/dashboard', [
-//   verifyTokenMiddleware,
-//   (req, res) => {
-//     res.render('dashboard', {
-//       title: 'Dashboard',
-//       jsBundle: bundles.dashboard.js,
-//       cssBundle: bundles.dashboard.css,
-//     });
-//   },
-// ]);
 
 module.exports = router;

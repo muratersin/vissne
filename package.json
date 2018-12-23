@@ -52,7 +52,8 @@
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "sequelize": "^4.41.2"
+    "sequelize": "^4.41.2",
+    "mini-css-extract-plugin": "^0.4.5"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -68,7 +69,6 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
     "file-loader": "^2.0.0",
-    "mini-css-extract-plugin": "^0.4.5",
     "node-sass": "^4.10.0",
     "nodemon": "^1.18.7",
     "optimize-css-assets-webpack-plugin": "^5.0.1",

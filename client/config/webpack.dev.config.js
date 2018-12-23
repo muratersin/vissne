@@ -70,5 +70,3 @@ const config = {
 };
 
 module.exports = config;
-
-// TODO: add split ckunk

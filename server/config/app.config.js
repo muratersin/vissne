@@ -8,11 +8,6 @@ const {
   JWTSECRET,
 } = process.env;
 
-if (!MOVIE_DB_API_KEY || !JWTSECRET) {
-  console.error('API key is required.');
-  process.exit(1);
-}
-
 const env = (NODE_ENV || 'development').trim();
 const suffix = env === 'production'
   ? `?v=${version}`

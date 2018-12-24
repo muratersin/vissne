@@ -1,13 +1,5 @@
-import { AUTH_SUCCESS } from './action-types';
 import { toggleAlert } from './common';
 import xhr from '../../lib/xhr';
-
-export function authSuccess(user) {
-  return {
-    type: AUTH_SUCCESS,
-    user,
-  };
-}
 
 export function register(data) {
   const ops = {

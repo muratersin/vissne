@@ -8,7 +8,7 @@ import './MovieList.scss';
 const MovieList = ({ movies }) => {
   const list = movies.map(movie => (
     <div className="col-6 col-sm-6 col-md-3 col-lg-2">
-      <MovieCard movie={movie} />
+      <MovieCard image={movie.poster_path} title={movie.title} />
     </div>
   ));
 

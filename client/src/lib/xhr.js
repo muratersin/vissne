@@ -12,22 +12,26 @@ const allowedMethods = [
  */
 
 function xhr(ops) {
+  const options = ops;
+
   return new Promise((resolve, reject) => {
-    if (!ops.method || allowedMethods.indexOf(ops.method) === -1) {
+    options.method = options.method || 'GET';
+
+    if (allowedMethods.indexOf(options.method) === -1) {
       return reject(new Error('Incorrect http method.'));
     }
 
-    if (!ops.url || typeof ops.url !== 'string') {
+    if (!options.url || typeof options.url !== 'string') {
       return reject(new Error('Invalid url'));
     }
 
-    const url = `api/${ops.url}`;
-    const data = ops.data
-      ? JSON.stringify(ops.data)
+    const url = `api/${options.url}`;
+    const data = options.data
+      ? JSON.stringify(options.data)
       : null;
 
     const http = new XMLHttpRequest();
-    http.open(ops.method, url, true);
+    http.open(options.method, url, true);
     http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     http.send(data);
 

@@ -2,15 +2,13 @@ const request = require('request');
 const { generateRouteDiscover } = require('../../../lib/route-generator');
 
 const discover = (req, res, next) => {
-  const { page, sort } = req.query;
-  const url = generateRouteDiscover(page, sort);
+  const url = generateRouteDiscover(req.query);
 
-  request(url, (error, response) => {
+  request(url, { json: true }, (error, { body }) => {
     if (error) {
       return next(error);
     }
 
-    const body = JSON.parse(response.body);
     return res.status(200).json(body);
   });
 };

@@ -23,5 +23,6 @@ router.post('/register', [
 
 router.get('/movie/:movieId', api.movie.getById);
 router.get('/discover', api.movie.discover);
+router.get('/genre', api.movie.genre);
 
 module.exports = router;

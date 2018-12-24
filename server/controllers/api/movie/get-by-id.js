@@ -6,11 +6,11 @@ const getById = (req, res, next) => {
 
   const url = generateRouteGetById(movieId);
 
-  request(url, (error, response) => {
+  request(url, { json: true }, (error, { body }) => {
     if (error) {
       return next(error);
     }
-    const body = JSON.parse(response.body);
+
     return res.status(200).json(body);
   });
 };

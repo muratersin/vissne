@@ -30,6 +30,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(config.publicPath));
 
+// Set default queries
+app.use((req, res, next) => {
+  req.query.page = req.query.page || 1;
+  next();
+});
+
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
 

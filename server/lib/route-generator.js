@@ -1,3 +1,4 @@
+const querystring = require('querystring');
 const { api } = require('../config/app.config');
 
 const {
@@ -18,4 +19,6 @@ module.exports.generateRouteGetById = (
   type = false,
 ) => `${baseUrl}/movie/${movieId}${type ? `/${type}` : ''}${baseQueryString}`;
 
-module.exports.generateRouteDiscover = (page = 1, sort) => `${baseUrl}/discover/movie${baseQueryString}&page=${page}${sort ? `&sort_by=${sort}` : ''}`;
+module.exports.generateRouteDiscover = disoverQuery => `${baseUrl}/discover/movie${baseQueryString}&${querystring.stringify(disoverQuery)}`;
+
+module.exports.genreRoute = `${baseUrl}/genre/movie/list${baseQueryString}`;

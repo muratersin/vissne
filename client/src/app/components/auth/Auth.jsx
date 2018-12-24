@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import cookie from '../../../lib/cookie';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './Auth.scss';
 

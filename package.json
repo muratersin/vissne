@@ -38,6 +38,7 @@
     "http-errors": "^1.7.1",
     "jsonwebtoken": "^8.4.0",
     "lodash": "^4.17.11",
+    "mini-css-extract-plugin": "^0.4.5",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
@@ -52,8 +53,8 @@
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "sequelize": "^4.41.2",
-    "mini-css-extract-plugin": "^0.4.5"
+    "request": "^2.88.0",
+    "sequelize": "^4.41.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

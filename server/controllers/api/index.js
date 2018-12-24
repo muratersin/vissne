@@ -1,11 +1,13 @@
 const login = require('./login');
 const register = require('./register');
-const movieGetById = require('./movie/get-by-id');
+const getById = require('./movie/get-by-id');
+const discover = require('./movie/discover');
 
 module.exports = {
   login,
   register,
   movie: {
-    getById: movieGetById,
+    getById,
+    discover,
   },
 };

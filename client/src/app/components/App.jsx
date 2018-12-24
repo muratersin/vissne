@@ -1,23 +1,24 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
+
+import MovieList from './common/MovieList';
+
+import Navbar from './common/Navbar';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      message: 'Dashboard',
-    };
+    this.state = {};
   }
 
   render() {
     return (
-      <div>
-        <h1>
-          {this.state.message}
-        </h1>
-        <Link to="/login">Login</Link>
-      </div>
+      <Fragment>
+        <Navbar />
+        <div className="container-fluid img-thumbnail">
+          <MovieList movies={[]} />
+        </div>
+      </Fragment>
     );
   }
 }

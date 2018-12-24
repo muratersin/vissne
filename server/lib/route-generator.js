@@ -11,11 +11,11 @@ const {
 const baseUrl = `${protocol}://${url}/${version}`;
 const baseQueryString = `?api_key=${key}&language=${lang}`;
 
-module.exports.byId = (
+module.exports.config = `${baseUrl}/config${baseQueryString}`;
+
+module.exports.generateRouteGetById = (
   movieId,
   type = false,
-) => `${baseUrl}/movie/${movieId}${type ? `/${type}` : null}${baseQueryString}`;
+) => `${baseUrl}/movie/${movieId}${type ? `/${type}` : ''}${baseQueryString}`;
 
-module.exports.list = (
-
-) => '';
+module.exports.generateRouteDiscover = (page = 1, sort) => `${baseUrl}/discover/movie${baseQueryString}&page=${page}${sort ? `&sort_by=${sort}` : ''}`;

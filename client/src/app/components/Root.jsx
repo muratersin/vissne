@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Pages
-import App from './App';
+import App from '../containers/App';
 import Auth from '../containers/Auth';
 
 // Shared Components

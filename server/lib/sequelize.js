@@ -22,8 +22,10 @@ const sequelize = new Sequelize(dbName, userName, password, {
 sequelize.authenticate()
   .then(() => logger.info('Connection has been established successfully.'))
   .catch((err) => {
-    logger.error(err);
-    process.exit(1);
+    logger.fatal(err);
+    setTimeout(() => {
+      process.exit(1);
+    }, 2000);
   });
 
 module.exports = {

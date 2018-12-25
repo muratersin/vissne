@@ -16,7 +16,7 @@ const Root = ({ store }) => (
       <Router>
         <Switch>
           <Route path="/" exact component={App} />
-          <Route path="/login/" component={Auth} />
+          <Route path="/login" component={Auth} />
         </Switch>
       </Router>
       <Alert />

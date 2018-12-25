@@ -1,4 +1,9 @@
 import { SET_MOVIES, SET_FILTER } from '../actions/action-types';
+import cookie from '../../lib/cookie';
+
+const userFirstName = cookie.get('user_first_name');
+const userLastName = cookie.get('user_last_name');
+const userEmail = cookie.get('user_email');
 
 const initialState = {
   genres: [],
@@ -7,6 +12,13 @@ const initialState = {
   total: 0,
   totalPage: 1,
   filter: {},
+  isLoggedIn: !!userEmail,
+  user: {
+    fristName: userFirstName,
+    lastName: userLastName,
+    email: userEmail,
+    fullName: `${userFirstName} ${userLastName}`,
+  },
 };
 
 export default function app(state = initialState, action) {

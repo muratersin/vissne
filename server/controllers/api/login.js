@@ -33,11 +33,16 @@ async function signinController(req, res) {
       maxAge: 900000,
     });
 
-    res.cookie('user_full_name', safeData.fullName, {
+    res.cookie('user_first_name', safeData.firstName, {
+      maxAge: 900000,
+    });
+
+    res.cookie('user_last_name', safeData.lastName, {
       maxAge: 900000,
     });
 
     return res.send({
+      user: safeData,
       success: true,
     });
   });

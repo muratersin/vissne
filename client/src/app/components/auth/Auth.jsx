@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import cookie from '../../../lib/cookie';
 
 import './Auth.scss';
 
@@ -11,7 +10,6 @@ export default class Auth extends Component {
       email: '',
       rememberMe: false,
       validation: {},
-      userEmail: cookie.get('user_email'),
     };
 
     this.login = this.login.bind(this);
@@ -90,13 +88,12 @@ export default class Auth extends Component {
       rememberMe,
       isRegister,
       validation,
-      userEmail,
     } = this.state;
     const { props } = this;
     const buttonText = isRegister ? 'Register' : 'Login';
     const switchRegisterToLoginText = isRegister ? 'Login' : 'Register';
 
-    if (userEmail) {
+    if (props.isLoggedIn) {
       return (
         <Redirect
           to={{

@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-
 import MovieList from './common/MovieList';
-
 import Navbar from './common/Navbar';
 
 export default class App extends Component {
@@ -10,28 +8,53 @@ export default class App extends Component {
     super(props);
 
     this.state = {};
+
+    this.autoLoad = this.autoLoad.bind(this);
   }
 
   componentDidMount() {
     const { getMovies, filter } = this.props;
-    getMovies(filter);
+    getMovies(1, filter);
+
+    window.onscroll = () => {
+      const scy = Number.parseInt(window.scrollY, 10);
+      if ((window.innerHeight + scy) >= document.body.offsetHeight) {
+        this.autoLoad();
+      }
+    };
+  }
+
+  autoLoad() {
+    const { getMovies, page, filter } = this.props;
+    getMovies(page, filter);
   }
 
   render() {
-    const { movies } = this.props;
+    const { movies, user, isLoggedIn } = this.props;
     return (
       <Fragment>
-        <Navbar />
-        <div className="container-fluid">
-          <MovieList movies={movies} />
-        </div>
+        <Navbar isLoggedIn={isLoggedIn} user={user} />
+        <MovieList movies={movies} id="list" />
       </Fragment>
     );
   }
 }
 
+App.defaultProps = {
+  isLoggedIn: false,
+  user: {},
+};
+
 App.propTypes = {
   getMovies: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool,
+  user: PropTypes.shape({
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    email: PropTypes.string,
+    fullName: PropTypes.string,
+  }),
+  page: PropTypes.number.isRequired,
   movies: PropTypes.instanceOf(Array).isRequired,
   filter: PropTypes.instanceOf(Object).isRequired,
 };

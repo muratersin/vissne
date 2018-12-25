@@ -2,13 +2,10 @@ import { connect } from 'react-redux';
 import App from '../components/App';
 import { getMovies, setFilter } from '../actions/app';
 
-const mapStateToProps = state => ({
-  movies: state.app.movies,
-  filter: state.app.filter,
-});
+const mapStateToProps = state => state.app;
 
 const mapDispatchToProps = dispatch => ({
-  getMovies: filter => dispatch(getMovies(filter)),
+  getMovies: (page, filter) => dispatch(getMovies(page, filter)),
   setFilter: filter => dispatch(setFilter(filter)),
 });
 

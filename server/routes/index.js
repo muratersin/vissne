@@ -11,7 +11,7 @@ router.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
-router.get('/', (req, res) => {
+router.get('/*', (req, res) => {
   res.render('index', {
     title: 'Vissne',
     jsBundle: bundles.app.js,

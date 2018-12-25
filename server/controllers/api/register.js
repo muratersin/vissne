@@ -40,15 +40,20 @@ async function registerController(req, res) {
       maxAge: 900000,
     });
 
-    res.cookie('user_full_name', user.fullName, {
+    res.cookie('user_first_name', user.firstName, {
+      maxAge: 900000,
+    });
+
+    res.cookie('user_last_name', user.lastName, {
       maxAge: 900000,
     });
 
     return res.status(200).json({
+      user,
       success: true,
     });
   } catch ({ message }) {
-    res.status(400).json({
+    return res.status(400).json({
       message,
     });
   }

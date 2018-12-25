@@ -5,17 +5,17 @@ import xhr from '../../lib/xhr';
 export const setMovies = response => ({
   type: SET_MOVIES,
   movies: response.results,
-  page: response.page,
+  page: (response.page + 1),
   totalPages: response.total_pages,
   total: response.total_results,
 });
 
-export const getMovies = (filter) => {
+export const getMovies = (page, filter) => {
   const ops = {
-    url: `discover?page=${filter.page || 1}`,
+    url: `discover?page=${page || 1}`,
   };
 
-  if (filter.sort) {
+  if (filter && filter.sort) {
     ops.url += `&sort_by=${filter.sort}`;
   }
 

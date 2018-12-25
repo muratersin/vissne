@@ -70,4 +70,19 @@ const Navbar = (props) => {
   );
 };
 
+Navbar.defaultProps = {
+  isLoggedIn: false,
+  user: {},
+};
+
+Navbar.propTypes = {
+  isLoggedIn: PropTyes.bool,
+  user: PropTyes.shape({
+    firstName: PropTyes.string,
+    lastName: PropTyes.string,
+    fullName: PropTyes.string,
+    email: PropTyes.string,
+  }),
+};
+
 export default Navbar;

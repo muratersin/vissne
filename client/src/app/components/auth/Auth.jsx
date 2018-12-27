@@ -4,8 +4,8 @@ import { Redirect } from 'react-router-dom';
 import './Auth.scss';
 
 export default class Auth extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       email: '',
       rememberMe: false,
@@ -183,7 +183,7 @@ export default class Auth extends Component {
     return (
       <div className="container-fluid h-100 position-absolute">
         <div className="row h-100 justify-content-center align-items-center">
-          <div className="col-xs-12 col-sm-8 col-md-6 col-xl-4">
+          <div className="col-xs-12 col-sm-8 col-md-6 col-xl-4 card p-3">
             <img src="images/logo.png" alt="Vissne" height="70" className="mx-auto d-block" />
             <form onSubmit={this.handleSubmit} id="formReg">
               <div className="form-group auth-group">
@@ -225,7 +225,9 @@ export default class Auth extends Component {
                 {rememberMeCheckBox}
                 <button
                   className="btn btn-link"
-                  onClick={() => this.setState(prevState => ({ isRegister: !prevState.isRegister }))}
+                  onClick={
+                    () => this.setState(prevState => ({ isRegister: !prevState.isRegister }))
+                  }
                   type="button"
                 >
                   {switchRegisterToLoginText}
@@ -233,7 +235,7 @@ export default class Auth extends Component {
               </div>
               <button
                 type="button"
-                className="btn btn-primary btn-block font-weight-bold"
+                className="btn btn-secondary btn-block font-weight-bold"
                 onClick={this.login}
               >
                 {buttonText}

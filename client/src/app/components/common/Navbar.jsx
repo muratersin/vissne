@@ -1,18 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTyes from 'prop-types';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Navbar.scss';
-
-function toggleMobileMenu() {
-  const menu = document.getElementById('navbarSupportedContent');
-
-  if (/show/gi.test(menu.className)) {
-    menu.className = menu.className.replace(' show', '');
-  } else {
-    menu.className += ' show';
-  }
-}
 
 const Navbar = (props) => {
   const {
@@ -21,50 +11,48 @@ const Navbar = (props) => {
   } = props;
 
   const loginButton = isLoggedIn ? (
-    <a role="button" className="btn btn-outline-secondary" aria-pressed="true" href="/logout">
-      <FontAwesomeIcon icon="user" />
-      {user.fullName}
-    </a>
-  ) : (
-    <Link to="/login" className="btn btn-outline-secondary">Login / Register</Link>
-  );
+    <li className="nav-item dropdown">
+      <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <FontAwesomeIcon icon="user" className="mr-2" />
+        {user.fullName}
+      </Link>
+      <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+        <Link className="dropdown-item" to="/profile">
+          <FontAwesomeIcon icon="user" className="mr-2" />
+          Profile
+        </Link>
+        <div className="dropdown-divider" />
+        <a className="dropdown-item" href="/logout">
+          <FontAwesomeIcon icon="sign-out-alt" className="mr-2" />
+          Logout
+        </a>
+      </div>
+    </li>
+  ) : <Link to="/login" className="nav-link">Login / Register</Link>;
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
-      <Link className="navbar-brand" to="/">Vissne</Link>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-        onClick={toggleMobileMenu}
-      >
-        <span className="navbar-toggler-icon" />
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary py-0">
+      <Link className="navbar-brand" to="/">
+        <img src="images/logo.png" alt="Vissne" height="30" className="mx-auto d-block" />
+      </Link>
+
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        {/* <span className="navbar-toggler-icon" /> */}
+        <FontAwesomeIcon icon="bars" />
       </button>
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
-            <Link className="nav-link" to="/">Discover</Link>
+            <Link className="nav-link" to="/">IN THEATERS</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/">Categories</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/">In Theaters</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/new">Coming Soon</Link>
+            <Link className="nav-link" to="/">COMING SOON</Link>
           </li>
         </ul>
-        <form className="form-inline my-2 my-lg-0">
-          <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        {loginButton}
+        <ul className="navbar-nav ml-auto">
+          {loginButton}
+        </ul>
       </div>
     </nav>
   );
@@ -76,12 +64,12 @@ Navbar.defaultProps = {
 };
 
 Navbar.propTypes = {
-  isLoggedIn: PropTyes.bool,
-  user: PropTyes.shape({
-    firstName: PropTyes.string,
-    lastName: PropTyes.string,
-    fullName: PropTyes.string,
-    email: PropTyes.string,
+  isLoggedIn: PropTypes.bool,
+  user: PropTypes.shape({
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    fullName: PropTypes.string,
+    email: PropTypes.string,
   }),
 };
 

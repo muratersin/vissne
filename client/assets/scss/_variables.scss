@@ -12,8 +12,8 @@ $colors: map-merge(
   $colors
 );
 
-$primary:       #2B3134 !default;
-$secondary:     #FF6700 !default;
+$primary:       #131c21 !default;
+$secondary:     #7e0b2e !default;
 $success:       #caffa9 !default;
 $info:          #c9f3f6 !default;
 $warning:       #fffb9a !default;
@@ -36,4 +36,4 @@ $theme-colors: map-merge(
   $theme-colors
 );
 
-$enable-rounded:   false;
+// $enable-rounded:   false;

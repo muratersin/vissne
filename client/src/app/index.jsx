@@ -1,14 +1,25 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import {
+  faUser,
+  faSignOutAlt,
+  faBars,
+} from '@fortawesome/free-solid-svg-icons';
 
+import 'jquery';
+import 'popper.js';
+import 'bootstrap';
 import '../scripts';
 import '../../assets/scss/main.scss';
 import configureStore from './store/configure-store';
 import Root from './components/Root';
 
-library.add(faUser);
+library.add(
+  faUser,
+  faSignOutAlt,
+  faBars,
+);
 
 const store = configureStore();
 

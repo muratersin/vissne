@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './MovieCard.scss';
 
 const MovieCard = ({ image, title }) => (
-  <div className="card movie-card h-200 mt-3">
+  <div className="card border-0 mt-3">
     <img className="card-img" src={`http://image.tmdb.org/t/p/w342/${image}`} alt={title} />
   </div>
 );

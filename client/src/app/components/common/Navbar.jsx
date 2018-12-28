@@ -28,7 +28,11 @@ const Navbar = (props) => {
         </a>
       </div>
     </li>
-  ) : <Link to="/login" className="nav-link">Login / Register</Link>;
+  ) : (
+    <li className="nav-item">
+      <Link to="/login" className="nav-link">Login / Register</Link>
+    </li>
+  );
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary py-0">

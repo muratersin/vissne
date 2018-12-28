@@ -7,9 +7,6 @@ import {
   faBars,
 } from '@fortawesome/free-solid-svg-icons';
 
-import 'jquery';
-import 'popper.js';
-import 'bootstrap';
 import '../scripts';
 import '../../assets/scss/main.scss';
 import configureStore from './store/configure-store';

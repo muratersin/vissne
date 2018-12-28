@@ -62,10 +62,30 @@ const fromCamelCase = (str, separator = ' ') => str
  */
 const isAbsoluteURL = url => /^[a-z][a-z0-9+.-]*:/.test(url);
 
+/**
+ * @param {string} str
+ *
+ * @description
+ * Converts a string to camelcase.
+ *
+ * @example
+ * toCamelCase('to_camel_case'); // 'toCamelCase'
+ * toCamelCase('To camel case'); // 'toCamelCase'
+ * toCamelCase('to-camel-case'); // 'toCamelCase'
+ */
+const toCamelCase = (str) => {
+  const s = str && str
+    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    .map(x => x.slice(0, 1).toUpperCase() + x.slice(1).toLowerCase())
+    .join('');
+  return s.slice(0, 1).toLowerCase() + s.slice(1);
+};
+
 module.exports = {
   capitalize,
   capitalizeEveryWord,
   compactWhiteSpace,
   fromCamelCase,
   isAbsoluteURL,
+  toCamelCase,
 };

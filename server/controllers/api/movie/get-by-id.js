@@ -6,12 +6,14 @@ const getById = (req, res, next) => {
 
   const url = generateRouteGetById(movieId);
 
-  request(url, { json: true }, (error, { body }) => {
+  request(url, { json: true }, (error, response) => {
     if (error) {
       return next(error);
     }
 
-    return res.status(200).json(body);
+    const { body } = response;
+
+    return res.status(200).json(body || null);
   });
 };
 

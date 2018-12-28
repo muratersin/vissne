@@ -3,7 +3,7 @@ const User = require('../../models/user.model');
 const { saltRounds } = require('../../config/app.config');
 const { createJWToken } = require('../../lib/auth');
 
-async function registerController(req, res) {
+async function registerController(req, res, next) {
   try {
     const { body } = req;
 
@@ -25,33 +25,20 @@ async function registerController(req, res) {
     body.password = hash;
 
     const result = await User.create(body);
-    const user = result.publicParse();
-    const token = createJWToken({
-      sessionData: user,
+
+    req.publicUserData = result.publicParse();
+
+    req.token = createJWToken({
+      sessionData: req.publicUserData,
       maxAge: 3600,
     });
 
-    res.cookie('jwt', token, {
-      maxAge: 900000,
-      httpOnly: true,
-    });
-
-    res.cookie('user_email', user.email, {
-      maxAge: 900000,
-    });
-
-    res.cookie('user_first_name', user.firstName, {
-      maxAge: 900000,
-    });
-
-    res.cookie('user_last_name', user.lastName, {
-      maxAge: 900000,
-    });
-
-    return res.status(200).json({
-      user,
+    req.jsonResponse = {
+      user: req.publicUserData,
       success: true,
-    });
+    };
+
+    return next();
   } catch ({ message }) {
     return res.status(400).json({
       message,

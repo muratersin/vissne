@@ -1,13 +1,15 @@
 const express = require('express');
 
 const api = require('../controllers/api');
-const paramCheck = require('../middlewares/param-check');
+const { paramCheck, setCookie, responder } = require('../middlewares');
 
 const router = express.Router();
 
 router.post('/login', [
   paramCheck(['email', 'password']),
   api.login,
+  setCookie,
+  responder,
 ]);
 
 router.post('/register', [
@@ -19,6 +21,8 @@ router.post('/register', [
     'lastName',
   ]),
   api.register,
+  setCookie,
+  responder,
 ]);
 
 router.get('/movie/:movieId', api.movie.getById);

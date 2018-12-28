@@ -17,8 +17,6 @@ const app = require('../app');
 const logger = require('../lib/logger');
 const bootstrap = require('../lib/bootstrap');
 
-bootstrap();
-
 const { MOVIE_DB_API_KEY, JWTSECRET, PORT } = process.env;
 
 if (!MOVIE_DB_API_KEY || !JWTSECRET) {
@@ -100,4 +98,7 @@ server.on('listening', () => {
     ? `pipe ${addr}`
     : `port ${addr.port}`;
   logger.info(`Listening on ${bind}`);
+
+  // procces of runtime arguments
+  bootstrap();
 });

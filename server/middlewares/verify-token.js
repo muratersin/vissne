@@ -1,6 +1,6 @@
 const { verifyToken } = require('../lib/auth');
 
-function verifyTokenMiddleware(req, res, next) {
+const verifyTokenMiddleware = (req, res, next) => {
   verifyToken(req.cookies.jwt, (err, decodedToken) => {
     if (err || !decodedToken) {
       return res.redirect('./login');
@@ -9,6 +9,6 @@ function verifyTokenMiddleware(req, res, next) {
     req.user = decodedToken.data;
     return next();
   });
-}
+};
 
 module.exports = verifyTokenMiddleware;

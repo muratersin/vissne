@@ -12,7 +12,7 @@ const Navbar = (props) => {
 
   const loginButton = isLoggedIn ? (
     <div className="navbar-item has-dropdown is-hoverable">
-      <a className="navbar-link">
+      <a className="navbar-link" href="#/profile)">
         <FontAwesomeIcon icon="user" />
         {user.fullName}
       </a>

@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // Pages
 import App from '../containers/App';
 import Auth from '../containers/Auth';
+import NotFound from './not-found/NotFound';
 
 // Shared Components
 import Alert from '../containers/Alert';
@@ -17,6 +18,7 @@ const Root = ({ store }) => (
         <Switch>
           <Route path="/" exact component={App} />
           <Route path="/login" component={Auth} />
+          <Route component={NotFound} />
         </Switch>
       </Router>
       <Alert />

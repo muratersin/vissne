@@ -14,14 +14,14 @@ export default class App extends Component {
 
   componentDidMount() {
     const { getMovies, filter } = this.props;
-    // getMovies(1, filter);
+    getMovies(1, filter);
 
-    // window.onscroll = () => {
-    //   const scy = Number.parseInt(window.scrollY, 10);
-    //   if ((window.innerHeight + scy) >= document.body.offsetHeight) {
-    //     this.autoLoad();
-    //   }
-    // };
+    window.onscroll = () => {
+      const scy = Number.parseInt(window.scrollY, 10);
+      if ((window.innerHeight + scy) >= document.body.offsetHeight) {
+        this.autoLoad();
+      }
+    };
   }
 
   autoLoad() {

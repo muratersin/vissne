@@ -81,6 +81,12 @@ const toCamelCase = (str) => {
   return s.slice(0, 1).toLowerCase() + s.slice(1);
 };
 
+const truncate = (str, num) => (
+  (str.length > num)
+    ? `${str.slice(0, num > 3 ? num - 3 : num)}...`
+    : str
+);
+
 module.exports = {
   capitalize,
   capitalizeEveryWord,
@@ -88,4 +94,5 @@ module.exports = {
   fromCamelCase,
   isAbsoluteURL,
   toCamelCase,
+  truncate,
 };

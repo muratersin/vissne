@@ -1,22 +1,5 @@
-.form-group {
-    label {
-        width: 100%;
-    }
-}
-
-.btn {
-    &.google {
-        background-color: $google;
-        border: none;
-    }
-    &.twitter {
-        background-color: $twitter;
-        border: none;
-    }
-    &.facebook {
-        background-color: $facebook;
-        border: none;
-    }
+.svg-inline--fa {
+    margin-right: 0.75rem;
 }
 
 .page-loading {

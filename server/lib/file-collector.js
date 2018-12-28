@@ -2,8 +2,8 @@ const fs = require('fs');
 const { string } = require('./helper');
 
 /**
- * 
- * @param {*} dirname 
+ *
+ * @param {*} dirname
  */
 function fileCollector(dirname) {
   const files = fs.readdirSync(dirname)
@@ -14,10 +14,12 @@ function fileCollector(dirname) {
 
   for (let i = 0; i < fileLength; i += 1) {
     const [fileName] = files[i].split('.');
-    fileCollection[string.toCamelCase(fileName)] = require(`${dirname}/${fileName}`);
+    fileCollection[string.toCamelCase(fileName)] = require(`${dirname}/${fileName}`); // eslint-disable-line global-require
   }
 
   return fileCollection;
-};
+}
 
 module.exports = fileCollector;
+
+// TODO: add recursive

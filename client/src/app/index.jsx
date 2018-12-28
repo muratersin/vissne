@@ -4,7 +4,9 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faUser,
   faSignOutAlt,
-  faBars,
+  faEnvelope,
+  faUnlock,
+  faAlignLeft,
 } from '@fortawesome/free-solid-svg-icons';
 
 import '../scripts';
@@ -15,7 +17,9 @@ import Root from './components/Root';
 library.add(
   faUser,
   faSignOutAlt,
-  faBars,
+  faEnvelope,
+  faUnlock,
+  faAlignLeft,
 );
 
 const store = configureStore();

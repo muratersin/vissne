@@ -3,6 +3,9 @@
         "browser": true,
         "node": true
     },
+    "globals": {
+        "commonGlobal": true
+    },
     "extends": "airbnb",
     "parser": "babel-eslint",
     "rules": {

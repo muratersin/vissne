@@ -11,51 +11,47 @@ const Navbar = (props) => {
   } = props;
 
   const loginButton = isLoggedIn ? (
-    <li className="nav-item dropdown">
-      <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <FontAwesomeIcon icon="user" className="mr-2" />
+    <div className="navbar-item has-dropdown is-hoverable">
+      <a className="navbar-link">
+        <FontAwesomeIcon icon="user" />
         {user.fullName}
-      </Link>
-      <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-        <Link className="dropdown-item" to="/profile">
-          <FontAwesomeIcon icon="user" className="mr-2" />
+      </a>
+      <div className="navbar-dropdown">
+        <Link className="navbar-item" to="/profile">
+          <FontAwesomeIcon icon="user" />
           Profile
         </Link>
         <div className="dropdown-divider" />
-        <a className="dropdown-item" href="/logout">
-          <FontAwesomeIcon icon="sign-out-alt" className="mr-2" />
+        <a className="navbar-item" href="/logout">
+          <FontAwesomeIcon icon="sign-out-alt" />
           Logout
         </a>
       </div>
-    </li>
-  ) : (
-    <li className="nav-item">
-      <Link to="/login" className="nav-link">Login / Register</Link>
-    </li>
-  );
+    </div>
+  ) : <Link to="/login" className="navbar-item">Login / Register</Link>;
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary py-0">
-      <Link className="navbar-brand" to="/">
-        <img src="images/logo.png" alt="Vissne" height="30" className="mx-auto d-block" />
-      </Link>
+    <nav className="navbar is-primary" role="navigation" aria-label="navbar">
+      <div className="navbar-brand">
+        <Link className="navbar-item" to="/">
+          <img src="images/logo.png" alt="Vissne" height="30" className="mx-auto d-block" />
+        </Link>
 
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <FontAwesomeIcon icon="bars" />
-      </button>
+        <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="siteNavbar">
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+        </a>
+      </div>
 
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
-            <Link className="nav-link" to="/">IN THEATERS</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/">COMING SOON</Link>
-          </li>
-        </ul>
-        <ul className="navbar-nav ml-auto">
+      <div className="navbar-menu" id="siteNavbar">
+        <div className="navbar-start">
+          <Link className="navbar-item" to="/">IN THEATERS</Link>
+          <Link className="navbar-item" to="/">COMING SOON</Link>
+        </div>
+        <div className="navbar-end">
           {loginButton}
-        </ul>
+        </div>
       </div>
     </nav>
   );

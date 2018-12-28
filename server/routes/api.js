@@ -1,7 +1,11 @@
 const express = require('express');
-
 const api = require('../controllers/api');
-const { paramCheck, setCookie, responder } = require('../middlewares');
+
+const {
+  paramCheck,
+  setCookie,
+  responder,
+} = commonGlobal.middlewares;
 
 const router = express.Router();
 

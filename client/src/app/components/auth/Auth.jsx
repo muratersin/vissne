@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Auth.scss';
 
 export default class Auth extends Component {
@@ -9,12 +9,19 @@ export default class Auth extends Component {
     this.state = {
       email: '',
       rememberMe: false,
-      validation: {},
+      validation: {
+        email: {},
+        password: {},
+        firstName: {},
+        lastName: {},
+        confirmPassword: {},
+      },
     };
 
     this.login = this.login.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.validation = this.validation.bind(this);
+    this.switchForm = this.switchForm.bind(this);
   }
 
   handleChange({ target }) {
@@ -28,8 +35,7 @@ export default class Auth extends Component {
 
   validation() {
     const emailInput = document.querySelector('input[name="email"]');
-    const validation = {};
-
+    const { validation } = this.state;
     const {
       email,
       password,
@@ -38,44 +44,70 @@ export default class Auth extends Component {
       lastName,
       isRegister,
     } = this.state;
+    let isValid = true;
 
     if (!email || !emailInput.checkValidity()) {
-      validation.email = 'is-invalid';
+      validation.email = {
+        class: 'is-danger',
+        error: <p className="help is-danger">Please enter a valid email address.</p>,
+      };
+      isValid = false;
     }
 
     if (!password || password.length < 6 || password.length > 16) {
-      validation.password = 'is-invalid';
+      validation.password = {
+        class: 'is-danger',
+        error: <p className="help is-danger">Passwords must be 6-16 chacracter.</p>,
+      };
+      isValid = false;
     }
 
     if (isRegister) {
       if (!firstName || firstName.length < 2 || firstName.length > 40) {
-        validation.firstName = 'is-invalid';
+        validation.firstName = {
+          class: 'is-danger',
+          error: <p className="help is-danger">First name must be 2-40 character</p>,
+        };
+        isValid = false;
       }
 
       if (!lastName || lastName.length < 2 || lastName.length > 40) {
-        validation.lastName = 'is-invalid';
+        validation.lastName = {
+          class: 'is-danger',
+          error: <p className="help is-danger">Last name must be 2-40 character</p>,
+        };
+        isValid = false;
       }
 
       if (confirmPassword !== password) {
-        validation.confirmPassword = 'is-invalid';
+        validation.confirmPassword = {
+          class: 'is-danger',
+          error: <p className="help is-danger">Passwords dont match</p>,
+        };
+        isValid = false;
       }
     }
 
     this.setState({ validation });
-    return JSON.stringify(validation) === '{}';
+    return isValid;
   }
 
   login() {
     const { state, props } = this;
+    const isValid = this.validation(state);
     const method = state.isRegister
       ? 'register'
       : 'login';
 
-    const isValid = this.validation(state);
-
     if (isValid) {
       props[method](state);
     }
+  }
+
+  switchForm() {
+    this.setState(prevState => ({
+      isRegister: !prevState.isRegister,
+    }));
   }
 
   render() {
@@ -108,27 +140,30 @@ export default class Auth extends Component {
 
     const rememberMeCheckBox = !isRegister
       ? (
-        <div className="form-group form-check">
-          <label htmlFor="rememberMeCheck" className="form-check-label">
-            <input
-              name="rememberMe"
-              type="checkbox"
-              className="form-check-input"
-              id="rememberMeCheck"
-              onChange={this.handleChange}
-              value={rememberMe}
-            />
-            Remember Me
-          </label>
+        <div className="field">
+          <div className="control">
+            <label className="checkbox">
+              <input
+                name="rememberMe"
+                type="checkbox"
+                id="rememberMeCheck"
+                onChange={this.handleChange}
+                value={rememberMe}
+              />
+              Remember Me
+            </label>
+          </div>
         </div>
       ) : <span />;
 
     const registerInput = isRegister
       ? (
         <React.Fragment>
-          <div className="form-group auth-group">
-            <label htmlFor="confirmPasswordInput">
+          <div className="field">
+            <label className="label">
               Confirm Password
+            </label>
+            <div className="control has-icons-left">
               <input
                 type="password"
                 name="confirmPassword"
@@ -138,14 +173,19 @@ export default class Auth extends Component {
                 autoComplete="confirmPassword"
                 placeholder="Confirm Password"
                 aria-describedby="confirmPassword"
-                className={`form-control ${validation.confirmPassword}`}
+                className={`input ${validation.confirmPassword.class || ''}`}
               />
-              <div className="invalid-feedback">Passwords dont match</div>
-            </label>
+              <span className="icon is-small is-left">
+                <FontAwesomeIcon icon="unlock" />
+              </span>
+            </div>
+            {validation.confirmPassword.error}
           </div>
-          <div className="form-group auth-group">
-            <label htmlFor="firstNameInput">
+          <div className="field">
+            <label className="label">
               First Name
+            </label>
+            <div className="control has-icons-left">
               <input
                 type="text"
                 name="firstName"
@@ -154,18 +194,23 @@ export default class Auth extends Component {
                 placeholder="First Name"
                 value={firstName}
                 onChange={this.handleChange}
-                className={`form-control ${validation.firstName}`}
+                className={`input ${validation.firstName.class || ''}`}
               />
-              <div className="invalid-feedback">First name must be 2-40 character</div>
-            </label>
+              <span className="icon is-small is-left">
+                <FontAwesomeIcon icon="user" />
+              </span>
+            </div>
+            {validation.firstName.error}
           </div>
-          <div className="form-group auth-group">
-            <label htmlFor="lastNameInput">
+          <div className="field auth-group">
+            <label className="label">
               Last Name
+            </label>
+            <div className="control has-icons-left">
               <input
                 type="text"
                 autoComplete="lastName"
-                className={`form-control ${validation.lastName}`}
+                className={`input ${validation.lastName.class || ''}`}
                 name="lastName"
                 aria-describedby="lastName"
                 id="lastNameInput"
@@ -173,22 +218,28 @@ export default class Auth extends Component {
                 value={lastName}
                 onChange={this.handleChange}
               />
-              <div className="invalid-feedback">Last name must be 2-40 character</div>
-
-            </label>
+              <span className="icon is-small is-left">
+                <FontAwesomeIcon icon="user" />
+              </span>
+            </div>
+            {validation.lastName.error}
           </div>
         </React.Fragment>
       ) : null;
 
     return (
-      <div className="container-fluid h-100 position-absolute">
-        <div className="row h-100 justify-content-center align-items-center">
-          <div className="col-xs-12 col-sm-8 col-md-6 col-xl-4 card p-3">
-            <img src="images/logo.png" alt="Vissne" height="70" className="mx-auto d-block" />
+      <div className="container">
+        <div className="columns is-centered">
+          <div className="column is-two-fifths">
+            <div className="has-text-centered">
+              <img src="images/logo.png" alt="Vissne" height="70" className="auth-logo" />
+            </div>
             <form onSubmit={this.handleSubmit} id="formReg">
-              <div className="form-group auth-group">
-                <label htmlFor="emailInput">
+              <div className="field">
+                <label className="label">
                   Email
+                </label>
+                <div className="control has-icons-left">
                   <input
                     type="email"
                     name="email"
@@ -198,14 +249,19 @@ export default class Auth extends Component {
                     aria-describedby="email"
                     placeholder="Enter email"
                     onChange={this.handleChange}
-                    className={`form-control ${validation.email}`}
+                    className={`input ${validation.email.class || ''}`}
                   />
-                  <div className="invalid-feedback">Please enter a valid email address.</div>
-                </label>
+                  <span className="icon is-small is-left">
+                    <FontAwesomeIcon icon="envelope" />
+                  </span>
+                </div>
+                {validation.email.error}
               </div>
-              <div className="form-group auth-group">
-                <label htmlFor="passwordInput">
+              <div className="field">
+                <label className="label">
                   Password
+                </label>
+                <div className="control has-icons-left">
                   <input
                     type="password"
                     name="password"
@@ -215,43 +271,41 @@ export default class Auth extends Component {
                     aria-describedby="password"
                     onChange={this.handleChange}
                     autoComplete="current-password"
-                    className={`form-control ${validation.password}`}
+                    className={`input ${validation.password.class || ''}`}
                   />
-                  <div className="invalid-feedback">Your password must be 6-16 character.</div>
-                </label>
+                  <span className="icon is-small is-left">
+                    <FontAwesomeIcon icon="unlock" />
+                  </span>
+                </div>
+                {validation.password.error}
               </div>
               {registerInput}
-              <div className="d-flex justify-content-between">
-                {rememberMeCheckBox}
-                <button
-                  className="btn btn-link"
-                  onClick={
-                    () => this.setState(prevState => ({ isRegister: !prevState.isRegister }))
-                  }
-                  type="button"
-                >
-                  {switchRegisterToLoginText}
-                </button>
+              <div className="level">
+                <div className="level-left">
+                  <div className="level-item">
+                    {rememberMeCheckBox}
+                  </div>
+                </div>
+                <div className="level-right">
+                  <div className="level-item">
+                    <button
+                      className="button is-text"
+                      onClick={this.switchForm}
+                      type="button"
+                    >
+                      {switchRegisterToLoginText}
+                    </button>
+                  </div>
+                </div>
               </div>
               <button
                 type="button"
-                className="btn btn-secondary btn-block font-weight-bold"
+                className="button is-fullwidth is-primary is-rounded"
                 onClick={this.login}
               >
                 {buttonText}
               </button>
             </form>
-            {/* <div className="row mt-3">
-              <div className="col">
-                <button type="button" className="btn btn-primary btn-block google font-weight-bold">Google</button>
-              </div>
-              <div className="col">
-                <button type="button" className="btn btn-primary btn-block twitter font-weight-bold">Twitter</button>
-              </div>
-              <div className="col">
-                <button type="button" className="btn btn-primary btn-block facebook font-weight-bold">Facebook</button>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>

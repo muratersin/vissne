@@ -6,13 +6,16 @@ const helmet = require('helmet');
 
 const config = require('./config/app.config');
 const logger = require('./lib/logger');
+const initCommonGlobal = require('./lib/init-common-global');
 
 const { accessLogger } = logger;
 
+const app = express();
+
+global.commonGlobal = initCommonGlobal();
+
 const indexRouter = require('./routes/index');
 const apiRouter = require('./routes/api');
-
-const app = express();
 
 // view engine setup
 app.set('views', config.viewPath);

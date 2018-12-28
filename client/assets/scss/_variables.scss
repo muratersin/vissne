@@ -2,16 +2,6 @@ $google:   #DB4437!default;
 $twitter:  #1DA1F2!default;
 $facebook: #3B5998!default;
 
-$colors: () !default;
-$colors: map-merge(
-  (
-    "google":       $google,
-    "facebook":      $facebook,
-    "twitter":       $twitter,
-  ),
-  $colors
-);
-
 $primary:       #131c21 !default;
 $secondary:     #7e0b2e !default;
 $success:       #caffa9 !default;
@@ -20,20 +10,3 @@ $warning:       #fffb9a !default;
 $danger:        #FF2E2E !default;
 $light:         #ffffee !default;
 $dark:          #05003a !default;
-
-$theme-colors: () !default;
-$theme-colors: map-merge(
-  (
-    "primary":    $primary,
-    "secondary":  $secondary,
-    "success":    $success,
-    "info":       $info,
-    "warning":    $warning,
-    "danger":     $danger,
-    "light":      $light,
-    "dark":       $dark
-  ),
-  $theme-colors
-);
-
-// $enable-rounded:   false;

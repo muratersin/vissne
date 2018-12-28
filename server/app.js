@@ -23,11 +23,10 @@ app.set('view engine', config.viewEngine);
 
 if (config.env !== 'production') {
   app.use(accessLogger);
-} else {
-  app.use(helmet());
-  app.use(compression());
 }
 
+app.use(helmet());
+app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

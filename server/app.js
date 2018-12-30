@@ -35,6 +35,9 @@ app.use(express.static(config.publicPath));
 // Set default queries
 app.use((req, res, next) => {
   req.query.page = req.query.page || 1;
+  res.locals.cdn = config.cdn;
+  res.locals.domain = config.domain;
+  res.locals.imagesSecureBaseUrl = config.api.moviedb.images.secure_base_url;
   next();
 });
 

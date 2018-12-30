@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './Navbar.scss';
 
 const Navbar = (props) => {
   const {
@@ -34,7 +33,7 @@ const Navbar = (props) => {
     <nav className="navbar is-primary" role="navigation" aria-label="navbar">
       <div className="navbar-brand">
         <Link className="navbar-item" to="/">
-          <img src="images/logo.png" alt="Vissne" height="30" className="mx-auto d-block" />
+          <img src={`${vissne.cdn}/images/logo.png`} alt="Vissne" height="30" className="mx-auto d-block" />
         </Link>
 
         <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="siteNavbar">

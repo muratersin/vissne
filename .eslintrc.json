@@ -4,6 +4,7 @@
         "node": true
     },
     "globals": {
+        "vissne": true,
         "commonGlobal": true
     },
     "extends": "airbnb",

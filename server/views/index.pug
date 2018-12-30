@@ -9,5 +9,12 @@ html(lang="en")
     body
         #app
         #pageLoading.page-loading
-            img(src="images/loading.svg", alt="Loading")
+            img(src=domain + '/images/loading.svg', alt="Loading")
+        script.
+            var vissne = vissne || {};
+            vissne.cdn ="#{cdn}"
+            vissne.domain ="#{domain}"
+            vissne.imagesSecureBaseUrl = "#{imagesSecureBaseUrl}"
+            window.vissne = vissne;
         script(src=jsBundle)
+

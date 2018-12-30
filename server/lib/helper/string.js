@@ -81,11 +81,31 @@ const toCamelCase = (str) => {
   return s.slice(0, 1).toLowerCase() + s.slice(1);
 };
 
+/**
+ * @param {string} str
+ *
+ * @description
+ * Shourcut for log strings.
+ *
+ * @example
+ * truncate('Truncate title', 6); // 'Tru...'
+ */
 const truncate = (str, num) => (
   (str.length > num)
     ? `${str.slice(0, num > 3 ? num - 3 : num)}...`
     : str
 );
+
+/**
+ * @param {string} str
+ *
+ * @description
+ * Converts a string to slug.
+ *
+ * @example
+ * toCamelCase('The Big Fish'); // 'the-big-fish'
+ */
+const slugify = str => str.replace(/[^\w\s-]/g, '').replace(/ /g, '-').toLowerCase();
 
 module.exports = {
   capitalize,
@@ -95,4 +115,5 @@ module.exports = {
   isAbsoluteURL,
   toCamelCase,
   truncate,
+  slugify,
 };

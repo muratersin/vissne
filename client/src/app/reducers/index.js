@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
-import common from './common';
 import app from './app';
+import movie from './movie';
+import common from './common';
 
 export default combineReducers({
-  common,
   app,
+  movie,
+  common,
 });

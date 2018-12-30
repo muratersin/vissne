@@ -25,7 +25,7 @@ function xhr(ops) {
       return reject(new Error('Invalid url'));
     }
 
-    const url = `api/${options.url}`;
+    const url = `${vissne.domain}/api/${options.url}`;
     const data = options.data
       ? JSON.stringify(options.data)
       : null;

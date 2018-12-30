@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // Pages
 import App from '../containers/App';
 import Auth from '../containers/Auth';
+import Movie from '../containers/Movie';
 import NotFound from './not-found/NotFound';
 
 // Shared Components
@@ -18,6 +19,7 @@ const Root = ({ store }) => (
         <Switch>
           <Route path="/" exact component={App} />
           <Route path="/login" component={Auth} />
+          <Route path="/movie/:slug/:id" component={Movie} />
           <Route component={NotFound} />
         </Switch>
       </Router>

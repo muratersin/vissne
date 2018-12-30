@@ -8,15 +8,19 @@ const {
   JWTSECRET,
 } = process.env;
 
+const domain = process.env.DOMAIN;
+const cdn = process.env.CDN;
 const env = (NODE_ENV || 'development').trim();
 const suffix = env === 'production'
   ? `?v=${version}`
   : '';
 
 const appConfig = {
-  name: 'Vissne',
+  domain,
+  cdn,
   version,
   env,
+  name: 'Vissne',
   publicPath: path.join(__dirname, '../public'),
   viewPath: path.join(__dirname, '../views'),
   viewEngine: 'pug',
@@ -24,8 +28,8 @@ const appConfig = {
   jwtSecret: JWTSECRET,
   bundles: {
     app: {
-      js: `dist/app.bundle.js${suffix}`,
-      css: `dist/app.css${suffix}`,
+      js: `${cdn}/dist/app.bundle.js${suffix}`,
+      css: `${cdn}/dist/app.css${suffix}`,
     },
   },
 
@@ -137,4 +141,3 @@ const appConfig = {
 };
 
 module.exports = appConfig;
-

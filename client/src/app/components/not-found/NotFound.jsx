@@ -5,13 +5,12 @@ import './NotFound.scss';
 
 const NotFound = () => {
   return (
-    <div className="container is-fluid">
-      <div className="columns is-centered">
-        <div className="column">
-          <h1>adasd</h1>
-          <button></button>
-        </div>
-      </div>
+    <div className="page-not-found">
+      <img src="images/ong.png" alt="404" />
+      <h4>404</h4>
+      <h5>Page not found</h5>
+      <p>We are sorry. The page you are looking for was moved, removed, renamed or might never existed.</p>
+      <Link to="/" className="button is-primary">GO TO HOME</Link>
     </div>
   );
 };

@@ -33,6 +33,10 @@ const appConfig = {
     },
   },
 
+  default: {
+    profileImagePath: 'images/default-profile.jpg',
+  },
+
   // Config for whic uses all externap api in vissne
   api: {
     moviedb: {
@@ -42,8 +46,10 @@ const appConfig = {
       lang: 'en',
       key: MOVIE_DB_API_KEY,
       images: {
-        base_url: 'http://image.tmdb.org/t/p/',
-        secure_base_url: 'https://image.tmdb.org/t/p/',
+        base_url: 'http://image.tmdb.org/t/p/', // TODO: Delete Snake Case
+        baseUrl: 'http://image.tmdb.org/t/p/',
+        secure_base_url: 'https://image.tmdb.org/t/p/', // TODO: Delete Snake Case
+        secureBaseUrl: 'https://image.tmdb.org/t/p/',
         backdrop_sizes: [
           'w300',
           'w780',

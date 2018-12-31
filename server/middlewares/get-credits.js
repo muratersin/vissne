@@ -1,5 +1,6 @@
 const request = require('request');
 const { generateRouteGetCredits } = require('../lib/route-generator');
+const appConfig = require('../config/app.config');
 
 const getCredits = (req, res, next) => {
   const { movieId } = req.params;
@@ -17,8 +18,21 @@ const getCredits = (req, res, next) => {
       return next(error);
     }
 
-    req.credits = response.body;
+    const { secureBaseUrl } = appConfig.api.moviedb.images;
 
+    req.credits = response.body;
+    req.credits.cast = req.credits.cast.map((cast) => {
+      const profilePath = cast.profile_path
+        ? `${secureBaseUrl}/w45${cast.profile_path}`
+        : `${appConfig.domain}/${appConfig.default.profileImagePath}`;
+
+      return {
+        profilePath,
+        id: cast.cast_id,
+        name: cast.name,
+        character: cast.character,
+      };
+    });
     return next();
   });
 };

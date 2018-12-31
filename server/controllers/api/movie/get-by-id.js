@@ -16,9 +16,11 @@ const getById = (req, res, next) => {
 
     const movie = {
       credits: req.credits,
+      images: req.images,
+      videos: req.videos,
       orginalTitle: body.original_title,
       posterPath: `${movieDbConfig.images.secure_base_url}/w500/${body.poster_path}`,
-      backdropPath: `${movieDbConfig.images.secure_base_url}/w1280/${body.backdrop_path}`,
+      backdropPath: `${movieDbConfig.images.secure_base_url}/original/${body.backdrop_path}`,
       year: body.release_date.substring(0, 4),
       genreNames: body.genres.map(g => g.name).join(', '),
       countries: body.production_countries.map(c => c.name).join(', '),

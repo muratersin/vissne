@@ -21,6 +21,8 @@ module.exports.generateRouteGetById = (
 ) => `${baseUrl}/movie/${movieId}${type ? `/${type}` : ''}${baseQueryString}`;
 
 module.exports.generateRouteGetCredits = movieId => `${baseUrl}/movie/${movieId}/credits${baseQueryString}`;
+module.exports.generateRouteGetVideos = movieId => `${baseUrl}/movie/${movieId}/videos${baseQueryString}`;
+module.exports.generateRouteGetImages = movieId => `${baseUrl}/movie/${movieId}/images${baseQueryString}`;
 
 module.exports.generateRouteDiscover = disoverQuery => `${baseUrl}/discover/movie${baseQueryString}&${querystring.stringify(disoverQuery)}`;
 

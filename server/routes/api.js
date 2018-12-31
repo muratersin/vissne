@@ -6,6 +6,8 @@ const {
   setCookie,
   responder,
   getCredits,
+  getVideos,
+  getImages,
 } = commonGlobal.middlewares;
 
 const router = express.Router();
@@ -32,6 +34,8 @@ router.post('/register', [
 
 router.get('/movie/:movieId', [
   getCredits,
+  getVideos,
+  getImages,
   api.movie.getById,
 ]);
 router.get('/discover', api.movie.discover);

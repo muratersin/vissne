@@ -4,7 +4,8 @@ import Navbar from '../common/Navbar';
 import ProgressBar from '../common/PropgressBar';
 import DetailTable from './DetailTable';
 import CompanyList from '../common/CompanyList';
-import CastList from './CastList';
+import CastList from '../common/CastList';
+import Video from '../common/Video';
 
 import './Movie.scss';
 
@@ -27,11 +28,18 @@ export default class Movie extends Component {
     }
 
     return (
-      <Fragment>
+      <div
+        className="detail-container"
+        style={{
+          background: `linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(255,255,255,1)), url(${detail.backdropPath})`,
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
         <Navbar isLoggedIn={isLoggedIn} user={user} />
         <div className="container is-fluid detail-page">
           <div className="columns">
-            <div className="column is-4">
+            <div className="column is-3">
               <div className="card">
                 <div className="card-image">
                   <figure className="image">
@@ -41,16 +49,18 @@ export default class Movie extends Component {
               </div>
             </div>
 
-            <div className="column is-5">
+            <div className="column is-6">
+              <Video videoKey={detail.videos[0].key} />
               <DetailTable movie={detail} />
               <CompanyList companies={detail.production_companies} />
             </div>
+
             <div className="column is-3">
-              <CastList casts={detail.credits} />
+              <CastList casts={detail.credits.cast} />
             </div>
           </div>
         </div>
-      </Fragment>
+      </div>
     );
   }
 }

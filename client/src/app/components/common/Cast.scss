@@ -1,0 +1,17 @@
+.cast {
+    display: flex;
+    height: 80px;
+    border-bottom: 1px solid silver;
+    align-items: center;
+
+    img {
+        margin-right: 1rem;
+        height: 64px;
+        width: 43px;
+    }
+
+    .cast-info {
+        display: flex;
+        flex-direction: column;
+    }
+}

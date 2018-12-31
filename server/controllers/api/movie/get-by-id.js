@@ -15,6 +15,7 @@ const getById = (req, res, next) => {
     const { body } = response;
 
     const movie = {
+      credits: req.credits,
       orginalTitle: body.original_title,
       posterPath: `${movieDbConfig.images.secure_base_url}/w500/${body.poster_path}`,
       backdropPath: `${movieDbConfig.images.secure_base_url}/w1280/${body.backdrop_path}`,

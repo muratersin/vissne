@@ -5,6 +5,7 @@ const {
   paramCheck,
   setCookie,
   responder,
+  getCredits,
 } = commonGlobal.middlewares;
 
 const router = express.Router();
@@ -29,7 +30,10 @@ router.post('/register', [
   responder,
 ]);
 
-router.get('/movie/:movieId', api.movie.getById);
+router.get('/movie/:movieId', [
+  getCredits,
+  api.movie.getById,
+]);
 router.get('/discover', api.movie.discover);
 router.get('/genre', api.movie.genre);
 

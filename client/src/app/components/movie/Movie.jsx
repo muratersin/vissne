@@ -4,6 +4,7 @@ import Navbar from '../common/Navbar';
 import ProgressBar from '../common/PropgressBar';
 import DetailTable from './DetailTable';
 import CompanyList from '../common/CompanyList';
+import CastList from './CastList';
 
 import './Movie.scss';
 
@@ -40,9 +41,12 @@ export default class Movie extends Component {
               </div>
             </div>
 
-            <div className="column is-8">
+            <div className="column is-5">
               <DetailTable movie={detail} />
               <CompanyList companies={detail.production_companies} />
+            </div>
+            <div className="column is-3">
+              <CastList casts={detail.credits} />
             </div>
           </div>
         </div>
@@ -51,11 +55,14 @@ export default class Movie extends Component {
   }
 }
 
+Movie.defaultProps = {
+  isLoggedIn: false,
+};
+
 Movie.propTypes = {
   getMovieDetail: PropTypes.func.isRequired,
-  // match: PropTypes.shape({
-  //   params: PropTypes.arrayOf.shape({
-  //     id: PropTypes.number.isRequired,
-  //   }),
-  // }).isRequired,
+  detail: PropTypes.instanceOf(Object).isRequired,
+  match: PropTypes.instanceOf(Object).isRequired,
+  user: PropTypes.instanceOf(Object).isRequired,
+  isLoggedIn: PropTypes.bool,
 };

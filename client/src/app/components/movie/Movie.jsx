@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Navbar from '../common/Navbar';
 import ProgressBar from '../common/PropgressBar';
-import DetailTable from './DetailTable';
+import DetailTable from '../common/DetailTable';
 import CompanyList from '../common/CompanyList';
 import CastList from '../common/CastList';
 import Video from '../common/Video';

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MovieList from './common/MovieList';
 import Navbar from './common/Navbar';
 
-export default class App extends Component {
+export default class Home extends Component {
   constructor(props) {
     super(props);
 
@@ -40,12 +40,12 @@ export default class App extends Component {
   }
 }
 
-App.defaultProps = {
+Home.defaultProps = {
   isLoggedIn: false,
   user: {},
 };
 
-App.propTypes = {
+Home.propTypes = {
   getMovies: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
   user: PropTypes.shape({

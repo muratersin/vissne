@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes, { object } from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Company from './Company';
 
 import './CompanyList.scss';

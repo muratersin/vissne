@@ -7,7 +7,7 @@
   "scripts": {
     "prestart": "npm install",
     "start": "node server/bin/www",
-    "poststart": "npm run build",
+    "postinstall": "npm run build",
     "start-dev": "nodemon server/bin/www",
     "watch": "webpack --config client/config/webpack.dev.config.js --progress",
     "build": "rm -rf ./server/public/dist && webpack --config client/config/webpack.config.js --progress",

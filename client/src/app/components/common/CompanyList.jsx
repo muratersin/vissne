@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes, { object } from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Company from './Company';
 
 import './CompanyList.scss';
 
 const CompanyList = ({ companies }) => (
   <div className="card">
+    <header className="card-header">
+      <p className="card-header-title">
+        Companies
+      </p>
+    </header>
     <div className="card-content">
       <div className="company-list">
         {companies.map(c => (

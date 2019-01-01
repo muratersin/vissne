@@ -16,11 +16,6 @@ const Comment = sequelize.define('comment', {
   },
 });
 
-Comment.hasOne(User, {
-  as: 'User',
-  foreignKey: 'userId',
-});
-
 Comment.sync({});
 
 module.exports = Comment;

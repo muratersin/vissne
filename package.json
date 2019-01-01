@@ -5,6 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
+    "prestart": "npm run build",
     "start": "node server/bin/www NODE_ENV=production",
     "start-dev": "nodemon server/bin/www",
     "watch": "webpack --config client/config/webpack.dev.config.js --progress",

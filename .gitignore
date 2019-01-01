@@ -65,5 +65,3 @@ typings/
 .idea
 # all cache folders
 .cache*
-
-dist

@@ -16,6 +16,9 @@ const CastList = ({ casts }) => {
 
   return (
     <div className="card cast-list">
+      <header className="card-header">
+        <p className="card-header-title">Cast List</p>
+      </header>
       <div className="card-content">
         {castList}
       </div>

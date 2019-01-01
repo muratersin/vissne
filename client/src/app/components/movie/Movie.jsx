@@ -47,12 +47,12 @@ export default class Movie extends Component {
                   </figure>
                 </div>
               </div>
+              <CompanyList companies={detail.production_companies} />
             </div>
 
             <div className="column is-6">
               <Video videoKey={detail.videos[0].key} />
               <DetailTable movie={detail} />
-              <CompanyList companies={detail.production_companies} />
             </div>
 
             <div className="column is-3">

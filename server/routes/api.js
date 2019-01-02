@@ -1,7 +1,6 @@
 const express = require('express');
-
-
 const controllers = require('../controllers');
+
 const {
   paramCheck,
   setCookie,
@@ -14,20 +13,14 @@ const {
 const router = express.Router();
 
 router.post('/login', [
-  paramCheck(['email', 'password']),
+  paramCheck('login'),
   controllers.login,
   setCookie,
   responder,
 ]);
 
 router.post('/register', [
-  paramCheck([
-    'email',
-    'password',
-    'confirmPassword',
-    'firstName',
-    'lastName',
-  ]),
+  paramCheck('register'),
   controllers.register,
   setCookie,
   responder,

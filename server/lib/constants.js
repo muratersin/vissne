@@ -71,3 +71,17 @@ module.exports.QUERY_TYPES = [
     key: 'upcoming',
   },
 ];
+
+module.exports.PARAM_CHECK_TYPES = {
+  login: [
+    'email',
+    'password',
+  ],
+  register: [
+    'email',
+    'password',
+    'confirmPassword',
+    'firstName',
+    'lastName',
+  ],
+};

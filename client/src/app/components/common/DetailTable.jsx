@@ -34,6 +34,14 @@ const DetailTable = ({ movie }) => (
             <td>{movie.language}</td>
           </tr>
           <tr>
+            <th>Director</th>
+            <td>{movie.director}</td>
+          </tr>
+          <tr>
+            <th>Writer</th>
+            <td>{movie.writer}</td>
+          </tr>
+          <tr>
             <th>Homepage</th>
             <td>
               <a href={movie.homepage} rel="noopener noreferrer" target="_blank">{movie.homepage}</a>

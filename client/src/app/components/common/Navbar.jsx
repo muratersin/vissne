@@ -29,7 +29,7 @@ const Navbar = (props) => {
         </a>
       </div>
     </div>
-  ) : <Link to="/login" className="navbar-item">Login / Register</Link>;
+  ) : <Link to="/login" className="navbar-item">LOGIN</Link>;
 
   return (
     <nav className="navbar" role="navigation" aria-label="navbar">

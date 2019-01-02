@@ -1,3 +1,14 @@
 .navbar {
     background-color: transparent;
+    font-weight: bold;
+    
+    .navbar-item {
+        border-top: 2px solid transparent;
+        color: wheat;
+
+        &:hover {
+            background-color: transparent;
+            border-top: 2px solid wheat;
+        }
+    }
 }

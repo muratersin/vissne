@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/muratersin/vissne.git"
+    "url": "git+ssh://git@github.com/muratersin/vissne.git"
   },
   "author": "Murat Ersin <mmuratersin@gmail.com> (https://twitter.com/muratersinn)",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
-    "url": "https://gitlab.com/muratersin/vissne/issues"
+    "url": "https://github.com/muratersin/vissne/issues"
   },
-  "homepage": "https://gitlab.com/muratersin/vissne#readme",
+  "homepage": "https://github.com/muratersin/vissne#readme",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.10",
     "@fortawesome/free-solid-svg-icons": "^5.6.1",

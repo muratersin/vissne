@@ -7,8 +7,6 @@ import CompanyList from '../common/CompanyList';
 import CastList from '../common/CastList';
 import Video from '../common/Video';
 
-import './Movie.scss';
-
 export default class Movie extends Component {
   componentDidMount() {
     const { getMovieDetail, match } = this.props;

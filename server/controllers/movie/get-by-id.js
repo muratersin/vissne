@@ -1,6 +1,6 @@
 const request = require('request');
-const { generateRouteGetById } = require('../../../lib/route-generator');
-const movieDbConfig = require('../../../config/app.config').api.moviedb;
+const { generateRouteGetById } = require('../../lib/route-generator');
+const movieDbConfig = require('../../config/app.config').api.moviedb;
 
 const getById = (req, res, next) => {
   const { movieId } = req.params;

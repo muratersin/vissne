@@ -1,6 +1,7 @@
 const express = require('express');
-const api = require('../controllers/api');
 
+
+const controllers = require('../controllers');
 const {
   paramCheck,
   setCookie,
@@ -14,7 +15,7 @@ const router = express.Router();
 
 router.post('/login', [
   paramCheck(['email', 'password']),
-  api.login,
+  controllers.login,
   setCookie,
   responder,
 ]);
@@ -27,7 +28,7 @@ router.post('/register', [
     'firstName',
     'lastName',
   ]),
-  api.register,
+  controllers.register,
   setCookie,
   responder,
 ]);
@@ -36,9 +37,9 @@ router.get('/movie/:movieId', [
   getCredits,
   getVideos,
   getImages,
-  api.movie.getById,
+  controllers.movie.getById,
 ]);
-router.get('/discover', api.movie.discover);
-router.get('/genre', api.movie.genre);
+router.get('/discover', controllers.movie.discover);
+router.get('/genre', controllers.movie.genre);
 
 module.exports = router;

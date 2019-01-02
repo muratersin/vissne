@@ -1,6 +1,6 @@
 const request = require('request');
-const { generateRouteDiscover } = require('../../../lib/route-generator');
-const movieDbConfig = require('../../../config/app.config').api.moviedb;
+const { generateRouteDiscover } = require('../../lib/route-generator');
+const movieDbConfig = require('../../config/app.config').api.moviedb;
 
 const { string } = commonGlobal.helpers;
 

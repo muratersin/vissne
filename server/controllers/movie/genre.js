@@ -1,5 +1,5 @@
 const request = require('request');
-const { genreRoute } = require('../../../lib/route-generator');
+const { genreRoute } = require('../../lib/route-generator');
 
 const genres = (req, res, next) => {
   request(genreRoute, { json: true }, (error, response) => {

@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const { string } = require('./helper');
 
 /**
@@ -14,7 +15,22 @@ function fileCollector(dirname) {
 
   for (let i = 0; i < fileLength; i += 1) {
     const [fileName] = files[i].split('.');
-    fileCollection[string.toCamelCase(fileName)] = require(`${dirname}/${fileName}`); // eslint-disable-line global-require
+    const filePath = path.resolve(dirname, files[i]);
+    const stats = fs.lstatSync(filePath);
+    const propName = string.toCamelCase(fileName);
+
+    if (stats.isDirectory()) {
+      fileCollection[propName] = fileCollection[propName] || {};
+      const subFiles = fs.readdirSync(filePath);
+      const subFilesLength = subFiles.length;
+
+      for (let j = 0; j < subFilesLength; j += 1) {
+        const [subFileName] = subFiles[j].split('.');
+        fileCollection[propName][string.toCamelCase(subFileName)] = require(`${filePath}/${subFileName}`); // eslint-disable-line
+      }
+    } else {
+      fileCollection[propName] = require(`${dirname}/${fileName}`); // eslint-disable-line
+    }
   }
 
   return fileCollection;

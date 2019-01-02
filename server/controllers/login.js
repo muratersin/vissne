@@ -1,4 +1,4 @@
-const { createJWToken } = require('../../lib/auth');
+const { createJWToken } = require('../lib/auth');
 
 const User = commonGlobal.models.user;
 

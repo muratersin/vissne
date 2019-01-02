@@ -5,12 +5,11 @@
  */
 
 const http = require('http');
-const dotenv = require('dotenv');
 
 const env = (process.env.NODE_ENV || 'development').trim();
 
 if (env !== 'production') {
-  dotenv.config();
+  require('dotenv').config(); // eslint-disable-line
 }
 
 const app = require('../app');

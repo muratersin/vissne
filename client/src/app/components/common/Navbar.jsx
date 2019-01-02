@@ -45,8 +45,8 @@ const Navbar = (props) => {
 
       <div className="navbar-menu" id="siteNavbar">
         <div className="navbar-start">
-          <Link className="navbar-item" to="/">IN THEATERS</Link>
-          <Link className="navbar-item" to="/">COMING SOON</Link>
+          <Link className="navbar-item" to="/in-theatre">IN THEATERS</Link>
+          <Link className="navbar-item" to="/coming-soon">COMING SOON</Link>
         </div>
         <div className="navbar-end">
           {loginButton}

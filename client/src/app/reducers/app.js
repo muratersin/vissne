@@ -11,7 +11,21 @@ const initialState = {
   page: 1,
   total: 0,
   totalPage: 1,
-  filter: {},
+  sort: null,
+  searchString: '',
+  filter: {
+    genres: [],
+    crews: [],
+    casts: [],
+    voteAverage: {
+      lte: null,
+      gte: null,
+    },
+    releaseYear: {
+      lte: null,
+      gte: null,
+    },
+  },
   isLoggedIn: !!userEmail,
   user: {
     fristName: userFirstName,

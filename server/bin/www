@@ -1,9 +1,5 @@
 #!/usr/bin/env node
 
-/**
- * Module dependencies.
- */
-
 const http = require('http');
 
 const env = (process.env.NODE_ENV || 'development').trim();
@@ -46,21 +42,9 @@ const port = ((val) => {
 
 app.set('port', port);
 
-/**
- * Create HTTP server.
- */
-
 const server = http.createServer(app);
 
-/**
- * Listen on provided port, on all network interfaces.
- */
-
 server.listen(port);
-
-/**
- * Event listener for HTTP server "error" event.
- */
 
 server.on('error', (error) => {
   if (error.syscall !== 'listen') {
@@ -86,10 +70,6 @@ server.on('error', (error) => {
 
   setTimeout(() => process.exit(1), 2000);
 });
-
-/**
- * Event listener for HTTP server "listening" event.
- */
 
 server.on('listening', () => {
   const addr = server.address();

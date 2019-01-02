@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Pages
-import Home from '../containers/Home';
+import App from '../containers/App';
 import Auth from '../containers/Auth';
 import Movie from '../containers/Movie';
 import Profile from '../containers/Profile';
@@ -18,7 +18,8 @@ const Root = ({ store }) => (
     <Fragment>
       <Router>
         <Switch>
-          <Route path="/" exact component={Home} />
+          <Route path="/" exact component={App} />
+          <Route path="/:filter" exact component={App} />
           <Route path="/login" component={Auth} />
           <Route path="/profile" component={Profile} />
           <Route path="/movie/:slug/:id" component={Movie} />

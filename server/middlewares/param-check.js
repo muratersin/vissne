@@ -1,12 +1,15 @@
 const { fromCamelCase, capitalizeEveryWord } = require('../lib/helper/string');
 
+const { PARAM_CHECK_TYPES } = require('../lib/constants');
+
 /**
  * @param {Array} fields
  *
  * @description
  */
-const paramCheck = fields => (req, res, next) => {
+const paramCheck = type => (req, res, next) => {
   const { body } = req;
+  const fields = PARAM_CHECK_TYPES[type];
   const emptyFields = [];
 
   for (let i = 0; i < fields.length; i += 1) {

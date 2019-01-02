@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Company = ({ logo, name }) => (
-  <figure className="image is-64x64">
+  <div className="company-logo">
     <img src={`${vissne.imagesSecureBaseUrl}/w92/${logo}`} alt={name} />
-  </figure>
+  </div>
 );
 
 Company.defaultProps = {

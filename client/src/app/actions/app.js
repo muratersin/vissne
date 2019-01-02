@@ -15,8 +15,10 @@ export const getMovies = (page, filter) => {
     url: `discover?page=${page || 1}`,
   };
 
-  if (filter && filter.sort) {
-    ops.url += `&sort_by=${filter.sort}`;
+  if (filter) {
+    if (filter.sort) {
+      ops.url += `&sort_by=${filter.sort}`;
+    }
   }
 
   return dispatch => xhr(ops)

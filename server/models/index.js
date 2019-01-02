@@ -1,5 +1,5 @@
-const fileColelctor = require('../lib/file-collector');
+const fileCollector = require('../lib/file-collector');
 
-const models = fileColelctor(__dirname);
+const models = fileCollector(__dirname);
 
 module.exports = models;

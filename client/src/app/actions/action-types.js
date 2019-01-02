@@ -11,6 +11,7 @@ export const GET_MOVIES = 'GET_MOVIES';
 export const SET_MOVIES = 'SET_MOVIES';
 export const GET_MOVIE_BY_ID = 'GET_MOVIE_BY_ID';
 export const SET_FILTER = 'SET_FILTER';
+export const SORT_LIST = 'SORT_LIST';
 export const GET_GENRES = 'GET_GENRES';
 export const SEARCH_MOVIE = 'SEARCH_MOVIE';
 
@@ -43,3 +44,15 @@ export const REMOVE_FROM_LIST = 'REMOVE_FROM_LIST';
 export const CREATE_LIST = 'CREATE_LIST';
 export const REMOVE_LIST = 'REMOVE_LIST';
 
+export const Filters = {
+  SHOW_ALL: 'SHOW_ALL',
+  COMONG_SOON: 'COMING_SOON',
+  IN_THEATRE: 'IN_THEATRE',
+};
+
+export const SortOptions = {
+  DATE_ASC: 'DATE_ASC',
+  DATE_DSC: 'DATE_DSC',
+  NAME_ASC: 'NAME_ASC',
+  NAME_DSC: 'NAME_DSC',
+};

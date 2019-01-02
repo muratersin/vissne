@@ -1,9 +1,5 @@
-// const fileCollector = require('../file-collector');
-
-// const helpers = fileCollector(__dirname);
-
-// module.exports = helpers();
+const string = require('./string');
 
 module.exports = {
-  string: require('./string')
-}
+  string,
+};

@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 
 const Company = ({ logo, name }) => {
   const company = logo
-    ? <img src={`${vissne.imagesSecureBaseUrl}/w92/${logo}`} alt={name} />
+    ? <img className="img-thumbnail company-logo" src={`${vissne.imagesSecureBaseUrl}/w92/${logo}`} alt={name} />
     : <span>{name}</span>;
 
   return (
-    <div className="company-logo">
-      {company}
+    <div className="media mb-2">
+      <img className="mr-3 company-logo" src={`${vissne.imagesSecureBaseUrl}/w92/${logo}`} alt={name} />
+      <div className="media-body">
+        <h5 className="mt-0">{name}</h5>
+      </div>
     </div>
   );
 };

@@ -26,24 +26,12 @@ export default class Movie extends Component {
     }
 
     return (
-      <div
-        style={{
-          background: `linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(255,255,255,1)), url(${detail.backdropPath})`,
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-        }}
-      >
+      <div>
         <Navbar isLoggedIn={isLoggedIn} user={user} />
         <div className="container-fluid">
           <div className="row">
             <div className="col-xs-12 col-sm-6 col-md-3">
-              <div className="card">
-                <div className="card-image">
-                  <figure className="image">
-                    <img className="card-img" src={detail.posterPath} alt={detail.title} />
-                  </figure>
-                </div>
-              </div>
+              <img className="img-fluid mb-2" src={detail.posterPath} alt={detail.title} />
               <CompanyList companies={detail.production_companies} />
             </div>
 

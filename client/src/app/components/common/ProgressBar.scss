@@ -9,7 +9,7 @@ $colors: ("primary": ($primary, $dummy-invert), "link": (#209CEE, $dummy-invert)
 .progress {
   background: $progress-bar-background-color;
   border-radius: 0;
-  height: 0.3rem!important;
+  height: 0.2rem!important;
 
   &::-webkit-progress-bar {
     background: transparent !important; // override bulma.css

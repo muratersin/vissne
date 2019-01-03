@@ -19,8 +19,7 @@ const Root = ({ store }) => (
       <Router>
         <Switch>
           <Route path="/" exact component={App} />
-          <Route path="/:filter" exact component={App} />
-          <Route path="/login" component={Auth} />
+          <Route path="/auth" component={Auth} />
           <Route path="/profile" component={Profile} />
           <Route path="/movie/:slug/:id" component={Movie} />
           <Route component={NotFound} />

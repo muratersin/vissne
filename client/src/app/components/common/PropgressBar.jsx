@@ -1,37 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './ProgressBar.scss';
-
 const ProgressBar = (props) => {
-  const {
-    size,
-    show,
-    color,
-    value,
-  } = props;
+  const { show } = props;
 
   if (!show) {
     return null;
   }
 
   return (
-    <progress className={`progress is-${size} is-${color}`} max="100" />
+    <div className="progress" style={{ height: '2px' }}>
+      <div className="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style={{ width: '100%' }} />
+    </div>
   );
 };
 
 ProgressBar.defaultProps = {
-  size: 'small',
   show: false,
-  value: 0,
-  color: 'primary',
 };
 
 ProgressBar.propTypes = {
-  size: PropTypes.string,
   show: PropTypes.bool,
-  value: PropTypes.number,
-  color: PropTypes.string,
 };
 
 export default ProgressBar;

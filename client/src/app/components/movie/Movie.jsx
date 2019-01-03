@@ -27,7 +27,6 @@ export default class Movie extends Component {
 
     return (
       <div
-        className="detail-container"
         style={{
           background: `linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(255,255,255,1)), url(${detail.backdropPath})`,
           backgroundSize: 'cover',
@@ -35,25 +34,27 @@ export default class Movie extends Component {
         }}
       >
         <Navbar isLoggedIn={isLoggedIn} user={user} />
-        <div className="container is-fluid detail-page">
-          <div className="column is-mobile-12 is-tablet-6 is-desktop-3">
-            <div className="card">
-              <div className="card-image">
-                <figure className="image">
-                  <img className="card-img" src={detail.posterPath} alt={detail.title} />
-                </figure>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-xs-12 col-sm-6 col-md-3">
+              <div className="card">
+                <div className="card-image">
+                  <figure className="image">
+                    <img className="card-img" src={detail.posterPath} alt={detail.title} />
+                  </figure>
+                </div>
               </div>
+              <CompanyList companies={detail.production_companies} />
             </div>
-            <CompanyList companies={detail.production_companies} />
-          </div>
 
-          <div className="column is-mobile-12 is-tablet-6 is-desktop-6">
-            <Video videoKey={detail.videos[0].key} />
-            <DetailTable movie={detail} />
-          </div>
+            <div className="col-xs-12 col-sm-12 col-md-6">
+              <Video videoKey={detail.videos[0].key} />
+              <DetailTable movie={detail} />
+            </div>
 
-          <div className="column is-mobile-12 is-tablet-6 is-desktop-3">
-            <CastList casts={detail.credits.cast} />
+            <div className="col-xs-12 col-sm-6 col-md-3">
+              <CastList casts={detail.credits.cast} />
+            </div>
           </div>
         </div>
       </div>

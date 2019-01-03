@@ -6,7 +6,7 @@ import './MovieList.scss';
 
 const MovieList = ({ movies }) => {
   const list = movies.map(movie => (
-    <div key={movie.id} className="column is-half-mobile is-one-third-tablet is-one-quarter-desktop is-one-fifth-widescreen is-one-fifth-full-hd">
+    <div key={movie.id} className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
       <MovieCard
         id={movie.id}
         image={movie.poster}
@@ -18,8 +18,8 @@ const MovieList = ({ movies }) => {
   ));
 
   return (
-    <div className="container is-fluid movie-list">
-      <div className="columns is-multiline is-mobile is-tablet is-desktop is-widescreen is-full-hd">
+    <div className="container-fluid">
+      <div className="row">
         {list}
       </div>
     </div>

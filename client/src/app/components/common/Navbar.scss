@@ -1,14 +1,11 @@
 .navbar {
-    background-color: transparent;
+    background-color: transparent!important;
     font-weight: bold;
     
-    .navbar-item {
-        border-top: 2px solid transparent;
-        color: wheat;
-
+    .nav-item {
         &:hover {
             background-color: transparent;
-            border-top: 2px solid wheat;
+            color: blueviolet;
         }
     }
 }

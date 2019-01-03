@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const DetailTable = ({ movie }) => (
-  <table className="table is-fullwidth is-striped is-responsive">
+  <table className="table table-striped table-dark">
     <tbody>
       <tr>
         <th>Title</th>
@@ -48,7 +48,6 @@ const DetailTable = ({ movie }) => (
       </tr>
     </tbody>
   </table>
-
 );
 
 DetailTable.propTypes = {

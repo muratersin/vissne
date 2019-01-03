@@ -6,12 +6,8 @@ import './CompanyList.scss';
 
 const CompanyList = ({ companies }) => (
   <div className="card company-list-card">
-    <header className="card-header">
-      <p className="card-header-title">
-        Companies
-      </p>
-    </header>
-    <div className="card-content">
+    <div className="card-body">
+      <h5 className="card-title">Companies</h5>
       <div className="company-list">
         {companies.map(c => (
           <div className="company">

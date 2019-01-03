@@ -48,16 +48,16 @@ export default class Auth extends Component {
 
     if (!email || !emailInput.checkValidity()) {
       validation.email = {
-        class: 'is-danger',
-        error: <p className="help is-danger">Please enter a valid email address.</p>,
+        class: 'is-invalid',
+        error: <div className="invalid-feedback">Please enter a valid email address.</div>,
       };
       isValid = false;
     }
 
     if (!password || password.length < 6 || password.length > 16) {
       validation.password = {
-        class: 'is-danger',
-        error: <p className="help is-danger">Passwords must be 6-16 chacracter.</p>,
+        class: 'is-invalid',
+        error: <div className="invalid-feedback">Passwords must be 6-16 chacracter.</div>,
       };
       isValid = false;
     }
@@ -65,24 +65,24 @@ export default class Auth extends Component {
     if (isRegister) {
       if (!firstName || firstName.length < 2 || firstName.length > 40) {
         validation.firstName = {
-          class: 'is-danger',
-          error: <p className="help is-danger">First name must be 2-40 character</p>,
+          class: 'is-invalid',
+          error: <div className="invalid-feedback">First name must be 2-40 character</div>,
         };
         isValid = false;
       }
 
       if (!lastName || lastName.length < 2 || lastName.length > 40) {
         validation.lastName = {
-          class: 'is-danger',
-          error: <p className="help is-danger">Last name must be 2-40 character</p>,
+          class: 'is-invalid',
+          error: <div className="invalid-feedback">Last name must be 2-40 character</div>,
         };
         isValid = false;
       }
 
       if (confirmPassword !== password) {
         validation.confirmPassword = {
-          class: 'is-danger',
-          error: <p className="help is-danger">Passwords dont match</p>,
+          class: 'is-invalid',
+          error: <div className="invalid-feedback">Passwords dont match</div>,
         };
         isValid = false;
       }
@@ -140,16 +140,17 @@ export default class Auth extends Component {
 
     const rememberMeCheckBox = !isRegister
       ? (
-        <div className="field">
-          <div className="control">
-            <label className="checkbox">
-              <input
-                name="rememberMe"
-                type="checkbox"
-                id="rememberMeCheck"
-                onChange={this.handleChange}
-                value={rememberMe}
-              />
+        <div className="form-group">
+          <div className="form-check">
+            <input
+              name="rememberMe"
+              type="checkbox"
+              id="rememberMeCheck"
+              className="form-check-input"
+              onChange={this.handleChange}
+              value={rememberMe}
+            />
+            <label className="form-check-label" htmlFor="rememberMeCheck">
               Remember Me
             </label>
           </div>
@@ -159,11 +160,16 @@ export default class Auth extends Component {
     const registerInput = isRegister
       ? (
         <React.Fragment>
-          <div className="field">
-            <label className="label">
+          <div className="form-group">
+            <label htmlFor="confirmPasswordInput">
               Confirm Password
             </label>
-            <div className="control has-icons-left">
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="confirmPasswordAddon">
+                  <FontAwesomeIcon icon="key" />
+                </span>
+              </div>
               <input
                 type="password"
                 name="confirmPassword"
@@ -172,20 +178,22 @@ export default class Auth extends Component {
                 onChange={this.handleChange}
                 autoComplete="confirmPassword"
                 placeholder="Confirm Password"
-                aria-describedby="confirmPassword"
-                className={`input ${validation.confirmPassword.class || ''}`}
+                aria-describedby="confirmPasswordAddon"
+                className={`form-control ${validation.confirmPassword.class || ''}`}
               />
-              <span className="icon is-small is-left">
-                <FontAwesomeIcon icon="unlock" />
-              </span>
+              {validation.confirmPassword.error}
             </div>
-            {validation.confirmPassword.error}
           </div>
-          <div className="field">
-            <label className="label">
+          <div className="form-group">
+            <label htmlFor="firstNameInput">
               First Name
             </label>
-            <div className="control has-icons-left">
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="firstName">
+                  <FontAwesomeIcon icon="signature" />
+                </span>
+              </div>
               <input
                 type="text"
                 name="firstName"
@@ -194,23 +202,25 @@ export default class Auth extends Component {
                 placeholder="First Name"
                 value={firstName}
                 onChange={this.handleChange}
-                className={`input ${validation.firstName.class || ''}`}
+                className={`form-control ${validation.firstName.class || ''}`}
               />
-              <span className="icon is-small is-left">
-                <FontAwesomeIcon icon="user" />
-              </span>
+              {validation.firstName.error}
             </div>
-            {validation.firstName.error}
           </div>
-          <div className="field auth-group">
-            <label className="label">
+          <div className="form-group">
+            <label htmlFor="lastNameInput">
               Last Name
             </label>
-            <div className="control has-icons-left">
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="lastName">
+                  <FontAwesomeIcon icon="signature" />
+                </span>
+              </div>
               <input
                 type="text"
                 autoComplete="lastName"
-                className={`input ${validation.lastName.class || ''}`}
+                className={`form-control ${validation.lastName.class || ''}`}
                 name="lastName"
                 aria-describedby="lastName"
                 id="lastNameInput"
@@ -218,94 +228,99 @@ export default class Auth extends Component {
                 value={lastName}
                 onChange={this.handleChange}
               />
-              <span className="icon is-small is-left">
-                <FontAwesomeIcon icon="user" />
-              </span>
+              {validation.lastName.error}
             </div>
-            {validation.lastName.error}
           </div>
         </React.Fragment>
       ) : null;
 
     return (
       <div className="container">
-        <div className="columns is-centered">
-          <div className="column is-two-fifths">
-            <div className="has-text-centered">
-              <img src="images/logo.png" alt="Vissne" height="70" className="auth-logo" />
+        <div className="row justify-content-md-center">
+          <div className="col-xs-12 col-sm-6 col-md-6 col-lg-5">
+            <div className="card auth-form">
+              <div className="card-body">
+                <div className="row justify-content-center">
+                  <img src="images/logo.png" alt="Vissne" height="70" className="my-2" />
+                </div>
+                <form onSubmit={this.handleSubmit} id="formReg" className="col-12">
+                  <div className="form-group">
+                    <label htmlFor="emailInput">
+                      Email
+                    </label>
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text" id="basic-addon1">
+                          <FontAwesomeIcon icon="envelope" />
+                        </span>
+                      </div>
+                      <input
+                        type="email"
+                        name="email"
+                        value={email}
+                        id="emailInput"
+                        autoComplete="email"
+                        aria-describedby="emailInputGroup"
+                        placeholder="Enter email"
+                        onChange={this.handleChange}
+                        className={`form-control ${validation.email.class || ''}`}
+                      />
+                      {validation.email.error}
+                    </div>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="passwordInput">
+                      Password
+                    </label>
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text" id="passwordAddon">
+                          <FontAwesomeIcon icon="unlock" />
+                        </span>
+                      </div>
+                      <input
+                        type="password"
+                        name="password"
+                        value={password}
+                        id="passwordInput"
+                        placeholder="Password"
+                        aria-describedby="passwordAddon"
+                        onChange={this.handleChange}
+                        autoComplete="current-password"
+                        className={`form-control ${validation.password.class || ''}`}
+                      />
+                      {validation.password.error}
+                    </div>
+                  </div>
+
+                  {registerInput}
+
+                  <div className="row">
+                    <div className="col-6">
+                      {rememberMeCheckBox}
+                    </div>
+                    <div className="col-6 text-right">
+                      <button
+                        className="btn btn-link"
+                        onClick={this.switchForm}
+                        type="button"
+                      >
+                        {switchRegisterToLoginText}
+                      </button>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="btn btn-dark btn-block"
+                    onClick={this.login}
+                  >
+                    {buttonText}
+                  </button>
+                </form>
+              </div>
             </div>
-            <form onSubmit={this.handleSubmit} id="formReg">
-              <div className="field">
-                <label className="label">
-                  Email
-                </label>
-                <div className="control has-icons-left">
-                  <input
-                    type="email"
-                    name="email"
-                    value={email}
-                    id="emailInput"
-                    autoComplete="email"
-                    aria-describedby="email"
-                    placeholder="Enter email"
-                    onChange={this.handleChange}
-                    className={`input ${validation.email.class || ''}`}
-                  />
-                  <span className="icon is-small is-left">
-                    <FontAwesomeIcon icon="envelope" />
-                  </span>
-                </div>
-                {validation.email.error}
-              </div>
-              <div className="field">
-                <label className="label">
-                  Password
-                </label>
-                <div className="control has-icons-left">
-                  <input
-                    type="password"
-                    name="password"
-                    value={password}
-                    id="passwordInput"
-                    placeholder="Password"
-                    aria-describedby="password"
-                    onChange={this.handleChange}
-                    autoComplete="current-password"
-                    className={`input ${validation.password.class || ''}`}
-                  />
-                  <span className="icon is-small is-left">
-                    <FontAwesomeIcon icon="unlock" />
-                  </span>
-                </div>
-                {validation.password.error}
-              </div>
-              {registerInput}
-              <div className="level">
-                <div className="level-left">
-                  <div className="level-item">
-                    {rememberMeCheckBox}
-                  </div>
-                </div>
-                <div className="level-right">
-                  <div className="level-item">
-                    <button
-                      className="button is-text"
-                      onClick={this.switchForm}
-                      type="button"
-                    >
-                      {switchRegisterToLoginText}
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <button
-                type="button"
-                className="button is-fullwidth is-primary is-rounded"
-                onClick={this.login}
-              >
-                {buttonText}
-              </button>
-            </form>
           </div>
         </div>
       </div>

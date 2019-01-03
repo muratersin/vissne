@@ -36,26 +36,24 @@ export default class Movie extends Component {
       >
         <Navbar isLoggedIn={isLoggedIn} user={user} />
         <div className="container is-fluid detail-page">
-          <div className="columns">
-            <div className="column is-3">
-              <div className="card">
-                <div className="card-image">
-                  <figure className="image">
-                    <img className="card-img" src={detail.posterPath} alt={detail.title} />
-                  </figure>
-                </div>
+          <div className="column is-mobile-12 is-tablet-6 is-desktop-3">
+            <div className="card">
+              <div className="card-image">
+                <figure className="image">
+                  <img className="card-img" src={detail.posterPath} alt={detail.title} />
+                </figure>
               </div>
-              <CompanyList companies={detail.production_companies} />
             </div>
+            <CompanyList companies={detail.production_companies} />
+          </div>
 
-            <div className="column is-6">
-              <Video videoKey={detail.videos[0].key} />
-              <DetailTable movie={detail} />
-            </div>
+          <div className="column is-mobile-12 is-tablet-6 is-desktop-6">
+            <Video videoKey={detail.videos[0].key} />
+            <DetailTable movie={detail} />
+          </div>
 
-            <div className="column is-3">
-              <CastList casts={detail.credits.cast} />
-            </div>
+          <div className="column is-mobile-12 is-tablet-6 is-desktop-3">
+            <CastList casts={detail.credits.cast} />
           </div>
         </div>
       </div>

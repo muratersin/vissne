@@ -7,6 +7,8 @@ I Hope this project help you learning Full-Stack javascript app fundamental and 
 
 As much as I can I'm writing clean code and code descriptions.
 
+Vissne use [Movie DB Api](https://www.themoviedb.org/) for movie data.
+
 #### Tech Stack
 * JavaScript 
 * NodeJs >= v10.*
@@ -26,11 +28,11 @@ Clone:
 
 `git clone https://github.com/muratersin/vissne.git`
 
-Enty project fodler:
+Entry project folder:
 
 `cd vissne`
 
-Install dependencies:
+Install npm packages:
 
 `npm install`
 
@@ -41,10 +43,9 @@ back-end: `npm run start-dev`
 
 Or Production mode
 
-front-end: `npm run build`
-back-end: `npm run start`
+run `npm run build` then `npm start`
 
-In both case you need some envoirement variables. You must add a '.env' file to project root look like this:
+In both case you need envoirement variables. You must add a '.env' file to project root as shown below:
 
 ```sh
 PORT=3000

@@ -14,9 +14,11 @@ const Alert = (props) => {
   if (!show) return null;
 
   return (
-    <div className={`notification is-${kind} site-alert`}>
+    <div className={`alert alert-${kind} site-alert alert-dismissible fade show`} role="alert">
       {message}
-      <button type="button" className="delete" onClick={toggleAlert} />
+      <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={toggleAlert}>
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
   );
 };
@@ -32,12 +34,14 @@ Alert.propTypes = {
   message: PropTypes.string,
   toggleAlert: PropTypes.func.isRequired,
   kind: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'success',
     'danger',
     'warning',
-    'success',
     'info',
-    'link',
-    'primary',
+    'light',
+    'dark',
   ]),
 };
 

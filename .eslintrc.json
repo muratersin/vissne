@@ -10,6 +10,8 @@
     "extends": "airbnb",
     "parser": "babel-eslint",
     "rules": {
-        "import/no-dynamic-require": 0
+        "import/no-dynamic-require": 0,
+        "jsx-a11y/label-has-for": 0,
+        "jsx-a11y/label-has-associated-control": 0
     }
 }

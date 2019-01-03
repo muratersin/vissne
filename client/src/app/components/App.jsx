@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import MovieList from './common/MovieList';
 import Navbar from './common/Navbar';
+import Spinner from './common/Spinner';
 
 export default class App extends Component {
   constructor(props) {
@@ -13,14 +14,8 @@ export default class App extends Component {
   componentDidMount() {
     const {
       getMovies,
-      setFilter,
       filter,
-      match,
     } = this.props;
-
-    if (match && match.params.filter) {
-      setFilter(match.params.filter.replace(/i/g, 'ı').toUpperCase());
-    }
 
     getMovies(1, filter);
 
@@ -38,11 +33,21 @@ export default class App extends Component {
   }
 
   render() {
-    const { movies, user, isLoggedIn, setFilter } = this.props;
+    const {
+      movies,
+      user,
+      isLoggedIn,
+      setFilter,
+      loading,
+    } = this.props;
+
     return (
       <Fragment>
         <Navbar isLoggedIn={isLoggedIn} user={user} setFilter={setFilter} />
         <MovieList movies={movies} id="list" />
+        <div className="d-flex justify-content-center m-1">
+          <Spinner show={loading} size="md" />
+        </div>
       </Fragment>
     );
   }
@@ -56,8 +61,8 @@ App.defaultProps = {
 App.propTypes = {
   getMovies: PropTypes.func.isRequired,
   setFilter: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
   isLoggedIn: PropTypes.bool,
-  match: PropTypes.instanceOf(Object).isRequired,
   user: PropTypes.shape({
     firstName: PropTypes.string,
     lastName: PropTypes.string,

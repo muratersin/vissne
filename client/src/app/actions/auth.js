@@ -1,4 +1,4 @@
-import { toggleAlert } from './common';
+import { toggleAlert, loading } from './common';
 import xhr from '../../lib/xhr';
 
 export function register(data) {
@@ -8,16 +8,22 @@ export function register(data) {
     data,
   };
 
-  return dispatch => xhr(ops)
-    .then(() => {
-      window.location.reload();
-    })
-    .catch(({ message }) => dispatch(
-      toggleAlert({
-        kind: 'danger',
-        message,
-      }),
-    ));
+  return (dispatch) => {
+    dispatch(loading(true));
+    xhr(ops)
+      .then(() => {
+        window.location.reload();
+      })
+      .catch(({ message }) => {
+        dispatch(loading(false));
+        dispatch(
+          toggleAlert({
+            kind: 'danger',
+            message,
+          }),
+        );
+      });
+  };
 }
 
 export function login(data) {
@@ -27,14 +33,20 @@ export function login(data) {
     data,
   };
 
-  return dispatch => xhr(ops)
-    .then(() => {
-      window.location.reload();
-    })
-    .catch(({ message }) => dispatch(
-      toggleAlert({
-        kind: 'danger',
-        message,
-      }),
-    ));
+  return (dispatch) => {
+    dispatch(loading(true));
+    xhr(ops)
+      .then(() => {
+        window.location.reload();
+      })
+      .catch(({ message }) => {
+        dispatch(loading(false));
+        dispatch(
+          toggleAlert({
+            kind: 'danger',
+            message,
+          }),
+        );
+      });
+  };
 }

@@ -7,6 +7,8 @@ import {
   faEnvelope,
   faUnlock,
   faAlignLeft,
+  faKey,
+  faSignature,
 } from '@fortawesome/free-solid-svg-icons';
 
 import '../scripts';
@@ -20,6 +22,8 @@ library.add(
   faEnvelope,
   faUnlock,
   faAlignLeft,
+  faKey,
+  faSignature,
 );
 
 const store = configureStore();

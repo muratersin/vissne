@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,47 +12,46 @@ const Navbar = (props) => {
   } = props;
 
   const loginButton = isLoggedIn ? (
-    <div className="navbar-item has-dropdown is-hoverable">
-      <a className="navbar-link" href="#/profile)">
-        <FontAwesomeIcon icon="user" />
-        {user.fullName}
-      </a>
-      <div className="navbar-dropdown">
-        <Link className="navbar-item" to="/profile">
+    <Fragment>
+      <li className="nav-item ">
+        <Link className="nav-link" to="/profile" title="Profile">
+          <span className="mr-2">{user.fullName}</span>
           <FontAwesomeIcon icon="user" />
-          Profile
         </Link>
-        <div className="dropdown-divider" />
-        <a className="navbar-item" href="/logout">
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/logout" title="Logout">
           <FontAwesomeIcon icon="sign-out-alt" />
-          Logout
         </a>
-      </div>
-    </div>
-  ) : <Link to="/login" className="navbar-item">Login / Register</Link>;
+      </li>
+    </Fragment>
+  ) : (
+    <li className="nav-item">
+      <Link to="/auth" className="nav-link">LOGIN</Link>
+    </li>
+  );
 
   return (
-    <nav className="navbar" role="navigation" aria-label="navbar">
-      <div className="navbar-brand">
-        <Link className="navbar-item" to="/">
-          <img src={`${vissne.cdn}/images/logo.png`} alt="Vissne" height="30" className="mx-auto d-block" />
-        </Link>
+    <nav className="navbar navbar-expand-lg navbar-dark">
+      <Link className="navbar-brand" to="/">
+        <img src={`${vissne.cdn}/images/logo.png`} alt="Vissne" height="30" className="mx-auto d-block" />
+      </Link>
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon" />
+      </button>
 
-        <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="siteNavbar">
-          <span aria-hidden="true" />
-          <span aria-hidden="true" />
-          <span aria-hidden="true" />
-        </a>
-      </div>
-
-      <div className="navbar-menu" id="siteNavbar">
-        <div className="navbar-start">
-          <Link className="navbar-item" to="/in-theatre">IN THEATERS</Link>
-          <Link className="navbar-item" to="/coming-soon">COMING SOON</Link>
-        </div>
-        <div className="navbar-end">
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item active">
+            <Link className="nav-link" to="/in-theatre">IN THEATERS</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/coming-soon">COMING SOON</Link>
+          </li>
+        </ul>
+        <ul className="navbar-nav my-auto">
           {loginButton}
-        </div>
+        </ul>
       </div>
     </nav>
   );

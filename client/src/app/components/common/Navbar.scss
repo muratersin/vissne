@@ -1,3 +1,11 @@
 .navbar {
-    background-color: transparent;
+    background-color: transparent!important;
+    font-weight: bold;
+    
+    .nav-item {
+        &:hover {
+            background-color: transparent;
+            color: blueviolet;
+        }
+    }
 }

@@ -9,10 +9,9 @@ export function toggleAlert({ message, kind }) {
   };
 }
 
-// FIXME: loading is unused
-export function loading(show) {
+export function loading(loading) {
   return {
     type: LOADING,
-    show,
+    loading,
   };
 }

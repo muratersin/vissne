@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 
 const DetailTable = ({ movie }) => (
   <div className="card">
-    <header className="card-header">
-      <p className="card-header-title">{`${movie.orginalTitle} (${movie.year})`}</p>
-    </header>
-    <div className="card-content">
-      <table className="table is-fullwidth is-striped">
+    <div className="card-body">
+      <h5 className="card-title">{`${movie.orginalTitle} (${movie.year})`}</h5>
+      <table className="table table-striped">
         <tbody>
           <tr>
             <th>Rating</th>
@@ -32,6 +30,14 @@ const DetailTable = ({ movie }) => (
           <tr>
             <th>Languages</th>
             <td>{movie.language}</td>
+          </tr>
+          <tr>
+            <th>Director</th>
+            <td>{movie.director}</td>
+          </tr>
+          <tr>
+            <th>Writer</th>
+            <td>{movie.writer}</td>
           </tr>
           <tr>
             <th>Homepage</th>

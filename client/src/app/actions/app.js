@@ -1,5 +1,5 @@
 import { SET_MOVIES, SET_FILTER } from './action-types';
-import { toggleAlert } from './common';
+import { toggleAlert, loading } from './common';
 import xhr from '../../lib/xhr';
 
 export const setMovies = response => ({
@@ -21,16 +21,23 @@ export const getMovies = (page, filter) => {
     }
   }
 
-  return dispatch => xhr(ops)
-    .then(response => dispatch(
-      setMovies(response),
-    ))
-    .catch(({ message }) => dispatch(
-      toggleAlert({
-        kind: 'danger',
-        message,
-      }),
-    ));
+  return (dispatch) => {
+    dispatch(loading(true));
+    xhr(ops)
+      .then((response) => {
+        dispatch(loading(false));
+        dispatch(setMovies(response));
+      })
+      .catch(({ message }) => {
+        dispatch(loading(true));
+        dispatch(
+          toggleAlert({
+            kind: 'danger',
+            message,
+          }),
+        );
+      });
+  };
 };
 
 export const setFilter = filter => ({

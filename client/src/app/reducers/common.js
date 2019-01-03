@@ -1,21 +1,26 @@
-import { TOGGLE_ALERT } from '../actions/action-types';
+import { TOGGLE_ALERT, LOADING } from '../actions/action-types';
 
-const { assign } = Object;
 const initialState = {
   showAlert: false,
   alertMessage: null,
   alertKind: 'info',
+  loading: false,
 };
 
 export default function common(state = initialState, action) {
   switch (action.type) {
     case TOGGLE_ALERT: {
-      return assign({}, state, {
+      return Object.assign({}, state, {
         showAlert: !state.showAlert,
         alertMessage: action.message,
         alertKind: action.kind,
       });
     }
+
+    case LOADING:
+      return Object.assign({}, state, {
+        loading: action.loading,
+      });
 
     default:
       return state;

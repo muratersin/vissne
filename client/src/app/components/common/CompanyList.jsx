@@ -5,18 +5,12 @@ import Company from './Company';
 import './CompanyList.scss';
 
 const CompanyList = ({ companies }) => (
-  <div className="card company-list-card">
-    <header className="card-header">
-      <p className="card-header-title">
-        Companies
-      </p>
-    </header>
-    <div className="card-content">
-      <div className="company-list">
+  <div className="card">
+    <div className="card-body">
+      <h5 className="card-title">Companies</h5>
+      <div className="col-12">
         {companies.map(c => (
-          <div className="company">
-            <Company key={c.id} logo={c.logo_path} name={c.name} />
-          </div>
+          <Company key={c.id} logo={c.logo_path} name={c.name} />
         ))}
       </div>
     </div>

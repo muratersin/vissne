@@ -1,11 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Company = ({ logo, name }) => (
-  <div className="company-logo">
-    <img src={`${vissne.imagesSecureBaseUrl}/w92/${logo}`} alt={name} />
-  </div>
-);
+const Company = ({ logo, name }) => {
+  const company = logo
+    ? <img className="img-thumbnail company-logo" src={`${vissne.imagesSecureBaseUrl}/w92/${logo}`} alt={name} />
+    : <span>{name}</span>;
+
+  return (
+    <div className="media mb-2">
+      <img className="mr-3 company-logo" src={`${vissne.imagesSecureBaseUrl}/w92/${logo}`} alt={name} />
+      <div className="media-body">
+        <h5 className="mt-0">{name}</h5>
+      </div>
+    </div>
+  );
+};
 
 Company.defaultProps = {
   logo: '',

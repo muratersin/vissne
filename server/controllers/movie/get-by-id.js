@@ -16,6 +16,8 @@ const getById = (req, res, next) => {
 
     const movie = {
       credits: req.credits,
+      director: req.credits.crew.filter(c => c.job === 'Director').map(d => d.name).join(', '),
+      writer: req.credits.crew.filter(c => c.department === 'Writing').map(w => w.name).join(', '),
       images: req.images,
       videos: req.videos,
       orginalTitle: body.original_title,

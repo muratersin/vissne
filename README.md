@@ -1,7 +1,7 @@
 # Vissne App
 
 #### What is Vissne?
-Vissne is a hobby project for learning Full-Stack Javascript. I'm already know NodeJs, ExpressJs and ReactJs, but I'm learn ReduxJs, JWT, PostgreSQL with this project.
+Vissne is a hobby project for learning Full-Stack Javascript. I'm already know NodeJs, ExpressJs and ReactJs, but I'm learn ReduxJs, JWT, PostgreSQL and GraphQL(to be added in the future) with this project.
 
 I Hope this project help you learning Full-Stack javascript app fundamental and struct. 
 
@@ -18,6 +18,8 @@ As much as I can I'm writing clean code and code descriptions.
 * Redux >= v6.*
 * Webpack >= v4.*
 * Bulma
+
+* GraphQL (In the future)
 
 ## Getting Started
 Clone:

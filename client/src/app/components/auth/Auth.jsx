@@ -315,7 +315,13 @@ export default class Auth extends Component {
                     type="button"
                     className="btn btn-dark btn-block"
                     onClick={this.login}
+                    disabled={props.loading}
                   >
+                    <span
+                      className={`spinner-grow spinner-grow-sm ${props.loading ? '' : 'd-none'}`}
+                      role="status"
+                      aria-hidden="true"
+                    />
                     {buttonText}
                   </button>
                 </form>

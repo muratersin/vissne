@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,23 +12,19 @@ const Navbar = (props) => {
   } = props;
 
   const loginButton = isLoggedIn ? (
-    <li className="nav-item dropdown">
-      <a className="nav-link dropdown-toggle" href="#/profile" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <FontAwesomeIcon icon="user" />
-        {user.fullName}
-      </a>
-      <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-        <Link className="dropdown-item" to="/profile">
+    <Fragment>
+      <li className="nav-item ">
+        <Link className="nav-link" to="/profile" title="Profile">
+          <span className="mr-2">{user.fullName}</span>
           <FontAwesomeIcon icon="user" />
-          Profile
         </Link>
-        <div className="dropdown-divider" />
-        <a className="dropdown-item" href="/logout">
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/logout" title="Logout">
           <FontAwesomeIcon icon="sign-out-alt" />
-          Logout
         </a>
-      </div>
-    </li>
+      </li>
+    </Fragment>
   ) : (
     <li className="nav-item">
       <Link to="/auth" className="nav-link">LOGIN</Link>
@@ -54,9 +50,7 @@ const Navbar = (props) => {
           </li>
         </ul>
         <ul className="navbar-nav my-auto">
-          <li className="nav-item">
-            {loginButton}
-          </li>
+          {loginButton}
         </ul>
       </div>
     </nav>

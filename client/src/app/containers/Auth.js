@@ -4,6 +4,7 @@ import Auth from '../components/auth/Auth';
 
 const mapStateToProps = state => ({
   isLoggedIn: state.app.isLoggedIn,
+  loading: state.common.loading,
 });
 
 const mapDispatchToProps = dispatch => ({

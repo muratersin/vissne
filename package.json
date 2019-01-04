@@ -5,11 +5,8 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "heroku-prebuild": "npm install --only=dev",
-    "heroku-postbuild": "npm run build",
-    "prestart": "npm run build",
     "start": "node server/bin/www",
-    "poststart": "npm prune --production",
+    "clear": "npm prune --production",
     "start-dev": "nodemon server/bin/www",
     "watch": "webpack --config client/config/webpack.dev.config.js --progress",
     "build": "rm -rf ./server/public/dist && webpack --config client/config/webpack.config.js --progress",

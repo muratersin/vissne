@@ -8,6 +8,7 @@ const mapStateToProps = state => ({
   filter: state.app.filter,
   isLoggedIn: state.app.isLoggedIn,
   movies: state.app.movies,
+  page: state.app.page,
 });
 
 const mapDispatchToProps = dispatch => ({

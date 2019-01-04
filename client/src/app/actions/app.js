@@ -10,9 +10,9 @@ export const setMovies = response => ({
   total: response.total_results,
 });
 
-export const getMovies = (page, filter) => {
+export const getMovies = (page = 1, filter) => {
   const ops = {
-    url: `discover?page=${page || 1}`,
+    url: `discover?page=${page}`,
   };
 
   if (filter) {

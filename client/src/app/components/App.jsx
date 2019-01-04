@@ -8,26 +8,20 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
-    this.autoLoad = this.autoLoad.bind(this);
+    this.loadMovies = this.loadMovies.bind(this);
   }
 
   componentDidMount() {
     const {
       getMovies,
       filter,
+      page,
     } = this.props;
 
-    getMovies(1, filter);
-
-    window.onscroll = () => {
-      const scy = Number.parseInt(window.scrollY, 10);
-      if ((window.innerHeight + scy) >= document.body.offsetHeight) {
-        this.autoLoad();
-      }
-    };
+    getMovies(page, filter);
   }
 
-  autoLoad() {
+  loadMovies() {
     const { getMovies, page, filter } = this.props;
     getMovies(page, filter);
   }
@@ -41,11 +35,23 @@ export default class App extends Component {
       loading,
     } = this.props;
 
+    const loadMoreButton = !loading
+      ? (
+        <button
+          type="button"
+          onClick={this.loadMovies}
+          className="btn btn-outline-primary mb-2"
+        >
+          Load More
+        </button>
+      ) : null;
+
     return (
       <Fragment>
         <Navbar isLoggedIn={isLoggedIn} user={user} setFilter={setFilter} />
         <MovieList movies={movies} id="list" />
         <div className="d-flex justify-content-center m-1">
+          {loadMoreButton}
           <Spinner show={loading} size="md" />
         </div>
       </Fragment>

@@ -5,7 +5,7 @@ const DetailTable = ({ movie }) => (
   <div className="card">
     <div className="card-body">
       <h5 className="card-title">{`${movie.orginalTitle} (${movie.year})`}</h5>
-      <table className="table table-striped">
+      <table className="table table-striped table-responsive-sm table-responsive-xs">
         <tbody>
           <tr>
             <th>Rating</th>

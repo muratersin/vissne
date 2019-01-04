@@ -6,10 +6,9 @@
   "private": true,
   "scripts": {
     "start": "node server/bin/www",
-    "clear": "npm prune --production",
     "start-dev": "nodemon server/bin/www",
     "watch": "webpack --config client/config/webpack.dev.config.js --progress",
-    "build": "rm -rf ./server/public/dist && webpack --config client/config/webpack.config.js --progress",
+    "build": "rimraf ./server/public/dist && webpack --config client/config/webpack.config.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

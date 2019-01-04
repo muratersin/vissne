@@ -11,7 +11,7 @@
     "start-dev": "nodemon server/bin/www",
     "prestart": "npm run build",
     "watch": "webpack --config client/config/webpack.dev.config.js --progress",
-    "build": "rimraf ./server/public/dist && webpack --config client/config/webpack.config.js --progress",
+    "build": "rm -rf ./server/public/dist && webpack --config client/config/webpack.config.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

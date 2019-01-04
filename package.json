@@ -6,10 +6,11 @@
   "private": true,
   "scripts": {
     "heroku-prebuild": "npm install --only=dev",
-    "heroku-postbuild": "npm prune --production",
-    "start": "node server/bin/www",
-    "start-dev": "nodemon server/bin/www",
+    "heroku-postbuild": "npm run build",
     "prestart": "npm run build",
+    "start": "node server/bin/www",
+    "poststart": "npm prune --production",
+    "start-dev": "nodemon server/bin/www",
     "watch": "webpack --config client/config/webpack.dev.config.js --progress",
     "build": "rm -rf ./server/public/dist && webpack --config client/config/webpack.config.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1"

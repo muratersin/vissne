@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './Video.scss';
 
 const Video = ({ videoKey }) => (
-  <div className="video">
+  <div className="video mb-2">
     <iframe
       title="Video"
       type="text/html"

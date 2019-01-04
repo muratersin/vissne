@@ -35,12 +35,12 @@ export default class Movie extends Component {
               <CompanyList companies={detail.production_companies} />
             </div>
 
-            <div className="col-xs-12 col-sm-12 col-md-6">
+            <div className="col-xs-12 col-sm-12 col-md-6 mb-2">
               <Video videoKey={detail.videos[0].key} />
               <DetailTable movie={detail} />
             </div>
 
-            <div className="col-xs-12 col-sm-6 col-md-3">
+            <div className="col-xs-12 col-sm-6 col-md-3 mb-2">
               <CastList casts={detail.credits.cast} />
             </div>
           </div>

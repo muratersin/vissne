@@ -3,6 +3,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const helmet = require('helmet');
+const favicon = require('serve-favicon');
 
 const config = require('./config/app.config');
 const logger = require('./lib/logger');
@@ -25,6 +26,7 @@ if (config.env !== 'production') {
   app.use(accessLogger);
 }
 
+app.use(favicon(config.faviconPath));
 app.use(helmet());
 app.use(compression());
 app.use(express.json());

@@ -37,6 +37,7 @@ export default class App extends Component {
       setFilter,
       loading,
       genres,
+      filter,
     } = this.props;
 
     const loadMoreButton = !loading
@@ -53,7 +54,7 @@ export default class App extends Component {
     return (
       <Fragment>
         <Navbar isLoggedIn={isLoggedIn} user={user} setFilter={setFilter} />
-        <Filter genres={genres} />
+        <Filter genres={genres} filter={filter} />
         <MovieList movies={movies} id="list" />
         <div className="d-flex justify-content-center m-1">
           {loadMoreButton}

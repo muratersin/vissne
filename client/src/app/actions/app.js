@@ -1,4 +1,4 @@
-import { SET_MOVIES, SET_FILTER } from './action-types';
+import { SET_MOVIES, SET_FILTER, SET_GENRES } from './action-types';
 import { toggleAlert, loading } from './common';
 import xhr from '../../lib/xhr';
 
@@ -44,3 +44,25 @@ export const setFilter = filter => ({
   type: SET_FILTER,
   filter,
 });
+
+export const setGenres = genres => ({
+  type: SET_GENRES,
+  genres,
+});
+
+export const getGenres = () => {
+  const ops = {
+    url: 'genre',
+  };
+
+  return dispatch => xhr(ops)
+    .then(response => dispatch(setGenres(response)))
+    .catch(({ message }) => {
+      dispatch(
+        toggleAlert({
+          kind: 'danger',
+          message,
+        }),
+      );
+    });
+};

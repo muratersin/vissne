@@ -1,16 +1,23 @@
-const request = require('request');
-const { genreRoute } = require('../../lib/route-generator');
+const cache = require('../../lib/cache');
 
-const genres = (req, res, next) => {
-  request(genreRoute, { json: true }, (error, response) => {
-    if (error) {
-      return next(error);
+const Genre = commonGlobal.models.genre;
+
+const genre = async (req, res, next) => {
+  try {
+    const cachedGenred = cache.get('genres');
+
+    if (cachedGenred) {
+      return res.status(200).json(cachedGenred);
     }
 
-    const { body } = response;
-
-    return res.status(200).json(body || []);
-  });
+    const genres = await Genre.findAll({
+      attributes: ['id', 'name'],
+    });
+    cache.set('genres', genres);
+    return res.status(200).json(genres);
+  } catch (err) {
+    return next(err);
+  }
 };
 
-module.exports = genres;
+module.exports = genre;

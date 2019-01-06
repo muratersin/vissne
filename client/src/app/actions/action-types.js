@@ -14,6 +14,7 @@ export const SET_FILTER = 'SET_FILTER';
 export const SORT_LIST = 'SORT_LIST';
 export const GET_GENRES = 'GET_GENRES';
 export const SEARCH_MOVIE = 'SEARCH_MOVIE';
+export const SET_GENRES = 'SET_GENRES';
 
 // Movie
 export const GET_MOVIE_DETAIL = 'GET_MOVIE_DETAIL';
@@ -29,7 +30,7 @@ export const GET_ALTERNATIVE_TITLES = 'GET_ALTERNATIVE_TITLES';
 export const RATE_MOVIE = 'RATE_MOVIE';
 export const DELETE_RATING = 'DELETE_RATING';
 
-// Pople
+// People
 export const GET_PERSON_DETAIL = 'GET_PERSON_DETAIL';
 export const GET_PERSON_CHANGES = 'GET_PERSON_CHANGES';
 export const GET_PERSON_MOVIE_CREDITS = 'GET_PERSON_MOVIE_CREDITS';

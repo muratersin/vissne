@@ -30,7 +30,7 @@ MovieCard.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   rate: PropTypes.number.isRequired,
-  slug: PropTypes.number.isRequired,
+  slug: PropTypes.string.isRequired,
 };
 
 export default MovieCard;

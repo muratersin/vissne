@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import MovieList from './common/MovieList';
 import Navbar from './common/Navbar';
 import Spinner from './common/Spinner';
+import Filter from './common/Filter';
 
 export default class App extends Component {
   constructor(props) {
@@ -14,10 +15,12 @@ export default class App extends Component {
   componentDidMount() {
     const {
       getMovies,
+      getGenres,
       filter,
       page,
     } = this.props;
 
+    getGenres();
     getMovies(page, filter);
   }
 
@@ -33,6 +36,7 @@ export default class App extends Component {
       isLoggedIn,
       setFilter,
       loading,
+      genres,
     } = this.props;
 
     const loadMoreButton = !loading
@@ -49,6 +53,7 @@ export default class App extends Component {
     return (
       <Fragment>
         <Navbar isLoggedIn={isLoggedIn} user={user} setFilter={setFilter} />
+        <Filter genres={genres} />
         <MovieList movies={movies} id="list" />
         <div className="d-flex justify-content-center m-1">
           {loadMoreButton}
@@ -66,6 +71,7 @@ App.defaultProps = {
 
 App.propTypes = {
   getMovies: PropTypes.func.isRequired,
+  getGenres: PropTypes.func.isRequired,
   setFilter: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   isLoggedIn: PropTypes.bool,
@@ -78,4 +84,5 @@ App.propTypes = {
   page: PropTypes.number.isRequired,
   movies: PropTypes.instanceOf(Array).isRequired,
   filter: PropTypes.instanceOf(Object).isRequired,
+  genres: PropTypes.arrayOf(Object).isRequired,
 };

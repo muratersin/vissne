@@ -1,4 +1,4 @@
-import { SET_MOVIES, SET_FILTER } from '../actions/action-types';
+import { SET_MOVIES, SET_FILTER, SET_GENRES } from '../actions/action-types';
 import cookie from '../../lib/cookie';
 
 const userFirstName = cookie.get('user_first_name');
@@ -11,9 +11,9 @@ const initialState = {
   page: 1,
   total: 0,
   totalPage: 1,
-  sort: null,
-  searchString: '',
   filter: {
+    sort: null,
+    searchText: null,
     genres: [],
     crews: [],
     casts: [],
@@ -48,6 +48,11 @@ export default function app(state = initialState, action) {
     case SET_FILTER:
       return Object.assign({}, state, {
         filter: action.filter,
+      });
+
+    case SET_GENRES:
+      return Object.assign({}, state, {
+        genres: action.genres,
       });
 
     default:

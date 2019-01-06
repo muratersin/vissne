@@ -1,0 +1,14 @@
+.filter-input {
+    border: 1px solid white;
+    color: white;
+    background-color: transparent;
+    font-weight: bold;
+
+    &:focus {
+        color: #80bdff;
+        background-color: transparent;
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: none;
+    }
+}

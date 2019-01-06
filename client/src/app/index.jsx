@@ -9,6 +9,7 @@ import {
   faAlignLeft,
   faKey,
   faSignature,
+  faFilter,
 } from '@fortawesome/free-solid-svg-icons';
 
 import '../scripts';
@@ -24,6 +25,7 @@ library.add(
   faAlignLeft,
   faKey,
   faSignature,
+  faFilter,
 );
 
 const store = configureStore();

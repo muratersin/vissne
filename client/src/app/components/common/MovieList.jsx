@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { movieListPropTypes } from '../../../lib/prop-types';
 
 import MovieCard from './MovieCard';
 
@@ -25,8 +25,6 @@ const MovieList = ({ movies }) => {
   );
 };
 
-MovieList.propTypes = {
-  movies: PropTypes.instanceOf(Array).isRequired,
-};
+MovieList.propTypes = movieListPropTypes;
 
 export default MovieList;

@@ -19,7 +19,7 @@ Vissne use [Movie DB Api](https://www.themoviedb.org/) for movie data.
 * React >= v16.6.3
 * Redux >= v6.*
 * Webpack >= v4.*
-* Bulma
+* Bootsrrap >= v4.*
 
 * GraphQL (In the future)
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes, { object } from 'prop-types';
+import { companyListPropTypes } from '../../../lib/prop-types';
 import Company from './Company';
 
 import './CompanyList.scss';
@@ -17,8 +17,6 @@ const CompanyList = ({ companies }) => (
   </div>
 );
 
-CompanyList.propTypes = {
-  companies: PropTypes.arrayOf(object).isRequired,
-};
+CompanyList.propTypes = companyListPropTypes;
 
 export default CompanyList;

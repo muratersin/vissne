@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { companyPropTypes, defaultCompanyProps } from '../../../lib/prop-types';
 
 const Company = ({ logo, name }) => {
   const logoPath = logo
@@ -16,14 +16,8 @@ const Company = ({ logo, name }) => {
   );
 };
 
-Company.defaultProps = {
-  logo: '',
-  name: 'Company',
-};
+Company.defaultProps = defaultCompanyProps;
 
-Company.propTypes = {
-  logo: PropTypes.string,
-  name: PropTypes.string,
-};
+Company.propTypes = companyPropTypes;
 
 export default Company;

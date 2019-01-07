@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { castListPropTypes } from '../../../lib/prop-types';
 import Cast from './Cast';
 
 import './CastList.scss';
@@ -24,8 +24,6 @@ const CastList = ({ casts }) => {
   );
 };
 
-CastList.propTypes = {
-  casts: PropTypes.arrayOf(Object).isRequired,
-};
+CastList.propTypes = castListPropTypes
 
 export default CastList;

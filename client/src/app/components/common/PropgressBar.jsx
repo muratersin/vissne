@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { progressBarPropTypes, progressBarDefaultProps } from '../../../lib/prop-types';
 
 const ProgressBar = (props) => {
   const { show } = props;

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { detailTablePropTypes } from '../../../lib/prop-types';
 
 const DetailTable = ({ movie }) => (
   <div className="card">
@@ -51,19 +51,6 @@ const DetailTable = ({ movie }) => (
   </div>
 );
 
-DetailTable.propTypes = {
-  movie: PropTypes.shape({
-    title: PropTypes.string,
-    orginalTitle: PropTypes.string,
-    year: PropTypes.string,
-    vote_count: PropTypes.number,
-    vote_average: PropTypes.number,
-    release_date: PropTypes.string,
-    genreNames: PropTypes.string,
-    homepage: PropTypes.string,
-    tagline: PropTypes.string,
-    language: PropTypes.string,
-  }).isRequired,
-};
+DetailTable.propTypes = detailTablePropTypes;
 
 export default DetailTable;

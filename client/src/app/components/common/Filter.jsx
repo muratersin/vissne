@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { filterPropTypes } from '../../../lib/prop-types';
 
 import './Filter.scss';
 
@@ -21,9 +21,6 @@ const Filter = (props) => {
   );
 };
 
-Filter.propTypes = {
-  genres: PropTypes.arrayOf(Object).isRequired,
-  filter: PropTypes.instanceOf(Object).isRequired,
-};
+Filter.propTypes = filterPropTypes;
 
 export default Filter;

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
+import { appPropTypes, appDefaultProps} from '../../lib/prop-types';
 import MovieList from './common/MovieList';
 import Navbar from './common/Navbar';
 import Spinner from './common/Spinner';
@@ -65,25 +65,6 @@ export default class App extends Component {
   }
 }
 
-App.defaultProps = {
-  isLoggedIn: false,
-  user: {},
-};
+App.defaultProps = appDefaultProps;
 
-App.propTypes = {
-  getMovies: PropTypes.func.isRequired,
-  getGenres: PropTypes.func.isRequired,
-  setFilter: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
-  isLoggedIn: PropTypes.bool,
-  user: PropTypes.shape({
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-    email: PropTypes.string,
-    fullName: PropTypes.string,
-  }),
-  page: PropTypes.number.isRequired,
-  movies: PropTypes.instanceOf(Array).isRequired,
-  filter: PropTypes.instanceOf(Object).isRequired,
-  genres: PropTypes.arrayOf(Object).isRequired,
-};
+App.propTypes = appPropTypes;

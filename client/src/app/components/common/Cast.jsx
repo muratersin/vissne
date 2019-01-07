@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { castPropTypes } from '../../../lib/prop-types';
 
 import './Cast.scss';
 
@@ -18,11 +18,6 @@ const Cast = ({
   </div>
 );
 
-Cast.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  character: PropTypes.string.isRequired,
-  profilePath: PropTypes.string.isRequired,
-};
+Cast.propTypes = castPropTypes;
 
 export default Cast;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { alertPropTypes, alertDefaultProps } from '../../../lib/prop-types';
+import PropTypes from 'prop-types';
 
 import './Alert.scss';
 
@@ -23,8 +23,26 @@ const Alert = (props) => {
   );
 };
 
-Alert.defaultProps = alertDefaultProps;
+Alert.defaultProps = {
+  show: false,
+  kind: 'info',
+  message: null,
+};
 
-Alert.propTypes = alertPropTypes;
+Alert.propTypes = {
+  show: PropTypes.bool,
+  message: PropTypes.string,
+  toggleAlert: PropTypes.func.isRequired,
+  kind: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info',
+    'light',
+    'dark',
+  ]),
+};
 
 export default Alert;

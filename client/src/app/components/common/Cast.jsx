@@ -1,5 +1,5 @@
 import React from 'react';
-import { castPropTypes } from '../../../lib/prop-types';
+import { CastShape } from '../../../lib/prop-shapes';
 
 import './Cast.scss';
 
@@ -18,6 +18,6 @@ const Cast = ({
   </div>
 );
 
-Cast.propTypes = castPropTypes;
+Cast.propTypes = CastShape;
 
 export default Cast;

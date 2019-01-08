@@ -1,5 +1,5 @@
 import React from 'react';
-import { companyPropTypes, defaultCompanyProps } from '../../../lib/prop-types';
+import { CompanyShape } from '../../../lib/prop-shapes';
 
 const Company = ({ logo, name }) => {
   const logoPath = logo
@@ -16,8 +16,11 @@ const Company = ({ logo, name }) => {
   );
 };
 
-Company.defaultProps = defaultCompanyProps;
+Company.defaultProps = {
+  logo: '',
+  name: 'Company',
+};
 
-Company.propTypes = companyPropTypes;
+Company.propTypes = CompanyShape;
 
 export default Company;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { movideCardPropTypes } from '../../../lib/prop-types';
+import PropTypes from 'prop-types';
 
 import './MovieCard.scss';
 
@@ -25,6 +25,12 @@ const MovieCard = (props) => {
   );
 };
 
-MovieCard.propTypes = movideCardPropTypes;
+MovieCard.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  rate: PropTypes.number.isRequired,
+  slug: PropTypes.string.isRequired,
+};
 
 export default MovieCard;

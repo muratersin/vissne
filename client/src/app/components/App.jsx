@@ -1,9 +1,15 @@
 import React, { Component, Fragment } from 'react';
-import { appPropTypes, appDefaultProps} from '../../lib/prop-types';
+import PropTypes from 'prop-types';
 import MovieList from './common/MovieList';
 import Navbar from './common/Navbar';
 import Spinner from './common/Spinner';
 import Filter from './common/Filter';
+import {
+  UserShape,
+  MovieShape,
+  GenreShape,
+  FilterShape,
+} from '../../lib/prop-shapes';
 
 export default class App extends Component {
   constructor(props) {
@@ -65,6 +71,20 @@ export default class App extends Component {
   }
 }
 
-App.defaultProps = appDefaultProps;
+App.defaultProps = {
+  isLoggedIn: false,
+  user: {},
+};
 
-App.propTypes = appPropTypes;
+App.propTypes = {
+  getMovies: PropTypes.func.isRequired,
+  getGenres: PropTypes.func.isRequired,
+  setFilter: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool,
+  user: UserShape,
+  page: PropTypes.number.isRequired,
+  movies: PropTypes.arrayOf(MovieShape).isRequired,
+  genres: PropTypes.arrayOf(GenreShape).isRequired,
+  filter: FilterShape.isRequired,
+};

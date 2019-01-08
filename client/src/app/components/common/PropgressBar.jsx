@@ -1,5 +1,5 @@
 import React from 'react';
-import { progressBarPropTypes, progressBarDefaultProps } from '../../../lib/prop-types';
+import PropTypes from 'prop-types';
 
 const ProgressBar = (props) => {
   const { show } = props;
@@ -10,7 +10,14 @@ const ProgressBar = (props) => {
 
   return (
     <div className="progress" style={{ height: '2px' }}>
-      <div className="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style={{ width: '100%' }} />
+      <div
+        className="progress-bar progress-bar-striped progress-bar-animated"
+        role="progressbar"
+        aria-valuenow="75"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        style={{ width: '100%' }}
+      />
     </div>
   );
 };

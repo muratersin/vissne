@@ -6,7 +6,7 @@ import DetailTable from '../common/DetailTable';
 import CompanyList from '../common/CompanyList';
 import CastList from '../common/CastList';
 import Video from '../common/Video';
-import { moviePropTypes, movieDefaultPropTypes } from '../../../lib/prop-types';
+import { UserShape } from '../../../lib/prop-shapes';
 
 export default class Movie extends Component {
   componentDidMount() {
@@ -51,6 +51,14 @@ export default class Movie extends Component {
   }
 }
 
-Movie.defaultProps = movieDefaultPropTypes;
+Movie.defaultProps = {
+  isLoggedIn: false,
+};
 
-Movie.propTypes =moviePropTypes;
+Movie.propTypes = {
+  getMovieDetail: PropTypes.func.isRequired,
+  detail: PropTypes.instanceOf(Object).isRequired,
+  match: PropTypes.instanceOf(Object).isRequired,
+  user: UserShape.isRequired,
+  isLoggedIn: PropTypes.bool,
+};

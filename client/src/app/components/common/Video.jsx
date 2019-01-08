@@ -1,6 +1,5 @@
 import React from 'react';
-import { videoPropTypes } from '../../../lib/prop-types';
-
+import PropTypes from 'prop-types';
 import './Video.scss';
 
 const Video = ({ videoKey }) => (
@@ -16,6 +15,8 @@ const Video = ({ videoKey }) => (
   </div>
 );
 
-Video.propTypes = videoPropTypes;
+Video.propTypes = {
+  videoKey: PropTypes.string.isRequired,
+};
 
 export default Video;

@@ -1,5 +1,6 @@
 import React from 'react';
-import { companyListPropTypes } from '../../../lib/prop-types';
+import PropTypes from 'prop-types';
+import { CompanyShape } from '../../../lib/prop-shapes';
 import Company from './Company';
 
 import './CompanyList.scss';
@@ -17,6 +18,8 @@ const CompanyList = ({ companies }) => (
   </div>
 );
 
-CompanyList.propTypes = companyListPropTypes;
+CompanyList.propTypes = {
+  companies: PropTypes.arrayOf(CompanyShape).isRequired,
+};
 
 export default CompanyList;

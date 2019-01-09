@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { navbarPropTypes, navbarDefaultProps } from '../../../lib/prop-types';
+import PropTypes from 'prop-types';
+import { UserShape } from '../../../lib/prop-shapes';
 
 import './Navbar.scss';
 
@@ -64,8 +65,14 @@ const Navbar = (props) => {
   );
 };
 
-Navbar.defaultProps = navbarDefaultProps;
+Navbar.defaultProps = {
+  isLoggedIn: false,
+  user: {},
+};
 
-Navbar.propTypes = navbarPropTypes;
+Navbar.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  user: UserShape,
+};
 
 export default Navbar;

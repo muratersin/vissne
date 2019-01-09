@@ -1,5 +1,5 @@
 import React from 'react';
-import { spinnerPropTypes, spinnerDefaultProps } from '../../../lib/prop-types';
+import PropTypes from 'prop-types';
 
 const Spinner = (props) => {
   const {
@@ -20,8 +20,35 @@ const Spinner = (props) => {
   );
 };
 
-Spinner.defaultProps = spinnerDefaultProps;
+Spinner.defaultProps = {
+  show: false,
+  size: 'sm',
+  kind: 'grow',
+  color: 'primary',
+};
 
-Spinner.propTypes = spinnerPropTypes;
+Spinner.propTypes = {
+  show: PropTypes.bool,
+  size: PropTypes.oneOf([
+    'sm',
+    'md',
+    'lg',
+    'xl',
+  ]),
+  kind: PropTypes.oneOf([
+    'border',
+    'grow',
+  ]),
+  color: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info',
+    'light',
+    'dark',
+  ]),
+};
 
 export default Spinner;

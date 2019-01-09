@@ -1,5 +1,5 @@
 import React from 'react';
-import { detailTablePropTypes } from '../../../lib/prop-types';
+import { MovieShape } from '../../../lib/prop-shapes';
 
 const DetailTable = ({ movie }) => (
   <div className="card">
@@ -51,6 +51,8 @@ const DetailTable = ({ movie }) => (
   </div>
 );
 
-DetailTable.propTypes = detailTablePropTypes;
+DetailTable.propTypes = {
+  movie: MovieShape.isRequired,
+};
 
 export default DetailTable;

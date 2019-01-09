@@ -4,6 +4,7 @@ import cookie from '../../lib/cookie';
 const userFirstName = cookie.get('user_first_name');
 const userLastName = cookie.get('user_last_name');
 const userEmail = cookie.get('user_email');
+const userId = cookie.get('user_id');
 
 const initialState = {
   genres: [],
@@ -28,6 +29,7 @@ const initialState = {
   },
   isLoggedIn: !!userEmail,
   user: {
+    id: userId,
     fristName: userFirstName,
     lastName: userLastName,
     email: userEmail,

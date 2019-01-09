@@ -8,6 +8,7 @@ const {
   getCredits,
   getVideos,
   getImages,
+  verifyToken,
 } = commonGlobal.middlewares;
 
 const router = express.Router();
@@ -32,7 +33,13 @@ router.get('/movie/:movieId', [
   getImages,
   controllers.movie.getById,
 ]);
+
 router.get('/discover', controllers.movie.discover);
 router.get('/genre', controllers.movie.genre);
+
+router.get('/profile', [
+  verifyToken,
+  controllers.profile.profile,
+]);
 
 module.exports = router;

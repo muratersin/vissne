@@ -8,7 +8,7 @@ const verifyTokenMiddleware = (req, res, next) => {
       return res.redirect(`${protocol}://${host}/auth`);
     }
 
-    req.user = decodedToken.data;
+    req.user = decodedToken.data; // TODO: Change this variable as isLoggedIn
     return next();
   });
 };

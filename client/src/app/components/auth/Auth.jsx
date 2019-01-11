@@ -22,6 +22,7 @@ export default class Auth extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.validation = this.validation.bind(this);
     this.switchForm = this.switchForm.bind(this);
+    this.loginWithFacebook = this.loginWithFacebook.bind(this);
   }
 
   handleChange({ target }) {
@@ -110,6 +111,11 @@ export default class Auth extends Component {
     }));
   }
 
+  loginWithFacebook() {
+    const { loginWithFacebook } = this.props;
+    loginWithFacebook();
+  }
+
   render() {
     const {
       firstName,
@@ -122,8 +128,6 @@ export default class Auth extends Component {
       validation,
     } = this.state;
     const { props } = this;
-    const buttonText = isRegister ? 'Register' : 'Login';
-    const switchRegisterToLoginText = isRegister ? 'Login' : 'Register';
 
     if (props.isLoggedIn) {
       return (
@@ -138,8 +142,13 @@ export default class Auth extends Component {
       );
     }
 
-    const rememberMeCheckBox = !isRegister
-      ? (
+    let buttonText = 'LOGIN';
+    let switchRegisterToLoginText = 'REGISTER';
+    let rememberMeCheckBox = <span />;
+    let registerInput = null;
+
+    if (!isRegister) {
+      rememberMeCheckBox = (
         <div className="form-group">
           <div className="form-check">
             <input
@@ -150,20 +159,23 @@ export default class Auth extends Component {
               onChange={this.handleChange}
               value={rememberMe}
             />
-            <label className="form-check-label" htmlFor="rememberMeCheck">
+            <label
+              className="form-check-label"
+              htmlFor="rememberMeCheck"
+            >
               Remember Me
             </label>
           </div>
         </div>
-      ) : <span />;
+      );
+    } else {
+      buttonText = 'REGISTER';
+      switchRegisterToLoginText = 'LOGIN';
 
-    const registerInput = isRegister
-      ? (
+      registerInput = (
         <React.Fragment>
           <div className="form-group">
-            <label htmlFor="confirmPasswordInput">
-              Confirm Password
-            </label>
+            <label htmlFor="confirmPasswordInput">Confirm Password</label>
             <div className="input-group">
               <div className="input-group-prepend">
                 <span className="input-group-text" id="confirmPasswordAddon">
@@ -185,9 +197,7 @@ export default class Auth extends Component {
             </div>
           </div>
           <div className="form-group">
-            <label htmlFor="firstNameInput">
-              First Name
-            </label>
+            <label htmlFor="firstNameInput">First Name</label>
             <div className="input-group">
               <div className="input-group-prepend">
                 <span className="input-group-text" id="firstName">
@@ -232,7 +242,8 @@ export default class Auth extends Component {
             </div>
           </div>
         </React.Fragment>
-      ) : null;
+      );
+    }
 
     return (
       <div className="container">
@@ -325,6 +336,18 @@ export default class Auth extends Component {
                     {buttonText}
                   </button>
                 </form>
+                <div className="col-12 mt-2">
+                  <button
+                    type="button"
+                    className="btn btn-block btn-dark social-button"
+                    onClick={this.loginWithFacebook}
+                  >
+                    <i className="social-button-icon">
+                      <FontAwesomeIcon icon={['fab', 'facebook']} />
+                    </i>
+                    LOGIN WITH FACEBOOK
+                  </button>
+                </div>
               </div>
             </div>
           </div>

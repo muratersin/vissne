@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import App from '../components/App';
-import { getMovies, setFilter, getGenres } from '../actions/app';
+import { getMovies, setFilter, getGenres } from '../actions/AppActions';
 
 const mapStateToProps = state => ({
   loading: state.common.loading,

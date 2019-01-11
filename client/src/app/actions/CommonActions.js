@@ -1,5 +1,5 @@
 
-import { TOGGLE_ALERT, LOADING } from './action-types';
+import { TOGGLE_ALERT, LOADING } from './ActionTypes';
 
 export function toggleAlert({ message, kind }) {
   return {

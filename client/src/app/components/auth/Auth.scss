@@ -1,7 +1,21 @@
+@import '../../../../assets/scss/variables';
+
 .auth-form {
     margin-top: 30%;
 }
 
 .input-group-text {
     background-color: transparent;
+}
+
+.social-button {
+    position: relative;
+    background-color: $facebook;
+}
+
+.social-button-icon {
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    font-size: 24px;
 }

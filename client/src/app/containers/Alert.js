@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { toggleAlert } from '../actions/common';
+import { toggleAlert } from '../actions/CommonActions';
 import Alert from '../components/common/Alert';
 
 const mapStateToProps = ({ common }) => ({

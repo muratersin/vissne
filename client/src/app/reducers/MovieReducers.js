@@ -1,4 +1,4 @@
-import { SET_MOVIE_DETAIL } from '../actions/action-types';
+import { SET_MOVIE_DETAIL } from '../actions/ActionTypes';
 
 const initialState = {
   detail: null,
@@ -10,7 +10,7 @@ export default function detail(state = initialState, action) {
       return Object.assign({}, state, {
         detail: action.detail,
       });
-  
+
     default:
       return state;
   }

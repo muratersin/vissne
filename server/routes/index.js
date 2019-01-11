@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const { bundles } = require('../config/app.config');
+const { bundles, facebook } = require('../config/app.config');
 
 router.get('/logout', (req, res) => {
   res.clearCookie('jwt');
@@ -13,6 +13,7 @@ router.get('/logout', (req, res) => {
 
 router.get('/*', (req, res) => {
   res.render('index', {
+    facebook,
     title: 'Vissne',
     jsBundle: bundles.app.js,
     cssBundle: bundles.app.css,

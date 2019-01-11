@@ -11,7 +11,10 @@ import {
   faSignature,
   faFilter,
 } from '@fortawesome/free-solid-svg-icons';
-
+import {
+  faFacebook,
+  faGoogle,
+} from '@fortawesome/free-brands-svg-icons';
 import '../scripts';
 import '../../assets/scss/main.scss';
 import configureStore from './store/configure-store';
@@ -26,6 +29,8 @@ library.add(
   faKey,
   faSignature,
   faFilter,
+  faFacebook,
+  faGoogle,
 );
 
 const store = configureStore();

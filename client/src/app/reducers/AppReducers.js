@@ -1,4 +1,4 @@
-import { SET_MOVIES, SET_FILTER, SET_GENRES } from '../actions/action-types';
+import { SET_MOVIES, SET_FILTER, SET_GENRES } from '../actions/ActionTypes';
 import cookie from '../../lib/cookie';
 
 const userFirstName = cookie.get('user_first_name');

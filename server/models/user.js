@@ -16,8 +16,21 @@ const User = sequelize.define('user', {
     unique: true,
     isEmail: true,
   },
+  facebookId: {
+    type: Sequelize.STRING(50),
+    allowNull: true,
+    unique: true,
+  },
   password: {
     type: Sequelize.STRING,
+    allowNull: true,
+  },
+  provider: {
+    type: Sequelize.ENUM(
+      'local',
+      'facebook',
+    ),
+    defaultValue: 'local',
     allowNull: false,
   },
 });
@@ -36,9 +49,10 @@ User.prototype.publicParse = function publicParse() {
     lastName: this.lastName,
     fullName: `${this.firstName} ${this.lastName}`,
     email: this.email,
+    provider: this.provider,
   };
 };
 
-User.sync({});
+User.sync({ force: true });
 
 module.exports = User;

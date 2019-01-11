@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
-const { saltRounds } = require('../config/app.config');
-const { createJWToken } = require('../lib/auth');
+const { saltRounds } = require('../../config/app.config');
+const { createJWToken } = require('../../lib/auth');
 
 const User = commonGlobal.models.user;
 

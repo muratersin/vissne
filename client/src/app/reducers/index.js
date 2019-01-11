@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
-import app from './app';
-import movie from './movie';
-import common from './common';
+import app from './AppReducers';
+import movie from './MovieReducers';
+import common from './CommonReducers';
 
 export default combineReducers({
   app,

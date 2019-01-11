@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Movie from '../components/movie/Movie';
-import { getMovieDetail } from '../actions/movie';
+import { getMovieDetail } from '../actions/MovieActions';
 
 const mapStateToProps = state => ({
   detail: state.movie.detail,

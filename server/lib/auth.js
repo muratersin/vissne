@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const _ = require('lodash');
 const config = require('../config/app.config');
 
 function verifyToken(token, callback) {
@@ -12,14 +11,6 @@ function createJWToken(ops = {}) {
   if (!options.maxAge || typeof options.maxAge !== 'number') {
     options.maxAge = 3600;
   }
-
-  options.sessionData = _.reduce(options.sessionData, (d, val, key) => {
-    const data = d;
-    if (typeof val !== 'function' && key !== 'password') {
-      data[key] = val;
-    }
-    return data;
-  });
 
   const token = jwt.sign({
     data: options.sessionData,

@@ -18,6 +18,10 @@ html(lang="en")
             vissne.cdn ='#{cdn}'
             vissne.domain ='#{domain}'
             vissne.imagesSecureBaseUrl = '#{imagesSecureBaseUrl}'
+            vissne.facebook = {
+                appId: '#{facebook.appId}',
+                version: '#{facebook.version}',
+            };
             window.vissne = vissne;
         script(src=jsBundle)
 

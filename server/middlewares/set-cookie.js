@@ -10,6 +10,10 @@ const setCookie = (req, res, next) => {
     httpOnly: true,
   });
 
+  res.cookie('id', req.publicUserData.id, {
+    maxAge: 900000,
+  });
+
   res.cookie('user_email', req.publicUserData.email, {
     maxAge: 900000,
   });

@@ -6,6 +6,8 @@ const {
   MOVIE_DB_API_KEY,
   NODE_ENV,
   JWTSECRET,
+  FACEBOOK_APP_ID,
+  FACEBOOK_API_VERSION,
 } = process.env;
 
 const domain = process.env.DOMAIN;
@@ -32,6 +34,11 @@ const appConfig = {
       js: `${cdn}/dist/app.bundle.js${suffix}`,
       css: `${cdn}/dist/app.css${suffix}`,
     },
+  },
+
+  facebook: {
+    appId: FACEBOOK_APP_ID,
+    version: FACEBOOK_API_VERSION,
   },
 
   default: {

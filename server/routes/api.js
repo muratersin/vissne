@@ -13,16 +13,22 @@ const {
 
 const router = express.Router();
 
+router.post('/auth/facebook', [
+  controllers.auth.loginWithFacebook,
+  setCookie,
+  responder,
+]);
+
 router.post('/login', [
   paramCheck('login'),
-  controllers.login,
+  controllers.auth.login,
   setCookie,
   responder,
 ]);
 
 router.post('/register', [
   paramCheck('register'),
-  controllers.register,
+  controllers.auth.register,
   setCookie,
   responder,
 ]);
@@ -39,7 +45,7 @@ router.get('/genre', controllers.movie.genre);
 
 router.get('/profile', [
   verifyToken,
-  controllers.profile.profile,
+  controllers.profile.getCurrentUser,
 ]);
 
 module.exports = router;

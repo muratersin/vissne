@@ -22,7 +22,6 @@ export default class Auth extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.validation = this.validation.bind(this);
     this.switchForm = this.switchForm.bind(this);
-    this.loginWithFacebook = this.loginWithFacebook.bind(this);
   }
 
   handleChange({ target }) {
@@ -111,12 +110,8 @@ export default class Auth extends Component {
     }));
   }
 
-  loginWithFacebook() {
-    const { loginWithFacebook } = this.props;
-    loginWithFacebook();
-  }
-
   render() {
+    const { props } = this;
     const {
       firstName,
       lastName,
@@ -127,7 +122,6 @@ export default class Auth extends Component {
       isRegister,
       validation,
     } = this.state;
-    const { props } = this;
 
     if (props.isLoggedIn) {
       return (
@@ -337,16 +331,28 @@ export default class Auth extends Component {
                   </button>
                 </form>
                 <div className="col-12 mt-2">
-                  <button
+                  <a
                     type="button"
-                    className="btn btn-block btn-dark social-button"
-                    onClick={this.loginWithFacebook}
+                    className="btn btn-block btn-dark border-0 social-button google"
+                    href="auth/google"
+                  >
+                    <i className="social-button-icon">
+                      <FontAwesomeIcon icon={['fab', 'google']} />
+                    </i>
+                    LOGIN WITH GOOGLE
+                  </a>
+                </div>
+                <div className="col-12 mt-2">
+                  <a
+                    type="button"
+                    className="btn btn-block btn-dark border-0 social-button facebook"
+                    href="auth/facebook"
                   >
                     <i className="social-button-icon">
                       <FontAwesomeIcon icon={['fab', 'facebook']} />
                     </i>
                     LOGIN WITH FACEBOOK
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>

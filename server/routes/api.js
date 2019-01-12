@@ -1,4 +1,5 @@
 const express = require('express');
+const passport = require('passport');
 const controllers = require('../controllers');
 
 const {
@@ -13,8 +14,22 @@ const {
 
 const router = express.Router();
 
-router.post('/auth/facebook', [
-  controllers.auth.loginWithFacebook,
+router.get('/auth/facebook/callback', [
+  passport.authenticate('facebook', {
+    session: false,
+    failureRedirect: '/login',
+  }),
+  controllers.auth.loginWithSocialMedia,
+  setCookie,
+  responder,
+]);
+
+router.get('/auth/google/callback', [
+  passport.authenticate('google', {
+    session: false,
+    failureRedirect: '/login',
+  }),
+  controllers.auth.loginWithSocialMedia,
   setCookie,
   responder,
 ]);

@@ -15,13 +15,9 @@ html(lang="en")
             noscript To use Vissne, please enable JavaScript.
         script.
             var vissne = vissne || {};
-            vissne.cdn ='#{cdn}'
-            vissne.domain ='#{domain}'
-            vissne.imagesSecureBaseUrl = '#{imagesSecureBaseUrl}'
-            vissne.facebook = {
-                appId: '#{facebook.appId}',
-                version: '#{facebook.version}',
-            };
+            vissne.cdn ='#{cdn}';
+            vissne.domain ='#{domain}';
+            vissne.imagesSecureBaseUrl = '#{imagesSecureBaseUrl}';
             window.vissne = vissne;
         script(src=jsBundle)
 

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import MovieList from './common/MovieList';
 import Navbar from './common/Navbar';
 import Spinner from './common/Spinner';
-import Filter from './common/Filter';
 import {
   UserShape,
   MovieShape,
@@ -60,8 +59,7 @@ export default class App extends Component {
     return (
       <Fragment>
         <Navbar isLoggedIn={isLoggedIn} user={user} setFilter={setFilter} />
-        <Filter genres={genres} filter={filter} />
-        <MovieList movies={movies} id="list" />
+        <MovieList movies={movies} genres={genres} filter={filter} id="list" />
         <div className="d-flex justify-content-center m-1">
           {loadMoreButton}
           <Spinner show={loading} size="md" />

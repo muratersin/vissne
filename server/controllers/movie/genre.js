@@ -1,6 +1,5 @@
 const cache = require('../../lib/cache');
-
-const Genre = commonGlobal.models.genre;
+const Genre = require('../../models/genre');
 
 const genre = async (req, res, next) => {
   try {

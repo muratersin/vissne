@@ -1,6 +1,5 @@
 const { createJWToken } = require('../../lib/auth');
-
-const User = commonGlobal.models.user;
+const User = require('../../models/user');
 
 async function signinController(req, res, next) {
   const { email, password } = req.body;

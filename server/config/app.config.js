@@ -7,7 +7,6 @@ const {
   NODE_ENV,
   JWTSECRET,
   FACEBOOK_APP_ID,
-  FACEBOOK_API_VERSION,
   FACEBOOK_APP_SECRET,
   GOOGLE_SECRET,
   GOOGLE_CLIENT_ID,
@@ -41,7 +40,6 @@ const appConfig = {
 
   facebook: {
     appId: FACEBOOK_APP_ID,
-    version: FACEBOOK_API_VERSION,
     secret: FACEBOOK_APP_SECRET,
   },
 

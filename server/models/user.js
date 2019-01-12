@@ -16,6 +16,11 @@ const User = sequelize.define('user', {
     unique: true,
     isEmail: true,
   },
+  googleId: {
+    type: Sequelize.STRING(50),
+    allowNull: true,
+    unique: true,
+  },
   facebookId: {
     type: Sequelize.STRING(50),
     allowNull: true,
@@ -28,6 +33,7 @@ const User = sequelize.define('user', {
   provider: {
     type: Sequelize.ENUM(
       'local',
+      'google',
       'facebook',
     ),
     defaultValue: 'local',

@@ -1,8 +1,7 @@
 const bcrypt = require('bcrypt');
 const { saltRounds } = require('../../config/app.config');
 const { createJWToken } = require('../../lib/auth');
-
-const User = commonGlobal.models.user;
+const User = require('../../models/user');
 
 async function registerController(req, res, next) {
   try {

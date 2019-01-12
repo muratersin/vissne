@@ -10,7 +10,13 @@
 
 .social-button {
     position: relative;
-    background-color: $facebook;
+
+    &.facebook {
+        background-color: $facebook;
+    }
+    &.google {
+        background-color: $google;
+    }
 }
 
 .social-button-icon {

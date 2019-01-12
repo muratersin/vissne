@@ -4,14 +4,17 @@ const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const helmet = require('helmet');
 const favicon = require('serve-favicon');
+const passport = require('passport');
 
 const config = require('./config/app.config');
 const logger = require('./lib/logger');
 const initCommonGlobal = require('./lib/init-common-global');
+require('./config/passport');
 
 const { accessLogger } = logger;
 
 const app = express();
+
 
 global.commonGlobal = initCommonGlobal();
 
@@ -26,6 +29,7 @@ if (config.env !== 'production') {
   app.use(accessLogger);
 }
 
+app.use(passport.initialize());
 app.use(favicon(config.faviconPath));
 app.use(helmet());
 app.use(compression());
@@ -36,7 +40,6 @@ app.use(express.static(config.publicPath));
 
 // Set default queries
 app.use((req, res, next) => {
-  req.query.page = req.query.page || 1;
   res.locals.cdn = config.cdn;
   res.locals.domain = config.domain;
   res.locals.youtubeWatchUrl = config.youtubeWatchUrl;

@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
-import { login, register, loginWithFacebook } from '../actions/AuthActions';
 import Auth from '../components/auth/Auth';
+import {
+  login,
+  register,
+} from '../actions/AuthActions';
 
 const mapStateToProps = state => ({
   isLoggedIn: state.app.isLoggedIn,
@@ -10,7 +13,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   login: user => dispatch(login(user)),
   register: user => dispatch(register(user)),
-  loginWithFacebook: () => dispatch(loginWithFacebook()),
 });
 
 export default connect(

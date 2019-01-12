@@ -8,6 +8,9 @@ const {
   JWTSECRET,
   FACEBOOK_APP_ID,
   FACEBOOK_API_VERSION,
+  FACEBOOK_APP_SECRET,
+  GOOGLE_SECRET,
+  GOOGLE_CLIENT_ID,
 } = process.env;
 
 const domain = process.env.DOMAIN;
@@ -39,6 +42,17 @@ const appConfig = {
   facebook: {
     appId: FACEBOOK_APP_ID,
     version: FACEBOOK_API_VERSION,
+    secret: FACEBOOK_APP_SECRET,
+  },
+
+  google: {
+    clientId: GOOGLE_CLIENT_ID,
+    projectId: 'vissne',
+    authUri: 'https://accounts.google.com/o/oauth2/auth',
+    tokenUri: 'https://www.googleapis.com/oauth2/v3/token',
+    authProvideX509CertUrl: 'https://www.googleapis.com/oauth2/v1/certs',
+    clientSecret: GOOGLE_SECRET,
+    redirectUri: `${domain}/api/auth/google/callback`,
   },
 
   default: {
@@ -54,8 +68,6 @@ const appConfig = {
       lang: 'en',
       key: MOVIE_DB_API_KEY,
       images: {
-        base_url: 'http://image.tmdb.org/t/p/', // TODO: Delete Snake Case
-        baseUrl: 'http://image.tmdb.org/t/p/',
         secure_base_url: 'https://image.tmdb.org/t/p/', // TODO: Delete Snake Case
         secureBaseUrl: 'https://image.tmdb.org/t/p/',
         backdrop_sizes: [

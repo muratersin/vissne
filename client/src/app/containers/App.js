@@ -1,20 +1,19 @@
 import { connect } from 'react-redux';
 import App from '../components/App';
-import { getMovies, setFilter, getGenres } from '../actions/AppActions';
+import { getMovies, setQuery, getGenres } from '../actions/AppActions';
 
 const mapStateToProps = state => ({
   loading: state.common.loading,
   user: state.app.user,
-  filter: state.app.filter,
+  query: state.app.query,
   isLoggedIn: state.app.isLoggedIn,
   movies: state.app.movies,
-  page: state.app.page,
   genres: state.app.genres,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getMovies: (page, filter) => dispatch(getMovies(page, filter)),
-  setFilter: filter => dispatch(setFilter(filter)),
+  getMovies: query => dispatch(getMovies(query)),
+  setQuery: query => dispatch(setQuery(query)),
   getGenres: () => dispatch(getGenres()),
 });
 

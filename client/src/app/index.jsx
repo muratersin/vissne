@@ -10,6 +10,8 @@ import {
   faKey,
   faSignature,
   faFilter,
+  faSortAmountUp,
+  faSortAmountDown,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebook,
@@ -31,6 +33,8 @@ library.add(
   faFilter,
   faFacebook,
   faGoogle,
+  faSortAmountUp,
+  faSortAmountDown,
 );
 
 const store = configureStore();

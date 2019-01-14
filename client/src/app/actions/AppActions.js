@@ -1,4 +1,4 @@
-import { SET_MOVIES, SET_FILTER, SET_GENRES } from './ActionTypes';
+import { SET_MOVIES, SET_QUERY, SET_GENRES } from './ActionTypes';
 import { toggleAlert, loading } from './CommonActions';
 import xhr from '../../lib/xhr';
 
@@ -10,20 +10,31 @@ export const setMovies = response => ({
   total: response.total_results,
 });
 
-export const getMovies = (page = 1, filter) => {
-  const ops = {
-    url: `discover?page=${page}`,
-  };
+export const getMovies = (query) => {
+  let url = 'discover';
 
-  if (filter) {
-    if (filter.sort) {
-      ops.url += `&sort_by=${filter.sort}`;
+  Object.keys(query).forEach((queryName, i) => {
+    const value = query[queryName];
+    const op = i === 0
+      ? '?'
+      : '&';
+
+    if (value) {
+      if (!Array.isArray(value)) {
+        url += `${op}${queryName}=${value}`;
+      } else if (value.length > 0) {
+        let multiQuery = `${queryName}=`;
+        value.forEach((v) => {
+          multiQuery += `${v},`;
+        });
+        url += `${op}${multiQuery}`;
+      }
     }
-  }
+  });
 
   return (dispatch) => {
     dispatch(loading(true));
-    xhr(ops)
+    xhr({ url })
       .then((response) => {
         dispatch(loading(false));
         dispatch(setMovies(response));
@@ -40,10 +51,14 @@ export const getMovies = (page = 1, filter) => {
   };
 };
 
-export const setFilter = filter => ({
-  type: SET_FILTER,
-  filter,
-});
+export const setQuery = ({ field, value }) => (dispatch) => {
+  dispatch({
+    type: SET_QUERY,
+    field,
+    value,
+  });
+  return Promise.resolve();
+};
 
 export const setGenres = genres => ({
   type: SET_GENRES,

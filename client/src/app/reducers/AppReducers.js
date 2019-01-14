@@ -1,4 +1,4 @@
-import { SET_MOVIES, SET_FILTER, SET_GENRES } from '../actions/ActionTypes';
+import { SET_MOVIES, SET_GENRES, SET_QUERY } from '../actions/ActionTypes';
 import cookie from '../../lib/cookie';
 
 const userFirstName = cookie.get('user_first_name');
@@ -9,23 +9,16 @@ const userId = cookie.get('user_id');
 const initialState = {
   genres: [],
   movies: [],
-  page: 1,
   total: 0,
   totalPage: 1,
-  filter: {
-    sort: null,
+  query: {
+    page: 1,
+    sortBy: 'popularity.decs',
     searchText: null,
-    genres: [],
+    withGenres: [],
+    year: null,
     crews: [],
     casts: [],
-    voteAverage: {
-      lte: null,
-      gte: null,
-    },
-    releaseYear: {
-      lte: null,
-      gte: null,
-    },
   },
   isLoggedIn: !!userEmail,
   user: {
@@ -42,19 +35,25 @@ export default function app(state = initialState, action) {
     case SET_MOVIES:
       return Object.assign({}, state, {
         movies: state.movies.concat(action.movies),
-        page: action.page,
         total: action.total,
         totalPages: action.totalPages,
-      });
-
-    case SET_FILTER:
-      return Object.assign({}, state, {
-        filter: action.filter,
+        query: Object.assign({}, state.query, {
+          page: action.page,
+        }),
       });
 
     case SET_GENRES:
       return Object.assign({}, state, {
         genres: action.genres,
+      });
+
+    case SET_QUERY:
+      return Object.assign({}, state, {
+        movies: [],
+        query: Object.assign({}, state.query, {
+          page: 1,
+          [action.field]: action.value,
+        }),
       });
 
     default:

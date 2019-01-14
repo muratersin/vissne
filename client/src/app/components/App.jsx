@@ -15,23 +15,23 @@ export default class App extends Component {
     super(props);
 
     this.loadMovies = this.loadMovies.bind(this);
+    this.setQuery = this.setQuery.bind(this);
   }
 
   componentDidMount() {
-    const {
-      getMovies,
-      getGenres,
-      filter,
-      page,
-    } = this.props;
-
+    const { getGenres } = this.props;
     getGenres();
-    getMovies(page, filter);
+    this.loadMovies();
+  }
+
+  setQuery(query) {
+    const { setQuery } = this.props;
+    setQuery(query).then(this.loadMovies);
   }
 
   loadMovies() {
-    const { getMovies, page, filter } = this.props;
-    getMovies(page, filter);
+    const { getMovies, query } = this.props;
+    getMovies(query);
   }
 
   render() {
@@ -39,10 +39,9 @@ export default class App extends Component {
       movies,
       user,
       isLoggedIn,
-      setFilter,
       loading,
       genres,
-      filter,
+      query,
     } = this.props;
 
     const loadMoreButton = !loading
@@ -58,8 +57,8 @@ export default class App extends Component {
 
     return (
       <Fragment>
-        <Navbar isLoggedIn={isLoggedIn} user={user} setFilter={setFilter} />
-        <MovieList movies={movies} genres={genres} filter={filter} id="list" />
+        <Navbar isLoggedIn={isLoggedIn} user={user} />
+        <MovieList movies={movies} genres={genres} setQuery={this.setQuery} query={query} id="list" />
         <div className="d-flex justify-content-center m-1">
           {loadMoreButton}
           <Spinner show={loading} size="md" />
@@ -77,12 +76,11 @@ App.defaultProps = {
 App.propTypes = {
   getMovies: PropTypes.func.isRequired,
   getGenres: PropTypes.func.isRequired,
-  setFilter: PropTypes.func.isRequired,
+  setQuery: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   isLoggedIn: PropTypes.bool,
   user: UserShape,
-  page: PropTypes.number.isRequired,
   movies: PropTypes.arrayOf(MovieShape).isRequired,
   genres: PropTypes.arrayOf(GenreShape).isRequired,
-  filter: FilterShape.isRequired,
+  query: FilterShape.isRequired,
 };

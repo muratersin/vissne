@@ -1,6 +1,7 @@
 @import 'custom';
 @import '~bootstrap/scss/bootstrap';
+@import 'variables';
 
 body {
-    background-color: #141414;
+    background-color: $themeDark;
 }

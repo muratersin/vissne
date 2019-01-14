@@ -16,6 +16,8 @@ import {
 import {
   faFacebook,
   faGoogle,
+  faTwitter,
+  faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
 import '../scripts';
 import '../../assets/scss/main.scss';
@@ -31,10 +33,12 @@ library.add(
   faKey,
   faSignature,
   faFilter,
-  faFacebook,
-  faGoogle,
   faSortAmountUp,
   faSortAmountDown,
+  faFacebook,
+  faGoogle,
+  faTwitter,
+  faInstagram,
 );
 
 const store = configureStore();

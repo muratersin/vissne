@@ -26,6 +26,10 @@ export default class Movie extends Component {
       );
     }
 
+    const video = detail.videos.length > 0
+      ? <Video videoKey={detail.videos[0].key} />
+      : null;
+
     return (
       <div>
         <Navbar isLoggedIn={isLoggedIn} user={user} />
@@ -37,7 +41,7 @@ export default class Movie extends Component {
             </div>
 
             <div className="col-xs-12 col-sm-12 col-md-6 mb-2">
-              <Video videoKey={detail.videos[0].key} />
+              {video}
               <DetailTable movie={detail} />
             </div>
 

@@ -5,7 +5,7 @@ const router = express.Router();
 
 const {
   bundles,
-  facebook,
+  image,
 } = require('../config/app.config');
 
 router.get('/logout', (req, res) => {
@@ -24,7 +24,7 @@ router.get('/auth/facebook', passport.authenticate('facebook'));
 
 router.get('/*', (req, res) => {
   res.render('index', {
-    facebook,
+    image,
     title: 'Vissne',
     jsBundle: bundles.app.js,
     cssBundle: bundles.app.css,

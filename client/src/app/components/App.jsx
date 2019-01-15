@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import MovieList from './common/MovieList';
 import Navbar from './common/Navbar';
 import Spinner from './common/Spinner';
+import Footer from './common/Footer';
 import {
   UserShape,
   MovieShape,
@@ -63,6 +64,7 @@ export default class App extends Component {
           {loadMoreButton}
           <Spinner show={loading} size="md" />
         </div>
+        <Footer />
       </Fragment>
     );
   }

@@ -12,6 +12,9 @@ export const SET_MOVIES = 'SET_MOVIES';
 export const SET_GENRES = 'SET_GENRES';
 export const SET_QUERY = 'SET_QUERY';
 
+// movie detail
+export const SET_MOVIE_DETAIL = 'SET_MOVIE_DETAIL';
+
 // constants
 export const SORT_OPTIONS = [
   {

@@ -53,8 +53,9 @@ const appConfig = {
     redirectUri: `${domain}/api/auth/google/callback`,
   },
 
-  default: {
-    profileImagePath: 'images/default-profile.jpg',
+  image: {
+    defaultProfileImagePath: 'images/default-profile.jpg',
+    defaultCoverImagePath: 'images/default-cover.png',
   },
 
   // Config for whic uses all externap api in vissne

@@ -24,7 +24,7 @@ const getCredits = (req, res, next) => {
     req.credits.cast = req.credits.cast.map((cast) => {
       const profilePath = cast.profile_path
         ? `${secureBaseUrl}/w45${cast.profile_path}`
-        : `${appConfig.domain}/${appConfig.default.profileImagePath}`;
+        : `${appConfig.domain}/${appConfig.image.defaultProfileImagePath}`;
 
       return {
         profilePath,

@@ -4,7 +4,6 @@ const passport = require('passport');
 const router = express.Router();
 
 const {
-  bundles,
   image,
 } = require('../config/app.config');
 
@@ -26,8 +25,6 @@ router.get('/*', (req, res) => {
   res.render('index', {
     image,
     title: 'Vissne',
-    jsBundle: bundles.app.js,
-    cssBundle: bundles.app.css,
   });
 });
 

@@ -31,12 +31,6 @@ const appConfig = {
   viewEngine: 'pug',
   saltRounds: 10,
   jwtSecret: JWTSECRET,
-  bundles: {
-    app: {
-      js: `${cdn}/dist/app.bundle.js${suffix}`,
-      css: `${cdn}/dist/app.css${suffix}`,
-    },
-  },
 
   facebook: {
     appId: FACEBOOK_APP_ID,

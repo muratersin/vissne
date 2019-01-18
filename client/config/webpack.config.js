@@ -65,6 +65,9 @@ const config = {
     ],
   },
   optimization: {
+    nodeEnv: 'production',
+    concatenateModules: true,
+    minimize: true,
     minimizer: [
       new UglifyJsPlugin({
         cache: true,

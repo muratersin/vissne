@@ -1,0 +1,27 @@
+{% extends "_shared/layout.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{cdn}}/dist/app.auth.css">
+<link rel="stylesheet" href="{{cdn}}/dist/auth.css">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5">
+            <div class="card auth-form">
+                <div class="card-body" id="root">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include "_partials/loading.html" %}
+{% endblock %}
+
+{% block script %}
+{% include "_partials/common-script.html" %}
+<script src="{{cdn}}/dist/auth.bundle.js"></script>
+<script src="{{cdn}}/dist/app.auth.bundle.js"></script>
+<script src="{{cdn}}/dist/vendor.app.auth.bundle.js"></script>
+{% endblock%}

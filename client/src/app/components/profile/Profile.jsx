@@ -7,7 +7,6 @@ import {
 
 import Navbar from '../common/Navbar';
 import LeftMenu from './LeftMenu';
-import NotFound from '../not-found/NotFound';
 import User from './User';
 
 export default class Profile extends Component {
@@ -40,7 +39,7 @@ export default class Profile extends Component {
                   <Route path="/profile/reviews" component={User} />
                   <Route path="/profile/friends" component={User} />
                   <Route path="/profile/settings" component={User} />
-                  <Route component={NotFound} />
+                  <Route component={() => { window.location.href = 'page-not-found'; }} />
                 </Switch>
               </Router>
             </div>

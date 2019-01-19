@@ -1,0 +1,16 @@
+{% extends "_shared/layout.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{cdn}}/dist/app.css">
+<link rel="stylesheet" href="{{cdn}}/dist/app.auth.css">
+{% endblock%}
+
+{% block content %}
+<div class="page-not-found">
+    <img src="{{cdn}}/images/ong.png" alt="404" />
+    <h4>404</h4>
+    <h5>Page not found</h5>
+    <p>We are sorry. The page you are looking for was moved, removed, renamed or might never existed.</p>
+    <a href="/" class="button is-primary">GO TO HOME</a>
+</div>
+{% endblock %}

@@ -28,7 +28,7 @@ const Navbar = (props) => {
     </Fragment>
   ) : (
     <li className="nav-item">
-      <Link to="/auth" className="nav-link">LOGIN</Link>
+      <a href="/auth" className="nav-link">LOGIN</a>
     </li>
   );
 

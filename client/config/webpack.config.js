@@ -22,6 +22,11 @@ const config = {
       '@babel/polyfill',
       `${SCR_DIR}/app/index.jsx`,
     ],
+
+    auth: [
+      '@babel/polyfill',
+      `${SCR_DIR}/auth/index.jsx`,
+    ],
   },
   output: {
     path: BUILD_DIR,
@@ -67,6 +72,11 @@ const config = {
     splitChunks: {
       automaticNameDelimiter: '.',
       chunks: 'all',
+      cacheGroups: {
+        vendors: {
+          filename: '[name].bundle.js',
+        },
+      },
     },
     minimize: true,
     minimizer: [

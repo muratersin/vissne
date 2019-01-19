@@ -5,10 +5,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Pages
 import App from '../containers/App';
-import Auth from '../containers/Auth';
 import Movie from '../containers/Movie';
 import Profile from '../containers/Profile';
-import NotFound from './not-found/NotFound';
 
 // Shared Components
 import Alert from '../containers/Alert';
@@ -19,10 +17,9 @@ const Root = ({ store }) => (
       <Router>
         <Switch>
           <Route path="/" exact component={App} />
-          <Route path="/auth" component={Auth} />
           <Route path="/profile" component={Profile} />
           <Route path="/movie/:slug/:id" component={Movie} />
-          <Route component={NotFound} />
+          <Route component={() => { window.location.href = 'page-not-found'; }} />
         </Switch>
       </Router>
       <Alert />

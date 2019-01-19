@@ -19,7 +19,7 @@ const discover = (req, res, next) => {
     body.results = body.results.map(m => ({
       id: m.id,
       poster: `${movieDbConfig.images.secure_base_url}/w500/${m.poster_path}`,
-      title: string.truncate(m.title, 14),
+      title: m.title,
       voteAverage: m.vote_average,
       slug: string.slugify(m.title),
     }));

@@ -35,9 +35,6 @@ const config = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'cache-loader',
-          },
-          {
             loader: 'babel-loader',
             options: {
               cacheDirectory: true,
@@ -65,13 +62,20 @@ const config = {
     ],
   },
   optimization: {
+    nodeEnv: 'production',
+    concatenateModules: true,
+    splitChunks: {
+      automaticNameDelimiter: '.',
+      chunks: 'all',
+    },
+    minimize: true,
     minimizer: [
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
         sourceMap: false,
       }),
-      new OptimizeCSSAssetsPlugin({}),
+      new OptimizeCSSAssetsPlugin(),
     ],
   },
   plugins: [

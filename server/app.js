@@ -5,6 +5,7 @@ const compression = require('compression');
 const helmet = require('helmet');
 const favicon = require('serve-favicon');
 const passport = require('passport');
+const nunjucks = require('nunjucks');
 
 const config = require('./config/app.config');
 const logger = require('./lib/logger');
@@ -15,15 +16,15 @@ const { accessLogger } = logger;
 
 const app = express();
 
-
 global.commonGlobal = initCommonGlobal();
 
 const indexRouter = require('./routes/index');
 const apiRouter = require('./routes/api');
 
-// view engine setup
-app.set('views', config.viewPath);
-app.set('view engine', config.viewEngine);
+nunjucks.configure(config.viewPath, {
+  autoescape: true,
+  express: app,
+});
 
 if (config.env !== 'production') {
   app.use(accessLogger);
@@ -44,6 +45,7 @@ app.use((req, res, next) => {
   res.locals.domain = config.domain;
   res.locals.youtubeWatchUrl = config.youtubeWatchUrl;
   res.locals.imagesSecureBaseUrl = config.api.moviedb.images.secure_base_url;
+  res.locals.env = config.env;
   next();
 });
 
@@ -65,10 +67,8 @@ app.use((req, res, next) => {
 
 // error handler
 app.use((err, req, res) => {
-  // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-  // render the error page
   res.status(err.status || 500);
   res.render('error');
 });

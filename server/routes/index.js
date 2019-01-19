@@ -4,7 +4,6 @@ const passport = require('passport');
 const router = express.Router();
 
 const {
-  bundles,
   image,
 } = require('../config/app.config');
 
@@ -23,11 +22,9 @@ router.get('/auth/google', passport.authenticate('google', {
 router.get('/auth/facebook', passport.authenticate('facebook'));
 
 router.get('/*', (req, res) => {
-  res.render('index', {
+  res.render('index.html', {
     image,
     title: 'Vissne',
-    jsBundle: bundles.app.js,
-    cssBundle: bundles.app.css,
   });
 });
 

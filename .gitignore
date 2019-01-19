@@ -65,3 +65,5 @@ typings/
 .idea
 # all cache folders
 .cache*
+
+server/public/dist

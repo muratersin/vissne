@@ -5,6 +5,7 @@ const compression = require('compression');
 const helmet = require('helmet');
 const favicon = require('serve-favicon');
 const passport = require('passport');
+const nunjucks = require('nunjucks');
 
 const config = require('./config/app.config');
 const logger = require('./lib/logger');
@@ -20,9 +21,10 @@ global.commonGlobal = initCommonGlobal();
 const indexRouter = require('./routes/index');
 const apiRouter = require('./routes/api');
 
-// view engine setup
-app.set('views', config.viewPath);
-app.set('view engine', config.viewEngine);
+nunjucks.configure(config.viewPath, {
+  autoescape: true,
+  express: app,
+});
 
 if (config.env !== 'production') {
   app.use(accessLogger);

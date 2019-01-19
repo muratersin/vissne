@@ -24,7 +24,6 @@ const config = {
   output: {
     path: BUILD_DIR,
     filename: '[name].bundle.js',
-    publicPath: '/',
   },
   module: {
     rules: [
@@ -32,9 +31,6 @@ const config = {
         test: /\.j(sx|s)$/,
         exclude: /node_modules/,
         use: [
-          {
-            loader: 'cache-loader',
-          },
           {
             loader: 'babel-loader',
             options: {
@@ -67,8 +63,12 @@ const config = {
       filename: '[name].css',
     }),
   ],
+  optimization: {
+    splitChunks: {
+      automaticNameDelimiter: '.',
+      chunks: 'all',
+    },
+  },
 };
 
 module.exports = config;
-
-// TODO: Add split chunk optimization.

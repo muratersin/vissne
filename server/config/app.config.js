@@ -28,7 +28,6 @@ const appConfig = {
   publicPath: path.join(__dirname, '../public'),
   viewPath: path.join(__dirname, '../views'),
   faviconPath: path.join(__dirname, '../public/favicon.ico'),
-  viewEngine: 'pug',
   saltRounds: 10,
   jwtSecret: JWTSECRET,
 

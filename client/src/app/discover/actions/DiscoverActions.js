@@ -1,5 +1,5 @@
 import { SET_MOVIES, SET_QUERY, SET_GENRES } from '../../common/ActionTypes';
-import { toggleAlert, loading } from '../../common/CommonActions';
+import { toggleAlert, loading } from '../../common/Actions';
 import xhr from '../../../lib/xhr';
 
 export const setMovies = response => ({

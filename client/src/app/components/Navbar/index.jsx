@@ -33,7 +33,7 @@ const Navbar = (props) => {
   );
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark">
+    <nav className="navbar navbar-expand-lg navbar-light">
       <Link className="navbar-brand" to="/">
         <img src={`${vissne.cdn}/images/logo.png`} alt="Vissne" height="30" className="mx-auto d-block" />
       </Link>

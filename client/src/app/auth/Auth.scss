@@ -1,5 +1,22 @@
 @import '../../../assets/scss/variables';
 
+
+.form-control {
+    &.is-invalid {
+        &:focus {
+            box-shadow: none;
+        }    
+    }
+
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+.card-body {
+    background-color: #f7f7f7;
+}
+
 .auth-form {
     margin-top: 30%;
 }

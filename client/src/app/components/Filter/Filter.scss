@@ -1,8 +1,7 @@
 @import '../../../../assets//scss/variables';
 
 .filter-input {
-    border: 1px solid $lightBlue;
-    color: white;
+    border: 1px solid $themeDark;
     background-color: transparent;
     font-weight: bold;
 
@@ -14,15 +13,9 @@
     }
 
     &:focus {
-        color: $lightBlue;
         background-color: transparent;
-        border-color: $lightBlue;
+        border-color: $themeDark;
         outline: 0;
         box-shadow: none;
     }
-}
-
-.filter-input-button {
-    border: 1px solid $lightBlue;
-    color: white;
 }

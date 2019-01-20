@@ -150,7 +150,7 @@ export default class Auth extends Component {
             <label htmlFor="confirmPasswordInput">Confirm Password</label>
             <div className="input-group">
               <div className="input-group-prepend">
-                <span className="input-group-text" id="confirmPasswordAddon">
+                <span className="input-group-text border-top-0 border-left-0 border-right-0 border-dark bg-transparent rounded-0" id="confirmPasswordAddon">
                   <FontAwesomeIcon icon="key" />
                 </span>
               </div>
@@ -163,7 +163,7 @@ export default class Auth extends Component {
                 autoComplete="confirmPassword"
                 placeholder="Confirm Password"
                 aria-describedby="confirmPasswordAddon"
-                className={`form-control ${validation.confirmPassword.class || ''}`}
+                className={`form-control border-top-0 border-left-0 border-right-0 border-dark rounded-0 b bg-transparent ${validation.confirmPassword.class || ''}`}
               />
               {validation.confirmPassword.error}
             </div>
@@ -172,7 +172,7 @@ export default class Auth extends Component {
             <label htmlFor="firstNameInput">First Name</label>
             <div className="input-group">
               <div className="input-group-prepend">
-                <span className="input-group-text" id="firstName">
+                <span className="input-group-text border-top-0 border-left-0 border-right-0 border-dark bg-transparent rounded-0" id="firstName">
                   <FontAwesomeIcon icon="signature" />
                 </span>
               </div>
@@ -184,7 +184,7 @@ export default class Auth extends Component {
                 placeholder="First Name"
                 value={form.firstName}
                 onChange={this.handleChange}
-                className={`form-control ${validation.firstName.class || ''}`}
+                className={`form-control border-top-0 border-left-0 border-right-0 border-dark rounded-0 b bg-transparent ${validation.firstName.class || ''}`}
               />
               {validation.firstName.error}
             </div>
@@ -195,14 +195,14 @@ export default class Auth extends Component {
             </label>
             <div className="input-group">
               <div className="input-group-prepend">
-                <span className="input-group-text" id="lastName">
+                <span className="input-group-text border-top-0 border-left-0 border-right-0 border-dark bg-transparent rounded-0" id="lastName">
                   <FontAwesomeIcon icon="signature" />
                 </span>
               </div>
               <input
                 type="text"
                 autoComplete="lastName"
-                className={`form-control ${validation.lastName.class || ''}`}
+                className={`form-control border-top-0 border-left-0 border-right-0 border-dark rounded-0 b bg-transparent ${validation.lastName.class || ''}`}
                 name="lastName"
                 aria-describedby="lastName"
                 id="lastNameInput"
@@ -222,12 +222,12 @@ export default class Auth extends Component {
         <div className="row justify-content-center">
           <img src="images/logo.png" alt="Vissne" height="70" className="my-2" />
         </div>
-        <form onSubmit={this.handleSubmit} id="formReg" className="col-12">
+        <form onSubmit={this.handleSubmit} id="formReg" className="col-12 p-0">
           <div className="form-group">
             <label htmlFor="emailInput">Email</label>
             <div className="input-group">
               <div className="input-group-prepend">
-                <span className="input-group-text" id="basic-addon1">
+                <span className="input-group-text border-top-0 border-left-0 border-right-0 border-dark bg-transparent rounded-0" id="basic-addon1">
                   <FontAwesomeIcon icon="envelope" />
                 </span>
               </div>
@@ -240,7 +240,7 @@ export default class Auth extends Component {
                 aria-describedby="emailInputGroup"
                 placeholder="Enter email"
                 onChange={this.handleChange}
-                className={`form-control ${validation.email.class || ''}`}
+                className={`form-control border-top-0 border-left-0 border-right-0 border-dark rounded-0 b bg-transparent ${validation.email.class || ''}`}
               />
               {validation.email.error}
             </div>
@@ -250,7 +250,7 @@ export default class Auth extends Component {
             <label htmlFor="passwordInput">Password</label>
             <div className="input-group">
               <div className="input-group-prepend">
-                <span className="input-group-text" id="passwordAddon">
+                <span className="input-group-text border-top-0 border-left-0 border-right-0 border-dark bg-transparent rounded-0" id="passwordAddon">
                   <FontAwesomeIcon icon="unlock" />
                 </span>
               </div>
@@ -263,7 +263,7 @@ export default class Auth extends Component {
                 aria-describedby="passwordAddon"
                 onChange={this.handleChange}
                 autoComplete="current-password"
-                className={`form-control ${validation.password.class || ''}`}
+                className={`form-control border-top-0 border-left-0 border-right-0 border-dark rounded-0 b bg-transparent ${validation.password.class || ''}`}
               />
               {validation.password.error}
             </div>
@@ -272,7 +272,7 @@ export default class Auth extends Component {
           {registerInput}
 
           <div className="row">
-            <div className="col-6 text-right">
+            <div className="col-12 text-right">
               <button
                 className="btn btn-link"
                 onClick={this.switchForm}
@@ -297,30 +297,24 @@ export default class Auth extends Component {
             {buttonText}
           </button>
         </form>
-        <div className="col-12 mt-2">
-          <a
-            type="button"
-            className="btn btn-block btn-dark border-0 social-button google"
-            href="auth/google"
-          >
-            <i className="social-button-icon">
-              <FontAwesomeIcon icon={['fab', 'google']} />
-            </i>
-            LOGIN WITH GOOGLE
-          </a>
-        </div>
-        <div className="col-12 mt-2">
-          <a
-            type="button"
-            className="btn btn-block btn-dark border-0 social-button facebook"
-            href="auth/facebook"
-          >
-            <i className="social-button-icon">
-              <FontAwesomeIcon icon={['fab', 'facebook']} />
-            </i>
-            LOGIN WITH FACEBOOK
-          </a>
-        </div>
+        <a
+          className="btn btn-default btn-block btn-dark border-0 social-button google  mt-2"
+          href="auth/google"
+        >
+          <i className="social-button-icon">
+            <FontAwesomeIcon icon={['fab', 'google']} />
+          </i>
+          LOGIN WITH GOOGLE
+        </a>
+        <a
+          className="btn btn-block btn-dark border-0 social-button facebook mt-2"
+          href="auth/facebook"
+        >
+          <i className="social-button-icon">
+            <FontAwesomeIcon icon={['fab', 'facebook']} />
+          </i>
+          LOGIN WITH FACEBOOK
+        </a>
         <Alert
           show={showAlert}
           message={errorMessage}

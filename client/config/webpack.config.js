@@ -18,14 +18,14 @@ const config = {
     ],
   },
   entry: {
-    app: [
+    discover: [
       '@babel/polyfill',
-      `${SCR_DIR}/app/index.jsx`,
+      `${SCR_DIR}/app/discover/index.jsx`,
     ],
 
     auth: [
       '@babel/polyfill',
-      `${SCR_DIR}/auth/index.jsx`,
+      `${SCR_DIR}/app/auth/index.jsx`,
     ],
   },
   output: {

@@ -19,7 +19,8 @@ const config = {
     ],
   },
   entry: {
-    app: `${SCR_DIR}/app/index.jsx`,
+    discover: `${SCR_DIR}/app/discover/index.jsx`,
+    auth: `${SCR_DIR}/app/auth/index.jsx`,
   },
   output: {
     path: BUILD_DIR,
@@ -67,6 +68,13 @@ const config = {
     splitChunks: {
       automaticNameDelimiter: '.',
       chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'all',
+          priority: 1,
+        },
+      },
     },
   },
 };

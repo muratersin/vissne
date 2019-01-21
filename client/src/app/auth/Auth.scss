@@ -1,0 +1,44 @@
+@import '../../../assets/scss/variables';
+
+
+.form-control {
+    &.is-invalid {
+        &:focus {
+            box-shadow: none;
+        }    
+    }
+
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+.card-body {
+    background-color: #f7f7f7;
+}
+
+.auth-form {
+    margin-top: 30%;
+}
+
+.input-group-text {
+    background-color: transparent;
+}
+
+.social-button {
+    position: relative;
+
+    &.facebook {
+        background-color: $facebook;
+    }
+    &.google {
+        background-color: $google;
+    }
+}
+
+.social-button-icon {
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    font-size: 24px;
+}

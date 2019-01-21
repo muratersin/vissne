@@ -1,34 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "_shared/layout.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" , content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="theme-color" content="#141414" />
-    <link rel="stylesheet" href="dist/app.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>{{ title }}</title>
-</head>
+{% block style %}
+<link rel="stylesheet" href="{{cdn}}/dist/auth.discover.css">
+<link rel="stylesheet" href="{{cdn}}/dist/discover.css">
+{% endblock%}
 
-<body>
-    <div id="app"></div>
-    <div id="pageLoading" class="page-loading">
-        <img src="images/loading.svg" alt="Loading">
-        <noscript>To use Vissne, please enable JavaScript.</noscript>
-    </div>
+{% block content %}
+<div id="app"></div>
+{% include "_partials/loading.html" %}
+{% include "_shared/footer.html" %}
+{% endblock %}
 
-    <script>
-        var vissne = vissne || {};
-        vissne.cdn = '{{cdn}}';
-        vissne.domain = '{{domain}}';
-        vissne.imagesSecureBaseUrl = '{{imagesSecureBaseUrl}}';
-        vissne.defaultCoverImagePath = '{{image.defaultCoverImagePath}}';
-        vissne.env = '{{env}}';
-        window.vissne = vissne;
-    </script>
-    <script src="dist/app.bundle.js"></script>
-    <script src="dist/vendors.app.bundle.js"></script>
-</body>
-
-</html>
+{% block script %}
+{% include "_partials/common-script.html" %}
+<script src="{{cdn}}/dist/discover.bundle.js"></script>
+<script src="{{cdn}}/dist/auth.discover.bundle.js"></script>
+<script src="{{cdn}}/dist/vendor.discover.bundle.js"></script>
+<script src="{{cdn}}/dist/vendor.auth.discover.bundle.js"></script>
+{% endblock %}

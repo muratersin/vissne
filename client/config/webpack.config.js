@@ -18,9 +18,14 @@ const config = {
     ],
   },
   entry: {
-    app: [
+    discover: [
       '@babel/polyfill',
-      `${SCR_DIR}/app/index.jsx`,
+      `${SCR_DIR}/app/discover/index.jsx`,
+    ],
+
+    auth: [
+      '@babel/polyfill',
+      `${SCR_DIR}/app/auth/index.jsx`,
     ],
   },
   output: {
@@ -67,6 +72,11 @@ const config = {
     splitChunks: {
       automaticNameDelimiter: '.',
       chunks: 'all',
+      cacheGroups: {
+        vendors: {
+          filename: '[name].bundle.js',
+        },
+      },
     },
     minimize: true,
     minimizer: [

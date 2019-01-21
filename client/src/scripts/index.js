@@ -9,9 +9,9 @@
     }
   };
 
-  // if (vissne.env === 'production') {
-  //   if ('serviceWorker' in navigator) {
-  //     win.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
-  //   }
-  // }
+  if (vissne.env === 'production') {
+    if ('serviceWorker' in navigator) {
+      win.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+    }
+  }
 })();

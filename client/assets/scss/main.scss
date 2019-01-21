@@ -1,7 +1,11 @@
 @import 'custom';
 @import '~bootstrap/scss/bootstrap';
 @import 'variables';
+@import 'not-found';
+@import 'footer';
+@import 'fonts/sarabun';
+
 
 body {
-    background-color: $themeDark;
+    font-family: 'Sarabun', sans-serif;
 }

@@ -1,0 +1,21 @@
+@import '../../../../assets//scss/variables';
+
+.filter-input {
+    border: 1px solid $themeDark;
+    background-color: transparent;
+    font-weight: bold;
+
+    .selected {
+        background: $lightBlue;
+        font-weight: bold;
+        font-style: italic;
+        color: $themeDark;
+    }
+
+    &:focus {
+        background-color: transparent;
+        border-color: $themeDark;
+        outline: 0;
+        box-shadow: none;
+    }
+}

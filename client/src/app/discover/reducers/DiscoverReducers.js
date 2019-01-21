@@ -14,6 +14,7 @@ const initialState = {
   query: {
     page: 1,
     sortBy: 'popularity.decs',
+    filter: null,
     searchText: null,
     withGenres: [],
     year: null,

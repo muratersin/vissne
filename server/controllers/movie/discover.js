@@ -1,13 +1,23 @@
 const request = require('request');
-const { generateRouteDiscover, generateSearchRoute } = require('../../lib/route-generator');
+const {
+  generateRouteDiscover,
+  generateSearchRoute,
+  generateFilterRoute,
+} = require('../../lib/route-generator');
 const movieDbConfig = require('../../config/app.config').api.moviedb;
 
 const { string } = commonGlobal.helpers;
 
 const discover = (req, res, next) => {
-  const url = !req.query.searchText
-    ? generateRouteDiscover(req.query)
-    : generateSearchRoute(req.query);
+  let url = generateRouteDiscover(req.query);
+
+  if (req.query.searchText) {
+    url = generateSearchRoute(req.query);
+  }
+
+  if (req.query.filter) {
+    url = generateFilterRoute(req.query);
+  }
 
   request(url, { json: true }, (error, response) => {
     if (error) {

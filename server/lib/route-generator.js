@@ -22,23 +22,42 @@ function convertQueryKeys(query) {
 const baseUrl = `${protocol}://${url}/${version}`;
 const baseQueryString = `?api_key=${key}&language=${lang}&include_adult=false`;
 
-module.exports.config = `${baseUrl}/config${baseQueryString}`;
-module.exports.genreRoute = `${baseUrl}/genre/movie/list${baseQueryString}`;
+const config = `${baseUrl}/config${baseQueryString}`;
+const genreRoute = `${baseUrl}/genre/movie/list${baseQueryString}`;
 
-module.exports.generateRouteGetById = (movieId, type = false) => `
+const generateRouteGetById = (movieId, type = false) => `
   ${baseUrl}/movie/${movieId}${type ? `/${type}` : ''}${baseQueryString}
 `;
 
-module.exports.generateRouteGetCredits = movieId => `${baseUrl}/movie/${movieId}/credits${baseQueryString}`;
-module.exports.generateRouteGetVideos = movieId => `${baseUrl}/movie/${movieId}/videos${baseQueryString}`;
-module.exports.generateRouteGetImages = movieId => `${baseUrl}/movie/${movieId}/images${baseQueryString}`;
-module.exports.generateRouteDiscover = disoverQuery => `
+const generateRouteGetCredits = movieId => `${baseUrl}/movie/${movieId}/credits${baseQueryString}`;
+const generateRouteGetVideos = movieId => `${baseUrl}/movie/${movieId}/videos${baseQueryString}`;
+const generateRouteGetImages = movieId => `${baseUrl}/movie/${movieId}/images${baseQueryString}`;
+const generateRouteDiscover = disoverQuery => `
   ${baseUrl}/discover/movie${baseQueryString}&${querystring.stringify(convertQueryKeys(disoverQuery))}
 `;
 
-module.exports.generateSearchRoute = (q) => {
+const generateSearchRoute = (q) => {
   const discoverQuery = q;
   const query = discoverQuery.searchText;
   delete discoverQuery.searchText;
   return `${baseUrl}/search/movie${baseQueryString}&query=${query}&${querystring.stringify(convertQueryKeys(discoverQuery))}`;
+};
+
+const generateFilterRoute = (query) => {
+  const filter = query.filter === 'coming-soon'
+    ? 'upcoming'
+    : 'now_playing';
+  return `${baseUrl}/movie/${filter}${baseQueryString}&page=${query.page || 1}`;
+};
+
+module.exports = {
+  config,
+  genreRoute,
+  generateRouteGetById,
+  generateRouteGetCredits,
+  generateRouteGetVideos,
+  generateRouteGetImages,
+  generateRouteDiscover,
+  generateSearchRoute,
+  generateFilterRoute,
 };

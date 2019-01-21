@@ -44,7 +44,12 @@ const Filter = (props) => {
     genres,
     setQuery,
     query,
+    show,
   } = props;
+
+  if (!show) {
+    return null;
+  }
 
   const sortIconClass = query.sortBy.split('.')[1] === 'desc'
     ? 'down'
@@ -122,10 +127,15 @@ const Filter = (props) => {
   );
 };
 
+Filter.defaultProps = {
+  show: true,
+};
+
 Filter.propTypes = {
   genres: PropTypes.arrayOf(GenreShape).isRequired,
   query: FilterShape.isRequired,
   setQuery: PropTypes.func.isRequired,
+  show: PropTypes.bool,
 };
 
 export default Filter;

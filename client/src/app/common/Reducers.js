@@ -1,10 +1,11 @@
-import { TOGGLE_ALERT, LOADING } from './ActionTypes';
+import { TOGGLE_ALERT, LOADING, TOGGLE_FILTER } from './ActionTypes';
 
 const initialState = {
   showAlert: false,
   alertMessage: null,
   alertKind: 'info',
   loading: false,
+  showFilter: true,
 };
 
 export default function common(state = initialState, action) {
@@ -20,6 +21,11 @@ export default function common(state = initialState, action) {
     case LOADING:
       return Object.assign({}, state, {
         loading: action.loading,
+      });
+
+    case TOGGLE_FILTER:
+      return Object.assign({}, state, {
+        showFilter: action.showFilter,
       });
 
     default:

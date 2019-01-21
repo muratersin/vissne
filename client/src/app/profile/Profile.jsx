@@ -39,7 +39,7 @@ export default class Profile extends Component {
                   <Route path="/profile/reviews" component={User} />
                   <Route path="/profile/friends" component={User} />
                   <Route path="/profile/settings" component={User} />
-                  <Route component={() => { window.location.href = 'page-not-found'; }} />
+                  <Route component={() => { window.location.href = `${vissne.domain}page-not-found`; }} />
                 </Switch>
               </Router>
             </div>

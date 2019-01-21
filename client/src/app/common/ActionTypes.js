@@ -1,8 +1,9 @@
 // common
 export const LOADING = 'LOADING';
 export const TOGGLE_ALERT = 'TOGGLE_ALERT';
+export const TOGGLE_FILTER = 'TOGGLE_FILTER';
 
-// app
+// discover
 export const GET_MOVIES = 'GET_MOVIES';
 export const SET_MOVIES = 'SET_MOVIES';
 export const SET_GENRES = 'SET_GENRES';

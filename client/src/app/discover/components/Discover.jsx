@@ -21,9 +21,17 @@ export default class Discover extends Component {
   }
 
   componentDidMount() {
-    const { getGenres } = this.props;
+    const { getGenres, toggleFilter, match } = this.props;
+    const { path } = match;
+
     getGenres();
-    this.loadMovies();
+
+    if (['/coming-soon', '/in-theaters'].indexOf(path) !== -1) {
+      this.setQuery({ field: 'filter', value: path.replace('/', '') });
+      toggleFilter(false);
+    } else {
+      this.loadMovies();
+    }
   }
 
   setQuery(query) {
@@ -44,13 +52,15 @@ export default class Discover extends Component {
       loading,
       genres,
       query,
+      location,
+      showFilter,
     } = this.props;
 
     return (
       <Fragment>
-        <Navbar isLoggedIn={isLoggedIn} user={user} />
+        <Navbar isLoggedIn={isLoggedIn} user={user} pathName={location.pathname} />
         <div className="container-fluid">
-          <Filter genres={genres} setQuery={this.setQuery} query={query} />
+          <Filter show={showFilter} genres={genres} setQuery={this.setQuery} query={query} />
           <MovieList movies={movies} id="list" />
           <div className="d-flex justify-content-center m-1">
             <button

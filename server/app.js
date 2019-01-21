@@ -1,4 +1,3 @@
-const createError = require('http-errors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
@@ -52,7 +51,7 @@ app.use('/api', apiRouter);
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
-app.use((req, res, next) => {
+app.use((req, res) => {
   const { user, path, method } = req;
   const errorCode = 404;
   logger.error({

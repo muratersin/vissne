@@ -22,7 +22,6 @@ const config = {
       '@babel/polyfill',
       `${SCR_DIR}/app/discover/index.jsx`,
     ],
-
     auth: [
       '@babel/polyfill',
       `${SCR_DIR}/app/auth/index.jsx`,
@@ -73,8 +72,10 @@ const config = {
       automaticNameDelimiter: '.',
       chunks: 'all',
       cacheGroups: {
-        vendors: {
-          filename: '[name].bundle.js',
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'all',
+          priority: 1,
         },
       },
     },

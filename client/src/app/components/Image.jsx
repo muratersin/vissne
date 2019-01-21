@@ -1,7 +1,5 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-
-import './Image.scss';
 
 let uSpinnerid = 0;
 
@@ -20,7 +18,7 @@ const Image = (props) => {
   const {
     src,
     alt,
-    className,
+    imageClass,
     onError,
     onLoad,
   } = props;
@@ -29,30 +27,31 @@ const Image = (props) => {
 
   const spinnerId = `spin${uSpinnerid}`;
   return (
-    <div className="image-container d-flex align-items-center justify-content-center">
+    <Fragment>
       <img
-        className={className}
+        className={imageClass}
         src={src}
         alt={alt}
         onLoad={$event => onLoad($event, spinnerId)}
         onError={$event => onError($event, spinnerId)}
       />
-      <div
-        className="spinner-border text-success"
-        id={spinnerId}
-        style={{
-          width: '4rem',
-          height: '4rem',
-          position: 'absolute',
-        }}
-        role="status"
-      />
-    </div>
+      <div id={spinnerId} className="h-100 w-100 d-flex align-items-center justify-content-center">
+        <div
+          className="spinner-border text-success"
+          style={{
+            width: '4rem',
+            height: '4rem',
+            position: 'absolute',
+          }}
+          role="status"
+        />
+      </div>
+    </Fragment>
   );
 };
 
 Image.defaultProps = {
-  className: '',
+  imageClass: '',
   onLoad: defaultOnLoad,
   onError: defaultOnError,
 };
@@ -60,7 +59,7 @@ Image.defaultProps = {
 Image.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
-  className: PropTypes.string,
+  imageClass: PropTypes.string,
   onError: PropTypes.func,
   onLoad: PropTypes.func,
 };

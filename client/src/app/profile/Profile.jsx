@@ -26,7 +26,7 @@ export default class Profile extends Component {
         <Navbar isLoggedIn={isLoggedIn} user={user} />
         <div className="container-fluid">
           <div className="row">
-            <div className="col-xs-12 col-sm-12 col-md-4 col-lg-2 p-0 h-100 rounded-0">
+            <div className="col-12 col-sm-12 col-md-4 col-lg-2 p-0 h-100 rounded-0">
               <LeftMenu />
             </div>
             <div className="col">

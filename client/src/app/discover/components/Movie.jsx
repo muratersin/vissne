@@ -36,17 +36,17 @@ export default class Movie extends Component {
         <Navbar isLoggedIn={isLoggedIn} user={user} />
         <div className="container-fluid">
           <div className="row">
-            <div className="col-xs-12 col-sm-6 col-md-3">
+            <div className="col-12 col-sm-6 col-md-3">
               <img className="img-fluid mb-2" src={detail.posterPath} alt={detail.title} />
               <CompanyList companies={detail.production_companies} />
             </div>
 
-            <div className="col-xs-12 col-sm-12 col-md-6 mb-2">
+            <div className="col-12 col-sm-12 col-md-6 mb-2">
               {video}
               <DetailTable movie={detail} />
             </div>
 
-            <div className="col-xs-12 col-sm-6 col-md-3 mb-2">
+            <div className="col-12 col-sm-6 col-md-3 mb-2">
               <CastList casts={detail.credits.cast} />
             </div>
           </div>

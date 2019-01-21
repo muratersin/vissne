@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import MovieList from '../../components/MovieList';
 import Navbar from '../../components/Navbar';
 import Spinner from '../../components/Spinner';
+import Filter from '../../components/Filter';
 import {
   UserShape,
   MovieShape,
@@ -45,24 +46,22 @@ export default class Discover extends Component {
       query,
     } = this.props;
 
-    const loadMoreButton = !loading
-      ? (
-        <button
-          type="button"
-          onClick={this.loadMovies}
-          className="btn btn-outline-primary mb-2"
-        >
-          Load More
-        </button>
-      ) : null;
-
     return (
       <Fragment>
         <Navbar isLoggedIn={isLoggedIn} user={user} />
-        <MovieList movies={movies} genres={genres} setQuery={this.setQuery} query={query} id="list" />
-        <div className="d-flex justify-content-center m-1">
-          {loadMoreButton}
-          <Spinner show={loading} size="md" />
+        <div className="container-fluid">
+          <Filter genres={genres} setQuery={this.setQuery} query={query} />
+          <MovieList movies={movies} id="list" />
+          <div className="d-flex justify-content-center m-1">
+            <button
+              type="button"
+              onClick={this.loadMovies}
+              className={`btn btn-outline-primary mb-2 ${loading ? 'd-none' : 'd-block'}`}
+            >
+              Load More
+            </button>
+            <Spinner show={loading} size="md" />
+          </div>
         </div>
       </Fragment>
     );

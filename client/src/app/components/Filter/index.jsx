@@ -66,8 +66,8 @@ const Filter = (props) => {
   ));
 
   return (
-    <div className="row mb-2">
-      <div className="col-xs-6 col-sm-4 col-md-3">
+    <div className="row">
+      <div className="col-12 col-sm-6 col-md-3 mb-2">
         <input
           type="text"
           placeholder="Search"
@@ -76,7 +76,7 @@ const Filter = (props) => {
           onChange={$event => setQuery({ field: 'searchText', value: $event.target.value })}
         />
       </div>
-      <div className="col-xs-6 col-sm-4 col-md-3">
+      <div className="col-12 col-sm-6 col-md-3 mb-2">
         <select
           name="genre"
           className="form-control filter-input"
@@ -86,7 +86,7 @@ const Filter = (props) => {
           {genreOptions}
         </select>
       </div>
-      <div className="col-xs-6 col-sm-4 col-md-3">
+      <div className="col-12 col-sm-6 col-md-3 mb-2">
         <div className="input-group">
           <select
             name="sortBy"
@@ -110,7 +110,7 @@ const Filter = (props) => {
           </div>
         </div>
       </div>
-      <div className="col-xs-6 col-sm-4 col-md-3">
+      <div className="col-12 col-sm-6 col-md-3 mb-2">
         <input
           type="text"
           placeholder="Year"

@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+
 import Discover from '../components/Discover';
 import { toggleFilter } from '../../common/Actions';
 import {

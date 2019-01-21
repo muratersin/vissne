@@ -80,6 +80,7 @@ export default class Discover extends Component {
 
 Discover.defaultProps = {
   isLoggedIn: false,
+  showFilter: true,
   user: {},
 };
 
@@ -87,8 +88,10 @@ Discover.propTypes = {
   getMovies: PropTypes.func.isRequired,
   getGenres: PropTypes.func.isRequired,
   setQuery: PropTypes.func.isRequired,
+  toggleFilter: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   isLoggedIn: PropTypes.bool,
+  showFilter: PropTypes.bool,
   user: UserShape,
   movies: PropTypes.arrayOf(MovieShape).isRequired,
   genres: PropTypes.arrayOf(GenreShape).isRequired,

@@ -13,42 +13,29 @@ export const SET_QUERY = 'SET_QUERY';
 export const SET_MOVIE_DETAIL = 'SET_MOVIE_DETAIL';
 
 // profile
-export const SET_PROFILE_DETAIL = 'SET_PROFILE_DETAIL';
-export const UPDATE_PROFILE = 'UPDATE_PROFILE';
-export const REMOVE_LIST = 'REMOVE_LIST';
-export const CREATE_LIST = 'CREATE_LIST';
-export const REMOVE_FROM_LIST = 'REMOVE_FROM_LIST';
-export const ADD_TO_LIST = 'ADD_TO_LIST';
-export const GET_PROFILE_DETAILS = 'GET_PROFILE_DETAILS';
+//  -- Account
+export const SET_ACCOUNT_DETAIL = 'SET_ACCOUNT_DETAIL';
 
 // constants
-export const SORT_OPTIONS = [
-  {
-    name: 'Popularity',
-    value: 'desc',
-  },
-  {
-    name: 'Release Date',
-    value: 'desc',
-  },
-  {
-    name: 'Revenue',
-    value: 'desc',
-  },
-  {
-    name: 'Primary Release Date',
-    value: 'desc',
-  },
-  {
-    name: 'Orginal Title',
-    value: 'desc',
-  },
-  {
-    name: 'Vote Average',
-    value: 'desc',
-  },
-  {
-    name: 'Vote Count',
-    value: 'desc',
-  }
-];
+export const SORT_OPTIONS = [{
+  name: 'Popularity',
+  value: 'desc',
+}, {
+  name: 'Release Date',
+  value: 'desc',
+}, {
+  name: 'Revenue',
+  value: 'desc',
+}, {
+  name: 'Primary Release Date',
+  value: 'desc',
+}, {
+  name: 'Orginal Title',
+  value: 'desc',
+}, {
+  name: 'Vote Average',
+  value: 'desc',
+}, {
+  name: 'Vote Count',
+  value: 'desc',
+}];

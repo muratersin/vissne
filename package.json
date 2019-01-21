@@ -7,8 +7,8 @@
   "scripts": {
     "start": "node server/bin/www",
     "start-dev": "nodemon server/bin/www",
-    "watch": "webpack --config client/config/webpack.dev.config.js --progress",
-    "build": "rimraf ./server/public/dist && webpack --config client/config/webpack.config.js --progress",
+    "watch": "rimraf ./server/public/dist && webpack --config client/config/webpack.dev.config.js",
+    "build": "rimraf ./server/public/dist && webpack --config client/config/webpack.config.js",
     "postinstall": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

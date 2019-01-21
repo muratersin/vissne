@@ -6,7 +6,7 @@ const LeftMenu = () => (
   <div className="list-group">
     <Link className="list-group-item list-group-item-action rounded-0" to="/profile">
       <FontAwesomeIcon icon="user" />
-      <span className="ml-2">Profile</span>
+      <span className="ml-2">Account</span>
     </Link>
     <Link className="list-group-item list-group-item-action rounded-0" to="/profile/lists">
       <FontAwesomeIcon icon="list" />

@@ -39,6 +39,13 @@ router.get('/auth', verifyToken(true), (req, res) => {
 router.get('/auth/*', notFound);
 router.get('/page-not-found', notFound);
 
+router.get('/profile', verifyToken(), (req, res) => {
+  return res.render('profile.html', {
+    title: 'Profile',
+    account: req.user,
+  });
+});
+
 router.get('/*', (req, res) => {
   res.render('index.html', {
     image,

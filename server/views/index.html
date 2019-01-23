@@ -1,20 +1,30 @@
-{% extends "_shared/layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block style %}
-<link rel="stylesheet" href="{{cdn}}/dist/auth.discover.css">
-<link rel="stylesheet" href="{{cdn}}/dist/discover.css">
-{% endblock%}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" , content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#141414" />
+    <link rel="stylesheet" href="{{cdn}}/dist/app.css">
+    <link rel="shortcut icon" href="{{cdn}}/favicon.ico" type="image/x-icon">
+    <title>{{ title }}</title>
+</head>
 
-{% block content %}
-<div id="app"></div>
-{% include "_partials/loading.html" %}
-{% include "_shared/footer.html" %}
-{% endblock %}
+<body>
+    <div id="app"></div>
+    <script>
+        var vissne = vissne || {};
+        vissne.cdn = '{{cdn}}';
+        vissne.domain = '{{domain}}';
+        vissne.imagesSecureBaseUrl = '{{imagesSecureBaseUrl}}';
+        vissne.defaultCoverImagePath = '{{image.defaultCoverImagePath}}';
+        vissne.env = '{{env}}';
+        window.vissne = vissne;
+    </script>
+    <script src="{{cdn}}/dist/app.bundle.js"></script>
+    <script src="{{cdn}}/dist/common.bundle.js"></script>
+    <script src="{{cdn}}/dist/react.bundle.js"></script>
+</body>
 
-{% block script %}
-{% include "_partials/common-script.html" %}
-<script src="{{cdn}}/dist/discover.bundle.js"></script>
-<script src="{{cdn}}/dist/auth.discover.bundle.js"></script>
-<script src="{{cdn}}/dist/vendor.discover.bundle.js"></script>
-<script src="{{cdn}}/dist/vendor.auth.discover.bundle.js"></script>
-{% endblock %}
+</html>

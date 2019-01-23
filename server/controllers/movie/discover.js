@@ -1,13 +1,23 @@
 const request = require('request');
-const { generateRouteDiscover, generateSearchRoute } = require('../../lib/route-generator');
-const movieDbConfig = require('../../config/app.config').api.moviedb;
+const {
+  generateRouteDiscover,
+  generateSearchRoute,
+  generateFilterRoute,
+} = require('../../lib/route-generator');
+const config = require('../../config/app.config');
 
 const { string } = commonGlobal.helpers;
 
 const discover = (req, res, next) => {
-  const url = !req.query.searchText
-    ? generateRouteDiscover(req.query)
-    : generateSearchRoute(req.query);
+  let url = generateRouteDiscover(req.query);
+
+  if (req.query.searchText) {
+    url = generateSearchRoute(req.query);
+  }
+
+  if (req.query.filter) {
+    url = generateFilterRoute(req.query);
+  }
 
   request(url, { json: true }, (error, response) => {
     if (error) {
@@ -18,7 +28,9 @@ const discover = (req, res, next) => {
 
     body.results = body.results.map(m => ({
       id: m.id,
-      poster: `${movieDbConfig.images.secure_base_url}/w500/${m.poster_path}`,
+      poster: m.poster_path
+        ? `${config.api.moviedb.images.secure_base_url}/w500/${m.poster_path}`
+        : `${config.cdn}/${config.image.defaultCoverImagePath}`,
       title: m.title,
       voteAverage: m.vote_average,
       slug: string.slugify(m.title),

@@ -19,8 +19,7 @@ const config = {
     ],
   },
   entry: {
-    discover: `${SCR_DIR}/app/discover/index.jsx`,
-    auth: `${SCR_DIR}/app/auth/index.jsx`,
+    app: `${SCR_DIR}/app/index.jsx`,
   },
   output: {
     path: BUILD_DIR,
@@ -69,10 +68,15 @@ const config = {
       automaticNameDelimiter: '.',
       chunks: 'all',
       cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
+        react: {
+          test: /[\\/]node_modules[\\/]((react).*)[\\/]/,
+          name: 'react',
           chunks: 'all',
-          priority: 1,
+        },
+        commons: {
+          test: /[\\/]node_modules[\\/]((?!react).*)[\\/]/,
+          name: 'common',
+          chunks: 'all',
         },
       },
     },

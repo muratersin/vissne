@@ -19,11 +19,15 @@ const config = {
   },
   entry: {
     discover: [
-      '@babel/polyfill',
+      // '@babel/polyfill',
       `${SCR_DIR}/app/discover/index.jsx`,
     ],
+    profile: [
+      // '@babel/polyfill',
+      `${SCR_DIR}/app/profile/index.jsx`,
+    ],
     auth: [
-      '@babel/polyfill',
+      // '@babel/polyfill',
       `${SCR_DIR}/app/auth/index.jsx`,
     ],
   },
@@ -67,15 +71,19 @@ const config = {
   },
   optimization: {
     nodeEnv: 'production',
-    concatenateModules: true,
     splitChunks: {
       automaticNameDelimiter: '.',
       chunks: 'all',
       cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
+        react: {
+          test: /[\\/]node_modules[\\/]((react).*)[\\/]/,
+          name: 'react',
           chunks: 'all',
-          priority: 1,
+        },
+        commons: {
+          test: /[\\/]node_modules[\\/]((?!react).*)[\\/]/,
+          name: 'common',
+          chunks: 'all',
         },
       },
     },

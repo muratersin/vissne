@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Spinner = (props) => {
+export default function Spinner(props) {
   const {
     show,
     size,
@@ -18,7 +18,7 @@ const Spinner = (props) => {
       <span className="sr-only">Loading...</span>
     </div>
   );
-};
+}
 
 Spinner.defaultProps = {
   show: false,
@@ -50,5 +50,3 @@ Spinner.propTypes = {
     'dark',
   ]),
 };
-
-export default Spinner;

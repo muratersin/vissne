@@ -20,7 +20,7 @@ const MovieCard = (props) => {
         <div className="movie-poster">
           <span className="badge badge-dark rating-tag">{rate}</span>
           <Image
-            className="card-img-top"
+            imageClass="card-img-top"
             src={image}
             alt={title}
           />

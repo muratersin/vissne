@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { GenreShape, FilterShape } from '../../../lib/prop-shapes';
-import { SORT_OPTIONS } from '../../common/ActionTypes';
+import { SORT_OPTIONS } from '../../constants/action-types';
 import './Filter.scss';
 
 function switchSortQuery(sortBy) {
@@ -44,7 +44,12 @@ const Filter = (props) => {
     genres,
     setQuery,
     query,
+    show,
   } = props;
+
+  if (!show) {
+    return null;
+  }
 
   const sortIconClass = query.sortBy.split('.')[1] === 'desc'
     ? 'down'
@@ -66,8 +71,8 @@ const Filter = (props) => {
   ));
 
   return (
-    <div className="row mb-2">
-      <div className="col-xs-6 col-sm-4 col-md-3">
+    <div className="row">
+      <div className="col-12 col-sm-6 col-md-3 mb-2">
         <input
           type="text"
           placeholder="Search"
@@ -76,7 +81,7 @@ const Filter = (props) => {
           onChange={$event => setQuery({ field: 'searchText', value: $event.target.value })}
         />
       </div>
-      <div className="col-xs-6 col-sm-4 col-md-3">
+      <div className="col-12 col-sm-6 col-md-3 mb-2">
         <select
           name="genre"
           className="form-control filter-input"
@@ -86,7 +91,7 @@ const Filter = (props) => {
           {genreOptions}
         </select>
       </div>
-      <div className="col-xs-6 col-sm-4 col-md-3">
+      <div className="col-12 col-sm-6 col-md-3 mb-2">
         <div className="input-group">
           <select
             name="sortBy"
@@ -110,7 +115,7 @@ const Filter = (props) => {
           </div>
         </div>
       </div>
-      <div className="col-xs-6 col-sm-4 col-md-3">
+      <div className="col-12 col-sm-6 col-md-3 mb-2">
         <input
           type="text"
           placeholder="Year"
@@ -122,10 +127,15 @@ const Filter = (props) => {
   );
 };
 
+Filter.defaultProps = {
+  show: true,
+};
+
 Filter.propTypes = {
   genres: PropTypes.arrayOf(GenreShape).isRequired,
   query: FilterShape.isRequired,
   setQuery: PropTypes.func.isRequired,
+  show: PropTypes.bool,
 };
 
 export default Filter;

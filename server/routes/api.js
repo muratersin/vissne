@@ -58,9 +58,9 @@ router.get('/movie/:movieId', [
 router.get('/discover', controllers.movie.discover);
 router.get('/genre', controllers.movie.genre);
 
-router.get('/profile', [
+router.get('/account', [
   verifyToken,
-  controllers.profile.getCurrentUser,
+  controllers.account.getUserAccount,
 ]);
 
 module.exports = router;

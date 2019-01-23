@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 
-import Discover from '../components/Discover';
-import { toggleFilter } from '../../common/Actions';
+import Discover from './Discover';
+import { toggleFilter } from '../../actions/common';
 import {
   getMovies,
   setQuery,
   getGenres,
-} from '../actions/DiscoverActions';
+} from '../../actions/discover';
 
 const mapStateToProps = state => ({
   loading: state.common.loading,

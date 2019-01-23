@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import Account from '../components/Account';
-import { getAccountDetail } from '../actions/AccountActions';
+import Account from './Account';
+import { getAccountDetail } from '../../actions/account';
 
 const mapStateToProps = state => state.account;
 

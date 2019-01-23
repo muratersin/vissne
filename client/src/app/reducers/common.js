@@ -1,4 +1,4 @@
-import { TOGGLE_ALERT, LOADING, TOGGLE_FILTER } from './ActionTypes';
+import { TOGGLE_ALERT, LOADING, TOGGLE_FILTER } from '../constants/action-types';
 
 const initialState = {
   showAlert: false,

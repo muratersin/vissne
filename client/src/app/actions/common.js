@@ -1,5 +1,5 @@
 
-import { TOGGLE_ALERT, LOADING, TOGGLE_FILTER } from './ActionTypes';
+import { TOGGLE_ALERT, LOADING, TOGGLE_FILTER } from '../constants/action-types';
 
 export const toggleAlert = ({ message, kind }) => ({
   type: TOGGLE_ALERT,

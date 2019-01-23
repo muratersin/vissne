@@ -1,4 +1,4 @@
-import { SET_ACCOUNT_DETAIL } from '../../common/ActionTypes';
+import { SET_ACCOUNT_DETAIL } from '../constants/action-types';
 
 const initialState = {};
 

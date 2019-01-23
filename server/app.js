@@ -36,7 +36,7 @@ app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(config.publicPath));
+app.use('/static', express.static(config.publicPath));
 
 app.use((req, res, next) => {
   res.locals.cdn = config.cdn;

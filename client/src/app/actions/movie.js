@@ -1,6 +1,6 @@
-import xhr from '../../../lib/xhr';
-import { SET_MOVIE_DETAIL } from '../../common/ActionTypes';
-import { toggleAlert } from '../../common/Actions';
+import xhr from '../../lib/xhr';
+import { SET_MOVIE_DETAIL } from '../constants/action-types';
+import { toggleAlert } from './common';
 
 export const setMovieDetail = detail => ({
   type: SET_MOVIE_DETAIL,

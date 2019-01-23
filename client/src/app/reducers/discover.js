@@ -1,5 +1,5 @@
-import { SET_MOVIES, SET_GENRES, SET_QUERY } from '../../common/ActionTypes';
-import cookie from '../../../lib/cookie';
+import { SET_MOVIES, SET_GENRES, SET_QUERY } from '../constants/action-types';
+import cookie from '../../lib/cookie';
 
 const userFirstName = cookie.get('user_first_name');
 const userLastName = cookie.get('user_last_name');

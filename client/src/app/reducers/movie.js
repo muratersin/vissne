@@ -1,4 +1,4 @@
-import { SET_MOVIE_DETAIL } from '../../common/ActionTypes';
+import { SET_MOVIE_DETAIL } from '../constants/action-types';
 
 const initialState = {
   detail: null,

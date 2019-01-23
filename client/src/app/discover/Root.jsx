@@ -8,7 +8,7 @@ import Discover from '../containers/Discover';
 import Movie from '../containers/Movie';
 
 // Shared Components
-import Alert from '../../common/containers/Alert';
+import Alert from '../containers/Alert';
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -19,7 +19,7 @@ const Root = ({ store }) => (
           <Route path="/coming-soon" component={Discover} />
           <Route path="/in-theaters" component={Discover} />
           <Route path="/movie/:slug/:id" component={Movie} />
-          <Route component={() => { window.location.href = `${vissne.domain}page-not-found`; }} />
+          <Route component={() => { window.location.href = `${vissne.domain}/page-not-found`; }} />
         </Switch>
       </Router>
       <Alert />

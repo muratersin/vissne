@@ -1,6 +1,6 @@
-import { SET_ACCOUNT_DETAIL } from '../../common/ActionTypes';
-import { toggleAlert, loading } from '../../common/Actions';
-import xhr from '../../../lib/xhr';
+import { SET_ACCOUNT_DETAIL } from '../constants/action-types';
+import { toggleAlert, loading } from './common';
+import xhr from '../../lib/xhr';
 
 export const setAccountDetail = account => ({
   type: SET_ACCOUNT_DETAIL,

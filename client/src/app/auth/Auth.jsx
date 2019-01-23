@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import Alert from '../components/Alert';
+import Alert from '../containers/Alert/Alert';
 import xhr from '../../lib/xhr';
 import './Auth.scss';
 
@@ -220,7 +220,7 @@ export default class Auth extends Component {
     return (
       <Fragment>
         <div className="row justify-content-center">
-          <img src="images/logo.png" alt="Vissne" height="70" className="my-2" />
+          <img src={`${vissne.cdn}/images/logo.png`} alt="Vissne" height="70" className="my-2" />
         </div>
         <form onSubmit={this.handleSubmit} id="formReg" className="col-12 p-0">
           <div className="form-group">

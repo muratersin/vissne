@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const LeftMenu = () => (
+const Menu = () => (
   <div className="list-group">
     <Link className="list-group-item list-group-item-action rounded-0" to="/profile">
       <FontAwesomeIcon icon="user" />
@@ -35,4 +35,4 @@ const LeftMenu = () => (
   </div>
 );
 
-export default LeftMenu;
+export default Menu;

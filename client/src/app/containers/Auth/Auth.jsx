@@ -1,10 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import Alert from '../containers/Alert/Alert';
-import xhr from '../../lib/xhr';
-import './Auth.scss';
-
 export default class Auth extends Component {
   constructor() {
     super();
@@ -19,11 +15,10 @@ export default class Auth extends Component {
       },
     };
 
-    this.login = this.login.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.validation = this.validation.bind(this);
     this.switchForm = this.switchForm.bind(this);
-    this.toggleAlert = this.toggleAlert.bind(this);
+    this.loginRegister = this.loginRegister.bind(this);
   }
 
   handleChange({ target }) {
@@ -85,39 +80,20 @@ export default class Auth extends Component {
     return isValid;
   }
 
-  login() {
+  loginRegister() {
     const { form, isRegister } = this.state;
     const isValid = this.validation(form);
-    const url = isRegister
-      ? 'register'
-      : 'login';
 
     if (!isValid) {
       return null;
     }
 
-    const ops = {
-      url,
-      method: 'POST',
-      data: form,
-    };
+    const { props } = this;
+    const url = isRegister
+      ? 'register'
+      : 'login';
 
-    return xhr(ops)
-      .then(() => {
-        window.location.href = '/';
-      })
-      .catch(({ message }) => {
-        this.setState({
-          showAlert: true,
-          errorMessage: message,
-        });
-      });
-  }
-
-  toggleAlert() {
-    this.setState(prevState => ({
-      showAlert: !prevState.showAlert,
-    }));
+    return props.loginRegister(form, url);
   }
 
   switchForm() {
@@ -132,8 +108,6 @@ export default class Auth extends Component {
       isRegister,
       validation,
       loading,
-      showAlert,
-      errorMessage,
     } = this.state;
 
     let buttonText = 'LOGIN';
@@ -218,110 +192,112 @@ export default class Auth extends Component {
     }
 
     return (
-      <Fragment>
-        <div className="row justify-content-center">
-          <img src={`${vissne.cdn}/images/logo.png`} alt="Vissne" height="70" className="my-2" />
+      <div className="container">
+        <div className="row justify-content-md-center">
+          <div className="col-12 col-sm-12 col-md-8 col-lg-6 col-xl-5">
+            <div className="card auth-form">
+              <div className="card-body">
+                <div className="row justify-content-center">
+                  <img src={`${vissne.cdn}/images/logo.png`} alt="Vissne" height="70" className="my-2" />
+                </div>
+                <form onSubmit={this.handleSubmit} id="formReg" className="col-12 p-0">
+                  <div className="form-group">
+                    <label htmlFor="emailInput">Email</label>
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text border-top-0 border-left-0 border-right-0 border-dark bg-transparent rounded-0" id="basic-addon1">
+                          <FontAwesomeIcon icon="envelope" />
+                        </span>
+                      </div>
+                      <input
+                        type="email"
+                        name="email"
+                        value={form.email}
+                        id="emailInput"
+                        autoComplete="email"
+                        aria-describedby="emailInputGroup"
+                        placeholder="Enter email"
+                        onChange={this.handleChange}
+                        className={`form-control border-top-0 border-left-0 border-right-0 border-dark rounded-0 b bg-transparent ${validation.email.class || ''}`}
+                      />
+                      {validation.email.error}
+                    </div>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="passwordInput">Password</label>
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text border-top-0 border-left-0 border-right-0 border-dark bg-transparent rounded-0" id="passwordAddon">
+                          <FontAwesomeIcon icon="unlock" />
+                        </span>
+                      </div>
+                      <input
+                        type="password"
+                        name="password"
+                        value={form.password}
+                        id="passwordInput"
+                        placeholder="Password"
+                        aria-describedby="passwordAddon"
+                        onChange={this.handleChange}
+                        autoComplete="current-password"
+                        className={`form-control border-top-0 border-left-0 border-right-0 border-dark rounded-0 b bg-transparent ${validation.password.class || ''}`}
+                      />
+                      {validation.password.error}
+                    </div>
+                  </div>
+
+                  {registerInput}
+
+                  <div className="row">
+                    <div className="col-12 text-right">
+                      <button
+                        className="btn btn-link"
+                        onClick={this.switchForm}
+                        type="button"
+                      >
+                        {switchRegisterToLoginText}
+                      </button>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="btn btn-dark btn-block"
+                    onClick={this.loginRegister}
+                    disabled={loading}
+                  >
+                    <span
+                      className={`spinner-grow spinner-grow-sm ${loading ? '' : 'd-none'}`}
+                      role="status"
+                      aria-hidden="true"
+                    />
+                    {buttonText}
+                  </button>
+                </form>
+                <a
+                  className="btn btn-default btn-block btn-dark border-0 social-button google  mt-2"
+                  href="auth/google"
+                >
+                  <i className="social-button-icon">
+                    <FontAwesomeIcon icon={['fab', 'google']} />
+                  </i>
+                  LOGIN WITH GOOGLE
+                </a>
+                <a
+                  className="btn btn-block btn-dark border-0 social-button facebook mt-2"
+                  href="auth/facebook"
+                >
+                  <i className="social-button-icon">
+                    <FontAwesomeIcon icon={['fab', 'facebook']} />
+                  </i>
+                  LOGIN WITH FACEBOOK
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-        <form onSubmit={this.handleSubmit} id="formReg" className="col-12 p-0">
-          <div className="form-group">
-            <label htmlFor="emailInput">Email</label>
-            <div className="input-group">
-              <div className="input-group-prepend">
-                <span className="input-group-text border-top-0 border-left-0 border-right-0 border-dark bg-transparent rounded-0" id="basic-addon1">
-                  <FontAwesomeIcon icon="envelope" />
-                </span>
-              </div>
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                id="emailInput"
-                autoComplete="email"
-                aria-describedby="emailInputGroup"
-                placeholder="Enter email"
-                onChange={this.handleChange}
-                className={`form-control border-top-0 border-left-0 border-right-0 border-dark rounded-0 b bg-transparent ${validation.email.class || ''}`}
-              />
-              {validation.email.error}
-            </div>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="passwordInput">Password</label>
-            <div className="input-group">
-              <div className="input-group-prepend">
-                <span className="input-group-text border-top-0 border-left-0 border-right-0 border-dark bg-transparent rounded-0" id="passwordAddon">
-                  <FontAwesomeIcon icon="unlock" />
-                </span>
-              </div>
-              <input
-                type="password"
-                name="password"
-                value={form.password}
-                id="passwordInput"
-                placeholder="Password"
-                aria-describedby="passwordAddon"
-                onChange={this.handleChange}
-                autoComplete="current-password"
-                className={`form-control border-top-0 border-left-0 border-right-0 border-dark rounded-0 b bg-transparent ${validation.password.class || ''}`}
-              />
-              {validation.password.error}
-            </div>
-          </div>
-
-          {registerInput}
-
-          <div className="row">
-            <div className="col-12 text-right">
-              <button
-                className="btn btn-link"
-                onClick={this.switchForm}
-                type="button"
-              >
-                {switchRegisterToLoginText}
-              </button>
-            </div>
-          </div>
-
-          <button
-            type="button"
-            className="btn btn-dark btn-block"
-            onClick={this.login}
-            disabled={loading}
-          >
-            <span
-              className={`spinner-grow spinner-grow-sm ${loading ? '' : 'd-none'}`}
-              role="status"
-              aria-hidden="true"
-            />
-            {buttonText}
-          </button>
-        </form>
-        <a
-          className="btn btn-default btn-block btn-dark border-0 social-button google  mt-2"
-          href="auth/google"
-        >
-          <i className="social-button-icon">
-            <FontAwesomeIcon icon={['fab', 'google']} />
-          </i>
-          LOGIN WITH GOOGLE
-        </a>
-        <a
-          className="btn btn-block btn-dark border-0 social-button facebook mt-2"
-          href="auth/facebook"
-        >
-          <i className="social-button-icon">
-            <FontAwesomeIcon icon={['fab', 'facebook']} />
-          </i>
-          LOGIN WITH FACEBOOK
-        </a>
-        <Alert
-          show={showAlert}
-          message={errorMessage}
-          kind="danger"
-          toggleAlert={this.toggleAlert}
-        />
-      </Fragment>
+      </div>
     );
   }
 }

@@ -3,6 +3,11 @@ export const LOADING = 'LOADING';
 export const TOGGLE_ALERT = 'TOGGLE_ALERT';
 export const TOGGLE_FILTER = 'TOGGLE_FILTER';
 
+// auth
+export const LOGIN = 'LOGIN';
+export const REGISTER = 'REGISTER';
+export const SET_USER = 'SET_USER';
+
 // discover
 export const GET_MOVIES = 'GET_MOVIES';
 export const SET_MOVIES = 'SET_MOVIES';

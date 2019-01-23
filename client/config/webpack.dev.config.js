@@ -19,9 +19,7 @@ const config = {
     ],
   },
   entry: {
-    discover: `${SCR_DIR}/app/discover/index.jsx`,
-    profile: `${SCR_DIR}/app/profile/index.jsx`,
-    auth: `${SCR_DIR}/app/auth/index.jsx`,
+    app: `${SCR_DIR}/app/index.jsx`,
   },
   output: {
     path: BUILD_DIR,

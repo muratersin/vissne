@@ -5,6 +5,7 @@ import MovieList from '../../components/MovieList';
 import Navbar from '../../components/Navbar';
 import Spinner from '../../components/Spinner';
 import Filter from '../../components/Filter';
+import Footer from '../../components/Footer';
 import {
   UserShape,
   MovieShape,
@@ -73,6 +74,7 @@ export default class Discover extends Component {
             <Spinner show={loading} size="md" />
           </div>
         </div>
+        <Footer />
       </Fragment>
     );
   }

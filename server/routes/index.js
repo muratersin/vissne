@@ -1,13 +1,9 @@
+
 const express = require('express');
 const passport = require('passport');
 
 const router = express.Router();
-const notFound = require('../middlewares/not-found');
 const { image } = require('../config/app.config');
-
-const {
-  verifyToken,
-} = commonGlobal.middlewares;
 
 router.get('/logout', (req, res) => {
   res.clearCookie('jwt');
@@ -25,26 +21,6 @@ router.get('/auth/google', passport.authenticate('google', {
 }));
 
 router.get('/auth/facebook', passport.authenticate('facebook'));
-
-router.get('/auth', verifyToken(true), (req, res) => {
-  if (req.user) {
-    return res.redirect('/');
-  }
-
-  return res.render('auth.html', {
-    title: 'Vissne - Login',
-  });
-});
-
-router.get('/auth/*', notFound);
-router.get('/page-not-found', notFound);
-
-router.get('/profile', verifyToken(), (req, res) => {
-  return res.render('profile.html', {
-    title: 'Profile',
-    account: req.user,
-  });
-});
 
 router.get('/*', (req, res) => {
   res.render('index.html', {

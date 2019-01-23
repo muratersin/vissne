@@ -6,7 +6,7 @@ import MovieCard from './MovieCard';
 
 const MovieList = ({ movies }) => {
   const list = movies.map(movie => (
-    <div key={movie.id} className="col-12 col-sm-6 col-md-4 col-lg-3">
+    <div key={movie.id} className="col-12 col-sm-6 col-md-4 col-lg-2">
       <MovieCard
         id={movie.id}
         image={movie.poster}

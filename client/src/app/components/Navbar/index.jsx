@@ -16,7 +16,7 @@ const Navbar = (props) => {
   const loginButton = isLoggedIn ? (
     <Fragment>
       <li className="nav-item ">
-        <Link className="nav-link" to="/profile" title="Profile">
+        <Link className="nav-link" to="/profile/account" title="Profile">
           <span className="mr-2">{user.fullName}</span>
           <FontAwesomeIcon icon="user" />
         </Link>
@@ -29,7 +29,7 @@ const Navbar = (props) => {
     </Fragment>
   ) : (
     <li className="nav-item">
-      <a href="/auth" className="nav-link">LOGIN</a>
+      <Link to="/auth" className="nav-link">LOGIN</Link>
     </li>
   );
 
@@ -61,20 +61,20 @@ const Navbar = (props) => {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
-            <a
+            <Link
               className={`nav-link ${pathName === '/in-theaters' ? 'active' : ''}`}
-              href="/in-theaters"
+              to="/in-theaters"
             >
               IN THEATERS
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a
+            <Link
               className={`nav-link ${pathName === '/coming-soon' ? 'active' : ''}`}
-              href="/coming-soon"
+              to="/coming-soon"
             >
               COMING SOON
-            </a>
+            </Link>
           </li>
         </ul>
         <ul className="navbar-nav my-auto">

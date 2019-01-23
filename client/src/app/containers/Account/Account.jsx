@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Menu from '../../components/Menu';
+import ProfileContainer from '../../components/ProfileContainer';
 
 export default class Account extends Component {
   constructor(props) {
@@ -9,15 +9,12 @@ export default class Account extends Component {
   }
 
   render() {
+    const { match } = this.props;
+
     return (
-      <div className="row">
-        <div className="col-12 col-sm-12 col-md-4 col-lg-2">
-          <Menu />
-        </div>
-        <div className="col">
-          mmeasd
-        </div>
-      </div>
+      <ProfileContainer path={match.path}>
+        <h1>Account</h1>
+      </ProfileContainer>
     );
   }
 }

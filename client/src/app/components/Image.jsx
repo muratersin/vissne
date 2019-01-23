@@ -29,11 +29,11 @@ const Image = (props) => {
   return (
     <Fragment>
       <img
-        className={imageClass}
+        className={`img-fluid ${imageClass}`}
         src={src}
         alt={alt}
         onLoad={$event => onLoad($event, spinnerId)}
-        onError={$event => onError($event, spinnerId)}
+        onError={$event => onError($event, spinnerId)}y
       />
       <div id={spinnerId} className="h-100 w-100 d-flex align-items-center justify-content-center">
         <div

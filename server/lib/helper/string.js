@@ -8,8 +8,7 @@
  * @example
  * capitalize('helLo') // Hello
  */
-const capitalize = ([first, ...rest]) => `${first.toUpperCase()}${rest.join('').toLowerCase()}`;
-module.exports.capitalize = capitalize;
+module.exports.capitalize = ([first, ...rest]) => `${first.toUpperCase()}${rest.join('').toLowerCase()}`;
 
 /**
  * @param {string} str string to be converted
@@ -20,7 +19,7 @@ module.exports.capitalize = capitalize;
  * @example
  * capitalizeEveryWord('hello world') // Hello World
  */
-const capitalizeEveryWord = str => str.replace(/\b[a-z]/g, char => char.toUpperCase());
+module.exports.capitalizeEveryWord = str => str.replace(/\b[a-z]/g, char => char.toUpperCase());
 
 /**
  * @param {string} str
@@ -31,7 +30,7 @@ const capitalizeEveryWord = str => str.replace(/\b[a-z]/g, char => char.toUpperC
  * @example
  * compactWhiteSpace('   Lorem ip') // 'Lorem ip'
  */
-const compactWhiteSpace = str => str.replace(/\s{2,}/g, ' ');
+module.exports.compactWhiteSpace = str => str.replace(/\s{2,}/g, ' ');
 
 /**
  * @param {string} str
@@ -44,7 +43,7 @@ const compactWhiteSpace = str => str.replace(/\s{2,}/g, ' ');
  * fromCamelCase('someDatabaseFieldName', ' '); // 'some database field name'
  * fromCamelCase('someJavascriptProperty', '_'); // 'some_javascript_property'
  */
-const fromCamelCase = (str, separator = ' ') => str
+module.exports.fromCamelCase = (str, separator = ' ') => str
   .replace(/([a-z\d])([A-Z])/g, `$1${separator}$2`)
   .replace(/([A-Z]+)([A-Z][a-z\d]+)/g, `$1${separator}$2`)
   .toLowerCase();
@@ -60,7 +59,7 @@ const fromCamelCase = (str, separator = ' ') => str
  * isAbsoluteURL('ftp://www.myserver.net'); // true
  * isAbsoluteURL('/foo/bar'); // false
  */
-const isAbsoluteURL = url => /^[a-z][a-z0-9+.-]*:/.test(url);
+module.exports.isAbsoluteURL = url => /^[a-z][a-z0-9+.-]*:/.test(url);
 
 /**
  * @param {string} str
@@ -73,7 +72,7 @@ const isAbsoluteURL = url => /^[a-z][a-z0-9+.-]*:/.test(url);
  * toCamelCase('To camel case'); // 'toCamelCase'
  * toCamelCase('to-camel-case'); // 'toCamelCase'
  */
-const toCamelCase = (str) => {
+module.exports.toCamelCase = (str) => {
   const s = str && str
     .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
     .map(x => x.slice(0, 1).toUpperCase() + x.slice(1).toLowerCase())
@@ -90,7 +89,7 @@ const toCamelCase = (str) => {
  * @example
  * truncate('Truncate title', 6); // 'Tru...'
  */
-const truncate = (str, num) => (
+module.exports.truncate = (str, num) => (
   (str.length > num)
     ? `${str.slice(0, num > 3 ? num - 3 : num)}...`
     : str
@@ -105,15 +104,4 @@ const truncate = (str, num) => (
  * @example
  * toCamelCase('The Big Fish'); // 'the-big-fish'
  */
-const slugify = str => str.replace(/[^\w\s-]/g, '').replace(/ /g, '-').toLowerCase();
-
-module.exports = {
-  capitalize,
-  capitalizeEveryWord,
-  compactWhiteSpace,
-  fromCamelCase,
-  isAbsoluteURL,
-  toCamelCase,
-  truncate,
-  slugify,
-};
+module.exports.slugify = str => str.replace(/[^\w\s-]/g, '').replace(/ /g, '-').toLowerCase();

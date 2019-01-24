@@ -18,17 +18,9 @@ const config = {
     ],
   },
   entry: {
-    discover: [
+    app: [
       // '@babel/polyfill',
-      `${SCR_DIR}/app/discover/index.jsx`,
-    ],
-    profile: [
-      // '@babel/polyfill',
-      `${SCR_DIR}/app/profile/index.jsx`,
-    ],
-    auth: [
-      // '@babel/polyfill',
-      `${SCR_DIR}/app/auth/index.jsx`,
+      `${SCR_DIR}/app/app/index.jsx`,
     ],
   },
   output: {

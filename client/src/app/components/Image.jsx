@@ -33,7 +33,7 @@ const Image = (props) => {
         src={src}
         alt={alt}
         onLoad={$event => onLoad($event, spinnerId)}
-        onError={$event => onError($event, spinnerId)}y
+        onError={$event => onError($event, spinnerId)}
       />
       <div id={spinnerId} className="h-100 w-100 d-flex align-items-center justify-content-center">
         <div

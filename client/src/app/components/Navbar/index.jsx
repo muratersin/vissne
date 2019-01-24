@@ -48,6 +48,13 @@ const Navbar = (props) => {
         <button
           className="navbar-toggler"
           type="button"
+          id="filterButton"
+        >
+          <FontAwesomeIcon icon="filter" />
+        </button>
+        <button
+          className="navbar-toggler"
+          type="button"
           data-toggle="collapse"
           data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent"

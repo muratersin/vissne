@@ -71,7 +71,7 @@ const Filter = (props) => {
   ));
 
   return (
-    <div className="row">
+    <div className="row sticky-top bg-white mb-2 pt-2 shadow-sm d-none d-lg-flex">
       <div className="col-12 col-sm-6 col-md-3 mb-2">
         <input
           type="text"

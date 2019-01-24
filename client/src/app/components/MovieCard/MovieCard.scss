@@ -10,7 +10,13 @@
     
     .rating-tag {
         position: absolute;
-        top: 0.5rem;
-        right: 1rem;
-    }    
+        color: black;
+        right: 0;
+        background-color: #F5C518;
+        border-radius: 0;
+        height: 1.6rem;
+        width: 2rem;
+        font-size: 16px;
+        border-bottom-left-radius: 10px;
+    }
 }

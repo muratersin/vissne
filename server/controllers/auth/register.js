@@ -2,7 +2,17 @@ const bcrypt = require('bcrypt');
 const { saltRounds } = require('../../config/app.config');
 const { createJWToken } = require('../../lib/auth');
 const User = require('../../models/user');
+const trimStringFields = require('../../lib/helper/object');
 
+/**
+ * @name registerController
+ *
+ * @param {Express.Request} req
+ * @param {Express.Response} res
+ * @param {function} next
+ *
+ * @description
+ */
 async function registerController(req, res, next) {
   try {
     const { body } = req;
@@ -20,11 +30,11 @@ async function registerController(req, res, next) {
     }
 
     const salt = await bcrypt.genSalt(saltRounds);
-    const hash = await bcrypt.hash(body.password, salt);
+    const hash = await bcrypt.hash(body.password.trim(), salt);
 
     body.password = hash;
 
-    const result = await User.create(body);
+    const result = await User.create(trimStringFields(body));
 
     req.publicUserData = result.publicParse();
 

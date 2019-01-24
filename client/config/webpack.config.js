@@ -20,7 +20,7 @@ const config = {
   entry: {
     app: [
       // '@babel/polyfill',
-      `${SCR_DIR}/app/app/index.jsx`,
+      `${SCR_DIR}/app/index.jsx`,
     ],
   },
   output: {

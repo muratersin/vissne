@@ -1,12 +1,11 @@
 const request = require('request');
+const config = require('../../config/app.config');
+const string = require('../../lib/helper/string');
 const {
   generateRouteDiscover,
   generateSearchRoute,
   generateFilterRoute,
 } = require('../../lib/route-generator');
-const config = require('../../config/app.config');
-
-const { string } = commonGlobal.helpers;
 
 const discover = (req, res, next) => {
   let url = generateRouteDiscover(req.query);

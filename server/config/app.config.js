@@ -30,6 +30,21 @@ const appConfig = {
   faviconPath: path.join(__dirname, '../public/favicon.ico'),
   saltRounds: 10,
   jwtSecret: JWTSECRET,
+  corsOptions: {
+    origin: (origin, callback) => {
+      const whiteList = [
+        'http://localhost:3000',
+        'https://vissne.herokuapp.com',
+        'https://vissne.com',
+      ];
+
+      if (whiteList.indexOf(origin) === -1) {
+        return callback(new Error('Not allowed by CORS'));
+      }
+
+      return callback(null, true);
+    },
+  },
 
   facebook: {
     appId: FACEBOOK_APP_ID,

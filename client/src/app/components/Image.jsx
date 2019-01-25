@@ -26,6 +26,7 @@ const Image = (props) => {
   uSpinnerid += 1;
 
   const spinnerId = `spin${uSpinnerid}`;
+
   return (
     <Fragment>
       <img

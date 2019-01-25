@@ -3,13 +3,11 @@ const path = require('path');
 const { string } = require('./helper');
 
 /**
- * @name fileCollector
+ * When you call this method and pass a valid directory, return
+ * all exported methods as object. I will be recursive only one sub folder.
  *
  * @param {String} dirname
  * @returns {Object}
- *
- * @description When you call this method and pass a valid directory, return
- * all exported methods as object. I will be recursive only one sub folder.
  */
 function fileCollector(dirname) {
   if (!dirname || typeof dirname !== 'string') {

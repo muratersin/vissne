@@ -5,6 +5,7 @@ const favicon = require('serve-favicon');
 const helmet = require('helmet');
 const passport = require('passport');
 const nunjucks = require('nunjucks');
+const cors = require('cors');
 
 const config = require('../config/app.config');
 const logger = require('./logger');
@@ -30,6 +31,7 @@ function init() {
     app.use(logger.accessLogger);
   }
 
+  app.use(cors());
   app.use(passport.initialize());
   app.use(favicon(config.faviconPath));
   app.use(helmet());

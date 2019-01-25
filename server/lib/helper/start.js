@@ -25,7 +25,6 @@ function catchNotFoundError(req, res, next) {
 }
 
 function handleError(err, req, res) {
-  // res.locals.error = req.app.get('env') === 'development' ? err : {};
   res.status(err.status || 500).json({
     message: err.message,
   });

@@ -25,7 +25,7 @@ export default function common(state = initialState, action) {
 
     case TOGGLE_FILTER:
       return Object.assign({}, state, {
-        showFilter: action.showFilter,
+        showFilter: !state.showFilter,
       });
 
     default:

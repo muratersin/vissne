@@ -12,7 +12,6 @@ export const loading = status => ({
   loading: status,
 });
 
-export const toggleFilter = showFilter => ({
+export const toggleFilter = () => ({
   type: TOGGLE_FILTER,
-  showFilter,
 });

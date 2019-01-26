@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import Image from '../Image';
+import Poster from '../Poster';
 import './MovieCard.scss';
 
 const MovieCard = (props) => {
@@ -16,18 +15,12 @@ const MovieCard = (props) => {
   } = props;
 
   return (
-    <div className="movie-card">
-      <Link to={`movie/${slug}/${id}`}>
-        <div className="movie-poster">
-          <span className="badge rating-tag shadow-sm d-flex flex-column">
-            {rate}
-          </span>
-          <Image
-            imageClass="card-img-top img-thumbnail"
-            src={image}
-            alt={title}
-          />
-        </div>
+    <div className="movie-card h-100 w-100 rounded-0 d-flex align-items-center justify-content-center img-thumbnail">
+      <Link to={`movie/${slug}/${id}`} className="w-100">
+        <span className="badge rating-tag shadow-sm d-flex flex-column">
+          {rate}
+        </span>
+        <Poster src={image} alt={title} />
       </Link>
     </div>
   );

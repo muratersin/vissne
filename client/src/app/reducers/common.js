@@ -4,7 +4,7 @@ const initialState = {
   showAlert: false,
   alertMessage: null,
   alertKind: 'info',
-  loading: false,
+  loading: true,
   showFilter: true,
 };
 

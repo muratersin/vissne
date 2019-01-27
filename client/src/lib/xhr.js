@@ -32,7 +32,7 @@ function xhr(ops) {
 
     const http = new XMLHttpRequest();
     http.open(options.method, url, true);
-    http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    http.setRequestHeader('Content-type', 'application/json');
     http.send(data);
 
     http.onreadystatechange = () => {
@@ -44,6 +44,9 @@ function xhr(ops) {
 
         switch (status) {
           case 403:
+            window.location.href = `${vissne.domain}/auth`;
+            break;
+
           case 400:
           case 500:
             reject(response);

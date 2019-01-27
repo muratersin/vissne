@@ -1,6 +1,10 @@
 const passport = require('passport');
+const multer = require('multer');
 
+const config = require('../config/app.config');
 const controllers = require('../controllers');
+
+const upload = multer({ dest: config.path.upload });
 const {
   paramCheck,
   setCookie,
@@ -82,6 +86,29 @@ module.exports = {
   },
   '/auth/facebook': {
     get: passport.authenticate('facebook'),
+  },
+  '/upload': {
+    '/image': {
+      '/:folder': {
+        '/:userId': {
+          post: [
+            upload.single('avatar'),
+            controllers.file.imageUpload,
+          ],
+        },
+      },
+    },
+  },
+  '/file': {
+    '/:kind': {
+      '/:folder': {
+        ':/userId': {
+          get: [
+            controllers.file.getFile,
+          ],
+        },
+      },
+    },
   },
   '/*': {
     get: controllers.home.index,

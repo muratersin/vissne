@@ -19,15 +19,20 @@ const suffix = env === 'production'
   ? `?v=${version}`
   : '';
 
+const projectDir = path.resolve(__dirname, '../');
+
 const appConfig = {
   domain,
   cdn,
   version,
   env,
   name: 'Vissne',
-  publicPath: path.join(__dirname, '../public'),
-  viewPath: path.join(__dirname, '../views'),
-  faviconPath: path.join(__dirname, '../public/favicon.ico'),
+  path: {
+    public: path.join(projectDir, 'public'),
+    view: path.join(projectDir, 'views'),
+    favicon: path.join(projectDir, 'public/favicon.ico'),
+    upload: path.join(projectDir, 'upload'),
+  },
   saltRounds: 10,
   jwtSecret: JWTSECRET,
   corsOptions: {

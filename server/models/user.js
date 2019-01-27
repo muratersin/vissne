@@ -39,6 +39,11 @@ const User = sequelize.define('user', {
     defaultValue: 'local',
     allowNull: false,
   },
+  avatar: {
+    type: Sequelize.STRING,
+    defaultValue: 'default-avatar.jpg',
+    allowNull: false,
+  },
 });
 
 User.prototype.comparePassword = function comparePassword(password, callBack) {
@@ -56,6 +61,7 @@ User.prototype.publicParse = function publicParse() {
     fullName: `${this.firstName} ${this.lastName}`,
     email: this.email,
     provider: this.provider,
+    avatar: this.avatar,
   };
 };
 

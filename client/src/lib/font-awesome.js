@@ -18,6 +18,7 @@ import {
   faSwatchbook,
   faUserFriends,
   faCog,
+  faEdit,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebook,
@@ -50,5 +51,6 @@ export default function init() {
     faSwatchbook,
     faUserFriends,
     faCog,
+    faEdit,
   );
 }

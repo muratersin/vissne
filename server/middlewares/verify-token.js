@@ -1,21 +1,23 @@
 const { verifyToken } = require('../lib/auth');
 
-const verifyTokenMiddleware = noRedirect => (req, res, next) => {
+const verifyTokenMiddleware = (req, res, next) => {
   verifyToken(req.cookies.jwt, (err, decodedToken) => {
-    if (err || !decodedToken) {
-      const { host } = req.headers;
-      const { protocol } = req;
-
-      if (noRedirect) {
-        req.user = false;
-        return next();
-      }
-
-      return res.redirect(`${protocol}://${host}/auth`);
+    if (!err && decodedToken) {
+      req.user = decodedToken.data; // TODO: Change this variable as isLoggedIn
+      return next();
     }
 
-    req.user = decodedToken.data; // TODO: Change this variable as isLoggedIn
-    return next();
+    const contentType = req.get('content-type');
+    const host = req.get('host');
+    const { protocol } = req;
+
+    if (contentType === 'application/json') {
+      return res.status(403).json({
+        message: 'Nout Authorized.',
+      });
+    }
+
+    return res.redirect(`${protocol}://${host}/auth`);
   });
 };
 

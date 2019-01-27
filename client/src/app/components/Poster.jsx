@@ -25,13 +25,14 @@ const Poster = ({ src, alt }) => {
   const img = new Image();
   img.onload = imageOnLoad;
   img.onerror = imageOnError;
+  img.className = 'img-fluid';
   img.src = src;
   img.alt = alt;
   img.id = `tmpimage-${uIdNumber}`;
 
   return (
     <div
-      className="img-fluid h-100 w-100 d-flex align-items-center justify-content-center"
+      className="h-100 w-100 d-flex align-items-center justify-content-center"
       id={imageDivId}
     >
       {defaultImage}

@@ -7,6 +7,7 @@ export default function Spinner(props) {
     size,
     kind,
     color,
+    addionalClass,
   } = props;
 
   if (!show) {
@@ -14,7 +15,7 @@ export default function Spinner(props) {
   }
 
   return (
-    <div className={`spinner-${kind} spinner-${kind}-${size} text-${color}`} role="status">
+    <div className={`spinner-${kind} spinner-${kind}-${size} text-${color} ${addionalClass}`} role="status">
       <span className="sr-only">Loading...</span>
     </div>
   );
@@ -25,10 +26,12 @@ Spinner.defaultProps = {
   size: 'sm',
   kind: 'grow',
   color: 'primary',
+  addionalClass: '',
 };
 
 Spinner.propTypes = {
   show: PropTypes.bool,
+  addionalClass: PropTypes.string,
   size: PropTypes.oneOf([
     'sm',
     'md',

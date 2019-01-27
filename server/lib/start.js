@@ -22,7 +22,7 @@ require('../config/passport');
 function init() {
   const app = express();
 
-  nunjucks.configure(config.viewPath, {
+  nunjucks.configure(config.path.view, {
     autoescape: true,
     express: app,
   });
@@ -33,21 +33,19 @@ function init() {
 
   app.use(cors());
   app.use(passport.initialize());
-  app.use(favicon(config.faviconPath));
+  app.use(favicon(config.path.favicon));
   app.use(helmet());
   app.use(compression());
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
-  app.use('/static', express.static(config.publicPath));
+  app.use('/static', express.static(config.path.public));
 
   // set map method to app object for route mapping
   app.map = routeMap.bind(app);
 
   app.use(setLocalVariables);
-  // routes
   app.map(routes);
-
   app.use(catchNotFoundError);
   app.use(handleError);
 

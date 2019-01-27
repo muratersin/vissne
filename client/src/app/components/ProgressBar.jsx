@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ProgressBar = (props) => {
-  const { show } = props;
+  const { show, height } = props;
 
   if (!show) {
     return null;
   }
 
   return (
-    <div className="progress" style={{ height: '2px' }}>
+    <div className="progress" style={{ height: `${height}px` }}>
       <div
         className="progress-bar progress-bar-striped progress-bar-animated"
         role="progressbar"
@@ -24,10 +24,12 @@ const ProgressBar = (props) => {
 
 ProgressBar.defaultProps = {
   show: false,
+  height: 2,
 };
 
 ProgressBar.propTypes = {
   show: PropTypes.bool,
+  height: PropTypes.number,
 };
 
 export default ProgressBar;

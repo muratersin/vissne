@@ -20,6 +20,7 @@ export const SET_MOVIE_DETAIL = 'SET_MOVIE_DETAIL';
 // profile
 //  -- Account
 export const SET_ACCOUNT_DETAIL = 'SET_ACCOUNT_DETAIL';
+export const SET_UPLOADED_IMAGE = 'SET_UPLOADED_IMAGE';
 
 // constants
 export const SORT_OPTIONS = [{

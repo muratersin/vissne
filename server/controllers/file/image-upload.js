@@ -1,14 +1,13 @@
-const config = require('../../config/app.config');
-
-// const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
 
 const image = (req, res) => {
-  const { file } = req;
+  const host = req.get('host');
+  const { file, protocol } = req;
+
   res.status(200)
     .json({
       fileName: file.filename,
       orginalName: file.originalname,
-      tempPath: `${config.path.tmpUpload}/${file.filename}`,
+      tempPath: `${protocol}://${host}/static/tmp/${file.filename}`,
     });
 };
 

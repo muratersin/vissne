@@ -9,20 +9,12 @@ export default class Account extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.uploadAvatarImage = this.uploadAvatarImage.bind(this);
     this.toggleAvatarMenu = this.toggleAvatarMenu.bind(this);
   }
 
   componentDidMount() {
     const { getAccountDetail } = this.props;
     getAccountDetail();
-  }
-
-  uploadAvatarImage($event) {
-    const form = document.forms.namedItem('avatarForm');
-    const formData = new FormData(form);
-    const { uploadImage } = this.props;
-    uploadImage(formData, 'avatar');
   }
 
   toggleAvatarMenu() {
@@ -35,8 +27,9 @@ export default class Account extends Component {
     const { showAvatarMenu } = this.state;
     const {
       match,
-      account,
+      user,
       loading,
+      uploadedFile,
     } = this.props;
 
     const avatarMenu = !showAvatarMenu
@@ -64,12 +57,13 @@ export default class Account extends Component {
                   onClick={this.toggleAvatarMenu}
                 >
                   <img
-                    src={`${vissne.cdn}/ucontent/avatar/${account.user.avatar}`}
+                    src={uploadedFile ? uploadedFile.tempPath : (`${vissne.cdn}/ucontent/avatar/${user.avatar}`)}
                     className="img-fluid rounded-circle border avatar"
                     alt="Avatar"
                     id="avatar"
                   />
                 </button>
+                {uploadedFile ? uploadedFile.tempPath : 'yok'}
                 {avatarMenu}
               </div>
             </div>
@@ -82,6 +76,5 @@ export default class Account extends Component {
 
 Account.propTypes = {
   getAccountDetail: PropTypes.func.isRequired,
-  uploadImage: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
 };

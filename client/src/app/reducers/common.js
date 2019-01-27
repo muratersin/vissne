@@ -1,4 +1,9 @@
-import { TOGGLE_ALERT, LOADING, TOGGLE_FILTER } from '../constants/action-types';
+import {
+  TOGGLE_ALERT,
+  LOADING,
+  TOGGLE_FILTER,
+  SET_UPLOADED_IMAGE,
+} from '../constants/action-types';
 
 const initialState = {
   showAlert: false,
@@ -26,6 +31,11 @@ export default function common(state = initialState, action) {
     case TOGGLE_FILTER:
       return Object.assign({}, state, {
         showFilter: !state.showFilter,
+      });
+
+    case SET_UPLOADED_IMAGE:
+      return Object.assign({}, state, {
+        uploadedAvatar: action.payload,
       });
 
     default:

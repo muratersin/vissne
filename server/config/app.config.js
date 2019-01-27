@@ -32,7 +32,7 @@ const appConfig = {
     view: path.join(projectDir, 'views'),
     favicon: path.join(projectDir, 'public/favicon.ico'),
     ucontent: path.join(projectDir, 'public/ucontent'),
-    tmpUpload: path.join(projectDir, 'public/tmp'),
+    tmpUpload: 'public/tmp',
   },
   saltRounds: 10,
   jwtSecret: JWTSECRET,

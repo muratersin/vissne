@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { imageUpload } from '../actions/common';
+import { uploadImage } from '../actions/common';
 
 const selectFile = (id) => {
   const fileInput = document.getElementById(id);
@@ -14,7 +14,7 @@ const selectFile = (id) => {
 const handleChange = (formName) => {
   const form = document.forms.namedItem(formName);
   const formData = new FormData(form);
-  imageUpload(formData);
+  uploadImage(formData);
 };
 
 const ImageUpload = (props) => {

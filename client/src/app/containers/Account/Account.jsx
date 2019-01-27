@@ -33,7 +33,7 @@ export default class Account extends Component {
             <div className="col d-flex justify-content-center">
               <figure className="figure d-flex justify-content-center align-items-center position-relative">
                 <img
-                  src={`${vissne.cdn}/upload/avatar/${account.user.avatar}`}
+                  src={`${vissne.cdn}/ucontent/avatar/${account.user.avatar}`}
                   className="figure-img img-fluid rounded-circle border avatar"
                   alt="Avatar"
                 />

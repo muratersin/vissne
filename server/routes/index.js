@@ -4,7 +4,7 @@ const multer = require('multer');
 const config = require('../config/app.config');
 const controllers = require('../controllers');
 
-const upload = multer({ dest: config.path.upload });
+const upload = multer({ dest: config.path.ucontent });
 const {
   paramCheck,
   setCookie,

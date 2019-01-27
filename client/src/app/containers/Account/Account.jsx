@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 
 import ProfileContainer from '../../components/ProfileContainer';
+import ImageUpload from '../../components/ImageUpload';
 import './Account.scss';
 
 export default class Account extends Component {
-  static choseAvatar() {
-    document.getElementById('avatar').click();
-  }
-
   constructor(props) {
     super(props);
     this.state = {};
+    this.uploadAvatarImage = this.uploadAvatarImage.bind(this);
+    this.toggleAvatarMenu = this.toggleAvatarMenu.bind(this);
   }
 
   componentDidMount() {
@@ -19,37 +18,70 @@ export default class Account extends Component {
     getAccountDetail();
   }
 
+  uploadAvatarImage($event) {
+    const form = document.forms.namedItem('avatarForm');
+    const formData = new FormData(form);
+    const { uploadImage } = this.props;
+    uploadImage(formData, 'avatar');
+  }
+
+  toggleAvatarMenu() {
+    this.setState(prevState => ({
+      showAvatarMenu: !prevState.showAvatarMenu,
+    }));
+  }
+
   render() {
+    const { showAvatarMenu } = this.state;
     const {
       match,
       account,
       loading,
     } = this.props;
 
+    const avatarMenu = !showAvatarMenu
+      ? null
+      : (
+        <div className="avatar-menu position-absolute">
+          <ImageUpload
+            btnClass="btn btn-outline-dark rounded-circle"
+            inputId="avatarInput"
+            imageId="avatar"
+            formName="avatarForm"
+          />
+        </div>
+      );
+
     return (
       <ProfileContainer path={match.path} loading={loading}>
         <div className="card">
           <div className="card-body">
             <div className="col d-flex justify-content-center">
-              <figure className="figure d-flex justify-content-center align-items-center position-relative">
-                <img
-                  src={`${vissne.cdn}/ucontent/avatar/${account.user.avatar}`}
-                  className="figure-img img-fluid rounded-circle border avatar"
-                  alt="Avatar"
-                />
-                <div className="avatar-button rounded-circle position-absolute bg-dark d-flex justify-content-center">
-                  <button type="button" className="btn btn-primary" onClick={Account.choseAvatar}>
-                    <FontAwesomeIcon icon="edit" />
-                  </button>
-                </div>
-              </figure>
+              <div className="position-relative">
+                <button
+                  type="button"
+                  className="btn btn-link rounded-circle avatar-button"
+                  onClick={this.toggleAvatarMenu}
+                >
+                  <img
+                    src={`${vissne.cdn}/ucontent/avatar/${account.user.avatar}`}
+                    className="img-fluid rounded-circle border avatar"
+                    alt="Avatar"
+                    id="avatar"
+                  />
+                </button>
+                {avatarMenu}
+              </div>
             </div>
           </div>
         </div>
-        <form className="invisible">
-          <input type="file" id="avatar" />
-        </form>
       </ProfileContainer>
     );
   }
 }
+
+Account.propTypes = {
+  getAccountDetail: PropTypes.func.isRequired,
+  uploadImage: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+};

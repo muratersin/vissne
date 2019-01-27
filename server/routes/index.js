@@ -4,7 +4,7 @@ const multer = require('multer');
 const config = require('../config/app.config');
 const controllers = require('../controllers');
 
-const upload = multer({ dest: config.path.ucontent });
+const upload = multer({ dest: config.path.tmpUpload });
 const {
   paramCheck,
   setCookie,
@@ -75,6 +75,13 @@ module.exports = {
     '/genre': {
       get: controllers.movie.genre,
     },
+    '/upload': {
+      post: [
+        verifyToken,
+        upload.single('file'),
+        controllers.file.imageUpload,
+      ],
+    },
   },
   '/auth/google': {
     get: passport.authenticate('google', {
@@ -86,18 +93,6 @@ module.exports = {
   },
   '/auth/facebook': {
     get: passport.authenticate('facebook'),
-  },
-  '/upload': {
-    '/image': {
-      '/:folder': {
-        '/:userId': {
-          post: [
-            upload.single('avatar'),
-            controllers.file.imageUpload,
-          ],
-        },
-      },
-    },
   },
   '/file': {
     '/:kind': {

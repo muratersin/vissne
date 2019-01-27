@@ -19,6 +19,7 @@ import {
   faUserFriends,
   faCog,
   faEdit,
+  faUpload,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebook,
@@ -52,5 +53,6 @@ export default function init() {
     faUserFriends,
     faCog,
     faEdit,
+    faUpload,
   );
 }

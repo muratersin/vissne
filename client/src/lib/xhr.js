@@ -5,6 +5,11 @@ const allowedMethods = [
   'DELETE',
 ];
 
+const contentTypes = {
+  form: 'application/x-www-form-urlencoded',
+  json: 'application/json',
+};
+
 /**
  * TODO: Doc this.
  * @param {*} ops 
@@ -16,6 +21,7 @@ function xhr(ops) {
 
   return new Promise((resolve, reject) => {
     options.method = options.method || 'GET';
+    options.contentType = options.contentType || 'json';
 
     if (allowedMethods.indexOf(options.method) === -1) {
       return reject(new Error('Incorrect http method.'));
@@ -26,13 +32,21 @@ function xhr(ops) {
     }
 
     const url = `${vissne.domain}/api/${options.url}`;
-    const data = options.data
-      ? JSON.stringify(options.data)
-      : null;
+    const data = (() => {
+      if (options.data) {
+        if (options.isFile) {
+          return options.data;
+        }
+
+        return JSON.stringify(options.data);
+      }
+
+      return null;
+    })();
 
     const http = new XMLHttpRequest();
     http.open(options.method, url, true);
-    http.setRequestHeader('Content-type', 'application/json');
+    http.setRequestHeader('Content-type', contentTypes[options.contentType]);
     http.send(data);
 
     http.onreadystatechange = () => {

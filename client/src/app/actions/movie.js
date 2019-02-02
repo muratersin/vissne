@@ -1,4 +1,5 @@
-import xhr from '../../lib/xhr';
+import axios from 'axios';
+
 import { SET_MOVIE_DETAIL } from '../constants/action-types';
 import { toggleAlert } from './common';
 
@@ -7,24 +8,17 @@ export const setMovieDetail = detail => ({
   detail,
 });
 
-export const getMovieDetail = (id) => {
-  const ops = {
-    url: `movie/${id}`,
-    method: 'GET',
-  };
+export const getMovieDetail = id => (dispatch) => {
+  dispatch(setMovieDetail(null));
 
-  return (dispatch) => {
-    dispatch(setMovieDetail(null));
-
-    xhr(ops)
-      .then(response => dispatch(
-        setMovieDetail(response),
-      ))
-      .catch(({ message }) => dispatch(
-        toggleAlert({
-          kind: 'danger',
-          message,
-        }),
-      ));
-  };
+  axios.get(`/api/movie/${id}`)
+    .then(({ data }) => dispatch(
+      setMovieDetail(data),
+    ))
+    .catch(({ message }) => dispatch(
+      toggleAlert({
+        kind: 'danger',
+        message,
+      }),
+    ));
 };

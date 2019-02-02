@@ -1,8 +1,8 @@
-const request = require('request');
+const axios = require('axios');
 const { generateRouteGetCredits } = require('../lib/route-generator');
 const appConfig = require('../config/app.config');
 
-const getCredits = (req, res, next) => {
+const getCredits = async (req, res, next) => {
   const { movieId } = req.params;
 
   if (!movieId) {
@@ -11,16 +11,12 @@ const getCredits = (req, res, next) => {
     });
   }
 
-  const url = generateRouteGetCredits(movieId);
-
-  return request(url, { json: true }, (error, response) => {
-    if (error) {
-      return next(error);
-    }
-
+  try {
+    const url = generateRouteGetCredits(movieId);
+    const response = await axios.get(url);
     const { secureBaseUrl } = appConfig.api.moviedb.images;
 
-    req.credits = response.body;
+    req.credits = response.data;
     req.credits.cast = req.credits.cast.map((cast) => {
       const profilePath = cast.profile_path
         ? `${secureBaseUrl}/w45${cast.profile_path}`
@@ -34,7 +30,9 @@ const getCredits = (req, res, next) => {
       };
     });
     return next();
-  });
+  } catch (err) {
+    next(err);
+  }
 };
 
 module.exports = getCredits;

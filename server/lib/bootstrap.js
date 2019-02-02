@@ -1,31 +1,31 @@
 
 
-const request = require('request');
+const axios = require('axios');
 
 const cache = require('../lib/cache');
 const Genre = require('../models/genre');
 const { genreRoute } = require('../lib/route-generator');
 
 async function initGenreTable() {
-  const genres = await Genre.findAll();
+  try {
+    const genres = await Genre.findAll();
 
-  if (genres && genres.length > 0) {
-    cache.set('genres', genres);
-  } else {
-    request(genreRoute, { json: true }, (error, response) => {
-      if (error) {
-        throw error;
-      }
+    if (genres && genres.length > 0) {
+      cache.set('genres', genres);
+      return;
+    }
 
-      const { body } = response;
+    const response = await axios(genreRoute);
+    const { body } = response;
 
-      cache.set('genres', body.genres);
+    cache.set('genres', body.genres);
 
-      for (let i = 0; i < body.genres.length; i += 1) {
-        const g = body.genres[i];
-        Genre.create(g);
-      }
-    });
+    for (let i = 0; i < body.genres.length; i += 1) {
+      const g = body.genres[i];
+      Genre.create(g);
+    }
+  } catch (err) {
+    throw err;
   }
 }
 

@@ -1,26 +1,25 @@
-const request = require('request');
+const axios = require('axios');
 const { generateRouteGetImages } = require('../lib/route-generator');
 
-const getCredits = (req, res, next) => {
-  const { movieId } = req.params;
+const getCredits = async (req, res, next) => {
+  try {
+    const { movieId } = req.params;
 
-  if (!movieId) {
-    return res.status(400).json({
-      message: 'movieId param is required.',
-    });
-  }
-
-  const url = generateRouteGetImages(movieId);
-
-  return request(url, { json: true }, (error, response) => {
-    if (error) {
-      return next(error);
+    if (!movieId) {
+      return res.status(400).json({
+        message: 'movieId param is required.',
+      });
     }
 
-    req.images = response.body;
+    const url = generateRouteGetImages(movieId);
+    const response = await axios.get(url);
 
-    return next();
-  });
+    req.images = response.data;
+
+    next();
+  } catch (err) {
+    next(err);
+  }
 };
 
 module.exports = getCredits;

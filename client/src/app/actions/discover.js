@@ -1,6 +1,7 @@
+import axios from 'axios';
+
 import { SET_MOVIES, SET_QUERY, SET_GENRES } from '../constants/action-types';
 import { toggleAlert, loading } from './common';
-import xhr from '../../lib/xhr';
 
 export const setMovies = response => ({
   type: SET_MOVIES,
@@ -11,7 +12,7 @@ export const setMovies = response => ({
 });
 
 export const getMovies = (query) => {
-  let url = 'discover';
+  let url = 'api/discover';
 
   Object.keys(query).forEach((queryName, i) => {
     const value = query[queryName];
@@ -34,10 +35,10 @@ export const getMovies = (query) => {
 
   return (dispatch) => {
     dispatch(loading(true));
-    xhr({ url })
-      .then((response) => {
+    axios.get(url)
+      .then(({ data }) => {
         dispatch(loading(false));
-        dispatch(setMovies(response));
+        dispatch(setMovies(data));
       })
       .catch(({ message }) => {
         dispatch(loading(true));
@@ -65,19 +66,14 @@ export const setGenres = genres => ({
   genres,
 });
 
-export const getGenres = () => {
-  const ops = {
-    url: 'genre',
-  };
-
-  return dispatch => xhr(ops)
-    .then(response => dispatch(setGenres(response)))
-    .catch(({ message }) => {
-      dispatch(
-        toggleAlert({
-          kind: 'danger',
-          message,
-        }),
-      );
-    });
-};
+export const getGenres = () => dispatch => axios
+  .get('/api/genre')
+  .then(({ data }) => dispatch(setGenres(data)))
+  .catch(({ message }) => {
+    dispatch(
+      toggleAlert({
+        kind: 'danger',
+        message,
+      }),
+    );
+  });

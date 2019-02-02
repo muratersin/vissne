@@ -1,6 +1,7 @@
+import axios from 'axios';
+
 import { SET_ACCOUNT_DETAIL } from '../constants/action-types';
 import { toggleAlert, loading } from './common';
-import xhr from '../../lib/xhr';
 
 export const setAccountDetail = user => ({
   type: SET_ACCOUNT_DETAIL,
@@ -11,10 +12,10 @@ export const setAccountDetail = user => ({
 
 export const getAccountDetail = () => (dispatch) => {
   dispatch(loading(true));
-  xhr({ url: 'account' })
-    .then(({ user }) => {
+  axios.get('api/account')
+    .then(({ data }) => {
       dispatch(loading(false));
-      dispatch(setAccountDetail(user));
+      dispatch(setAccountDetail(data));
     })
     .catch(({ message }) => {
       dispatch(loading(false));

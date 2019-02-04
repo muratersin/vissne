@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 import { SET_ACCOUNT_DETAIL } from '../constants/action-types';
-import { toggleAlert, loading } from './common';
+import { loading } from './common';
+import ajaxErrorHandler from '../../lib/ajax-error-handler';
 
 export const setAccountDetail = user => ({
   type: SET_ACCOUNT_DETAIL,
@@ -12,18 +13,10 @@ export const setAccountDetail = user => ({
 
 export const getAccountDetail = () => (dispatch) => {
   dispatch(loading(true));
-  axios.get('api/account')
-    .then(({ data }) => {
+  axios.get('/api/account')
+    .then((response) => {
       dispatch(loading(false));
-      dispatch(setAccountDetail(data));
+      dispatch(setAccountDetail(response.data.user));
     })
-    .catch(({ message }) => {
-      dispatch(loading(false));
-      dispatch(
-        toggleAlert({
-          kind: 'danger',
-          message,
-        }),
-      );
-    });
+    .catch(ajaxErrorHandler(dispatch));
 };

@@ -1,8 +1,10 @@
 const bcrypt = require('bcrypt');
+
+const User = require('../../models/user');
 const { saltRounds } = require('../../config/app.config');
 const { createJWToken } = require('../../lib/auth');
-const User = require('../../models/user');
-const trimStringFields = require('../../lib/helper/object');
+const { trimStringFields } = require('../../lib/helper/object');
+const { Sequelize } = require('../../lib/sequelize');
 
 /**
  * @name registerController
@@ -19,13 +21,21 @@ async function registerController(req, res, next) {
 
     const existsUser = await User.findOne({
       where: {
-        email: body.email,
+        [Sequelize.Op.or]: [{
+          email: body.email,
+        }, {
+          userName: body.userName,
+        }],
       },
     });
 
     if (existsUser) {
+      const field = body.email === existsUser.email
+        ? 'email'
+        : 'user name';
+
       return res.status(400).json({
-        message: 'That email is already taken.',
+        message: `That ${field} is already taken.`,
       });
     }
 

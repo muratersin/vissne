@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import {
   TOGGLE_ALERT,
   LOADING,
@@ -26,13 +24,3 @@ export const setUploadedImage = uploadedFile => ({
   type: SET_UPLOADED_IMAGE,
   payload: uploadedFile,
 });
-
-export const uploadImage = image => (dispatch) => {
-  axios.post(`${vissne.domain}/api/upload`, image, {
-    onUploadProgress: (ProgressEvent) => {
-      console.log((ProgressEvent.loaded / ProgressEvent.total * 100));
-    },
-  }).then((res) => {
-    dispatch(setUploadedImage(res.data));
-  });
-};

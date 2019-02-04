@@ -29,12 +29,12 @@ const Navbar = (props) => {
     </Fragment>
   ) : (
     <li className="nav-item">
-      <Link to="/auth" className="nav-link">LOGIN</Link>
+      <Link to="/auth" className="nav-link">login</Link>
     </li>
   );
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-0 pl-1">
       <Link className="navbar-brand" to="/">
         <img
           src={`${vissne.cdn}/images/logo.png`}
@@ -72,7 +72,7 @@ const Navbar = (props) => {
               className={`nav-link ${pathName === '/in-theaters' ? 'active' : ''}`}
               to="/in-theaters"
             >
-              IN THEATERS
+              in theaters
             </Link>
           </li>
           <li className="nav-item">
@@ -80,7 +80,7 @@ const Navbar = (props) => {
               className={`nav-link ${pathName === '/coming-soon' ? 'active' : ''}`}
               to="/coming-soon"
             >
-              COMING SOON
+              coming soong
             </Link>
           </li>
         </ul>

@@ -11,8 +11,13 @@ const User = sequelize.define('user', {
     type: Sequelize.STRING(40),
     allowNull: false,
   },
-  email: {
+  userName: {
     type: Sequelize.STRING(50),
+    allowNull: false,
+    unique: true,
+  },
+  email: {
+    type: Sequelize.STRING(40),
     allowNull: false,
     unique: true,
     isEmail: true,
@@ -57,6 +62,7 @@ User.prototype.fullName = function fullName() {
 
 User.prototype.publicParse = function publicParse() {
   return {
+    userName: this.userName,
     firstName: this.firstName,
     lastName: this.lastName,
     fullName: `${this.firstName} ${this.lastName}`,

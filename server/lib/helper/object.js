@@ -7,6 +7,10 @@
  * return new object instance.
  */
 module.exports.trimStringFields = (object) => {
+  if (!object || typeof object !== 'object') {
+    throw new Error('\'trimStringFields\' need one object param.');
+  }
+
   const obj = { ...object };
 
   Object.keys(obj).forEach((key) => {

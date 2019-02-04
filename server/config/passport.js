@@ -9,14 +9,32 @@ const strategyCallback = (accessToken, refreshToken, profile, callback) => {
   const lastName = splittedName.pop();
   const firstName = splittedName.join(' ');
   const email = profile.emails[0].value;
+  const { provider } = profile;
+  let avatar = null;
+  let userName = null;
 
-  const where = { email };
+  if (provider === 'google') {
+    avatar = profile.photos[0].value.replace('sz=50', 'sz=200'); // change default profile image size
+    userName = `g-${profile.id}`;
+  } else if (provider === 'facebook') {
+    avatar = profile.photos[0].value;
+    userName = `f-${profile.id}`;
+  } else {
+    throw new Error('Unknown provider.');
+  }
+
+  const where = {
+    email,
+    provider,
+  };
   const defaults = {
+    userName,
     firstName,
     lastName,
     email,
-    provider: profile.provider,
-    [`${profile.provider}Id`]: profile.id,
+    avatar,
+    provider,
+    [`${provider}Id`]: profile.id,
   };
 
   User.findOrCreate({ where, defaults })

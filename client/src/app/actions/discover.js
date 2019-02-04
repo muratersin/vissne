@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 import { SET_MOVIES, SET_QUERY, SET_GENRES } from '../constants/action-types';
-import { toggleAlert, loading } from './common';
+import { loading } from './common';
+import ajaxErrorHandler from '../../lib/ajax-error-handler';
 
 export const setMovies = response => ({
   type: SET_MOVIES,
@@ -40,15 +41,7 @@ export const getMovies = (query) => {
         dispatch(loading(false));
         dispatch(setMovies(data));
       })
-      .catch(({ message }) => {
-        dispatch(loading(true));
-        dispatch(
-          toggleAlert({
-            kind: 'danger',
-            message,
-          }),
-        );
-      });
+      .catch(ajaxErrorHandler(dispatch));
   };
 };
 
@@ -69,11 +62,4 @@ export const setGenres = genres => ({
 export const getGenres = () => dispatch => axios
   .get('/api/genre')
   .then(({ data }) => dispatch(setGenres(data)))
-  .catch(({ message }) => {
-    dispatch(
-      toggleAlert({
-        kind: 'danger',
-        message,
-      }),
-    );
-  });
+  .catch(ajaxErrorHandler(dispatch));

@@ -10,8 +10,9 @@ function setLocalVariables(req, res, next) {
   next();
 }
 
-function catchNotFoundError(req, res, next) {
+function catchNotFoundError(req, res) {
   const { user, path, method } = req;
+  const message = 'Page not found';
   const errorCode = 404;
   logger.error({
     path,
@@ -19,9 +20,7 @@ function catchNotFoundError(req, res, next) {
     errorCode,
     user: user || null,
   }, 'Page not found.');
-  const err = new Error('404 Page Not Found');
-  err.code = errorCode;
-  next(err);
+  res.status(errorCode).json({ message });
 }
 
 function handleError(err, req, res) {

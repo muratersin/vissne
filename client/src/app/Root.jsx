@@ -24,6 +24,7 @@ const Root = ({ store }) => (
           <Route path="/auth" component={Auth} />
           <Route path="/profile/account" component={Account} />
           <Route path="/movie/:slug/:id" component={Movie} />
+          <Route path="/page-not-found" component={NotFound} />
           <Route component={NotFound} />
         </Switch>
       </Router>

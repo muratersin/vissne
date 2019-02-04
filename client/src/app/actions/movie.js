@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { SET_MOVIE_DETAIL } from '../constants/action-types';
-import { toggleAlert } from './common';
+import ajaxErrorHandler from '../../lib/ajax-error-handler';
 
 export const setMovieDetail = detail => ({
   type: SET_MOVIE_DETAIL,
@@ -15,10 +15,5 @@ export const getMovieDetail = id => (dispatch) => {
     .then(({ data }) => dispatch(
       setMovieDetail(data),
     ))
-    .catch(({ message }) => dispatch(
-      toggleAlert({
-        kind: 'danger',
-        message,
-      }),
-    ));
+    .catch(ajaxErrorHandler(dispatch));
 };

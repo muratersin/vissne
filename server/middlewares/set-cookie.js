@@ -16,14 +16,17 @@ const setCookie = (req, res, next) => {
 
   res.cookie('user_email', req.publicUserData.email, {
     maxAge: 900000,
+    encode: c => c,
   });
 
   res.cookie('user_first_name', req.publicUserData.firstName, {
     maxAge: 900000,
+    encode: c => c,
   });
 
   res.cookie('user_last_name', req.publicUserData.lastName, {
     maxAge: 900000,
+    encode: c => c,
   });
 
   return next();

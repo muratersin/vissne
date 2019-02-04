@@ -1,5 +1,8 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import cookie from '../../../lib/cookie';
 
 export default class Auth extends Component {
   constructor() {
@@ -7,6 +10,7 @@ export default class Auth extends Component {
     this.state = {
       form: {},
       validation: {
+        userName: {},
         email: {},
         password: {},
         firstName: {},
@@ -19,6 +23,14 @@ export default class Auth extends Component {
     this.validation = this.validation.bind(this);
     this.switchForm = this.switchForm.bind(this);
     this.loginRegister = this.loginRegister.bind(this);
+  }
+
+  componentDidMount() {
+    const { toggleAlert } = this.props;
+    const errorMessage = cookie.get('errorMessage');
+    if (errorMessage) {
+      toggleAlert(errorMessage);
+    }
   }
 
   handleChange({ target }) {
@@ -40,6 +52,8 @@ export default class Auth extends Component {
         error: <div className="invalid-feedback">Please enter a valid email address.</div>,
       };
       isValid = false;
+    } else {
+      validation.email = {};
     }
 
     if (!form.password || form.password.length < 6 || form.password.length > 16) {
@@ -48,15 +62,29 @@ export default class Auth extends Component {
         error: <div className="invalid-feedback">Passwords must be 6-16 chacracter.</div>,
       };
       isValid = false;
+    } else {
+      validation.password = {};
     }
 
     if (isRegister) {
+      if (!form.userName || form.userName.length < 2 || form.userName.length > 40) {
+        validation.userName = {
+          class: 'is-invalid',
+          error: <div className="invalid-feedback">User name must be 2-40 character</div>,
+        };
+        isValid = false;
+      } else {
+        validation.userName = {};
+      }
+
       if (!form.firstName || form.firstName.length < 2 || form.firstName.length > 40) {
         validation.firstName = {
           class: 'is-invalid',
           error: <div className="invalid-feedback">First name must be 2-40 character</div>,
         };
         isValid = false;
+      } else {
+        validation.firstName = {};
       }
 
       if (!form.lastName || form.lastName.length < 2 || form.lastName.length > 40) {
@@ -65,6 +93,8 @@ export default class Auth extends Component {
           error: <div className="invalid-feedback">Last name must be 2-40 character</div>,
         };
         isValid = false;
+      } else {
+        validation.lastName = {};
       }
 
       if (form.confirmPassword !== form.password) {
@@ -73,6 +103,8 @@ export default class Auth extends Component {
           error: <div className="invalid-feedback">Passwords dont match</div>,
         };
         isValid = false;
+      } else {
+        validation.confirmPassword = {};
       }
     }
 
@@ -90,8 +122,8 @@ export default class Auth extends Component {
 
     const { props } = this;
     const url = isRegister
-      ? 'register'
-      : 'login';
+      ? '/api/register'
+      : '/api/login';
 
     return props.loginRegister(form, url);
   }
@@ -140,6 +172,27 @@ export default class Auth extends Component {
                 className={`form-control border-top-0 border-left-0 border-right-0 border-dark rounded-0 b bg-transparent ${validation.confirmPassword.class || ''}`}
               />
               {validation.confirmPassword.error}
+            </div>
+          </div>
+          <div className="form-group">
+            <label htmlFor="userNameInput">User Name</label>
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text border-top-0 border-left-0 border-right-0 border-dark bg-transparent rounded-0" id="userName">
+                  <FontAwesomeIcon icon="at" />
+                </span>
+              </div>
+              <input
+                type="text"
+                name="userName"
+                aria-describedby="userName"
+                id="userNameInput"
+                placeholder="User Name"
+                value={form.userName}
+                onChange={this.handleChange}
+                className={`form-control border-top-0 border-left-0 border-right-0 border-dark rounded-0 b bg-transparent ${validation.userName.class || ''}`}
+              />
+              {validation.userName.error}
             </div>
           </div>
           <div className="form-group">
@@ -301,3 +354,7 @@ export default class Auth extends Component {
     );
   }
 }
+
+Auth.propTypes = {
+  toggleAlert: PropTypes.func.isRequired,
+};

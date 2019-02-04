@@ -3,8 +3,6 @@ const multer = require('multer');
 
 const config = require('../config/app.config');
 const controllers = require('../controllers');
-
-const upload = multer({ dest: config.path.tmpUpload });
 const {
   paramCheck,
   setCookie,
@@ -14,6 +12,8 @@ const {
   getImages,
   verifyToken,
 } = require('../middlewares');
+
+const upload = multer({ dest: config.path.tmpUpload });
 
 module.exports = {
   '/api': {
@@ -35,10 +35,7 @@ module.exports = {
     },
     '/auth/facebook/callback': {
       get: [
-        passport.authenticate('facebook', {
-          session: false,
-          failureRedirect: '/login',
-        }),
+        controllers.auth.socialAuthantication('facebook'),
         controllers.auth.loginWithSocialMedia,
         setCookie,
         responder,
@@ -46,10 +43,7 @@ module.exports = {
     },
     '/auth/google/callback': {
       get: [
-        passport.authenticate('google', {
-          session: false,
-          failureRedirect: '/login',
-        }),
+        controllers.auth.socialAuthantication('google'),
         controllers.auth.loginWithSocialMedia,
         setCookie,
         responder,
@@ -94,16 +88,8 @@ module.exports = {
   '/auth/facebook': {
     get: passport.authenticate('facebook'),
   },
-  '/file': {
-    '/:kind': {
-      '/:folder': {
-        ':/userId': {
-          get: [
-            controllers.file.getFile,
-          ],
-        },
-      },
-    },
+  '/logout': {
+    get: controllers.auth.logout,
   },
   '/*': {
     get: controllers.home.index,

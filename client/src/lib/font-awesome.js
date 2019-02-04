@@ -20,6 +20,8 @@ import {
   faCog,
   faEdit,
   faUpload,
+  faNewspaper,
+  faAt,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebook,
@@ -54,5 +56,7 @@ export default function init() {
     faCog,
     faEdit,
     faUpload,
+    faNewspaper,
+    faAt,
   );
 }

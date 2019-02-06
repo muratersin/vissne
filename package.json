@@ -8,7 +8,8 @@
     "start": "node bin/www",
     "start-dev": "nodemon bin/www",
     "watch": "rimraf ./public/dist && webpack --config config/webpack.dev.config.js",
-    "build": "rimraf ./public/dist && webpack --config config/webpack.config.js",
+    "build": "rimraf ./public/dist && webpack --config config/webpack.config.js --progress",
+    "deploy": "cd scripts && deploy.bat",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

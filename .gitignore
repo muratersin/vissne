@@ -66,6 +66,5 @@ typings/
 # all cache folders
 .cache*
 
-public/dist
 public/ucontent
 public/temp

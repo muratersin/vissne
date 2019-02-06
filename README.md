@@ -19,8 +19,7 @@ Vissne use [Movie DB Api](https://www.themoviedb.org/) for movie data.
 * React >= v16.6.3
 * Redux >= v6.*
 * Webpack >= v4.*
-* Bootsrrap >= v4.*
-
+* Bootstrap >= v4.*
 * GraphQL (In the future)
 
 ## Getting Started
@@ -63,4 +62,17 @@ PGUSER=YOUR_PG_USER
 PGDATABASE=YOUR_PG_DB_NAME
 PGPASSWORD=YOUR_PG_PASSWORD
 PGPORT=YOUR_PG_PORT
+
+NODE_ENV=development
+CDN=http://localhost:3000/static
+DOMAIN=http://localhost:3000
+JWTSECRET=3acf94676509be507188df90d67c053bKjsttq172huhbjdhvb722
+
+
+# api keys
+FACEBOOK_APP_ID=YOUR_FACEBOOK_APP_ID
+FACEBOOK_APP_SECRET=YOUR_FACEBOOK_APP_SECRET
+
+GOOGLE_CLIENT_ID=YOUR_GOOGLE_CLIENT_ID
+GOOGLE_SECRET=YOUR_GOOGLE_SECRET
 ```

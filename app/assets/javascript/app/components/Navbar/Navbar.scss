@@ -1,0 +1,10 @@
+.navbar {
+    // font-weight: bold;
+    
+    .nav-item {
+        &:hover {
+            background-color: transparent;
+            color: blueviolet;
+        }
+    }
+}

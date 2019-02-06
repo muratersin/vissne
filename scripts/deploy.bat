@@ -6,10 +6,12 @@ echo Installing node dependencies...
 call npm install
 
 echo Compile front end scripts...
-call npm run build
 
 :: switch branch to master
 call git checkout master
+
+:: build front end scripts
+call npm run build
 
 :: merge all changes from dev branch
 call git merge origin dev

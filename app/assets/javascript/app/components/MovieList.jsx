@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MovieShape } from '../../lib/prop-shapes';
+import { MovieShape } from '../constants/prop-shapes';
 import MovieCard from './MovieCard';
 
 const MovieList = ({ movies }) => {

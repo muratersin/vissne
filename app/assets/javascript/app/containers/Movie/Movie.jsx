@@ -7,7 +7,7 @@ import DetailTable from '../../components/DetailTable';
 import CompanyList from '../../components/CompanyList';
 import CastList from '../../components/CastList';
 import Video from '../../components/Video';
-import { UserShape } from '../../../lib/prop-shapes';
+import { UserShape } from '../../constants/prop-shapes';
 
 export default class Movie extends Component {
   componentDidMount() {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CastShape } from '../../../lib/prop-shapes';
+import { CastShape } from '../../constants/prop-shapes';
 import './Cast.scss';
 
 const Cast = ({

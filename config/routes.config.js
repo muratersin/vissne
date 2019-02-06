@@ -49,6 +49,22 @@ module.exports = {
         responder,
       ],
     },
+    '/user': {
+      '/:id': {
+        put: [
+          verifyToken,
+          controllers.user.update,
+          setCookie,
+          responder,
+        ],
+      },
+      '/change-password': {
+        put: [
+          verifyToken,
+          controllers.user.changePassword,
+        ],
+      },
+    },
     '/account': {
       get: [
         verifyToken,

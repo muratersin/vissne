@@ -4,7 +4,8 @@ export const TOGGLE_ALERT = 'TOGGLE_ALERT';
 export const TOGGLE_FILTER = 'TOGGLE_FILTER';
 
 // auth
-export const LOGIN = 'LOGIN';
+export const SET_PAGE_LOADING_STATUS = 'SET_PAGE_LOADING_STATUS';
+export const SET_LOADING_STATUS = 'SET_LOADING_STATUS';
 export const REGISTER = 'REGISTER';
 export const SET_USER = 'SET_USER';
 

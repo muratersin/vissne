@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { SET_ACCOUNT_DETAIL } from '../constants/action-types';
-import { loading } from './common';
+import { setPageLoadingStatus, setLoadingStatus, toggleAlert } from './common';
 import ajaxErrorHandler from '../../lib/ajax-error-handler';
 
 export const setAccountDetail = user => ({
@@ -12,15 +12,36 @@ export const setAccountDetail = user => ({
 });
 
 export const getAccountDetail = () => (dispatch) => {
-  dispatch(loading(true));
+  dispatch(setPageLoadingStatus(true));
   axios.get('/api/account')
     .then((response) => {
-      dispatch(loading(false));
-      dispatch(setAccountDetail(response.data.user));
+      dispatch(setPageLoadingStatus(false));
+      dispatch(setAccountDetail(response.data));
+    })
+    .catch(ajaxErrorHandler(dispatch));
+};
+
+export const updateUser = user => (dispatch) => {
+  dispatch(setLoadingStatus(true));
+  axios.put(`/api/user/${user.id}`, user)
+    .then((response) => {
+      dispatch(setLoadingStatus(false));
+      dispatch(setAccountDetail(response.data));
+      dispatch(toggleAlert({
+        kind: 'success',
+        message: 'Profile has been successfully updated.',
+      }));
     })
     .catch(ajaxErrorHandler(dispatch));
 };
 
 export const changePassword = password => (dispatch) => {
-
+  dispatch(setLoadingStatus(true));
+  axios.put('/api/user/change-password', password)
+    .then((response) => {
+      setLoadingStatus(false);
+      console.log(response);
+      alert('ok');
+    })
+    .catch(ajaxErrorHandler(dispatch));
 };

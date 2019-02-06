@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { SET_MOVIES, SET_QUERY, SET_GENRES } from '../constants/action-types';
-import { loading } from './common';
+import { setLoadingStatus } from './common';
 import ajaxErrorHandler from '../../lib/ajax-error-handler';
 
 export const setMovies = response => ({
@@ -35,10 +35,10 @@ export const getMovies = (query) => {
   });
 
   return (dispatch) => {
-    dispatch(loading(true));
+    dispatch(setLoadingStatus(true));
     axios.get(url)
       .then(({ data }) => {
-        dispatch(loading(false));
+        dispatch(setLoadingStatus(false));
         dispatch(setMovies(data));
       })
       .catch(ajaxErrorHandler(dispatch));

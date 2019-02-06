@@ -1,6 +1,7 @@
 import {
   TOGGLE_ALERT,
-  LOADING,
+  SET_PAGE_LOADING_STATUS,
+  SET_LOADING_STATUS,
   TOGGLE_FILTER,
   SET_UPLOADED_IMAGE,
 } from '../constants/action-types';
@@ -9,21 +10,26 @@ const initialState = {
   showAlert: false,
   alertMessage: null,
   alertKind: 'info',
-  loading: true,
+  pageLoading: true,
+  loading: false,
   showFilter: true,
 };
 
 export default function common(state = initialState, action) {
   switch (action.type) {
-    case TOGGLE_ALERT: {
+    case TOGGLE_ALERT:
       return Object.assign({}, state, {
         showAlert: !state.showAlert,
         alertMessage: action.message,
         alertKind: action.kind,
       });
-    }
 
-    case LOADING:
+    case SET_PAGE_LOADING_STATUS:
+      return Object.assign({}, state, {
+        pageLoading: action.pageLoading,
+      });
+
+    case SET_LOADING_STATUS:
       return Object.assign({}, state, {
         loading: action.loading,
       });

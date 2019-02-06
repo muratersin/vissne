@@ -1,12 +1,16 @@
 import { SET_MOVIES, SET_GENRES, SET_QUERY } from '../constants/action-types';
 import cookie from '../../lib/cookie';
 
-const userFirstName = cookie.get('user_first_name');
-const userLastName = cookie.get('user_last_name');
-const userEmail = cookie.get('user_email');
-const userId = cookie.get('user_id');
+const user = {
+  id: cookie.get('user_id'),
+  userName: cookie.get('username'),
+  fristName: cookie.get('user_first_name'),
+  lastName: cookie.get('user_last_name'),
+  email: cookie.get('user_email'),
+};
 
 const initialState = {
+  user,
   genres: [],
   movies: [],
   total: 0,
@@ -21,14 +25,7 @@ const initialState = {
     crews: [],
     casts: [],
   },
-  isLoggedIn: !!userEmail,
-  user: {
-    id: userId,
-    fristName: userFirstName,
-    lastName: userLastName,
-    email: userEmail,
-    fullName: `${userFirstName} ${userLastName}`,
-  },
+  isLoggedIn: !!user.email,
 };
 
 export default function app(state = initialState, action) {
@@ -61,3 +58,5 @@ export default function app(state = initialState, action) {
       return state;
   }
 }
+
+// TODO: Move user object to account reducer

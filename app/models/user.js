@@ -64,6 +64,7 @@ User.prototype.publicParse = function publicParse() {
   const createdAt = new Date(this.createdAt);
 
   return {
+    id: this.id,
     userName: this.userName,
     firstName: this.firstName,
     lastName: this.lastName,

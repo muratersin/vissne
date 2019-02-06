@@ -11,7 +11,7 @@ import {
   MovieShape,
   GenreShape,
   FilterShape,
-} from '../../../lib/prop-shapes';
+} from '../../constants/prop-shapes';
 
 export default class Discover extends Component {
   constructor(props) {

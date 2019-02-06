@@ -6,6 +6,8 @@ export const UserShape = PropTypes.shape({
   lastName: PropTypes.string,
   email: PropTypes.string,
   fullName: PropTypes.string,
+  avatar: PropTypes.string,
+  userName: PropTypes.string,
 });
 
 export const MovieShape = PropTypes.shape({
@@ -35,6 +37,11 @@ export const CompanyShape = PropTypes.shape({
 });
 
 export const GenreShape = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+});
+
+export const matchShape = PropTypes.shape({
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
 });

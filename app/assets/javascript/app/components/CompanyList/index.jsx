@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { CompanyShape } from '../../../lib/prop-shapes';
+import { CompanyShape } from '../../constants/prop-shapes';
 import Company from '../Company';
 import './CompanyList.scss';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MovieShape } from '../../lib/prop-shapes';
+import { MovieShape } from '../constants/prop-shapes';
 
 const DetailTable = ({ movie }) => (
   <div className="card">

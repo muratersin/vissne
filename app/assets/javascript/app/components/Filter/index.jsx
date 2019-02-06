@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { GenreShape, FilterShape } from '../../../lib/prop-shapes';
+import { GenreShape, FilterShape } from '../../constants/prop-shapes';
 import { SORT_OPTIONS } from '../../constants/action-types';
 import './Filter.scss';
 

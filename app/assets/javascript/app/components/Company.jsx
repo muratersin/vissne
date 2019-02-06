@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CompanyShape } from '../../lib/prop-shapes';
+import { CompanyShape } from '../constants/prop-shapes';
 
 const Company = ({ logo, name }) => {
   const logoPath = logo

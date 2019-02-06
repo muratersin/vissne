@@ -20,4 +20,5 @@ call git push origin master
 
 echo \\\\\------ DEPLOYING IS COMPLETED ------/////
 
+call git checkout dev
 exit

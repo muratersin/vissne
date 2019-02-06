@@ -61,6 +61,8 @@ User.prototype.fullName = function fullName() {
 };
 
 User.prototype.publicParse = function publicParse() {
+  const createdAt = new Date(this.createdAt);
+
   return {
     userName: this.userName,
     firstName: this.firstName,
@@ -69,6 +71,7 @@ User.prototype.publicParse = function publicParse() {
     email: this.email,
     provider: this.provider,
     avatar: this.avatar,
+    createdAt: `${createdAt.getDate()}/${createdAt.getMonth() + 1}/${createdAt.getUTCFullYear()}`,
   };
 };
 

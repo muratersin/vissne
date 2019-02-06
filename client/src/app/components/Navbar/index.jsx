@@ -34,7 +34,7 @@ const Navbar = (props) => {
   );
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-0 pl-1">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Link className="navbar-brand" to="/">
         <img
           src={`${vissne.cdn}/images/logo.png`}

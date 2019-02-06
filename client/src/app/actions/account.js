@@ -20,3 +20,7 @@ export const getAccountDetail = () => (dispatch) => {
     })
     .catch(ajaxErrorHandler(dispatch));
 };
+
+export const changePassword = password => (dispatch) => {
+
+};

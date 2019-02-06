@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import Account from './Account';
-import { getAccountDetail } from '../../actions/account';
+import { getAccountDetail, updateUserAccount, changePassword } from '../../actions/account';
 
 const mapStateToProps = state => ({
   loading: state.common.loading,
@@ -11,6 +11,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getAccountDetail: () => dispatch(getAccountDetail()),
+  updateUserAccount: user => dispatch(updateUserAccount(user)),
+  changePassword: password => dispatch(changePassword(password)),
 });
 
 export default connect(

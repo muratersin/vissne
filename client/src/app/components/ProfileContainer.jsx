@@ -11,8 +11,6 @@ export default function ProfileContainer(props) {
     return <PageLoading show />;
   }
 
-  console.log(user)
-
   return (
     <div className="container">
       <div className="row">

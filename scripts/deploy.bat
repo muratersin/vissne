@@ -3,13 +3,13 @@
 echo Vissne deployed to Heroku...
 echo Installing node dependencies...
 
-call npm install
 
 echo Compile front end scripts...
 
 :: switch branch to master
 call git checkout master
 
+<<<<<<< HEAD
 :: build front end scripts
 call npm run build
 
@@ -27,4 +27,6 @@ echo \\\\\------ DEPLOYING IS COMPLETED ------/////
 :: switch branch to dev
 call git checkout dev
 
+=======
+>>>>>>> dev
 exit

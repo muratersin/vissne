@@ -8,12 +8,21 @@ call npm install
 echo Compile front end scripts...
 call npm run build
 
-echo Logged in Heroku
-call heroku login
-call heroku git:remote -a vissne
+:: switch branch to master
+call git checkout master
+
+:: merge all changes from dev branch
+call git merge origin dev
+
+:: commit and push to master branch
+:: heroku will deploy automatically from this branch
 call git add .
 call git commit -am "Deploy - %date%"
-call git push heroku master
+call git push origin master
 
-echo Deploying is completed.
+echo \\\\\------ DEPLOYING IS COMPLETED ------/////
+
+:: switch branch to dev
+call git checkout dev
+
 exit

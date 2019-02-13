@@ -87,7 +87,14 @@ export default class Lists extends Component {
           />
         </ProfileContainer>
         <Modal show={showModal} title="Create List" cancel={this.toggleModal}>
-          <input type="text" name="name" onChange={this.handleChange} />
+          <div className="form-group">
+            <label>List Name</label>
+            <input type="text" className="form-control" placeholder="List Name" />
+          </div>
+          <div className="form-group form-check">
+            <input type="checkbox" className="form-check-input" />
+            <label className="form-check-label">Public List</label>
+          </div>
         </Modal>
       </Fragment>
     );

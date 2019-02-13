@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { ALERT_TYPES } from '../../../lib/constants';
+
 const Alert = (props) => {
   const {
     kind,
@@ -31,16 +33,7 @@ Alert.propTypes = {
   show: PropTypes.bool,
   message: PropTypes.string,
   toggleAlertDialog: PropTypes.func.isRequired,
-  kind: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'success',
-    'danger',
-    'warning',
-    'info',
-    'light',
-    'dark',
-  ]),
+  kind: PropTypes.oneOf(ALERT_TYPES),
 };
 
 export default Alert;

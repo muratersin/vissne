@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Pagination from './Pagination';
+import Alert from './Alert';
 
 const createHeader = (fields) => {
   const visibleFields = fields
@@ -60,7 +61,7 @@ const TableList = (props) => {
     return (
       <div className="row mt-2">
         <div className="col d-flex">
-          <Alert message="There were no result." additionalClass="text-center" show />
+          <Alert message="There were no result." kind="warning" />
         </div>
       </div>
     );

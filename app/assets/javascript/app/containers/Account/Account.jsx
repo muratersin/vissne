@@ -47,17 +47,17 @@ export default class Account extends Component {
 
   changePassword() {
     const { password } = this.state;
-    const { toggleAlert, changePassword } = this.props;
+    const { toggleAlertDialog, changePassword } = this.props;
 
     if (password.newPassword !== password.confirmNewPassword) {
-      return toggleAlert({
+      return toggleAlertDialog({
         kind: 'danger',
         message: 'Passwords don\'t match.',
       });
     }
 
     if (password.oldPassword === password.newPassword) {
-      return toggleAlert({
+      return toggleAlertDialog({
         kind: 'danger',
         message: 'Password cannot be the same with old password.',
       });
@@ -212,6 +212,6 @@ Account.propTypes = {
   loading: PropTypes.bool.isRequired,
   setPageLoadingStatus: PropTypes.func.isRequired,
   updateUser: PropTypes.func.isRequired,
-  toggleAlert: PropTypes.func.isRequired,
+  toggleAlertDialog: PropTypes.func.isRequired,
   changePassword: PropTypes.func.isRequired,
 };

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import Account from './Account';
 import { getAccountDetail, changePassword, updateUser } from '../../actions/account';
-import { setPageLoadingStatus, toggleAlert } from '../../actions/common';
+import { setPageLoadingStatus, toggleAlertDialog } from '../../actions/common';
 
 const mapStateToProps = state => ({
   pageLoading: state.common.pageLoading,
@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
   setPageLoadingStatus: status => dispatch(setPageLoadingStatus(status)),
   updateUser: user => dispatch(updateUser(user)),
   changePassword: password => dispatch(changePassword(password)),
-  toggleAlert: alert => dispatch(toggleAlert(alert)),
+  toggleAlertDialog: alert => dispatch(toggleAlertDialog(alert)),
 });
 
 export default connect(

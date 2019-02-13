@@ -10,7 +10,7 @@ import {
   DELETE_FROM_LIST,
   SET_LISTS,
 } from '../constants/action-types';
-import { setLoadingStatus, setPageLoadingStatus, toggleAlert } from './common';
+import { setLoadingStatus, setPageLoadingStatus, toggleAlertDialog } from './common';
 
 export function setList(lists) {
   return {
@@ -44,7 +44,7 @@ export function createList(list) {
     axios.post('/api/lists', list)
       .then((result) => {
         dispatch(setLoadingStatus(false));
-        dispatch(toggleAlert({
+        dispatch(toggleAlertDialog({
           kind: 'success',
           message: result.data.message,
         }));

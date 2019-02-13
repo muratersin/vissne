@@ -12,7 +12,7 @@ import Lists from './containers/Lists';
 import NotFound from './components/NotFound';
 
 // Shared Components
-import Alert from './containers/Alert';
+import AlertDialog from './containers/AlertDialog';
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -30,7 +30,7 @@ const Root = ({ store }) => (
           <Route component={NotFound} />
         </Switch>
       </Router>
-      <Alert />
+      <AlertDialog />
     </Fragment>
   </Provider>
 );

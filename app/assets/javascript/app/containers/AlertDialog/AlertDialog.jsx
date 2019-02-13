@@ -6,7 +6,7 @@ const Alert = (props) => {
     kind,
     show,
     message,
-    toggleAlert,
+    toggleAlertDialog,
   } = props;
 
   if (!show) return null;
@@ -14,7 +14,7 @@ const Alert = (props) => {
   return (
     <div className={`alert alert-${kind} site-alert alert-dismissible fade show`} role="alert">
       {message}
-      <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={toggleAlert}>
+      <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={toggleAlertDialog}>
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -30,7 +30,7 @@ Alert.defaultProps = {
 Alert.propTypes = {
   show: PropTypes.bool,
   message: PropTypes.string,
-  toggleAlert: PropTypes.func.isRequired,
+  toggleAlertDialog: PropTypes.func.isRequired,
   kind: PropTypes.oneOf([
     'primary',
     'secondary',

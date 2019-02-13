@@ -6,7 +6,7 @@ import {
   SET_UPLOADED_IMAGE,
 } from '../constants/action-types';
 
-export const toggleAlert = ({ message, kind }) => ({
+export const toggleAlertDialog = ({ message, kind }) => ({
   type: TOGGLE_ALERT,
   message,
   kind,

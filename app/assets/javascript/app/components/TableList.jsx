@@ -57,7 +57,13 @@ const TableList = (props) => {
   const { data, fields, pagination } = props;
 
   if (!data || data.length === 0) {
-    return null;
+    return (
+      <div className="row mt-2">
+        <div className="col d-flex">
+          <Alert message="There were no result." additionalClass="text-center" show />
+        </div>
+      </div>
+    );
   }
 
   const heads = createHeader(fields);

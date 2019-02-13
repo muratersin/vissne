@@ -87,7 +87,7 @@ export default class Lists extends Component {
           />
         </ProfileContainer>
         <Modal show={showModal} title="Create List" cancel={this.toggleModal}>
-          <h1>Modal COntent</h1>
+          <input type="text" name="name" onChange={this.handleChange} />
         </Modal>
       </Fragment>
     );

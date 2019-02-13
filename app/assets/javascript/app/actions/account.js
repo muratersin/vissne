@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { SET_ACCOUNT_DETAIL } from '../constants/action-types';
-import { setPageLoadingStatus, setLoadingStatus, toggleAlert } from './common';
+import { setPageLoadingStatus, setLoadingStatus, toggleAlertDialog } from './common';
 import ajaxErrorHandler from '../../lib/ajax-error-handler';
 
 export const setAccountDetail = user => ({
@@ -27,7 +27,7 @@ export const updateUser = user => (dispatch) => {
     .then((response) => {
       dispatch(setLoadingStatus(false));
       dispatch(setAccountDetail(response.data));
-      dispatch(toggleAlert({
+      dispatch(toggleAlertDialog({
         kind: 'success',
         message: 'Profile has been successfully updated.',
       }));
@@ -40,7 +40,7 @@ export const changePassword = password => (dispatch) => {
   axios.put('/api/user/change-password', password)
     .then(({ data }) => {
       dispatch(setLoadingStatus(false));
-      dispatch(toggleAlert({
+      dispatch(toggleAlertDialog({
         kind: 'success',
         message: data.message,
       }));

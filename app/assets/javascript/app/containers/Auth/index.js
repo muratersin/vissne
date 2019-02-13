@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import Auth from './Auth';
 import { loginRegister } from '../../actions/auth';
-import { toggleAlert } from '../../actions/common';
+import { toggleAlertDialog } from '../../actions/common';
 import './Auth.scss';
 
 const mapStateToProps = state => ({
@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   loginRegister: (data, url) => dispatch(loginRegister(data, url)),
-  toggleAlert: message => dispatch(toggleAlert({ kind: 'danger', message })),
+  toggleAlertDialog: message => dispatch(toggleAlertDialog({ kind: 'danger', message })),
 });
 
 export default connect(

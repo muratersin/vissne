@@ -1,7 +1,7 @@
 
 import {
   setPageLoadingStatus,
-  toggleAlert,
+  toggleAlertDialog,
   setLoadingStatus,
 } from '../app/actions/common';
 
@@ -23,7 +23,7 @@ export default function ajaxErrorHandler(dispatch) {
 
       default:
         dispatch(
-          toggleAlert({
+          toggleAlertDialog({
             kind: 'danger',
             message: response.data.message,
           }),

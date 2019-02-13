@@ -28,7 +28,7 @@ const initialState = {
   isLoggedIn: !!user.email,
 };
 
-export default function app(state = initialState, action) {
+export default function discover(state = initialState, action) {
   switch (action.type) {
     case SET_MOVIES:
       return Object.assign({}, state, {

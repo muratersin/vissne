@@ -1,5 +1,5 @@
 
-const User = require('../../models/user');
+const { User } = require('../../../lib/sequelize');
 
 const projectionData = body => ({
   email: body.email,

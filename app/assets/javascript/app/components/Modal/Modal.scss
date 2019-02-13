@@ -1,0 +1,15 @@
+@keyframes modalFade {
+    from { 
+        transform: translateY(50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+  
+.modal {
+    animation-name: modalFade;
+    animation-duration: .3s;
+}

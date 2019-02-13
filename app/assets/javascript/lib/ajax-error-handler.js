@@ -1,15 +1,24 @@
 
-import { setPageLoadingStatus, toggleAlert } from '../app/actions/common';
+import {
+  setPageLoadingStatus,
+  toggleAlert,
+  setLoadingStatus,
+} from '../app/actions/common';
 
 export default function ajaxErrorHandler(dispatch) {
   return ({ response }) => {
     const statusCode = response.status;
+
     dispatch(setPageLoadingStatus(false));
+    dispatch(setLoadingStatus(false));
 
     switch (statusCode) {
       case 404:
+        window.location.href = `${vissne.domain}/page-not-found`;
+        break;
+
       case 403:
-        window.location.href = '/page-not-found';
+        window.location.href = `${vissne.domain}/auth`;
         break;
 
       default:

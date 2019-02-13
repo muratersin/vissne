@@ -50,18 +50,18 @@ module.exports = {
       ],
     },
     '/user': {
+      '/change-password': {
+        put: [
+          verifyToken,
+          controllers.user.changePassword,
+        ],
+      },
       '/:id': {
         put: [
           verifyToken,
           controllers.user.update,
           setCookie,
           responder,
-        ],
-      },
-      '/change-password': {
-        put: [
-          verifyToken,
-          controllers.user.changePassword,
         ],
       },
     },

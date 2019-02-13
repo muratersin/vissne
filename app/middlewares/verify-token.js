@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const { User } = require('../../lib/sequelize');
 const { verifyToken } = require('../../lib/auth');
 
 const verifyTokenMiddleware = (req, res, next) => {

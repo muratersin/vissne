@@ -8,6 +8,7 @@ import Discover from './containers/Discover';
 import Movie from './containers/Movie';
 import Auth from './containers/Auth';
 import Account from './containers/Account';
+import Lists from './containers/Lists';
 import NotFound from './components/NotFound';
 
 // Shared Components
@@ -23,6 +24,7 @@ const Root = ({ store }) => (
           <Route path="/in-theaters" component={Discover} />
           <Route path="/auth" component={Auth} />
           <Route path="/profile/account" component={Account} />
+          <Route path="/profile/lists" component={Lists} />
           <Route path="/movie/:slug/:id" component={Movie} />
           <Route path="/page-not-found" component={NotFound} />
           <Route component={NotFound} />

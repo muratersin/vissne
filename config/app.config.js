@@ -15,7 +15,6 @@ const {
 const domain = process.env.DOMAIN;
 const cdn = process.env.CDN;
 const env = (NODE_ENV || 'development').trim();
-
 const projectDir = path.resolve(__dirname, '../');
 
 const appConfig = {
@@ -69,7 +68,7 @@ const appConfig = {
     defaultCoverImagePath: 'images/default-cover.png',
   },
 
-  // Config for whic uses all externap api in vissne
+  // Config for whic uses all externall api in vissne
   api: {
     moviedb: {
       protocol: 'https',
@@ -78,8 +77,8 @@ const appConfig = {
       lang: 'en',
       key: MOVIE_DB_API_KEY,
       images: {
-        secure_base_url: 'https://image.tmdb.org/t/p/', // TODO: Delete Snake Case
-        secureBaseUrl: 'https://image.tmdb.org/t/p/',
+        secure_base_url: 'https://image.tmdb.org/t/p', // TODO: Delete Snake Case
+        secureBaseUrl: 'https://image.tmdb.org/t/p',
         backdrop_sizes: [
           'w300',
           'w780',

@@ -38,10 +38,12 @@ export const updateUser = user => (dispatch) => {
 export const changePassword = password => (dispatch) => {
   dispatch(setLoadingStatus(true));
   axios.put('/api/user/change-password', password)
-    .then((response) => {
-      setLoadingStatus(false);
-      console.log(response);
-      alert('ok');
+    .then(({ data }) => {
+      dispatch(setLoadingStatus(false));
+      dispatch(toggleAlert({
+        kind: 'success',
+        message: data.message,
+      }));
     })
     .catch(ajaxErrorHandler(dispatch));
 };

@@ -34,7 +34,7 @@ export default class Movie extends Component {
     return (
       <div>
         <Navbar isLoggedIn={isLoggedIn} user={user} />
-        <div className="container-fluid">
+        <div className="container-fluid mt-2">
           <div className="row">
             <div className="col-12 col-sm-6 col-md-3">
               <img className="img-fluid mb-2" src={detail.posterPath} alt={detail.title} />

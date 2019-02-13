@@ -16,7 +16,7 @@ export default class Account extends Component {
     this.state = {
       editMode: false,
       userForm: {},
-      passwordForm: {},
+      password: {},
       validation: {
         userName: {},
         email: {},
@@ -28,19 +28,13 @@ export default class Account extends Component {
       },
     };
 
-    this.updateUser = this.updateUser.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.changePassword = this.changePassword.bind(this);
   }
 
   componentDidMount() {
     const { getAccountDetail } = this.props;
     getAccountDetail();
-  }
-
-  updateUser() {
-    const { updateUser } = this.props;
-    const { userForm } = this.state;
-    updateUser(userForm);
   }
 
   handleChange({ target }, field) {
@@ -51,14 +45,37 @@ export default class Account extends Component {
     this.forceUpdate();
   }
 
+  changePassword() {
+    const { password } = this.state;
+    const { toggleAlert, changePassword } = this.props;
+
+    if (password.newPassword !== password.confirmNewPassword) {
+      return toggleAlert({
+        kind: 'danger',
+        message: 'Passwords don\'t match.',
+      });
+    }
+
+    if (password.oldPassword === password.newPassword) {
+      return toggleAlert({
+        kind: 'danger',
+        message: 'Password cannot be the same with old password.',
+      });
+    }
+
+    changePassword(password);
+    this.setState({ password: {} });
+  }
+
   render() {
     const {
       match,
       user,
       loading,
       pageLoading,
+      updateUser,
     } = this.props;
-    const { userForm, validation, passwordForm } = this.state;
+    const { userForm, validation, password } = this.state;
 
     if (user && user.id && !userForm.id) {
       this.setState({ userForm: user });
@@ -123,7 +140,8 @@ export default class Account extends Component {
                 <button
                   className="btn btn-outline-success btn-block"
                   type="button"
-                  onClick={this.updateUser}
+                  onClick={() => updateUser(userForm)}
+                  disabled={loading}
                 >
                   <Spinner show={loading} kind="border" color="success" />
                   <span className={loading ? 'd-none' : 'd-block'}>Update</span>
@@ -139,7 +157,7 @@ export default class Account extends Component {
                     type="password"
                     name="oldPassword"
                     className={`form-control ${validation.oldPassword.class || ''}`}
-                    value={passwordForm.oldPassword}
+                    value={password.oldPassword}
                     id="oldPasswordInput"
                     onChange={e => this.handleChange(e, 'password')}
                   />
@@ -151,7 +169,7 @@ export default class Account extends Component {
                     type="password"
                     name="newPassword"
                     className={`form-control ${validation.newPassword.class || ''}`}
-                    value={passwordForm.newPassword}
+                    value={password.newPassword}
                     id="newPasswordInput"
                     onChange={e => this.handleChange(e, 'password')}
                   />
@@ -163,13 +181,18 @@ export default class Account extends Component {
                     type="password"
                     name="confirmNewPassword"
                     className={`form-control ${validation.confirmNewPassword.class || ''}`}
-                    value={passwordForm.confirmNewPassword}
+                    value={password.confirmNewPassword}
                     id="confirmNewPasswordInput"
                     onChange={e => this.handleChange(e, 'password')}
                   />
                   {validation.confirmNewPassword.error}
                 </div>
-                <button className="btn btn-outline-primary btn-block" type="button">
+                <button
+                  className="btn btn-outline-primary btn-block"
+                  type="button"
+                  disabled={loading}
+                  onClick={this.changePassword}
+                >
                   Change Password
                 </button>
               </form>
@@ -189,4 +212,6 @@ Account.propTypes = {
   loading: PropTypes.bool.isRequired,
   setPageLoadingStatus: PropTypes.func.isRequired,
   updateUser: PropTypes.func.isRequired,
+  toggleAlert: PropTypes.func.isRequired,
+  changePassword: PropTypes.func.isRequired,
 };

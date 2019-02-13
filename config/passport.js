@@ -2,7 +2,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const config = require('./app.config');
-const User = require('../app/models/user');
+const { User } = require('../lib/sequelize');
 
 const strategyCallback = (accessToken, refreshToken, profile, callback) => {
   const splittedName = profile.displayName.split(' ');
@@ -39,7 +39,7 @@ const strategyCallback = (accessToken, refreshToken, profile, callback) => {
 
   User.findOrCreate({ where, defaults })
     .spread(user => callback(null, user))
-    .catch(err => callback(err));
+    .catch(callback);
 };
 
 const googleStrategy = new GoogleStrategy({

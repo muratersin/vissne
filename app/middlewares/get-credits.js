@@ -19,7 +19,7 @@ const getCredits = async (req, res, next) => {
     req.credits = response.data;
     req.credits.cast = req.credits.cast.map((cast) => {
       const profilePath = cast.profile_path
-        ? `${secureBaseUrl}/w45${cast.profile_path}`
+        ? `${secureBaseUrl}/w185${cast.profile_path}`
         : `${appConfig.domain}/${appConfig.image.defaultProfileImagePath}`;
 
       return {

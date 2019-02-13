@@ -15,6 +15,14 @@ export const SET_MOVIES = 'SET_MOVIES';
 export const SET_GENRES = 'SET_GENRES';
 export const SET_QUERY = 'SET_QUERY';
 
+// lists
+export const GET_LISTS_BY_CURRENT_USER = 'GET_LISTS_BY_CURRENT_USER';
+export const CREATE_LIST = 'CREATE_LIST';
+export const DELETE_LIST = 'DELETE_LISTS';
+export const ADD_TO_LIST = 'ADD_TO_LIST';
+export const DELETE_FROM_LIST = 'DELETE_FROM_LIST';
+export const SET_LISTS = 'SET_LISTS';
+
 // movie detail
 export const SET_MOVIE_DETAIL = 'SET_MOVIE_DETAIL';
 

@@ -66,7 +66,7 @@ PGPORT=YOUR_PG_PORT
 NODE_ENV=development
 CDN=http://localhost:3000/static
 DOMAIN=http://localhost:3000
-JWTSECRET=3acf94676509be507188df90d67c053bKjsttq172huhbjdhvb722
+JWTSECRET=YOUR_JWT_SECRET
 
 
 # api keys

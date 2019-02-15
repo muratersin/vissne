@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getListByCurrentUser } from '../../actions/lists';
+import { getListByCurrentUser, saveList } from '../../actions/lists';
 import Lists from './Lists';
 
 const mapStateToProps = state => ({
@@ -14,6 +14,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getListByCurrentUser: query => dispatch(getListByCurrentUser(query)),
+  saveList: list => dispatch(saveList(list)),
 });
 
 export default connect(

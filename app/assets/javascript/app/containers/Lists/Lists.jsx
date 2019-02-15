@@ -22,6 +22,8 @@ export default class Lists extends Component {
     this.getLists = this.getLists.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.create = this.create.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.save = this.save.bind(this);
   }
 
   componentDidMount() {
@@ -51,8 +53,28 @@ export default class Lists extends Component {
     }));
   }
 
+  handleChange({ target }) {
+    const { name } = target;
+    const { list } = this.state;
+    let value = target.parsedValue || target.value;
+
+    if (name === 'public') {
+      value = value === 'true';
+    }
+
+    list[name] = value;
+
+    this.setState({ list });
+  }
+
+  save() {
+    const { list } = this.state;
+    const { saveList } = this.props;
+    saveList(list);
+  }
+
   render() {
-    const { query, showModal } = this.state;
+    const { query, showModal, list } = this.state;
     const {
       match,
       user,
@@ -69,7 +91,8 @@ export default class Lists extends Component {
           <div className="row mt-2">
             <div className="col d-flex justify-content-end">
               <button className="btn btn-outline-primary" type="button" onClick={this.create}>
-                <FontAwesomeIcon icon="plus-square" /> Create List
+                <FontAwesomeIcon icon="plus-square" />
+                <span className="ml-1">Create List</span>
               </button>
             </div>
           </div>
@@ -86,14 +109,49 @@ export default class Lists extends Component {
             }}
           />
         </ProfileContainer>
-        <Modal show={showModal} title="Create List" cancel={this.toggleModal}>
+        <Modal show={showModal} title="Create List" cancel={this.toggleModal} submit={this.save}>
           <div className="form-group">
             <label>List Name</label>
-            <input type="text" className="form-control" placeholder="List Name" />
+            <input
+              type="text"
+              name="name"
+              className="form-control"
+              placeholder="List Name"
+              value={list.name}
+              onChange={this.handleChange}
+            />
           </div>
-          <div className="form-group form-check">
-            <input type="checkbox" className="form-check-input" />
-            <label className="form-check-label">Public List</label>
+          <div className="row">
+            <div className="col">
+              <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="public"
+                  value="true"
+                  onChange={this.handleChange}
+                  checked={list.public}
+                />
+                <label className="form-check-label">
+                  Public List
+                </label>
+              </div>
+            </div>
+            <div className="col">
+              <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="public"
+                  value="false"
+                  onChange={this.handleChange}
+                  checked={!list.public}
+                />
+                <label className="form-check-label">
+                  Private List
+                </label>
+              </div>
+            </div>
           </div>
         </Modal>
       </Fragment>

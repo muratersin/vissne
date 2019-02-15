@@ -92,6 +92,13 @@ module.exports = {
         controllers.file.imageUpload,
       ],
     },
+    '/lists': {
+      get: controllers.lists.get,
+      post: [
+        verifyToken,
+        controllers.lists.create,
+      ],
+    },
   },
   '/auth/google': {
     get: passport.authenticate('google', {

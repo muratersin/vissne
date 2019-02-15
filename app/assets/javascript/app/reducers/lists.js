@@ -5,14 +5,24 @@ const initialState = {
   total: 0,
   tableFields: [{
     title: 'Id',
-    field: 'id',
+    name: 'id',
     hidden: true,
   }, {
     title: 'Name',
-    field: 'name',
+    name: 'name',
   }, {
     title: 'Create Date',
-    field: 'createdAt',
+    name: 'createdAt',
+    format(value) {
+      const date = new Date(value);
+      return date.toLocaleDateString();
+    },
+  }, {
+    title: 'Public',
+    name: 'public',
+    format(value) {
+      return value ? 'Public' : 'Private';
+    },
   }],
 };
 
@@ -20,7 +30,8 @@ export default function lists(state = initialState, action) {
   switch (action.type) {
     case SET_LISTS:
       return Object.assign({}, state, {
-        lists: action.payload,
+        lists: action.payload.lists,
+        total: action.payload.total,
       });
 
     default:

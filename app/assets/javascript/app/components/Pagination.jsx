@@ -2,14 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const handleClick = (currentPage, page) => {
+const handleClick = (page, currentPage) => {
   let result = 1;
+
+  if (Number.isInteger(page)) {
+    return { page };
+  }
 
   if (page === 'prev') {
     const newPage = (currentPage - 1);
-
     result = newPage === 0 ? 1 : newPage;
-  } else {
+  } else if (page === 'next') {
     result = (currentPage + 1);
   }
 
@@ -24,7 +27,7 @@ const generatePageNumbers = (options) => {
     buttonCount,
   } = options;
   const pageNumbers = [];
-  const totalPage = Math.ceil(total / limit);
+  const totalPage = Math.floor(total / limit); // floor down
   const bc = Math.ceil(buttonCount / 2);
 
   for (let i = (page - (bc - 1)); i < (page + bc); i += 1) {
@@ -50,7 +53,7 @@ const Pagination = ({ options }) => {
     <li className={`page-item  ${pn === page ? 'active' : ''}`}>
       <a
         className="page-link"
-        onClick={() => onPaginate(pn)}
+        onClick={() => onPaginate(handleClick(pn))}
       >
         {pn}
       </a>
@@ -63,7 +66,7 @@ const Pagination = ({ options }) => {
         <li className="page-item">
           <a
             className="page-link"
-            onClick={() => onPaginate(handleClick(page, 'prev'))}
+            onClick={() => onPaginate(handleClick('prev', page))}
           >
             <FontAwesomeIcon icon="angle-left" />
           </a>
@@ -72,7 +75,7 @@ const Pagination = ({ options }) => {
         <li className="page-item">
           <a
             className="page-link"
-            handleClick={() => onPaginate(handleClick(page, 'next'))}
+            handleClick={() => onPaginate(handleClick('next', page))}
           >
             <FontAwesomeIcon icon="angle-right" />
           </a>

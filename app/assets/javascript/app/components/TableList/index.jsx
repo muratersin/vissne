@@ -1,7 +1,8 @@
 import React from 'react';
 
-import Pagination from './Pagination';
-import Alert from './Alert';
+import Pagination from '../Pagination';
+import Alert from '../Alert';
+import './TableList.scss';
 
 const createHeader = (fields) => {
   const visibleFields = fields
@@ -55,7 +56,7 @@ const createPagination = (options) => {
 };
 
 const TableList = (props) => {
-  const { data, fields, pagination } = props;
+  const { data, fields, pagination, responsive } = props;
 
   if (!data || data.length === 0) {
     return (
@@ -74,7 +75,7 @@ const TableList = (props) => {
   return (
     <div className="row">
       <div className="col">
-        <table className="table table-responsive">
+        <table className={`table ${responsive ? 'table-responsive' : ''}`}>
           <thead>
             {heads}
           </thead>

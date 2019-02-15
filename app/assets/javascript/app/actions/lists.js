@@ -12,10 +12,13 @@ import {
 } from '../constants/action-types';
 import { setLoadingStatus, setPageLoadingStatus, toggleAlertDialog } from './common';
 
-export function setList(lists) {
+export function setList({ lists, total }) {
   return {
     type: SET_LISTS,
-    payload: lists,
+    payload: {
+      lists,
+      total,
+    },
   };
 }
 
@@ -32,16 +35,23 @@ export function getListByCurrentUser({ page, limit }) {
       .then((response) => {
         dispatch(setLoadingStatus(true));
         dispatch(setPageLoadingStatus(false));
-        dispatch(setList(response.data));
+        dispatch(setList({
+          lists: response.data.rows,
+          total: response.data.count,
+        }));
       })
       .catch(ajaxErrorHandler);
   };
 }
 
-export function createList(list) {
+export function saveList(list) {
+  const url = !list.id
+    ? '/api/lists'
+    : `/api/lists/${list.id}`;
+
   return (dispatch) => {
     dispatch(setLoadingStatus(true));
-    axios.post('/api/lists', list)
+    axios.post(url, list)
       .then((result) => {
         dispatch(setLoadingStatus(false));
         dispatch(toggleAlertDialog({

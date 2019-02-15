@@ -37,7 +37,7 @@ const createBody = (data, fields) => {
   return tbody;
 };
 
-const createPagination = (options) => {
+const createPagination = (options, dataLength) => {
   if (!options) {
     return null;
   }
@@ -50,7 +50,7 @@ const createPagination = (options) => {
   return (
     <div className="d-flex justify-content-between">
       <Pagination options={options} />
-      <span>{`Show ${limit > total ? total : limit} result of ${total}`}</span>
+      <span>{`Show ${dataLength} result of ${total}`}</span>
     </div>
   );
 };
@@ -70,7 +70,7 @@ const TableList = (props) => {
 
   const heads = createHeader(fields);
   const body = createBody(data, fields);
-  const paginationButtons = createPagination(pagination);
+  const paginationButtons = createPagination(pagination, data.length);
 
   return (
     <div className="row">

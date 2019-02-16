@@ -22,6 +22,10 @@ import {
   faUpload,
   faNewspaper,
   faAt,
+  faAngleRight,
+  faAngleLeft,
+  faPlusSquare,
+  faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebook,
@@ -58,5 +62,9 @@ export default function init() {
     faUpload,
     faNewspaper,
     faAt,
+    faAngleRight,
+    faAngleLeft,
+    faPlusSquare,
+    faTrash,
   );
 }

@@ -1,12 +1,13 @@
-const { Sequelize, sequelize } = require('../../lib/sequelize');
 
-const Genre = sequelize.define('genre', {
-  name: {
-    type: Sequelize.STRING(40),
-    allowNull: false,
-  },
-});
+module.exports = (sequelize, type) => {
+  const Genre = sequelize.define('genre', {
+    name: {
+      type: type.STRING(40),
+      allowNull: false,
+    },
+  });
 
-Genre.sync({});
+  Genre.sync({});
 
-module.exports = Genre;
+  return Genre;
+};

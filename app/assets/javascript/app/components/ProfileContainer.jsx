@@ -5,9 +5,9 @@ import PageLoading from './PageLoading';
 import profileMenu from '../constants/profile-menu';
 
 export default function ProfileContainer(props) {
-  const { children, path, loading, user } = props;
+  const { children, path, pageLoading, user } = props;
 
-  if (loading) {
+  if (pageLoading) {
     return <PageLoading show />;
   }
 

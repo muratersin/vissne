@@ -1,5 +1,5 @@
 const { createJWToken } = require('../../../lib/auth');
-const User = require('../../models/user');
+const { User } = require('../../../lib/sequelize');
 
 async function signinController(req, res, next) {
   const { email, password } = req.body;
@@ -13,24 +13,24 @@ async function signinController(req, res, next) {
     return res.status(400).json(authError);
   }
 
-  return user.comparePassword(password, (auth) => {
-    if (!auth) {
-      return res.status(400).json(authError);
-    }
+  const auth = await user.comparePassword(password);
 
-    req.publicUserData = user.publicParse();
-    req.token = createJWToken({
-      sessionData: req.publicUserData,
-      maxAge: 3600,
-    });
+  if (!auth) {
+    return res.status(400).json(authError);
+  }
 
-    req.jsonResponse = {
-      user: req.publicUserData,
-      success: true,
-    };
-
-    return next();
+  req.publicUserData = user.publicParse();
+  req.token = createJWToken({
+    sessionData: req.publicUserData,
+    maxAge: 3600,
   });
+
+  req.jsonResponse = {
+    user: req.publicUserData,
+    success: true,
+  };
+
+  return next();
 }
 
 module.exports = signinController;

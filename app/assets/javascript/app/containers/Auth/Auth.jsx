@@ -26,10 +26,10 @@ export default class Auth extends Component {
   }
 
   componentDidMount() {
-    const { toggleAlert } = this.props;
+    const { toggleAlertDialog } = this.props;
     const errorMessage = cookie.get('errorMessage');
     if (errorMessage) {
-      toggleAlert(errorMessage);
+      toggleAlertDialog(errorMessage);
     }
   }
 
@@ -356,5 +356,5 @@ export default class Auth extends Component {
 }
 
 Auth.propTypes = {
-  toggleAlert: PropTypes.func.isRequired,
+  toggleAlertDialog: PropTypes.func.isRequired,
 };

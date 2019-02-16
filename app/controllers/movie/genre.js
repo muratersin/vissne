@@ -1,5 +1,5 @@
 const cache = require('../../../lib/cache');
-const Genre = require('../../models/genre');
+const { Genre } = require('../../../lib/sequelize');
 
 const genre = async (req, res, next) => {
   try {
@@ -12,7 +12,9 @@ const genre = async (req, res, next) => {
     const genres = await Genre.findAll({
       attributes: ['id', 'name'],
     });
+
     cache.set('genres', genres);
+
     return res.status(200).json(genres);
   } catch (err) {
     return next(err);

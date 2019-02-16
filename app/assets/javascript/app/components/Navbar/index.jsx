@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 
-import { UserShape } from '../../../lib/prop-shapes';
+import { UserShape } from '../../constants/prop-shapes';
 import './Navbar.scss';
 
 const Navbar = (props) => {
@@ -17,7 +17,7 @@ const Navbar = (props) => {
     <Fragment>
       <li className="nav-item ">
         <Link className="nav-link" to="/profile/account" title="Profile">
-          <span className="mr-2">{user.fullName}</span>
+          <span className="mr-2">{user.userName}</span>
           <FontAwesomeIcon icon="user" />
         </Link>
       </li>

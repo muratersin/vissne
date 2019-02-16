@@ -49,6 +49,22 @@ module.exports = {
         responder,
       ],
     },
+    '/user': {
+      '/change-password': {
+        put: [
+          verifyToken,
+          controllers.user.changePassword,
+        ],
+      },
+      '/:id': {
+        put: [
+          verifyToken,
+          controllers.user.update,
+          setCookie,
+          responder,
+        ],
+      },
+    },
     '/account': {
       get: [
         verifyToken,
@@ -75,6 +91,21 @@ module.exports = {
         upload.single('file'),
         controllers.file.imageUpload,
       ],
+    },
+    '/lists': {
+      get: controllers.lists.get,
+      post: [
+        verifyToken,
+        controllers.lists.create,
+      ],
+      '/:id': {
+        delete: controllers.lists.destroy,
+        put: controllers.lists.update,
+        '/add': {
+          post: controllers.lists.addToList,
+          delete: controllers.lists.deleteFromList,
+        },
+      },
     },
   },
   '/auth/google': {

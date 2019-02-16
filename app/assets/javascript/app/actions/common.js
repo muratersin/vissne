@@ -1,18 +1,24 @@
 import {
   TOGGLE_ALERT,
-  LOADING,
+  SET_PAGE_LOADING_STATUS,
+  SET_LOADING_STATUS,
   TOGGLE_FILTER,
   SET_UPLOADED_IMAGE,
 } from '../constants/action-types';
 
-export const toggleAlert = ({ message, kind }) => ({
+export const toggleAlertDialog = ({ message, kind }) => ({
   type: TOGGLE_ALERT,
   message,
   kind,
 });
 
-export const loading = status => ({
-  type: LOADING,
+export const setPageLoadingStatus = status => ({
+  type: SET_PAGE_LOADING_STATUS,
+  pageLoading: status,
+});
+
+export const setLoadingStatus = status => ({
+  type: SET_LOADING_STATUS,
   loading: status,
 });
 

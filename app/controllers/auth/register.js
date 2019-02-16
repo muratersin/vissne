@@ -1,10 +1,10 @@
 const bcrypt = require('bcrypt');
+const Sequelize = require('sequelize');
 
-const User = require('../../models/user');
+const { User } = require('../../../lib/sequelize');
 const { saltRounds } = require('../../../config/app.config');
 const { createJWToken } = require('../../../lib/auth');
 const { trimStringFields } = require('../../../lib/helper/object');
-const { Sequelize } = require('../../../lib/sequelize');
 
 /**
  * @name registerController

@@ -1,9 +1,13 @@
-.table {
+.v-table {
     tbody {
         tr {
             &:hover {
                 background-color: rgb(233, 233, 233);
                 cursor: pointer;
+            }
+
+            &.selected {
+                background-color: #ffe5e5;
             }
         }
     }

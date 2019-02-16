@@ -1,7 +1,7 @@
 
 module.exports = (sequelize, type) => {
   const Movie = sequelize.define('movie', {
-    mdbId: {
+    Id: {
       type: type.INTEGER,
       primaryKey: true,
       autoIncrement: false,

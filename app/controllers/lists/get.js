@@ -11,7 +11,10 @@ async function get(req, res, next) {
     const result = await List.findAndCountAll({
       raw: true,
       limit: query.limit,
-      offset: (query.limit * query.page),
+      offset: (query.limit * (query.page - 1)),
+      order: [
+        ['createdAt', 'DESC'],
+      ],
     });
 
     res.status(200).json(result);

@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Navbar from '../../components/Navbar';
 import ProfileContainer from '../../components/ProfileContainer';
@@ -12,6 +11,7 @@ export default class Lists extends Component {
     super(props);
     this.state = {
       list: {},
+      selected: {},
       query: {
         page: 1,
         limit: 10,
@@ -22,12 +22,16 @@ export default class Lists extends Component {
     this.getLists = this.getLists.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.create = this.create.bind(this);
+    this.destroy = this.destroy.bind(this);
+    this.update = this.update.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.save = this.save.bind(this);
   }
 
   componentDidMount() {
+    const { getAccountDetail } = this.props;
     this.getLists();
+    getAccountDetail();
   }
 
   setQuery(query) {
@@ -45,6 +49,27 @@ export default class Lists extends Component {
   create() {
     this.setState({ list: {} });
     this.toggleModal();
+  }
+
+  destroy() {
+    const { deleteList, toggleAlertDialog } = this.props;
+    const { selected } = this.state;
+
+    if (!selected || !selected.id) {
+      return toggleAlertDialog({
+        kind: 'warning',
+        message: 'No selected data.',
+      });
+    }
+
+    deleteList(selected.id, this.getLists);
+  }
+
+  update() {
+    const { selected } = this.state;
+    this.setState({
+      list: selected,
+    }, this.toggleModal);
   }
 
   toggleModal() {
@@ -70,11 +95,20 @@ export default class Lists extends Component {
   save() {
     const { list } = this.state;
     const { saveList } = this.props;
-    saveList(list);
+    saveList(list, () => {
+      this.getLists();
+      this.setState({ list: {} });
+      this.toggleModal();
+    });
   }
 
   render() {
-    const { query, showModal, list } = this.state;
+    const {
+      query,
+      showModal,
+      list,
+      selected,
+    } = this.state;
     const {
       match,
       user,
@@ -88,17 +122,14 @@ export default class Lists extends Component {
       <Fragment>
         <Navbar user={user} />
         <ProfileContainer user={user} path={match.path} pageLoading={pageLoading}>
-          <div className="row mt-2">
-            <div className="col d-flex justify-content-end">
-              <button className="btn btn-outline-primary" type="button" onClick={this.create}>
-                <FontAwesomeIcon icon="plus-square" />
-                <span className="ml-1">Create List</span>
-              </button>
-            </div>
-          </div>
           <TableList
             title="My Lists"
             data={lists}
+            onCreate={this.create}
+            onDelete={this.destroy}
+            onEdit={this.update}
+            onSelect={s => this.setState({ selected: s })}
+            selected={selected}
             fields={tableFields}
             pagination={{
               total,
@@ -164,7 +195,10 @@ Lists.defaultProps = {
 };
 
 Lists.propTypes = {
+  toggleAlertDialog: PropTypes.func.isRequired,
   getListByCurrentUser: PropTypes.func.isRequired,
+  getAccountDetail: PropTypes.func.isRequired,
+  saveList: PropTypes.func.isRequired,
   pageLoading: PropTypes.bool.isRequired,
   total: PropTypes.number,
 };

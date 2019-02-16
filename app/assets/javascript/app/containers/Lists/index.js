@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 
-import { getListByCurrentUser, saveList } from '../../actions/lists';
+import { getListByCurrentUser, saveList, deleteList } from '../../actions/lists';
+import { getAccountDetail } from '../../actions/account';
+import { toggleAlertDialog } from '../../actions/common';
 import Lists from './Lists';
 
 const mapStateToProps = state => ({
@@ -14,7 +16,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getListByCurrentUser: query => dispatch(getListByCurrentUser(query)),
-  saveList: list => dispatch(saveList(list)),
+  saveList: (list, callback) => dispatch(saveList(list, callback)),
+  deleteList: (id, callback) => dispatch(deleteList(id, callback)),
+  getAccountDetail: () => dispatch(getAccountDetail()),
+  toggleAlertDialog: alert => dispatch(toggleAlertDialog(alert)),
 });
 
 export default connect(

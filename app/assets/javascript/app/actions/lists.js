@@ -11,6 +11,7 @@ import {
   SET_LISTS,
 } from '../constants/action-types';
 import { setLoadingStatus, setPageLoadingStatus, toggleAlertDialog } from './common';
+import { callbackify } from 'util';
 
 export function setList({ lists, total }) {
   return {
@@ -40,31 +41,52 @@ export function getListByCurrentUser({ page, limit }) {
           total: response.data.count,
         }));
       })
-      .catch(ajaxErrorHandler);
+      .catch(ajaxErrorHandler(dispatch));
   };
 }
 
-export function saveList(list) {
-  const url = !list.id
-    ? '/api/lists'
-    : `/api/lists/${list.id}`;
+export function saveList(list, callback) {
+  const ops = !list.id ? {
+    method: 'post',
+    url: '/api/lists',
+  } : {
+    method: 'put',
+    url: `/api/lists/${list.id}`,
+  };
 
   return (dispatch) => {
     dispatch(setLoadingStatus(true));
-    axios.post(url, list)
+    axios[ops.method](ops.url, list)
       .then((result) => {
         dispatch(setLoadingStatus(false));
         dispatch(toggleAlertDialog({
           kind: 'success',
           message: result.data.message,
         }));
+        if (callback && typeof callback === 'function') {
+          callback();
+        }
       })
-      .catch(ajaxErrorHandler);
+      .catch(ajaxErrorHandler(dispatch));
   };
 }
 
-export function deleteList(id) {
+export function deleteList(id, callback) {
+  return (dispatch) => {
+    dispatch(setLoadingStatus(true));
+    axios.delete(`/api/lists/${id}`)
+      .then((response) => {
+        dispatch(setLoadingStatus(false));
+        dispatch(toggleAlertDialog({
+          kind: 'success',
+          message: response.data.message,
+        }));
 
+        if (callback && typeof callback === 'function') {
+          callback();
+        }
+      }).catch(ajaxErrorHandler(dispatch));
+  };
 }
 
 export function addToList(listId, movieId) {

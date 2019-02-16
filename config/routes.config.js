@@ -98,6 +98,14 @@ module.exports = {
         verifyToken,
         controllers.lists.create,
       ],
+      '/:id': {
+        delete: controllers.lists.destroy,
+        put: controllers.lists.update,
+        '/add': {
+          post: controllers.lists.addToList,
+          delete: controllers.lists.deleteFromList,
+        },
+      },
     },
   },
   '/auth/google': {

@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import { toggleAlert } from '../../actions/common';
-import Alert from './Alert';
-import './Alert.scss';
+import { toggleAlertDialog } from '../../actions/common';
+import AlertDialog from './AlertDialog';
+import './AlertDialog.scss';
 
 const mapStateToProps = ({ common }) => ({
   show: common.showAlert,
@@ -11,10 +11,10 @@ const mapStateToProps = ({ common }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  toggleAlert: () => dispatch(toggleAlert({ show: false })),
+  toggleAlertDialog: () => dispatch(toggleAlertDialog({ show: false })),
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Alert);
+)(AlertDialog);

@@ -18,7 +18,7 @@ const initialState = {
       return date.toLocaleDateString();
     },
   }, {
-    title: 'Public',
+    title: 'Visibility',
     name: 'public',
     format(value) {
       return value ? 'Public' : 'Private';

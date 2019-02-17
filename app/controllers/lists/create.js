@@ -3,7 +3,7 @@ const { List } = require('../../../lib/sequelize');
 async function create(req, res, next) {
   try {
     const list = req.body;
-    list.user = req.user;
+    list.userId = req.user.id;
 
     await List.create(list);
 

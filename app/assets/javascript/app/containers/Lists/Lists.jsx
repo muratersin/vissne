@@ -84,7 +84,7 @@ export default class Lists extends Component {
     let value = target.parsedValue || target.value;
 
     if (name === 'public') {
-      value = value === 'true';
+      value = Number.parseInt(value, 10);
     }
 
     list[name] = value;
@@ -95,6 +95,9 @@ export default class Lists extends Component {
   save() {
     const { list } = this.state;
     const { saveList } = this.props;
+
+    list.public = Number.parseInt(list.public, 10);
+
     saveList(list, () => {
       this.getLists();
       this.setState({ list: {} });
@@ -159,7 +162,7 @@ export default class Lists extends Component {
                   className="form-check-input"
                   type="radio"
                   name="public"
-                  value="true"
+                  value="1"
                   onChange={this.handleChange}
                   checked={list.public}
                 />
@@ -174,7 +177,7 @@ export default class Lists extends Component {
                   className="form-check-input"
                   type="radio"
                   name="public"
-                  value="false"
+                  value="0"
                   onChange={this.handleChange}
                   checked={!list.public}
                 />

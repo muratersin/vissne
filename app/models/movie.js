@@ -1,13 +1,17 @@
 
 module.exports = (sequelize, type) => {
   const Movie = sequelize.define('movie', {
-    Id: {
+    id: {
       type: type.INTEGER,
       primaryKey: true,
       autoIncrement: false,
     },
     title: {
       type: type.STRING,
+      allowNull: false,
+    },
+    releaseDate: {
+      type: type.DATE,
       allowNull: false,
     },
     poster: {

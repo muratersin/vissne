@@ -26,6 +26,7 @@ import {
   faAngleLeft,
   faPlusSquare,
   faTrash,
+  faCheck,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebook,
@@ -66,5 +67,6 @@ export default function init() {
     faAngleLeft,
     faPlusSquare,
     faTrash,
+    faCheck,
   );
 }

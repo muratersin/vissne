@@ -8,10 +8,10 @@ import {
   DELETE_LIST,
   ADD_TO_LIST,
   DELETE_FROM_LIST,
+  SET_LIST_MOVIES,
   SET_LISTS,
 } from '../constants/action-types';
 import { setLoadingStatus, setPageLoadingStatus, toggleAlertDialog } from './common';
-import { callbackify } from 'util';
 
 export function setList({ lists, total }) {
   return {
@@ -23,16 +23,22 @@ export function setList({ lists, total }) {
   };
 }
 
-export function getListByCurrentUser({ page, limit }) {
+export function getListByCurrentUser({ page, limit }, movieId) {
   const currentUserId = cookie.get('user_id');
 
   if (!currentUserId) {
     window.location.href = `${vissne.domain}/auth`;
   }
 
+  let url = `/api/lists?userId=${currentUserId}&page=${page}&limit=${limit}`;
+
+  if (movieId) {
+    url += `&movieId=${movieId}`;
+  }
+
   return (dispatch) => {
     dispatch(setLoadingStatus(true));
-    axios(`/api/lists?userId=${currentUserId}&page=${page}&limit=${limit}`)
+    axios(url)
       .then((response) => {
         dispatch(setLoadingStatus(true));
         dispatch(setPageLoadingStatus(false));
@@ -89,10 +95,67 @@ export function deleteList(id, callback) {
   };
 }
 
-export function addToList(listId, movieId) {
+export function addToList({ listId, movieId }, callback) {
+  return (dispatch) => {
+    dispatch(setLoadingStatus(true));
+    axios.post(`/api/lists/${listId}/movie/${movieId}`, {})
+      .then((response) => {
+        dispatch(setLoadingStatus(false));
+        dispatch(toggleAlertDialog({
+          kind: 'success',
+          message: response.data.message,
+        }));
 
+        if (callback && typeof callback === 'function') {
+          callback();
+        }
+      })
+      .catch(ajaxErrorHandler(dispatch));
+  };
 }
 
-export function removeFromList(listId, movieId) {
+export function removeFromList({ listId, movieId }, callback) {
+  return (dispatch) => {
+    dispatch(setLoadingStatus(true));
+    axios.delete(`/api/lists/${listId}/movie/${movieId}`)
+      .then((response) => {
+        dispatch(setLoadingStatus(false));
+        dispatch(toggleAlertDialog({
+          kind: 'success',
+          message: response.data.message,
+        }));
 
+        if (callback && typeof callback === 'function') {
+          callback();
+        }
+      })
+      .catch(ajaxErrorHandler(dispatch));
+  };
+}
+
+export function setListMovies({ rows, count }) {
+  return {
+    type: SET_LIST_MOVIES,
+    payload: {
+      movies: rows,
+      total: count,
+    },
+  };
+}
+
+export function getListMovies(query, callback) {
+  const { listId, page, limit } = query;
+
+  return (dispatch) => {
+    dispatch(setLoadingStatus(true));
+    axios.get(`/api/lists/${listId}?page=${page}&limit=${limit}`)
+      .then((response) => {
+        dispatch(setLoadingStatus(false));
+        dispatch(setListMovies(response.data));
+        if (callback && typeof callback === 'function') {
+          callback();
+        }
+      })
+      .catch(ajaxErrorHandler(dispatch));
+  };
 }

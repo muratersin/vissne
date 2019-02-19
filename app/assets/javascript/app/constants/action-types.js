@@ -22,6 +22,7 @@ export const DELETE_LIST = 'DELETE_LISTS';
 export const ADD_TO_LIST = 'ADD_TO_LIST';
 export const DELETE_FROM_LIST = 'DELETE_FROM_LIST';
 export const SET_LISTS = 'SET_LISTS';
+export const SET_LIST_MOVIES = 'SET_LIST_MOVIES';
 
 // movie detail
 export const SET_MOVIE_DETAIL = 'SET_MOVIE_DETAIL';

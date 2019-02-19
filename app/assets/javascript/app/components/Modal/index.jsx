@@ -13,6 +13,9 @@ const Modal = (props) => {
   } = props;
 
   const className = show ? 'show d-block' : '';
+  const submitButton = submit
+    ? <button type="button" className="btn btn-primary" onClick={submit}>Save</button>
+    : null;
 
   return (
     <div className={`modal fade ${className}`} tabIndex="-1" role="dialog" aria-hidden="true" data-backdrop>
@@ -29,7 +32,7 @@ const Modal = (props) => {
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={cancel}>Close</button>
-            <button type="button" className="btn btn-primary" onClick={submit}>Save</button>
+            {submitButton}
           </div>
         </div>
       </div>

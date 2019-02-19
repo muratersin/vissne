@@ -52,13 +52,13 @@ module.exports = {
     '/user': {
       '/change-password': {
         put: [
-          verifyToken,
+          verifyToken(false),
           controllers.user.changePassword,
         ],
       },
       '/:id': {
         put: [
-          verifyToken,
+          verifyToken(false),
           controllers.user.update,
           setCookie,
           responder,
@@ -67,7 +67,7 @@ module.exports = {
     },
     '/account': {
       get: [
-        verifyToken,
+        verifyToken(false),
         controllers.account.getUserAccount,
       ],
     },
@@ -87,23 +87,33 @@ module.exports = {
     },
     '/upload': {
       post: [
-        verifyToken,
+        verifyToken(false),
         upload.single('file'),
         controllers.file.imageUpload,
       ],
     },
     '/lists': {
-      get: controllers.lists.get,
+      get: [
+        verifyToken(true),
+        controllers.lists.get,
+      ],
       post: [
-        verifyToken,
+        verifyToken(false),
         controllers.lists.create,
       ],
       '/:id': {
         delete: controllers.lists.destroy,
         put: controllers.lists.update,
-        '/add': {
-          post: controllers.lists.addToList,
-          delete: controllers.lists.deleteFromList,
+        get: controllers.lists.getMovies,
+        '/movie/:movieId': {
+          post: [
+            verifyToken(false),
+            controllers.lists.addToList,
+          ],
+          delete: [
+            verifyToken(false),
+            controllers.lists.deleteFromList,
+          ],
         },
       },
     },

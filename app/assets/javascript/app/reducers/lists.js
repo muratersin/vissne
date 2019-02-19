@@ -1,29 +1,10 @@
-import { SET_LISTS } from '../constants/action-types';
+import { SET_LISTS, SET_LIST_MOVIES } from '../constants/action-types';
 
 const initialState = {
   lists: [],
-  total: 0,
-  tableFields: [{
-    title: 'Id',
-    name: 'id',
-    hidden: true,
-  }, {
-    title: 'Name',
-    name: 'name',
-  }, {
-    title: 'Create Date',
-    name: 'createdAt',
-    format(value) {
-      const date = new Date(value);
-      return date.toLocaleDateString();
-    },
-  }, {
-    title: 'Public',
-    name: 'public',
-    format(value) {
-      return value ? 'Public' : 'Private';
-    },
-  }],
+  totalList: 0,
+  movies: [],
+  totalMovie: 0,
 };
 
 export default function lists(state = initialState, action) {
@@ -31,7 +12,13 @@ export default function lists(state = initialState, action) {
     case SET_LISTS:
       return Object.assign({}, state, {
         lists: action.payload.lists,
-        total: action.payload.total,
+        totalList: action.payload.total,
+      });
+
+    case SET_LIST_MOVIES:
+      return Object.assign({}, state, {
+        movies: action.payload.movies,
+        totalMovie: action.payload.total,
       });
 
     default:

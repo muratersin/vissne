@@ -58,6 +58,7 @@ const createPagination = (options, dataLength) => {
 
 const TableList = (props) => {
   const {
+    title,
     data,
     selected,
     fields,
@@ -103,7 +104,7 @@ const TableList = (props) => {
       <div className="row mt-2">
         <div className="col">
           <Alert message="There were no result." kind="warning" />
-          <button onClick={onCreate} className={`btn btn-outline-primary w-100 ${onCreate ? '' : 'd-block'}`} type="button">
+          <button onClick={onCreate} className={`btn btn-outline-primary w-100 ${onCreate ? '' : 'd-none'}`} type="button">
             Add
           </button>
         </div>
@@ -118,6 +119,7 @@ const TableList = (props) => {
   return (
     <div className="row mt-2">
       <div className="col">
+        <h4>{title}</h4>
         {btnGroup}
         <table className={`table v-table ${responsive ? 'table-responsive' : ''}`}>
           <thead>

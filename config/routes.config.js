@@ -104,6 +104,7 @@ module.exports = {
       '/:id': {
         delete: controllers.lists.destroy,
         put: controllers.lists.update,
+        get: controllers.lists.getMovies,
         '/movie/:movieId': {
           post: [
             verifyToken(false),

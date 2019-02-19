@@ -8,6 +8,7 @@ import {
   DELETE_LIST,
   ADD_TO_LIST,
   DELETE_FROM_LIST,
+  SET_LIST_MOVIES,
   SET_LISTS,
 } from '../constants/action-types';
 import { setLoadingStatus, setPageLoadingStatus, toggleAlertDialog } from './common';
@@ -124,6 +125,33 @@ export function removeFromList({ listId, movieId }, callback) {
           message: response.data.message,
         }));
 
+        if (callback && typeof callback === 'function') {
+          callback();
+        }
+      })
+      .catch(ajaxErrorHandler(dispatch));
+  };
+}
+
+export function setListMovies({ rows, count }) {
+  return {
+    type: SET_LIST_MOVIES,
+    payload: {
+      movies: rows,
+      total: count,
+    },
+  };
+}
+
+export function getListMovies(query, callback) {
+  const { listId, page, limit } = query;
+
+  return (dispatch) => {
+    dispatch(setLoadingStatus(true));
+    axios.get(`/api/lists/${listId}?page=${page}&limit=${limit}`)
+      .then((response) => {
+        dispatch(setLoadingStatus(false));
+        dispatch(setListMovies(response.data));
         if (callback && typeof callback === 'function') {
           callback();
         }

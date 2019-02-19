@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const { List, ListMovie, Movie } = require('../../../lib/sequelize');
+const { List, ListMovie } = require('../../../lib/sequelize');
 
 async function get(req, res, next) {
   try {
@@ -29,16 +29,23 @@ async function get(req, res, next) {
       ],
     });
 
-    result.row = result.row.map(async (row) => {
-      const rowMovies = await ListMovie.findAndCountAll({
+
+    const promises = [];
+    for (let i = 0; i < result.rows.length; i += 1) {
+      const rowId = result.rows[i].id;
+
+      promises[i] = ListMovie.count({
         where: {
-          listId: row.id,
+          listId: rowId,
         },
       });
+    }
 
-      const movies = rowMovies;
+    const counts = await Promise.all(promises);
+
+    counts.forEach((c, i) => {
+      result.rows[i].totalMovie = c;
     });
-
 
     if (query.movieId) {
       const listsOfMovie = await ListMovie.findAll({

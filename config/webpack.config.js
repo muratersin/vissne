@@ -1,8 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const SCR_DIR = path.resolve(__dirname, '../app/assets/javascript');
 const BUILD_DIR = path.resolve(__dirname, '../public/dist');
@@ -19,7 +17,7 @@ const config = {
   },
   entry: {
     app: [
-      // '@babel/polyfill',
+      '@babel/polyfill',
       `${SCR_DIR}/app/index.jsx`,
     ],
   },
@@ -46,7 +44,10 @@ const config = {
         test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: { minimize: true },
+          },
           'sass-loader',
         ],
       },
@@ -80,14 +81,6 @@ const config = {
       },
     },
     minimize: true,
-    minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: false,
-      }),
-      new OptimizeCSSAssetsPlugin(),
-    ],
   },
   plugins: [
     new webpack.DefinePlugin({

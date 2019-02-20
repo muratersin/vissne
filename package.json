@@ -54,7 +54,8 @@
     "redux": "4.0.1",
     "redux-thunk": "2.3.0",
     "sequelize": "4.42.0",
-    "serve-favicon": "2.5.0"
+    "serve-favicon": "2.5.0",
+    "yall-js": "2.2.2"
   },
   "devDependencies": {
     "@babel/polyfill": "7.2.5",

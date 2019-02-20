@@ -16,7 +16,7 @@ async function destroy(req, res, next) {
       });
     }
 
-    return res.status(400).json({
+    res.status(400).json({
       message: 'List Can\' be deleted',
     });
   } catch (err) {

@@ -13,11 +13,21 @@ const getById = async (req, res, next) => {
       ? `${config.api.moviedb.images.secure_base_url}/w500/${data.poster_path}`
       : `${config.cdn}/${config.image.defaultCoverImagePath}`;
 
+    const director = req.credits.crew
+      .filter(c => c.job === 'Director')
+      .map(d => d.name)
+      .join(', ');
+
+    const writer = req.credits.crew
+      .filter(c => c.department === 'Writing')
+      .map(w => w.name)
+      .join(', ');
+
     const movie = {
       posterPath,
       credits: req.credits,
-      director: req.credits.crew.filter(c => c.job === 'Director').map(d => d.name).join(', '),
-      writer: req.credits.crew.filter(c => c.department === 'Writing').map(w => w.name).join(', '),
+      director,
+      writer,
       images: req.images,
       videos: req.videos,
       orginalTitle: data.original_title,

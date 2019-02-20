@@ -1,5 +1,5 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // eslint-disable-line
 
 const SCR_DIR = path.resolve(__dirname, '../app/assets/javascript');
 const BUILD_DIR = path.resolve(__dirname, '../public/dist');

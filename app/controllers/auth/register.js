@@ -67,6 +67,3 @@ async function registerController(req, res, next) {
 }
 
 module.exports = registerController;
-
-// TODO: add full data
-// TODO: add doc

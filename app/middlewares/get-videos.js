@@ -1,4 +1,5 @@
 const axios = require('axios');
+
 const { generateRouteGetVideos } = require('../../lib/route-generator');
 
 const getCredits = async (req, res, next) => {

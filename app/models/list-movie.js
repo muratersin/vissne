@@ -1,7 +1,5 @@
 
 module.exports = (sequelize) => {
-  const ListMovie = sequelize.define('listMovie', {
-    
-  });
+  const ListMovie = sequelize.define('listMovie', {});
   return ListMovie;
 };

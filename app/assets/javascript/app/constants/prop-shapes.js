@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 export const UserShape = PropTypes.shape({
-  id: PropTypes.number,
+  id: PropTypes.string,
   firstName: PropTypes.string,
   lastName: PropTypes.string,
   email: PropTypes.string,

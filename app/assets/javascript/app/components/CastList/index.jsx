@@ -7,12 +7,7 @@ import './CastList.scss';
 
 const CastList = ({ casts }) => {
   const castList = casts.map(c => (
-    <Cast
-      key={c.id}
-      name={c.name}
-      profilePath={c.profilePath}
-      character={c.character}
-    />
+    <Cast cast={c} key={c.id} />
   ));
 
   return (
@@ -25,8 +20,12 @@ const CastList = ({ casts }) => {
   );
 };
 
+CastList.defaultProps = {
+  casts: [],
+};
+
 CastList.propTypes = {
-  casts: PropTypes.arrayOf(CastShape).isRequired,
+  casts: PropTypes.arrayOf(CastShape),
 };
 
 export default CastList;

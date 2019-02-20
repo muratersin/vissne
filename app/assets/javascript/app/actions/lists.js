@@ -2,15 +2,7 @@ import axios from 'axios';
 
 import cookie from '../../lib/cookie';
 import ajaxErrorHandler from '../../lib/ajax-error-handler';
-import {
-  GET_LISTS_BY_CURRENT_USER,
-  CREATE_LIST,
-  DELETE_LIST,
-  ADD_TO_LIST,
-  DELETE_FROM_LIST,
-  SET_LIST_MOVIES,
-  SET_LISTS,
-} from '../constants/action-types';
+import { SET_LIST_MOVIES, SET_LISTS } from '../constants/action-types';
 import { setLoadingStatus, setPageLoadingStatus, toggleAlertDialog } from './common';
 
 export function setList({ lists, total }) {
@@ -27,7 +19,13 @@ export function getListByCurrentUser({ page, limit }, movieId) {
   const currentUserId = cookie.get('user_id');
 
   if (!currentUserId) {
-    window.location.href = `${vissne.domain}/auth`;
+    return ({
+      type: SET_LISTS,
+      payload: {
+        lists: [],
+        total: 0,
+      },
+    });
   }
 
   let url = `/api/lists?userId=${currentUserId}&page=${page}&limit=${limit}`;
@@ -56,9 +54,9 @@ export function saveList(list, callback) {
     method: 'post',
     url: '/api/lists',
   } : {
-    method: 'put',
-    url: `/api/lists/${list.id}`,
-  };
+      method: 'put',
+      url: `/api/lists/${list.id}`,
+    };
 
   return (dispatch) => {
     dispatch(setLoadingStatus(true));

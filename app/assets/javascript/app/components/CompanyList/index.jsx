@@ -11,7 +11,7 @@ const CompanyList = ({ companies }) => (
       <h5 className="card-title">Companies</h5>
       <div className="col-12">
         {companies.map(c => (
-          <Company key={c.id} logo={c.logo_path} name={c.name} />
+          <Company key={c.id} company={c} />
         ))}
       </div>
     </div>

@@ -17,7 +17,7 @@ const initialState = {
   totalPage: 1,
   query: {
     page: 1,
-    sortBy: 'popularity.decs',
+    sortBy: 'popularity.desc',
     filter: null,
     searchText: null,
     withGenres: [],

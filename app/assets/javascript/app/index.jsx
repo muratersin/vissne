@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from 'react-dom';
-
 import '../scripts';
 import '../../stylesheets/scss/main.scss';
 import configureStore from './store/configure-store';

@@ -5,7 +5,8 @@
     },
     "globals": {
         "vissne": true,
-        "commonGlobal": true
+        "commonGlobal": true,
+        "yall": true
     },
     "extends": "airbnb",
     "parser": "babel-eslint",

@@ -6,11 +6,20 @@ import {
   SET_UPLOADED_IMAGE,
 } from '../constants/action-types';
 
-export const toggleAlertDialog = ({ message, kind }) => ({
+export const setAlertStatus = ({ message, kind }) => ({
   type: TOGGLE_ALERT,
   message,
   kind,
 });
+
+export const toggleAlertDialog = ({ message, kind }) => {
+  return (dispatch) => {
+    dispatch(setAlertStatus({ message, kind }));
+    setTimeout(() => {
+      dispatch(setAlertStatus({ }));
+    }, 3000);
+  };
+};
 
 export const setPageLoadingStatus = status => ({
   type: SET_PAGE_LOADING_STATUS,

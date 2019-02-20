@@ -42,12 +42,13 @@ const Modal = (props) => {
 
 Modal.defaultProps = {
   show: false,
+  submit: null,
 };
 
 Modal.propTypes = {
   title: PropTypes.string.isRequired,
   cancel: PropTypes.func.isRequired,
-  submit: PropTypes.func.isRequired,
+  submit: PropTypes.func,
   children: PropTypes.instanceOf(Object).isRequired,
   show: PropTypes.bool,
 };

@@ -135,6 +135,7 @@ export default class Movie extends Component {
 
 Movie.defaultProps = {
   isLoggedIn: false,
+  detail: null,
 };
 
 Movie.propTypes = {
@@ -142,7 +143,7 @@ Movie.propTypes = {
   addToList: PropTypes.func.isRequired,
   removeFromList: PropTypes.func.isRequired,
   getListByCurrentUser: PropTypes.func.isRequired,
-  detail: PropTypes.instanceOf(Object).isRequired,
+  detail: PropTypes.instanceOf(Object),
   match: PropTypes.instanceOf(Object).isRequired,
   lists: PropTypes.instanceOf(Array).isRequired,
   user: UserShape.isRequired,

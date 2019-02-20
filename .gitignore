@@ -1,9 +1,9 @@
 # Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# logs
+# *.log
+# npm-debug.log*
+# yarn-debug.log*
+# yarn-error.log*
 
 # Runtime data
 pids
@@ -66,6 +66,6 @@ typings/
 # all cache folders
 .cache*
 
-var
+# var
 public/ucontent
 public/temp

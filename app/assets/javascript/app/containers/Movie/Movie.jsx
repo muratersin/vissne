@@ -95,6 +95,7 @@ export default class Movie extends Component {
             {lists.map(l => (
               <li
                 className={`list-group-item rounded-0 ${l.isAdded ? 'list-group-item-success' : ' '}`}
+                key={l.id}
               >
                 <span className="d-flex justify-content-between">
                   {l.name}

@@ -12,13 +12,11 @@ export const setAlertStatus = ({ message, kind }) => ({
   kind,
 });
 
-export const toggleAlertDialog = ({ message, kind }) => {
-  return (dispatch) => {
-    dispatch(setAlertStatus({ message, kind }));
-    setTimeout(() => {
-      dispatch(setAlertStatus({ }));
-    }, 3000);
-  };
+export const toggleAlertDialog = ({ message, kind }) => (dispatch) => {
+  dispatch(setAlertStatus({ message, kind }));
+  setTimeout(() => {
+    dispatch(setAlertStatus({}));
+  }, 3000);
 };
 
 export const setPageLoadingStatus = status => ({
